@@ -2,6 +2,12 @@
 # Also has some random bits as I try to figure out how to use Python.
 
 
+# To-do list:
+# 1. Reorganize so some "main" function is sending a list of acceptable values instead of hard coding
+# 2. Cull some unused / experimental functions
+# 3. Study how to put some of these extraneous functions into a different file
+
+
 # if it's a known command, return true, otherwise false
 #def isCommand(command):
 	# loop through array of reserved words, etc
@@ -70,9 +76,48 @@ def checkCommand(command):
 	return
 
 # This goes through the items in the list and identifies which word references the item.
-def itemPositionInSetence(wordArray, listofItems):
-	# loop through list of items and see if one matches
-	return 2
+def itemPositionInSetence(wordArray, listOfItems):
+	#print 'Length of wordArray: ' + str(len(wordArray)) + ' contents: ' + str(wordArray)
+	#print 'Length of listOfItems: ' + str(len(listOfItems)) + ' contents: ' + str(listOfItems)
+	# loop through list of items for each word in sentence and see if one matches
+	for wordPos in range (0, len(wordArray)):
+		for itemPos in range (0, len(listOfItems)):
+			if (wordArray[wordPos] == listOfItems[itemPos]):
+				#print str(wordArray[wordPos]) + ' is equal to ' + str(listOfItems[itemPos])
+				return wordPos
+
+	# item name is not found
+	return -1
+
+# DOES NOT WORK YET - just a placeholder
+# identify the preposition's placement in sentence, if any
+# Also assuming that the command is in the first word given
+def findPreposition(wordArray, positionOfItem):
+	prepositions = ['to', 'on', 'in']
+	return
+
+
+
+
+# Identifies the verb and item, as well as location, for easier handling
+def validateWords(wordArray, listOfItems)
+
+	# The verb is _probably_ in the first word used, identify category (meaning)
+	command = wordArray[0]
+	category = checkCommand(command)
+
+	# Identify the item and the position in the sentence
+	positionOfItem = itemPositionInSetence(wordArray, listOfItems)
+	if (postionOfItem < 0):
+		word = ""
+	else:
+		word = wordArray[positionOfItem]
+
+	# Prepositions are either between the command and item, or after the item
+	#positionPreposition = findPreposition(wordArray, positionOfItem)
+
+
+
 
 #wordArray = ['look', 'at', 'object']
 
@@ -86,9 +131,10 @@ def getInput():
 	# Probably need to insert a check if a valid object is specified, or how to handle missing prepositions
 	# For that matter, determine where the item is going to be in a sentence (wordArray[1] or wordArray[2])
 	# maybe keep a list of items in the room, loop and check each word, then return a contextual response?
-	listofItems = ['key', 'door', 'houseplant']
-	positionOfItem = itemPositionInSetence(wordArray, listofItems)
-	print 'Item is located in position: ' + str(positionOfItem)
+	listOfItems = ['key', 'door', 'plant']
+	
+	findVerbObject(wordArray, listOfItems)
+	#print 'Item is located in position: ' + str(positionOfItem)
 	# checkIfValidItem()
 	checkCommand(lineInput)
 	return
