@@ -34,8 +34,8 @@ class Room(object):
 
 		
 
-# Open the file if possible
-#    with open(file_path_str) as json_data:
+# Open the file
+
 with open("data/room2.json") as json_data:
 	data = json.load(json_data)
 	new_room = Room(data["name"])
