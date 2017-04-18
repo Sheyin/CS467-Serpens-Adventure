@@ -8,11 +8,6 @@
 # 3. Study how to put some of these extraneous functions into a different file
 
 
-# if it's a known command, return true, otherwise false
-#def isCommand(command):
-	# loop through array of reserved words, etc
-# booleans are capitalized in Python
-#	return True 
 
 # This returns a string for what "category" the input belongs to
 # Need a better way to organize this.  Multiple arrays / dictionary? Needs research.
@@ -25,7 +20,7 @@ def checkCategory(command):
 		return "inventory"
 	elif ((command == "look") or (command == "explore")):
 		return "look"
-	elif ((command == "look_at") or (command == "examine")):
+	elif ((command == "look_at") or (command == "examine") or (command == "view")):
 		return "look_at"
 	elif ((command == "go") or (command == "move_to")):
 		return "go"
@@ -35,95 +30,148 @@ def checkCategory(command):
 		return "help"
 	elif ((command == "drop") or (command == "remove")):
 		return "drop"
+	elif ((command == "quit") or (command == "exit")):
+		return "quit"
 	else:
 		return "unknown"
 
-# This assumes the first word is a command
-def checkCommand(command):
-	# checking if command is one of the expected words
-	# "if not" checks for truth, "!=" checks for equality
-	#if not isCommand(command):
-	#	print 'Unknown command.'
-	#	return
-	#else: 
 
-	# No switches in python - implement dictionary method?
-	# Need to add an additional function to sort input into a category
-	category = checkCategory(command)
-
-	if (category == "savegame"):
-		print 'Game has been saved.  Well, no not really.'
-	elif (category == "loadgame"):
-		print 'Game has been loaded.  Fictionally.'
-	elif (category == "inventory"):
-		inventory = ['socks', 'banana', 'rubber ducky']
-		print 'This is your inventory: ' + ', '.join(inventory)
-	elif (category == "look"):
-		print 'This is the long description of the room.  It is very detailed and fascinating.'
-	elif (category == "look_at"):
-		print 'This is a really interesting description of an item.  Support this with no underscore.'
-	elif (category == "go"):
-		print 'Go... where?'
-	elif (category == "take"):
-		print 'You picked up the item, whatever it is, and added it to your inventory.'
-	elif (category == "help"):
-		possibleActions = ['explore', 'fly', 'touch', 'dance']
-		print 'This is a list of things you can do in the room: ' + ', '.join(possibleActions)
-	elif (category == "drop"):
-		print 'You dropped the object on the floor.'
+# working off the assumption that the first word used is the command / verb.
+# Returns the "category" of the verb if known, otherwise returns "unknown"
+def checkCommand(wordArray):
+	# Special handling for look vs look at since only command is sent
+	# Maybe needs more refinement to make "look at door" and "look door" the same
+	if ((wordArray[0] == "look") and (wordArray[1] == "at")):
+		category = checkCategory ("look_at")
 	else:
-		print 'Unrecognized command, or something broke.'
-	return
+		category = checkCategory(wordArray[0])
 
-# This goes through the items in the list and identifies which word references the item.
-def itemPositionInSetence(wordArray, listOfItems):
-	#print 'Length of wordArray: ' + str(len(wordArray)) + ' contents: ' + str(wordArray)
-	#print 'Length of listOfItems: ' + str(len(listOfItems)) + ' contents: ' + str(listOfItems)
-	# loop through list of items for each word in sentence and see if one matches
+	# Unrecognized command - print an error message
+	if (category == "unknown"):
+		print "You want to " + wordArray[0] + " something, but you don't know how.  Try a different command."
+	return category
+
+# This identifies where in a sentence an item is located
+# if it doesn't match any known items, then it will guess at words
+# after particles (after "the", "a", ), then prepositions ("in", "on")
+# Returns a negative value if the word was a guess, but positive
+# if the item was confirmed (on the list of items in a room)
+def itemPositionInSentence(wordArray, listOfItems):
+
+	# Single word input, so there is no item:
+	if (len(wordArray) == 1):
+		return 0
+
+	# Loop through and compare words with list of items in room:
 	for wordPos in range (0, len(wordArray)):
 		for itemPos in range (0, len(listOfItems)):
 			if (wordArray[wordPos] == listOfItems[itemPos]):
 				#print str(wordArray[wordPos]) + ' is equal to ' + str(listOfItems[itemPos])
 				return wordPos
 
-	# item name is not found
+	# anything past this point is strictly optional - the item is not a known object in room
+
+	# item name is not found - infer an answer based on particles
+	particles = ['the', 'a']
+	for wordPos in range (0, len(wordArray)):
+		for articlePos in range (0, len(particles)):
+			if (wordArray[wordPos] == particles[articlePos]):
+				# turning this negative so we know it was not a recognized object
+				return -wordPos
+
+	# item name is still not found - assume it is right after the command 
+	# command is assumed to be the first word in the sentence
 	return -1
 
-# DOES NOT WORK YET - just a placeholder
-# identify the preposition's placement in sentence, if any
-# Also assuming that the command is in the first word given
-def findPreposition(wordArray, positionOfItem):
-	prepositions = ['to', 'on', 'in']
-	return
+
+	# item still not found - infer an answer based on prepositions
+	# CheckMe: This may fail if/when compound interactions added - ex. put x in y
+	# Actually, this should only be used to identify the "y" anyways.
+	#prepositions = ['in', 'on', 'over']
+  	#for wordPos in range (0, len(wordArray)):
+	#	for prepPos in range (0, len(prepositions)):
+	#		if (wordArray[wordPos] == prepositions[prepPos]):
+	#			return wordPos
 
 
+# Displays an error message for an invalid action
+# TODO: randomize the error messages
+def randomErrorMessage(wordArray, word):
+	print "You try to " + wordArray[0] + " the " + word + " but you realize you don't have one."
 
 
 # Identifies the verb and item, as well as location, for easier handling
-def validateWords(wordArray, listOfItems)
+def findItemUsed(wordArray, listOfItems):
 
-	# The verb is _probably_ in the first word used, identify category (meaning)
+	# The verb is _probably_ in the first word used, identify category (meaning/intent of the word)
 	command = wordArray[0]
-	category = checkCommand(command)
+	category = checkCategory(command)
 
-	# Identify the item and the position in the sentence
-	positionOfItem = itemPositionInSetence(wordArray, listOfItems)
-	if (postionOfItem < 0):
-		word = ""
+	# Identify the item and its position in the sentence
+	positionOfItem = itemPositionInSentence(wordArray, listOfItems)
+	#print "Debug: positionOfItem: " + str(positionOfItem)
+	if (positionOfItem < 0):
+		# Object was not found in room, so guessed at it for a response
+		# displaying a message stating so
+		word = wordArray[abs(positionOfItem)]
+		randomErrorMessage(wordArray, word)
+		return "invalid"
 	else:
 		word = wordArray[positionOfItem]
+		return word
 
 	# Prepositions are either between the command and item, or after the item
 	#positionPreposition = findPreposition(wordArray, positionOfItem)
 
 
+# This executes the specified command by calling whichever functions
+# The command and item should have been validated before calling this
+# _maybe_ can combine with findCategory() but would need to restructure
+def executeCommand(wordArray, category, item):
+	if (category == "savegame"):
+		# saveGame()
+		print "Game would be saved here."
+	elif (category == "loadgame"):
+		# loadGame()
+		print "Game would be loaded here."
+		# not sure how this should be handled - maybe destroy this instance? so return False?
+	elif (category == "inventory"):
+		# showInventory()
+		print "This is your imaginary inventory!"
+	elif (category == "look"):
+		# look()
+		print "You look around and see things.... (list objects / long description)"
+	elif (category == "look_at"):
+		# lookAt(item)
+		# check if item is unspecified / undefined and give error message accordingly.
+		# Maybe this should be handled in another function.
+		if (wordArray[0] == item):
+			print "Look at what?"
+		print "You look at the " + item + "."
+	elif (category == "go"):
+		# go(place)
+		print "You go to the " + item + " (place?)."
+	elif (category == "take"):
+		# take()
+		print "You take the " + item + "."
+	elif (category == "help"):
+		# help(room)
+		print "These are the items in the room..."
+	elif (category == "drop"):
+		# drop(item)
+		print "You drop the " + item + "."
+	elif (category == "quit"):
+		# quit()
+		print "Exiting the game."
+		return False
+	else:
+		# Some custom handling here - ex. individual actions? add more elifs?
+		print "You " + wordArray[0] + " the " + item + "."
+	return True
 
-
-#wordArray = ['look', 'at', 'object']
 
 # Putting this into a function to mimic what probably happens in overall program.
 def getInput():
-	print 'Starting the script!'
 	lineInput = raw_input('Your action: ')
 	# Split sentence into its component words
 	wordArray = lineInput.split(" ")
@@ -131,13 +179,34 @@ def getInput():
 	# Probably need to insert a check if a valid object is specified, or how to handle missing prepositions
 	# For that matter, determine where the item is going to be in a sentence (wordArray[1] or wordArray[2])
 	# maybe keep a list of items in the room, loop and check each word, then return a contextual response?
-	listOfItems = ['key', 'door', 'plant']
-	
-	findVerbObject(wordArray, listOfItems)
-	#print 'Item is located in position: ' + str(positionOfItem)
-	# checkIfValidItem()
-	checkCommand(lineInput)
-	return
+	listOfItems = ['key', 'door', 'plant', 'bird', 'plane', 'superman']
+
+	# Check if the command used is known / valid
+	category = checkCommand(wordArray)
+	if (category == "unknown"):
+		# an error should have already been displayed.  Begin loop again.
+		print "Loop again and ask for input.  Invalid command."
+	# This should probably be handled better, but in order to test this portion....
+	#elif: (category == "quit"):
+	#	print "Exiting game."
+	elif (category == "quit"):
+		return False
+	else: 
+		item = findItemUsed(wordArray, listOfItems)
+		#print "Item found: " + item
+		if (item == "invalid"):
+			# begin loop again- error message should already have been displayed
+			print "Loop again and ask for input.  Invalid item."
+		else: 
+			# At this point it should be a valid command and item
+			# Call individual functions to handle command accordingly?
+			executeCommand(wordArray, category, item)
+	return True
 
 # "main" function
-getInput()
+keepLooping = True
+print 'Starting the script!'
+while (keepLooping):
+	keepLooping = getInput()
+
+
