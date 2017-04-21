@@ -8,7 +8,6 @@
 # 3. Study how to put some of these extraneous functions into a different file
 
 
-
 # This returns a string for what "category" the input belongs to
 # Need a better way to organize this.  Multiple arrays / dictionary? Needs research.
 def checkCategory(command):
@@ -41,7 +40,7 @@ def checkCategory(command):
 def checkCommand(wordArray):
 	# Special handling for look vs look at since only command is sent
 	# Maybe needs more refinement to make "look at door" and "look door" the same
-	if ((wordArray[0] == "look") and (wordArray[1] == "at")):
+	if ((len(wordArray) > 1) and ((wordArray[0] == "look") and (wordArray[1] == "at"))):
 		category = checkCategory ("look_at")
 	else:
 		category = checkCategory(wordArray[0])
@@ -82,16 +81,6 @@ def itemPositionInSentence(wordArray, listOfItems):
 	# item name is still not found - assume it is right after the command 
 	# command is assumed to be the first word in the sentence
 	return -1
-
-
-	# item still not found - infer an answer based on prepositions
-	# CheckMe: This may fail if/when compound interactions added - ex. put x in y
-	# Actually, this should only be used to identify the "y" anyways.
-	#prepositions = ['in', 'on', 'over']
-  	#for wordPos in range (0, len(wordArray)):
-	#	for prepPos in range (0, len(prepositions)):
-	#		if (wordArray[wordPos] == prepositions[prepPos]):
-	#			return wordPos
 
 
 # Displays an error message for an invalid action
@@ -147,7 +136,8 @@ def executeCommand(wordArray, category, item):
 		# Maybe this should be handled in another function.
 		if (wordArray[0] == item):
 			print "Look at what?"
-		print "You look at the " + item + "."
+		else: 
+			print "You look at the " + item + "."
 	elif (category == "go"):
 		# go(place)
 		print "You go to the " + item + " (place?)."
@@ -187,8 +177,6 @@ def getInput():
 		# an error should have already been displayed.  Begin loop again.
 		print "Loop again and ask for input.  Invalid command."
 	# This should probably be handled better, but in order to test this portion....
-	#elif: (category == "quit"):
-	#	print "Exiting game."
 	elif (category == "quit"):
 		return False
 	else: 
@@ -203,7 +191,7 @@ def getInput():
 			executeCommand(wordArray, category, item)
 	return True
 
-# "main" function
+# "main" function - temporary until we can coordinate as a group
 keepLooping = True
 print 'Starting the script!'
 while (keepLooping):
