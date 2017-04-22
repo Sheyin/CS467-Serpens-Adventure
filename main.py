@@ -15,18 +15,20 @@ def main():
 
    engine.launch() # Engine launch sequence to initiate game menu
 
-   #Data dev/parse dev
+   #{Data dev/parse dev}
    #Accept user input for selection - new, load, exit
 
    #if new
-   #engine.newGame()
+   engine.newGame()
    #if load
    #engine.loadGame()
    #if exit
    #engine.exitGame()
 
    #Engine testing 
-   enginetest.roomTest()
+   #enginetest.roomTest()
+   #enginetest.gameStateTest()
+   #enginetest.objectTest()
    
 
 if __name__ == "__main__":
