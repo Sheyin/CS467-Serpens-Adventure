@@ -15,16 +15,6 @@ def main():
 
    engine.launch() # Engine launch sequence to initiate game menu
 
-   #{Data dev/parse dev}
-   #Accept user input for selection - new, load, exit
-
-   #if new
-   engine.newGame()
-   #if load
-   #engine.loadGame()
-   #if exit
-   #engine.exitGame()
-
    #Engine testing 
    #enginetest.roomTest()
    #enginetest.gameStateTest()
