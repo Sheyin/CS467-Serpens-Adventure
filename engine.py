@@ -56,6 +56,11 @@ def newGame():
 	print "Starting a new game"
 
 	#Intro story
+	print "                                                                                "
+	print "The dream you were having fades away as you become aware of a gentle rocking"
+	print "motion. You open your eyes and the dimly lit room slowly comes into focus. The "
+	print "only source of light is a small lantern hanging from the ceiling. The air "
+	print "smells stale with a hint of fuel. Sitting up slowly, you wonder where you are..."
 	print ""
 
 	playGame(0)
@@ -71,11 +76,15 @@ def loadGame():
 
 #[BEGIN EXIT GAME]
 def exitGame():
+	print ""
 	print "Roll the credits!"
 	print ""
 	print "Parsing Dev - Cheryl See"
 	print "Engine Dev - Karen Thrasher"
 	print "Data Dev - Matt Hillman"
+	print ""
+	print "Thank you for playing!"
+	print ""
 #[END EXIT GAME]
 
 #[BEGIN PLAY GAME]
@@ -99,9 +108,17 @@ def playGame(userSelection):
 
 	#While loop repeatedly prompts user for input until user requests to load, save, or quit game
 	while userInput not in ['loadgame', 'savegame', 'quit']:
+		#Check game state for current room
+		#If visited is false, display long description
+		#Else, display short description
+
+
+	#Pend input:
 		userInput = raw_input (": ")
 		#Parse user input {Parsing Dev}
-		print "play!"
+		print "input rec"
+
+		#Respond to user input and update necessary variables in game state
 
 
 #[END PLAY GAME]
