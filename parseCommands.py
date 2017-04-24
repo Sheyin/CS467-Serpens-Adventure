@@ -192,9 +192,12 @@ def getInput():
 	return True
 
 # "main" function - temporary until we can coordinate as a group
-keepLooping = True
-print 'Starting the script!'
-while (keepLooping):
-	keepLooping = getInput()
+# Update to run main function for parseCommands.py separately from main.py
+def main():
+	keepLooping = True
+	print 'Starting the script!'
+	while (keepLooping):
+		keepLooping = getInput()
 
-
+if __name__ == "__main__":
+   main() 

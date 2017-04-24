@@ -9,6 +9,7 @@
 import room
 import objectC
 import gamestate
+import parseCommands
 #[END IMPORTS]
 
 #[BEGIN LAUNCH]
@@ -97,31 +98,64 @@ def playGame(userSelection):
 	#Create new or load saved game
 	if userSelection == 0:	#New game
 		print "NEW GAME FILE CREATED"
-		#Load game state with default starting variables {Data dev}
+		#Testing: 
+		currentRoom = room.RoomClass("default N", "default S", "default E", "default W", "default Up", "default Down", "long Desc", "short Desc", "Name of Room", "feature 1", "feature 2")
+
+		#PENDING - Load game state with default starting variables {Data dev}
 	else:
 		print "LOAD GAME FILE"
-		#Load game state with saved variables {Data dev}
+		#PENDING - Load game state with saved variables {Data dev}
 
-	#Load room files {Data dev}
+	#PENDING - Load room files {Data dev}
 
-	#Load object files {Data dev}
+	#PENDING - Load object files {Data dev}
+
+	#userInput = raw_input (": ")
+	#Parse user input and return code for engine action {Parsing Dev}
+
+	#[BEGIN TEXT PARSING]
+	keepLooping = True
+	while (keepLooping):
+		keepLooping = parseCommands.getInput()
+	#[END TEXT PARSING]
+
+
 
 	#While loop repeatedly prompts user for input until user requests to load, save, or quit game
-	while userInput not in ['loadgame', 'savegame', 'quit']:
+	#while userInput not in ['loadgame', 'savegame', 'quit']:
 		#Check game state for current room
+		#currentRoom = gamestate
+
 		#If visited is false, display long description
-		#Else, display short description
+		#Else, display short description & update game state to show visited
 
-
-	#Pend input:
-		userInput = raw_input (": ")
+		#Pend input:
+		#userInput = raw_input (": ")
 		#Parse user input {Parsing Dev}
-		print "input rec"
+		#print "input rec"
+
+		#if parsedText == "TN": #Travel North
+		#	print "Travel north"
 
 		#Respond to user input and update necessary variables in game state
 
 
 #[END PLAY GAME]
+
+# Engine Actions
+# savegame {Data Dev}
+# loadgame {Data Dev}
+# exit 
+# go (north, south, east, west, down, up)
+# drop item
+# take item
+# look 
+# look at object
+# look at feature
+# help 
+# inventory
+
+
 
 #[References]
 #ASCII Title Art Generator - http://patorjk.com/software/taag/#p=display&f=Doom&t=Dead%0AIn%0AThe%20%0AWater

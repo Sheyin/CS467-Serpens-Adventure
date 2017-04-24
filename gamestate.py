@@ -23,9 +23,11 @@ class GameStateClass(object):
    		self.rm05vis = room5
    		self.rm06vis = room6
 
+   		#Puzzle solved (1) or unsolved (0) 
+
    		#Location of items & item name - room ID integer or 99 (player inv)
    		self.obj1Loc = item1
-   		self.obj1Desc = "Lever"
+   		#self.obj1Desc = "Lever"
 
    		self.obj2 = item2
    		self.obj3 = item3
