@@ -11,9 +11,9 @@ import json
 from room import *
 #[END IMPORTS]
 
-#Karen's Room
-room1 = RoomClass(1,2,3,4,5,6)
-print room1.east
+#verify import of Karen's RoomClass
+#room1 = RoomClass(1,2,3,4,5,6)
+#print room1.east
 
 
 class Room(object):
@@ -32,15 +32,33 @@ class Room(object):
         self.is_visited = False
         
 
+def load_rooms ():
+	rooms = {}
+	room_list = os.listdir("data/rooms")
+
+	#print room_list[0]
+	#rint room_list[1]
+			
+	# Open the files
+
+	n=0
+	for room in room_list:
+		with open("data/rooms/" + room) as json_data:
 		
+	#with open("data/room1.json") as json_data:
+			data = json.load(json_data)
+			current_room = Room(data["name"])
+			current_room.longDesc = data["longDesc"]
 
-# Open the file
-
-with open("data/room2.json") as json_data:
-	data = json.load(json_data)
-	new_room = Room(data["name"])
-	new_room.longDesc = data["longDesc"]
+	#add nth room to dictionary
+			rooms[n] = current_room
+			n = n + 1
 
 
-print new_room.name
-print new_room.longDesc
+
+	#test that room objects are in rooms dictionary
+	print rooms[0].name
+	print rooms[1].name
+	print rooms[2].name
+
+load_rooms()
