@@ -15,8 +15,8 @@ import parseItem
 # Note to self: when removing this, also correct main() and getInput(), executeCommand()
 class TestRoom(object):
 	def __init__(self):
-		self.descLong = "The captain's quarters turn out to be a well-furnished bedroom with shelves filled with books and a fireplace.  The wood-paneled walls are lined with maps and navigational charts.  A recliner near the fireplace looks quite worn and inviting, as if someone had sat there reading often.  There is also a desk on one side of the room, and two doors on one side of the room leading to another area."
-		self.descShort = "The captain's quarters are a well-furnished bedroom with a filled bookshelf and a fireplace.  There is a recliner near the fireplace, as well as a desk to one side of the room.  There are also two doors leading to another area."
+		self.descLong = "The captain's quarters turn out to be a well-furnished bedroom with shelves filled with books and a fireplace.  The wood-paneled walls are lined with maps and navigational charts.  A recliner near the fireplace looks quite worn and inviting, as if someone had sat there reading often.  There is also a desk on one side of the room, which has some papers scattered across it.  There is a door leading back outside, a door on the left that is locked, and a door on the right which leads to the bathroom."
+		self.descShort = "The captain's quarters are a well-furnished bedroom with a filled bookshelf and a fireplace.  There is a recliner near the fireplace, as well as a desk to one side of the room.  One door leads outside, another leads to a bathroom, and the last door appears to be locked."
 		self.roomID = -01
 		self.features = ['bookshelf', 'recliner', 'fireplace', 'desk', 'doorBathroom', 'bed', 'door']
 		self.items = ['key']
@@ -58,7 +58,7 @@ def executeCommand(wordArray, category, item, roomTemp):
 		# not sure how this should be handled - maybe destroy this instance? so return False?
 	elif (category == "inventory"):
 		# showInventory()
-		print "This is your imaginary inventory!"
+		print "This is your imaginary inventory: (print list of items)"
 	elif (category == "look"):
 		# look(current roomID)
 		#print "You look around and see things.... (list objects / long description)"
@@ -70,7 +70,7 @@ def executeCommand(wordArray, category, item, roomTemp):
 		# check if item is unspecified / undefined and give error message accordingly.
 		# Maybe this should be handled in another function.
 		if (wordArray[0] == item):
-			print "Look at what?"
+			print "Look at what?  (Please specify an item to look at)"
 		#elif (item == "invalid"):
 		#	print "You're trying to look at an unrecognized item."
 		elif (item != "invalid"):
