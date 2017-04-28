@@ -30,6 +30,7 @@ def position(wordArray, listOfItems):
 
 	# --anything past this point is strictly optional - the item is not a known object in room
 
+	# This should be erased since particles are being stripped in the beginning now
 	# item name is not found - infer an answer based on particles
 	particles = ['the', 'a']
 	for wordPos in range (0, len(wordArray)):
@@ -40,10 +41,13 @@ def position(wordArray, listOfItems):
 
 	# item name is still not found - assume it is right after the command 
 	# command is assumed to be the first word in the sentence
-	return -1
+	if (wordArray[1] == "at") and (len(wordArray) > 2):
+		return -2
+	else:
+		return -1
 
 
-	# Identifies the verb and item, as well as location, for easier handling
+# Identifies the verb and item, as well as location, for easier handling
 # TODO: For unrecognized items right now it is calling randomErrorMessage() AND being 
 # handled in executeCommand, so it should be consolidated into one or the other.
 def findItemUsed(wordArray, listOfItems):
@@ -58,9 +62,19 @@ def findItemUsed(wordArray, listOfItems):
 		# Item was not found in room, so guessed at it for a response
 		# displaying a message stating the command tried to operate on an invalid item
 		word = wordArray[abs(positionOfItem)]
-		randomErrorMessage(wordArray, word)
 		return "invalid"
 	else:
 		word = wordArray[positionOfItem]
 		return word
 	# Prepositions are either between the command and item, or after the item
+
+
+# Locates a given word and returns its position in the sentence.
+# This is used by other functions and might be categorized under "general"
+# Similar to position() but we already know the word, just need to know where.
+def positionInWord(wordArray, word):
+	for wordPos in range (0, len(wordArray)):
+		if (wordArray[wordPos] == word):
+			return wordPos
+	# Word not found in sentence
+	return -1
