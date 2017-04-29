@@ -63,6 +63,8 @@ def executeCommand(wordArray, category, item1='none', item2='none'):
 		stubs.quit()
 	elif (category == "use"):
 		stubs.use(item1, item2)
+	elif (category == "move"):
+		stubs.move(item)
 	else:
 		# Some custom handling here - ex. new actions? add more elifs?
 		print "You " + wordArray[0] + " the " + item1 + "."
@@ -86,7 +88,9 @@ def getInput():
 	# Probably need to insert a check if a valid object is specified, or how to handle missing prepositions
 	# For that matter, determine where the item is going to be in a sentence (wordArray[1] or wordArray[2])
 	# maybe keep a list of items in the room, loop and check each word, then return a contextual response?
-	listOfItems = ['key', 'door', 'plant', 'bird', 'plane', 'superman']
+	#listOfItems = ['key', 'door', 'plant', 'bird', 'plane', 'superman']
+	listOfItems = ['straw', 'bench', 'board', 'window', 'keys', 'door']
+	# may want to separate out list of features and add a separate check.  Limit 4 currently.
 	
 	# Check if the command used is known / valid
 	category = checkCommand(wordArray)
