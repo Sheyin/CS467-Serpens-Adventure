@@ -60,8 +60,8 @@ def newGame():
 	print "                                                                                "
 	print "The dream you were having fades away as you become aware of a gentle rocking"
 	print "motion. You open your eyes and the dimly lit room slowly comes into focus. The "
-	print "only source of light is a small lantern hanging from the ceiling. The air "
-	print "smells stale with a hint of fuel. Sitting up slowly, you wonder where you are..."
+	print "only source of light is coming through a small window. It's cold and the air  "
+	print "smells damp. Sitting up slowly, you wonder where you are..."
 	print ""
 
 	playGame(0)
@@ -98,8 +98,9 @@ def playGame(userSelection):
 	#Create new or load saved game
 	if userSelection == 0:	#New game
 		print "NEW GAME FILE CREATED"
-		#Testing: 
-		currentRoom = room.RoomClass("default N", "default S", "default E", "default W", "default Up", "default Down", "long Desc", "short Desc", "Name of Room", "feature 1", "feature 2")
+		#currentState = gamestate.GameStateClass(1, 0, 0, 0, 0, 0, 
+		#	1, 4, 2,
+		#	0)
 
 		#PENDING - Load game state with default starting variables {Data dev}
 	else:
@@ -107,22 +108,37 @@ def playGame(userSelection):
 		#PENDING - Load game state with saved variables {Data dev}
 
 	#PENDING - Load room files {Data dev}
+	#brig = room.RoomClass("1", "Brig", "3", "null", "null", "null", "null", "null", 
+	#	"You are in a cold, damp room. The only source of light is coming through a barred window. There is straw on the floor and a low wooden bench in the corner. The only exit is a barred door to the North.", 
+	#	"You are in a room that has straw on the floor and a bench in the corner. Light is coming through a barred window and there is a barred door to the North.", 
+	#	"straw", 
+	#	"There is thick layer of straw on the floor. It smells musty.",
+	#	"search, move, lift"
+	#	"You shift the straw around throughout the room. It's slimy underneath but there's nothing else there."
+	#	"feature 2")
 
 	#PENDING - Load object files {Data dev}
 
-	#userInput = raw_input (": ")
+
+
 	#Parse user input and return code for engine action {Parsing Dev}
 
 	#[BEGIN TEXT PARSING]
-	keepLooping = True
-	while (keepLooping):
-		keepLooping = parseCommands.getInput()
+	#keepLooping = True
+	#while (keepLooping):
+	#	keepLooping = parseCommands.getInput()
 	#[END TEXT PARSING]
 
+	#TEMPORARY - ENGINE PARSING
+	#userInput = raw_input (": ")
 
+	#Initial variables
+	currentRoom = currentState.currRoom
+	print "Current Room: " 
+   	print currentRoom
 
 	#While loop repeatedly prompts user for input until user requests to load, save, or quit game
-	#while userInput not in ['loadgame', 'savegame', 'quit']:
+	while userInput not in ['loadgame', 'savegame', 'quit']:
 		#Check game state for current room
 		#currentRoom = gamestate
 
@@ -130,30 +146,35 @@ def playGame(userSelection):
 		#Else, display short description & update game state to show visited
 
 		#Pend input:
-		#userInput = raw_input (": ")
+		userInput = raw_input (": ")
 		#Parse user input {Parsing Dev}
-		#print "input rec"
+		print "input rec"
 
 		#if parsedText == "TN": #Travel North
 		#	print "Travel north"
 
 		#Respond to user input and update necessary variables in game state
-
+		#Engine receives action code (listed below) and performs relevant action
 
 #[END PLAY GAME]
 
 # Engine Actions
-# savegame {Data Dev}
-# loadgame {Data Dev}
-# exit 
-# go (north, south, east, west, down, up)
-# drop item
-# take item
-# look 
-# look at object
-# look at feature
-# help 
-# inventory
+# 1 - savegame {Data Dev}
+# 2 - loadgame {Data Dev}
+# 3 - exit 
+# 4 - go north
+# 5 - go south
+# 6 - go east
+# 7 - go west
+# 8 - go down
+# 9 - go up
+# 10 - drop item
+# 11 - take item
+# 12 - look 
+# 13 - look at object
+# 14 - look at feature
+# 15 - help 
+# 16 - inventory
 
 
 
