@@ -16,7 +16,7 @@
 #[BEGIN CLASS IMPLEMENTATION]
 class RoomClass:
    #def __init__(self, inputID, inputName, inputNorth, inputSouth, inputEast, inputWest, inputUp, inputDown, longDescription, shortDescription, feature1, feature1desc, feat1IO, feat1IS, feature2):	 
-   def __init__(self, inputID, inputName, inputNorth, inputSouth, inputEast, inputWest, inputUp, inputDown, longDescription, shortDescription, feature1, feature1desc, feat1IO, feat1IS, feat1IC, feature2, feature2desc, feat2IO, feat2IS, feat2IC, feature3, feature3desc, feat3IO, feat3IS, feat3IC, feature4, feature4desc, feat4IO, feat4IS, feat4IC):
+   def __init__(self, inputID, inputName, inputNorth, inputSouth, inputEast, inputWest, inputUp, inputDown, longDescription, shortDescription, feature1, feature1desc, feat1IO, feat1IS, feat1IC, feat1IF, feature2, feature2desc, feat2IO, feat2IS, feat2IC, feat2IF, feature3, feature3desc, feat3IO, feat3IS, feat3IC, feat3IF, feature4, feature4desc, feat4IO, feat4IS, feat4IC, feat4IF):
 
       #[BEGIN VARIABLES]
       self.id = inputID
@@ -37,24 +37,28 @@ class RoomClass:
       self.feat1interactOptions = feat1IO
       self.feat1interactSuccess = feat1IS
       self.feat1interactComplete = feat1IC
+      self.feat1interactFail = feat1IF
 
       self.feat2 = feature2
       self.feat2desc = feature2desc
       self.feat2interactOptions = feat2IO
       self.feat2interactSuccess = feat2IS
       self.feat2interactComplete = feat2IC
+      self.feat2interactFail = feat2IF
 
       self.feat3 = feature3
       self.feat3desc = feature3desc
       self.feat3interactOptions = feat3IO
       self.feat3interactSuccess = feat3IS
       self.feat3interactComplete = feat3IC
+      self.feat3interactFail = feat3IF
 
       self.feat4 = feature4
       self.feat4desc = feature4desc
       self.feat4interactOptions = feat4IO
       self.feat4interactSuccess = feat4IS
       self.feat4interactComplete = feat4IC
+      self.feat4interactFail = feat4IF
    	#[END VARIABLES]
 
 #[END CLASS IMPLEMENTATION]

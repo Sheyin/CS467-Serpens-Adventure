@@ -130,11 +130,23 @@ def objectTest():
 #[END OBJECT TESTING]
 
 def bottomLevelTest():
-   #currentState = gamestate.GameStateClass(1, 0, 0, 0, 0, 0, 1, 4, 2, 0)
    currentState = gamestate.GameStateClass(1, 0, 0, 0, 0, 0, 1, 1, 2, 0, 0, 0, 0, 0, 0)
 
-   board = objectC.ObjectClass("board", "A handsome, though splintery, board you tore off a bench. It extends your reach and gives nasty splinters.")
-   keys = objectC.ObjectClass("keys", "A key ring with two keys on it. One is a dull brass color and the other key is a shiny silver.")
+   board = objectC.ObjectClass("board", 
+      "A handsome, though splintery, board you tore off a bench. It extends your reach and gives nasty splinters.",
+      "You don't have a board",
+      "There is a board here.",
+      "You carefully take the board. This may come in handy later!",
+      "You don't see a board to take.",
+      "You drop the board.")
+   
+   keys = objectC.ObjectClass("keys", 
+      "A key ring with two keys on it. One is a dull brass color and the other key is a shiny silver.",
+      "You don't have any keys",
+      "There are some keys here.",
+      "You take the keys.",
+      "You don't see any keys to take.",
+      "You drop the keys.")
 
    brig = room.RoomClass("1", "Brig", "3", "null", "null", "null", "null", "null",
       "You are in a cold, damp room. The only source of light is coming through a barred window. There is straw on the floor and a low wooden bench in the corner. The only exit is a barred door to the North.", 
@@ -144,27 +156,32 @@ def bottomLevelTest():
       "search, move, lift",
       "You shift the straw around throughout the room. It's slimy underneath but there's nothing else there.",
       "There is a thick layer of straw on the floor. You searched it but found nothing.",
-      "board", 
+      "Straw Fail - this should never display",
+      "bench", 
       "There is a rickety wooden bench in the corner. One of the boards looks loose.",
       "take, move, lift",
       "You grab the board and pull on it hard. It starts to crack. You keep pulling and a jagged piece of board comes off the bench. You gingerly drop the board on the bench and regret the splinters - ouch!",
       "There is a wooden bench in the corner with one of the boards missing.",
+      "Bench Fail - this should never display",
       "window", 
       "There is a barred window to another room.  You peer through the window and see that the other room is well lit with neat rows of bottles stacked on a large shelf.  Papers are neatly stacked on a large desk that sits just below the window.  There is also a set of keys on the desk! You try to reach it and find that the keys are just out of reach.",
       "use, reach, lift",
       "You have a great idea! You take your splintered board, slip it through the barred window, and reach for the keys. After several attempts, a large splinter off the board catches the key ring and you are able to gingerly lift the keys high enough to place them on the sill where you can reach them. Success!",
       "There is a barred window with a neatly organized room on the other side.",
+      "You stand on your tippy toes and reeeeaccchhh..! But you just can't reach those keys.",
       "door", 
       "There is a barred door to another room. It has a small window in it. You peer through the window and can see just beneath it there is a large brass handle with an ever larger brass lock. It looks like it opens into a hallway. You reach through the window and try the door. It's locked.",
       "open, push",
       "You take the keys and select the brass key.  The lock is brass, after all. You reach through the window and put the key in the lock and turn it. You hear a satisfying click! You try the handle and voila! The door is unlocked.",
-      "There is a barred door to a hallway. This door is unlocked, thanks to all your hard work!")
+      "There is a barred door to a hallway. This door is unlocked, thanks to all your hard work!",
+      "You reach through the window and try the door. It's locked.")
 
 
    userInput = "default"
    userRoom = 0   #Sentinel variable for room
 
    currentRoom = currentState.currRoom
+
    print "Current Room: " 
    print currentRoom
 
@@ -197,6 +214,8 @@ def bottomLevelTest():
          if currentState.currRoom == 1:
             print brig.feat1interactSuccess
             currentState.rm01f1 = 1 #Update to interaction complete
+         #else:
+         #   print "Interaction failure message"
 
       if userInput == "3": #Look at feature 2 - BENCH
          #Brig
@@ -212,12 +231,14 @@ def bottomLevelTest():
             print brig.feat2interactSuccess
             currentState.rm01f2 = 1 #Update to interaction complete
             currentState.rm01o1 = 1 #Board discovered
+         #else:
+         #   print "Interaction failure message"
 
       if userInput == "5": #Look at object "board"
          if currentState.obj1Loc ==99: #In iventory
             print board.desc
          else: #Not in inventory
-            print "You don't have a board"
+            print board.notInInv 
 
       if userInput == "6": #Look at feature 3 - WINDOW
          #Brig
@@ -236,13 +257,13 @@ def bottomLevelTest():
                currentState.rm01f3 = 1 #Update to interaction complete
                currentState.rm01o2 = 1 #Keys discovered
             else:
-               print "You stand on your tippy toes and reeeeaccchhh..! But you just can't reach those keys."
+               print brig.feat3interactFail
 
       if userInput == "8": #Look at object "keys"
-         if currentState.obj2Loc ==99: #In iventory
+         if currentState.obj2Loc ==99: #In inventory
             print keys.desc
          else: #Not in inventory
-            print "You don't have any keys"
+            print keys.notInInv 
 
       if userInput == "9": #Look at feature 4 - DOOR
          #Brig
@@ -259,7 +280,7 @@ def bottomLevelTest():
                print brig.feat4interactSuccess
                currentState.rm01f4 = 1 #Update to interaction complete
             else:
-               print "You reach through the window and try the door. It's locked."
+               print brig.feat4interactFail
 
       if userInput == "11": #General look around room
          if currentState.currRoom == 1:
@@ -267,37 +288,43 @@ def bottomLevelTest():
             #Checks objects and if they are DISCOVERED and LOCATED IN ROOM then displays notice they are there
             #Object 1 - board
             if currentState.rm01o1 == 1 and currentState.obj1Loc == 1:
-               print "There is a board here."
+               print board.inRoom
             #Object 2 - keys
             if currentState.rm01o2 == 1 and currentState.obj2Loc == 1:
-               print "There are some keys here."
+               print keys.inRoom
 
       if userInput == "12": #Take board
          if currentState.rm01o1 == 1:
             currentState.obj1Loc = 99 #Add board to player inventory
-            print "You carefully take the board. This may come in handy later!"
+            print board.take
          else:
-            print "You don't see a board to take"
+            print board.notAvail
 
       if userInput == "13": #Take keys
          if currentState.rm01o2 == 1:
             currentState.obj2Loc = 99 #Add keys to player inventory
-            print "You take the keys."
+            print keys.take
          else:
-            print "You don't see any keys to take"
+            print keys.notAvail
 
       if userInput == "14": #Drop board
-         currentState.obj1Loc = currentState.currRoom
-         print "You drop the board"
+         if currentState.obj1Loc == 99: #In inventory to drop
+            currentState.obj1Loc = currentState.currRoom
+            print board.drop
+         else:
+            print board.notInInv
 
       if userInput == "15": #Drop keys
-         currentState.obj2Loc = currentState.currRoom
-         print "You drop the keys"
-
-      #Go N/S/E/W/Down/Up
+         if currentState.obj2Loc == 99: #In inventory to drop
+            currentState.obj2Loc = currentState.currRoom
+            print keys.drop
+         else:
+            print keys.notInInv
 
       #Help
 
       #Inventory
 
       #Pick up straw 
+
+      #Go N/S/E/W/Down/Up

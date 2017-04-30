@@ -12,10 +12,15 @@
 
 #[BEGIN CLASS IMPLEMENTATION]
 class ObjectClass:
-	def __init__(self, name, description): 
+	def __init__(self, name, description, notInInvMessage, inRoomMessage, takeMessage, notAvailMessage, dropMessage): 
 		#[BEGIN VARIABLES]
 		self.name = name
 		self.desc = description
+		self.notInInv = notInInvMessage
+		self.inRoom = inRoomMessage
+		self.take = takeMessage
+		self.notAvail = notAvailMessage
+		self.drop = dropMessage
 
 		#[END VARIABLES]
 
