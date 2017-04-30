@@ -134,7 +134,7 @@ def bottomLevelTest():
 
    board = objectC.ObjectClass("board", 
       "A handsome, though splintery, board you tore off a bench. It extends your reach and gives nasty splinters.",
-      "You don't have a board",
+      "You don't have a board.",
       "There is a board here.",
       "You carefully take the board. This may come in handy later!",
       "You don't see a board to take.",
@@ -142,7 +142,7 @@ def bottomLevelTest():
    
    keys = objectC.ObjectClass("keys", 
       "A key ring with two keys on it. One is a dull brass color and the other key is a shiny silver.",
-      "You don't have any keys",
+      "You don't have any keys.",
       "There are some keys here.",
       "You take the keys.",
       "You don't see any keys to take.",
@@ -321,10 +321,21 @@ def bottomLevelTest():
          else:
             print keys.notInInv
 
-      #Help
+      if userInput == "16": #Help
+         print "HELPFUL TIPS (NEED TO ADD)"
+         print "LIST OF RECOGNIZED VERBS (NEED TO ADD)"
 
-      #Inventory
-
-      #Pick up straw 
+      if userInput == "17": #Inventory
+         print ""
+         print "Inventory:"
+         if currentState.obj1Loc == 99:   #Board
+            print board.name
+         if currentState.obj2Loc == 99:   #Keys
+            print keys.name
+         print ""
 
       #Go N/S/E/W/Down/Up
+
+      #Take straw 
+
+      #Drop straw
