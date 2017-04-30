@@ -25,9 +25,9 @@ def identify(command):
 		return "quit"
 	elif (command == "use"):
 		return "use"
-	elif ((command == "move") or (command == "grab") or (command = "shift") or (command = "pull") or (command = "push")):
+	elif ((command == "move") or (command == "grab") or (command == "shift") or (command == "pull") or (command == "push")):
 		return "move"
-	elif ((command == "hit") or (command == "kick") or (command == "punch") or (command = "break") or (command == "attack"))
+	elif ((command == "hit") or (command == "kick") or (command == "punch") or (command == "break") or (command == "attack")):
 		return "hit"
 	else:
 		return "unknown"

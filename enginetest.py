@@ -296,5 +296,8 @@ def bottomLevelTest():
 
       #Go N/S/E/W/Down/Up
 
+      #Help
 
+      #Inventory
 
+      #Pick up straw 
