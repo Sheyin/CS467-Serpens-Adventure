@@ -104,7 +104,11 @@ def getInput(lineInput):
 		return "exit"
 	# Invalid command used.
 	elif (category == "unknown"):
-		print "You want to " + wordArray[0] + " but you don't know how.  Try a different command."
+		if (int(lineInput) >= 0) and (int(lineInput) <= 20):
+			return lineInput
+		else:
+			print int(lineInput)
+			print "You want to " + wordArray[0] + " but you don't know how.  Try a different command."
 	else: 
 		# One- or two- word command
 		if (len(wordArray) == 1):

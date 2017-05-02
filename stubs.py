@@ -18,7 +18,7 @@ def loadGame():
 
 def showInventory():
 	print "This is your imaginary inventory: (print list of items)"
-	return
+	return "17"
 
 
 # may want to adjust this logic before category is assigned
@@ -117,7 +117,7 @@ def help(listOfItems):
 	print "These are the items in the room: " + str(listOfItems)
 	print "These are some commands: look, look at, move, take, drop, hit, quit."
 	# This ought to be room-specific and may require calling on a room ID
-	return
+	return "16"
 
 def drop(item):
 	# identifyItemNumber(item)
