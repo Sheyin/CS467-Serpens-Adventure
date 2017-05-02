@@ -34,46 +34,50 @@ def checkCommand(wordArray):
 #	The default arguments may or may not be required here.
 # TODO: Note that single-item commands may need a different function than
 # 	the double-item commands (take item != take item to the feature)
-def executeCommand(wordArray, category, item1='none', item2='none'):
+def executeCommand(wordArray, category, item1='none', item2='none', listOfItems=[]):
 	if (category == "savegame"):
-		stubs.saveGame()
+		return stubs.saveGame()
 	elif (category == "loadgame"):
-		stubs.loadGame()
+		return stubs.loadGame()
 	elif (category == "inventory"):
-		stubs.showInventory()
+		return stubs.showInventory()
 	elif (category == "look"):
-		stubs.look(wordArray, item1)
+		return stubs.look(wordArray, item1)
 	elif (category == "look_at"):
-		stubs.lookAt(item1)
+		return stubs.lookAt(item1)
 	elif (category == "go"):
 		# Should adjust this so it clearly accepts different "places" not "items"
-		stubs.goTo(item1)
+		return stubs.goTo(item1)
 	elif (category == "take"):
 		if (item2 != 'none'):
-			stubs.bring(item1, item2)
+			return stubs.bring(item1, item2)
 		else:
-			stubs.take(item1)
+			return stubs.take(item1)
 	elif (category == "help"):
-		stubs.help()
+		return stubs.help(listOfItems)
 	elif (category == "drop"):
-		stubs.drop(item1)
+		return stubs.drop(item1)
 	elif (category == "quit"):
 		# Currently this is never reached because it is also handled in getInput()
 		# Should be altered to be handled here instead, probably when properly integrated with engine
-		stubs.quit()
+		return stubs.quit()
 	elif (category == "use"):
-		stubs.use(item1, item2)
+		return stubs.use(item1, item2)
 	elif (category == "move"):
-		stubs.move(item)
+		return stubs.move(item1)
+	elif (category == "hit"):
+		return stubs.hit(item1)
 	else:
 		# Some custom handling here - ex. new actions? add more elifs?
-		print "You " + wordArray[0] + " the " + item1 + "."
-	return True
+		#print "You " + wordArray[0] + " the " + item1 + "."
+		print "You can't do that right now."
+	return "unknown"
 
 
 # Putting this into a function to mimic what probably happens in overall program.
 def getInput():
-	lineInput = raw_input('Your action: ')
+	#adjusted to get lineInput from enginetest
+	lineInput = raw_input(': ')
 
 	# Defining items early to prevent errors
 	item1 = 'none'
@@ -94,9 +98,10 @@ def getInput():
 	
 	# Check if the command used is known / valid
 	category = checkCommand(wordArray)
+
 	if (category == "quit"):
-		stubs.quit()
-		return False
+		#stubs.quit()
+		return "exit"
 	# Invalid command used.
 	elif (category == "unknown"):
 		print "You want to " + wordArray[0] + " but you don't know how.  Try a different command."
@@ -105,8 +110,9 @@ def getInput():
 		if (len(wordArray) == 1):
 			# Maybe should add a check here to see if a single word input was allowed for that command
 			# Instead of within the executeCommand() function
-			executeCommand(wordArray, category)
-			return True
+			return executeCommand(wordArray, category, "none", "none", listOfItems)
+			return returnval
+			#return True
 		item1 = parseItem.findItemUsed(wordArray, listOfItems)
 		#if (item1 == 'invalid'):
 			# An error message was probably already generated
@@ -121,8 +127,8 @@ def getInput():
 			if (item2 != "invalid"):
 				# not sure what to do with the preposition function yet, or if it even belongs here
 				preposition = parsePreposition.identify(wordArray, item1, item2)
-		executeCommand(wordArray, category, item1, item2)
-	return True
+		return executeCommand(wordArray, category, item1, item2, listOfItems)
+	#return True
 
 
 # Update to run main function for parseCommands.py separately from main.py

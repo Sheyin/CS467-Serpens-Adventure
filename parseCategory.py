@@ -23,7 +23,7 @@ def identify(command):
 		return "drop"
 	elif ((command == "quit") or (command == "exit")):
 		return "quit"
-	elif (command == "use"):
+	elif (command == "use") or (command == "open"):
 		return "use"
 	elif ((command == "move") or (command == "grab") or (command == "shift") or (command == "pull") or (command == "push")):
 		return "move"

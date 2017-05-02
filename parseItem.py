@@ -1,5 +1,5 @@
-
-
+# Much of this commented out as trying regular expressions
+import re
 
 # Displays an error message for an invalid action
 # TODO: randomize the error messages (optional)
@@ -16,13 +16,13 @@ def randomErrorMessage(wordArray, word):
 # after particles (after "the", "a", ), then prepositions ("in", "on")
 # Returns a negative value if the word was a guess, but positive
 # if the item was confirmed (on the list of items in a room)
+#def position(wordArray, listOfItems):
 def position(wordArray, listOfItems):
 
 	# Single word input, so there is no item:
 	if (len(wordArray) == 1):
 		return 0
 
-	# Loop through and compare words with list of items in room:
 	for wordPos in range (0, len(wordArray)):
 		for itemPos in range (0, len(listOfItems)):
 			if (wordArray[wordPos] == listOfItems[itemPos]):
