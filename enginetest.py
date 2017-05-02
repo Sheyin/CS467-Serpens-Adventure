@@ -200,9 +200,8 @@ def bottomLevelTest():
          userRoom = currentState.currRoom #Update room the user is currently in
          #elif currentState.currRoom ==2
 
-      #userInput = raw_input (": ")
-      userInput = parseCommands.getInput()
-      #print "userInput is: " + str(userInput)
+      userInput = raw_input (": ")
+      userInput = parseCommands.getInput(userInput)
 	  
 
       if userInput == "1": #Look at feature 1 - STRAW

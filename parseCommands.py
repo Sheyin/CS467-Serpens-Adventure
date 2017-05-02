@@ -75,9 +75,9 @@ def executeCommand(wordArray, category, item1='none', item2='none', listOfItems=
 
 
 # Putting this into a function to mimic what probably happens in overall program.
-def getInput():
+def getInput(lineInput):
 	#adjusted to get lineInput from enginetest
-	lineInput = raw_input(': ')
+	#lineInput = raw_input(': ')
 
 	# Defining items early to prevent errors
 	item1 = 'none'
@@ -130,7 +130,7 @@ def getInput():
 		return executeCommand(wordArray, category, item1, item2, listOfItems)
 	#return True
 
-
+'''
 # Update to run main function for parseCommands.py separately from main.py
 def main():
 	keepLooping = True
@@ -139,4 +139,4 @@ def main():
 
 if __name__ == "__main__":
    print 'Starting the script.'
-   main() 
+   main() '''
