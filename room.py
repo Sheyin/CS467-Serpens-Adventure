@@ -67,3 +67,51 @@ class RoomClass:
 #[BEGIN REFERENCES]
 
 #[END REFERENCES]
+
+class MattsRoomClass(object):
+    """
+    
+    """
+
+    def __init__(self, name):
+      #[BEGIN VARIABLES]
+      self.id = ""
+      self.name = name
+
+      self.north = ""
+      self.south = ""
+      self.east = ""
+      self.west = ""
+      self.up = ""
+      self.down = ""
+
+      self.longDesc = ""
+      self.shortDesc = ""
+
+      self.feat1 = ""
+      self.feat1desc = "" 
+      self.feat1interactOptions = ""
+      self.feat1interactSuccess = ""
+      self.feat1interactComplete = ""
+      self.feat1interactFail = ""
+
+      self.feat2 = ""
+      self.feat2desc = ""
+      self.feat2interactOptions = ""
+      self.feat2interactSuccess = ""
+      self.feat2interactComplete = ""
+      self.feat2interactFail = ""
+
+      self.feat3 = ""
+      self.feat3desc = ""
+      self.feat3interactOptions = ""
+      self.feat3interactSuccess = ""
+      self.feat3interactComplete = ""
+      self.feat3interactFail = ""
+
+      self.feat4 = ""
+      self.feat4desc = ""
+      self.feat4interactOptions = ""
+      self.feat4interactSuccess = ""
+      self.feat4interactComplete = ""
+      self.feat4interactFail = ""
