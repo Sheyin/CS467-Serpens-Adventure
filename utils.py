@@ -7,7 +7,7 @@ def getItemList():
 
 	for line in buffer:
 		line = line.rstrip()
-		listOfFeatures = re.findall('"feat\d*": ("[a-z A-Z]*")', line)
+		listOfFeatures = re.findall('"feat\d*": ("\D*")', line)
 		for i in range (0, len(listOfFeatures)):
 			if listOfFeatures[i].startswith('"') and listOfFeatures[i].endswith('"'):
 				listOfFeatures[i] = listOfFeatures[i][1:-1]
