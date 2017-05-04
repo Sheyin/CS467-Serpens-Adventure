@@ -33,12 +33,11 @@ def look(wordArray, item):
 	elif (len(wordArray) == 1) or (wordArray[1] == "around"):
 		#print "You look around and see... (full description for the room)"
 		return "11"
-		#enginetest.bottomLevelTest(11)
 	elif (len(wordArray) > 1) and (wordArray[1] != "at"):
 		print "I only understood you as far as wanting to look."
 	else:
 		# Handling "look_at" this might be duplication since it's also handled in findCommand()
-		lookAt(item)
+		return lookAt(item)
 	return
 
 # An item has been specified (and verified to be look-able) before calling this
@@ -47,28 +46,18 @@ def lookAt(item):
 	# identifyItemNumber(item) - turn word into an item ID
 	# lookAt(itemID)
 	# check if item is unspecified / undefined and give error message accordingly.
-	# Maybe this should be handled in another function.
-	#if (wordArray[0] == item):
-	#	print "Look at what?  (Please specify an item to look at)"
-	#elif (item == "invalid"):
-	#	print "You're trying to look at an unrecognized item."
 
 	# Hard coding some items as we prepare for integration!
 	if (item == "straw"):
 		return "1"
-		#enginetest.bottomLevelTest(1)
 	elif (item == "bench"):
 		return "3"
-		#enginetest.bottomLevelTest(3)
 	elif (item == "board"):
 		return "5"
-		#enginetest.bottomLevelTest(5)
 	elif (item == "window"):
 		return "6"
-		#enginetest.bottomLevelTest(6)
 	elif (item == "keys"):
 		return "8"
-		#enginetest.bottomLevelTest(8)
 	elif (item == "door"):
 		return "9"
 	elif (item != "invalid"):
@@ -95,15 +84,12 @@ def take(item):
 		randomErrorMessage(wordArray, item)
 	elif (item == "board"):
 		return "12"
-		#enginetest.bottomLevelTest(12)
 	elif (item == "keys"):
 		return "13"
-		#enginetest.bottomLevelTest(13)
 	elif (item == "none"):
 		print "Take what?"
 	else:
 		print "You can't take the " + item + "."
-		#print "You take the " + item + "."
 	return
 
 
@@ -125,10 +111,8 @@ def drop(item):
 		print "You don't have that item."
 	elif (item == "board"):
 		return "14"
-		#enginetest.bottomLevelTest(14)
 	elif (item == "keys"):
 		return "15"
-		#enginetest.bottomLevelTest(15)
 	else:
 		print "You drop the " + item + "."
 	return
@@ -145,13 +129,11 @@ def use(item1, item2):
 	elif (item1 == "board"):
 		if (item2 == "keys"):
 			return "7"
-			#enginetest.bottomLevelTest(7)
 		else:
 			print "I'm not sure what you want to do with this board."
 	elif (item1 == "keys"):
 		if (item2 == "door"):
 			return "10"
-			#enginetest.bottomLevelTest(10)
 		else:
 			print "I'm not sure how you want to use these keys."
 	elif (item2 != 'none'):
@@ -159,7 +141,6 @@ def use(item1, item2):
 		#print "You use the " + item1 + " on the " + item2 + "."
 	else:
 		print "You can't use that right now."
-		#print "You use the " + item1 + "."
 	return
 
 def move(item):
@@ -167,10 +148,8 @@ def move(item):
 		print "You don't see this item."
 	elif (item == "straw"):
 		return "2"
-		#enginetest.bottomLevelTest(2)
 	elif (item == "board") or (item == "bench"):
 		return "4"
-		#enginetest.bottomLevelTest(4)
 
 def hit(item):
 	if (item == "invalid"):

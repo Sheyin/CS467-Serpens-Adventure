@@ -11,8 +11,7 @@ import stubs
 # 1. Reorganize so some "main" function is sending a list of acceptable values instead of hard coding
 # 2. Tidy up process so it isn't trying to parse things that won't be found (ex. single word input)
 # 3. Consider renaming .py files to be more in line with rest of group - requires editing main.py
-# 4. Coordinate with Karen to begin integrating stubs with actual engine
-# 5. Consider if 'invalid' and 'none' can be standardized
+# 4. Consider if 'invalid' and 'none' can be standardized
 
 # Returns the "category" of the verb if known, otherwise returns "unknown"
 # Working off the assumption that the first word used is the command / verb.
@@ -27,7 +26,7 @@ def checkCommand(wordArray):
 
 
 # This executes the specified command by calling whichever functions
-# The command and item should have been validated before calling this
+# The command and item should have been validated before calling this.
 # _maybe_ can combine with findCategory() but would need to restructure
 # TODO: Maybe separate out commands that don't require items early on
 # 	ex. moving "save" and "load" to be handled and skip over item / prep process
@@ -74,12 +73,8 @@ def executeCommand(wordArray, category, item1='none', item2='none', listOfItems=
 	return "unknown"
 
 
-# Putting this into a function to mimic what probably happens in overall program.
+# This receives input from engine/engineTest, validates and returns an engine code
 def getInput(lineInput):
-	#adjusted to get lineInput from enginetest
-	#lineInput = raw_input(': ')
-
-	# Defining items early to prevent errors
 	item1 = 'none'
 	item2 = 'none'
 
@@ -89,39 +84,33 @@ def getInput(lineInput):
 	# Split sentence into its component words
 	wordArray = newString.split(" ")
 	command = wordArray[0]
-	# Probably need to insert a check if a valid object is specified, or how to handle missing prepositions
-	# For that matter, determine where the item is going to be in a sentence (wordArray[1] or wordArray[2])
-	# maybe keep a list of items in the room, loop and check each word, then return a contextual response?
-	#listOfItems = ['key', 'door', 'plant', 'bird', 'plane', 'superman']
+
+	# This should be populated from a text file
 	listOfItems = ['straw', 'bench', 'board', 'window', 'keys', 'door']
+	listOfFeatures = ['window', 'door', 'bench']
 	# may want to separate out list of features and add a separate check.  Limit 4 currently.
 	
-	# Check if the command used is known / valid
+	# Is this a valid command?
 	category = checkCommand(wordArray)
 
 	if (category == "quit"):
-		#stubs.quit()
 		return "exit"
-	# Invalid command used.
+
 	elif (category == "unknown"):
+		# This is to continue support of engine codes (numerical input)
 		if (int(lineInput) >= 0) and (int(lineInput) <= 20):
 			return lineInput
 		else:
-			print int(lineInput)
-			print "You want to " + wordArray[0] + " but you don't know how.  Try a different command."
+			print "You want to " + command + " but you don't know how.  Try a different command."
 	else: 
-		# One- or two- word command
+		# One-word command
 		if (len(wordArray) == 1):
 			# Maybe should add a check here to see if a single word input was allowed for that command
 			# Instead of within the executeCommand() function
 			return executeCommand(wordArray, category, "none", "none", listOfItems)
-			return returnval
-			#return True
 		item1 = parseItem.findItemUsed(wordArray, listOfItems)
-		#if (item1 == 'invalid'):
-			# An error message was probably already generated
-			#return True
 		
+		# Two-word command
 		if (len(wordArray) > 2):
 			# Create a second string / array to skip over first known item and find the second
 			removedItem1 = newString.replace(item1, ' ')
@@ -132,15 +121,14 @@ def getInput(lineInput):
 				# not sure what to do with the preposition function yet, or if it even belongs here
 				preposition = parsePreposition.identify(wordArray, item1, item2)
 		return executeCommand(wordArray, category, item1, item2, listOfItems)
-	#return True
+
 
 '''
 # Update to run main function for parseCommands.py separately from main.py
-def main():
-	keepLooping = True
-	while (keepLooping):
-		keepLooping = getInput()
-
 if __name__ == "__main__":
    print 'Starting the script.'
-   main() '''
+   keepLooping = True
+	while (keepLooping):
+		userInput = raw_input (": ")
+		keepLooping = getInput(userInput)
+'''
