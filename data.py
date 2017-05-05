@@ -9,25 +9,12 @@
 import os
 import json
 from room import *
+from objectC import *
 #[END IMPORTS]
 
 
 
-class Room(object):
-    """
-    
-    """
 
-    def __init__(self, name):
-        """
-        this will initialize the Room.
-        :param name: room name as a string
-        """
-        self.name = name
-        self.id = ""
-        self.longDesc = ""
-        self.shortDesc = ""
-        self.is_visited = False
         
 
 def load_rooms ():
@@ -90,11 +77,42 @@ def load_rooms ():
 			rooms[n] = current_room
 			n = n + 1
 
-
-
 	#test that room objects are in rooms dictionary
 	print rooms[0].id
 	print rooms[1].name
 	print rooms[2].name
 
+def load_objects ():
+	objects = {}
+	object_list = os.listdir("data/objects")
+	
+	for object in object_list:
+		with open("data/objects/" + object) as json_data:
+		
+			data = json.load(json_data)
+			current_object = MattsObjectClass(data["name"])
+			
+			current_object.name = data["name"]
+			current_object.desc = data["desc"]
+			current_object.notInInv = data["notInInv"]
+			current_object.inRoom = data["inRoom"]
+			current_object.take = data["take"]
+			current_object.notAvail = data["notAvail"]
+			current_object.drop = data["drop"]
+			
+
+#add object to dictionary (object name is dictionary key)
+
+			objects[current_object.name] = current_object
+
+	
+
+	print objects["spoon"].name
+	print objects["paddle"].name
+	print objects["gun"].name
+
+			
+			
+
 load_rooms()
+load_objects()
