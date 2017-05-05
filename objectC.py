@@ -31,3 +31,17 @@ class ObjectClass:
 #[BEGIN REFERENCES]
 
 #[END REFERENCES]
+
+class MattsObjectClass(object):
+    """
+    
+    """
+    def __init__(self, name):
+		#[BEGIN VARIABLES]
+		self.name = "" 
+		self.desc = "" 
+		self.notInInv = "" 
+		self.inRoom = "" 
+		self.take = "" 
+		self.notAvail = "" 
+		self.drop = "" 
