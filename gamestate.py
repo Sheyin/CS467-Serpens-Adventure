@@ -37,7 +37,7 @@ class GameStateClass(object):
 		self.rm01f2 = rm1f2
 		#Window - searched (1) or unsearched (0)
 		self.rm01f3 = rm1f3
-		#Door - locked (1) or unlocked (0)
+		#Door - unlocked (1) or locked (0)
 		self.rm01f4 = rm1f4
 		#Board - discovered (1) or undiscovered (0)
 		self.rm01o1 = rm1o1

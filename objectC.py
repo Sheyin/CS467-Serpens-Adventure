@@ -10,6 +10,15 @@
 
 #[END IMPORTS]
 
+#Object implementation template:
+#declaredObject = objectC.ObjectClass("object name", 
+#   "description",
+#   "You don't have a *.",
+#   "There is a * here.",
+#   "take message",
+#   "You don't see a * to take.",
+#   "You drop the *.")
+
 #[BEGIN CLASS IMPLEMENTATION]
 class ObjectClass:
 	def __init__(self, name, description, notInInvMessage, inRoomMessage, takeMessage, notAvailMessage, dropMessage): 
