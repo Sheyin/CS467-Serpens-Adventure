@@ -81,6 +81,8 @@ def load_rooms ():
 	print rooms[0].id
 	print rooms[1].name
 	print rooms[2].name
+	print rooms[3].longDesc
+	print rooms[4].longDesc
 
 def load_objects ():
 	objects = {}
@@ -107,8 +109,8 @@ def load_objects ():
 
 	
 
-	print objects["spoon"].name
-	print objects["paddle"].name
+	print objects["template"].name
+	print objects["smallKey"].name
 	print objects["gun"].name
 
 			

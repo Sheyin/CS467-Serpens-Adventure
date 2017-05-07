@@ -1,9 +1,9 @@
 {
     "name": "gun",
-    "desc": "", 
-    "notInInv": "", 
-    "inRoom": "", 
-    "take": "", 
-    "notAvail": "", 
-    "drop": "" 
+    "desc": "long gun, loaded, with a rifled barrel", 
+    "notInInv": "you don't have a gun", 
+    "inRoom": "There is a gun here", 
+    "take": "you take the gun", 
+    "notAvail": "no gun for you", 
+    "drop": "you drop the gun" 
 }

@@ -1,9 +1,9 @@
 {
-    "name": "paddle",
-    "desc": "", 
-    "notInInv": "", 
-    "inRoom": "", 
-    "take": "", 
-    "notAvail": "", 
-    "drop": "" 
+    "name": "smallKey",
+    "desc": "small key that fits gun cabinet", 
+    "notInInv": "you don't have a smallKey", 
+    "inRoom": "There is a smallKey here", 
+    "take": "you take the smallKey", 
+    "notAvail": "no smallKey for you", 
+    "drop": "you drop the smallKey" 
 }
