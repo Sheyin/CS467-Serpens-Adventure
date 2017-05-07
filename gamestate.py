@@ -12,7 +12,7 @@
 #[BEGIN CLASS IMPLEMENTATION]
 class GameStateClass(object):
 	#def __init__(self, currentRoom, room1, room2, room3, room4, room5, item1, item2, item3, rm1f1):	
-	def __init__(self, currentRoom, room1, room2, room3, room4, room5, item1, item2, item3, rm1f1, rm1f2, rm1f3, rm1f4, rm1o1, rm1o2):
+	def __init__(self, currentRoom, room1, room2, room3, room4, room5, item1, item2, item3, rm1f1, rm1f2, rm1f3, rm1f4, rm1o1, rm1o2, rm3f1, rm3f2, rm3f3, rm3f4, rm3f5, rm3f6):
    		#[BEGIN VARIABLES]
    		self.currRoom = currentRoom #Integer of current room player is in, default = 1 
 
@@ -23,10 +23,10 @@ class GameStateClass(object):
    		self.rm04vis = room4
    		self.rm05vis = room5
 
-   		#Location of items & item name - room ID integer or 99 (player inv)
+   		#Location of items & item name - room ID integer or 99 (player inv) or 100 (destroyed/permanently used)
    		self.obj1Loc = item1	#Board
    		self.obj2Loc = item2	#Keys
-   		self.obj3Loc = item3
+   		self.obj3Loc = item3	#Handle
 
 		#Puzzle solved (1) or unsolved (0) 
 
@@ -43,6 +43,26 @@ class GameStateClass(object):
 		self.rm01o1 = rm1o1
 		#Keys - discovered (1) or undiscovered (0)
 		self.rm01o2 = rm1o2
+
+
+		#Storage - Room 2
+		#Handle - discovered (1) or undiscovered (0)
+		#self.rm02o1 = rm2o1
+
+
+		#Hallway- Room 3
+		#Entryway - examined (1) or unexamined (0)
+		self.rm03f1 = rm3f1
+		#Barred Door - searched (1) or unsearched (0)
+		self.rm03f2 = rm3f2
+		#Metal Door - unlocked (1) or locked (0)
+		self.rm03f3 = rm3f3
+		#* - searched (1) or unsearched (0)
+		self.rm03f4 = rm3f4
+		#* - searched (1) or unsearched (0)
+		self.rm03f5 = rm3f5
+		#* - searched (1) or unsearched (0)
+		self.rm03f6 = rm3f6
 
 
    		#[END VARIABLES]

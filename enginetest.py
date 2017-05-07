@@ -131,7 +131,7 @@ def objectTest():
 #[END OBJECT TESTING]
 
 def bottomLevelTest():
-   currentState = gamestate.GameStateClass(1, 0, 0, 0, 0, 0, 1, 1, 2, 0, 0, 0, 0, 0, 0)
+   currentState = gamestate.GameStateClass(1, 0, 0, 0, 0, 0, 1, 1, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
 
    board = objectC.ObjectClass("board", 
       "A handsome, though splintery, board you tore off a bench. It extends your reach and gives nasty splinters.",
@@ -148,6 +148,14 @@ def bottomLevelTest():
       "You take the keys.",
       "You don't see any keys to take.",
       "You drop the keys.")
+
+   handle = objectC.ObjectClass("handle", 
+      "A metal handle.",
+      "You don't have a handle.",
+      "There is a handle here.",
+      "You take the handle.",
+      "You don't see a handle to take.",
+      "You drop the handle.")
 
    brig = room.RoomClass(1, "Brig", 3, "null", "null", "null", "null", "null",
       "You are in a cold, damp room. The only source of light is coming through a barred window. There is straw on the floor and a low wooden bench in the corner. The only exit is a barred door to the North.", 
@@ -176,13 +184,13 @@ def bottomLevelTest():
       "You take the keys and select the brass key.  The lock is brass, after all. You reach through the window and put the key in the lock and turn it. You hear a satisfying click! You try the handle and voila! The door is unlocked.",
       "There is a barred door to a hallway. This door is unlocked, thanks to all your hard work!",
       "You reach through the window and try the door. It's locked.",
-      "F5", 
+      "F5 - NA", 
       "F5 description",
       "F5 interaction options",
       "F5 interaction success",
       "F5 interaction complete",
       "F5 interaction fail", 
-      "F6", 
+      "F6 - NA", 
       "F6 description",
       "F6 interaction options",
       "F6 interaction success",
@@ -190,12 +198,12 @@ def bottomLevelTest():
       "F6 interaction fail")
 
    storage = room.RoomClass(2, "Storage Room", "null", "null", 3, "null", "null", "null",
-      "You are in a room full of storage lockers. Most of the lockers are chained closed.  There is a clipboard hanging from a peg by the door. There is one locker that does not appear all the way shut. To the east there is a wooden door.", 
-      "You are in a room full of storage lockers.  There is a clipboard hanging from a peg next to the door. One of the lockers is ajar. To the east there is a wooden door.",
-      "F1", 
+      "You are in a room full of large storage lockers. Most of the lockers are chained closed.  There is a clipboard hanging from a peg by the door. There is one locker that does not appear all the way shut. To the east there is a wooden door.", 
+      "You are in a room full of storage lockers.  There is a paper hanging from a peg next to the door. One of the lockers is ajar. To the east there is a wooden door.",
+      "locker", 
       "F1 description",
       "F1 interaction options",
-      "F1 interaction success",
+      "You use the board to pry the locker open just far enough to get the board and your hand in. You then reach in with the board and, after a few swings, manage to land the end just on the other side of the handle. A splinter digs into your palm fiercely. You slowly nudge the handle close enough to the locker door to be able to reach it.",
       "F1 interaction complete",
       "F1 interaction fail",
       "F2", 
@@ -232,30 +240,30 @@ def bottomLevelTest():
    hallway = room.RoomClass(3, "Lower Hallway", 5, 1, 4, 2, 6, "null",
       "You are in a narrow hallway.  To the north there is an entry way to another room.  To the south there is a wooden barred door. To the east there is a metal door. To the west there is a wooden door. There is a metal ladder in the middle of the room that leads up to a trap door in the ceiling.", 
       "You are in a hallway. There are doors to the south, east, and west. To the north there is an entry way to another room. There is a metal ladder in the middle of the room that leads up to a trap door.",
-      "F1", 
-      "F1 description",
-      "F1 interaction options",
-      "F1 interaction success",
-      "F1 interaction complete",
-      "F1 interaction fail",
-      "F2", 
-      "F2 description",
-      "F2 interaction options",
-      "F2 interaction success",
-      "F2 interaction complete",
-      "F2 interaction fail",
-      "F3", 
-      "F3 description",
-      "F3 interaction options",
-      "F3 interaction success",
-      "F3 interaction complete",
-      "F3 interaction fail",
-      "F4", 
-      "F4 description",
-      "F4 interaction options",
-      "F4 interaction success",
-      "F4 interaction complete",
-      "F4 interaction fail",
+      "entryway", 
+      "An entryway to another room. You look through the entryway and can see a room with a winch in the center with chains attached to it. There are markings on the side of the entryway.",
+      "examine, look at",
+      "You look closer at the markings.  At first they looked like tally marks.  On second look, they appear to be more like claw marks... or perhaps from fingernails? *gulp*",
+      "An entryway to another room. You look through the entryway and can see a room with a winch in the center with chains attached to it. There are markings on the side of the entryway that look like they are from fingernails. They make you uncomfortable.",
+      "Entryway Fail - this should never display",
+      "barred door", 
+      "There is a barred door to another room with a brass handle. It has a small window in it. You peer through the window and can see that it opens into a dungeon of some kind.",
+      "try, go, open",
+      "You try the brass handle - it's unlocked!",
+      "There is a barred door to another room with a brass handle. It has a small window in it. You peer through the window and can see that it opens into a dungeon of some kind. It's unlocked.",
+      "Barred Door Fail - this should never display",
+      "metal door", 
+      "There is a metal door with a sign on it that is neatly engraved with the words Observation Room. The door is missing a handle. It's like someone didn't want anyone to be able to get inside.",
+      "open, use",
+      "You take the handle and, with a little jimmying, get it to attach to the metal door. You give it a pull to see if it will come back off. Nope, permanent!",
+      "There is a metal door with a sign on it that is neatly engraved with the words Observation Room. The door is complete and in working order. Nicely handled!",
+      "Without a handle, it's impossible to operate the door. You try but it won't budge an inch.",
+      "wooden door", 
+      "There is a wooden door.  It is pretty average looking.",
+      "go, open, try",
+      "You try the wooden handle - it's unlocked!",
+      "A wooden door that goes to the storage room.",
+      "Wooden Door Fail - this should never display",
       "F5", 
       "F5 description",
       "F5 interaction options",
@@ -407,29 +415,44 @@ def bottomLevelTest():
       #userInput = parseCommands.getInput(userInput)
 	  
 
-      if userInput == "1": #Look at feature 1 - STRAW
+      if userInput == "1": #Look at feature 1 - STRAW / ENTRYWAY
          #Brig
          if currentState.currRoom == 1:
             if currentState.rm01f1 == 0: #Before interaction
                print brig.feat1desc 
             else: #After interaction
                print brig.feat1interactComplete
+         #Hallway
+         elif currentState.currRoom == 3:
+            if currentState.rm03f1 == 0: #Before interaction
+               print hallway.feat1desc 
+            else: #After interaction
+               print hallway.feat1interactComplete
 
       elif userInput == "2": #Interact with feature 1 
          #Brig
          if currentState.currRoom == 1:
             print brig.feat1interactSuccess
             currentState.rm01f1 = 1 #Update to interaction complete
-         #else:
-         #   print "Interaction failure message"
+         #Hallway
+         elif currentState.currRoom == 3:
+            print hallway.feat1interactSuccess
+            currentState.rm03f1 = 1 #Update to interaction complete
 
-      elif userInput == "3": #Look at feature 2 - BENCH
+
+      elif userInput == "3": #Look at feature 2 - BENCH / BARRED DOOR
          #Brig
          if currentState.currRoom == 1:
             if currentState.rm01f2 == 0: #Before interaction
                print brig.feat2desc 
             else: #After interaction
                print brig.feat2interactComplete
+         #Hallway
+         elif currentState.currRoom == 3:
+            if currentState.rm03f2 == 0: #Before interaction
+               print hallway.feat2desc 
+            else: #After interaction
+               print hallway.feat2interactComplete
 
       elif userInput == "4": #Interact with feature 2
          #Brig
@@ -437,8 +460,10 @@ def bottomLevelTest():
             print brig.feat2interactSuccess
             currentState.rm01f2 = 1 #Update to interaction complete
             currentState.rm01o1 = 1 #Board discovered
-         #else:
-         #   print "Interaction failure message"
+         #Hallway
+         elif currentState.currRoom == 3:
+            print hallway.feat2interactSuccess
+            currentState.rm03f2 = 1 #Update to interaction complete
 
       elif userInput == "5": #Look at object "board"
          if currentState.obj1Loc ==99: #In iventory
@@ -446,13 +471,19 @@ def bottomLevelTest():
          else: #Not in inventory
             print board.notInInv 
 
-      elif userInput == "6": #Look at feature 3 - WINDOW
+      elif userInput == "6": #Look at feature 3 - WINDOW / METAL DOOR
          #Brig
          if currentState.currRoom == 1:
             if currentState.rm01f3 == 0: #Before interaction
                print brig.feat3desc 
             else: #After interaction
                print brig.feat3interactComplete
+         #Hallway
+         elif currentState.currRoom == 3:
+            if currentState.rm03f3 == 0: #Before interaction
+               print hallway.feat3desc 
+            else: #After interaction
+               print hallway.feat3interactComplete
 
       elif userInput == "7": #Interact with feature 3
          #Brig
@@ -464,6 +495,14 @@ def bottomLevelTest():
                currentState.rm01o2 = 1 #Keys discovered
             else:
                print brig.feat3interactFail
+         #Hallway
+         if currentState.currRoom == 3: #NOTE TO CHECK: HANDLE PERMANENTLY USED?
+            if currentState.obj3Loc == 99:   #Handle in inv
+               print hallway.feat3interactSuccess
+               currentState.rm03f3 = 1 #Update to interaction complete
+               currentState.obj3Loc = 100 #Update handle to permanently used
+            else:
+               print hallway.feat3interactFail
 
       elif userInput == "8": #Look at object "keys"
          if currentState.obj2Loc ==99: #In inventory
@@ -471,13 +510,19 @@ def bottomLevelTest():
          else: #Not in inventory
             print keys.notInInv 
 
-      elif userInput == "9": #Look at feature 4 - DOOR
+      elif userInput == "9": #Look at feature 4 - DOOR / WOODEN DOOR
          #Brig
          if currentState.currRoom == 1:
             if currentState.rm01f4 == 0: #Before interaction
                print brig.feat4desc 
             else: #After interaction
                print brig.feat4interactComplete
+         #Hallway
+         elif currentState.currRoom == 3:
+            if currentState.rm03f4 == 0: #Before interaction
+               print hallway.feat4desc 
+            else: #After interaction
+               print hallway.feat4interactComplete
 
       elif userInput == "10": #Interact with feature 4
          #Brig
@@ -487,6 +532,10 @@ def bottomLevelTest():
                currentState.rm01f4 = 1 #Update to interaction complete
             else:
                print brig.feat4interactFail
+         #Hallway
+         elif currentState.currRoom == 3:
+            print hallway.feat4interactSuccess
+            currentState.rm03f4 = 1 #Update to interaction complete
 
       elif userInput == "11": #General look around room
          if currentState.currRoom == 1:
