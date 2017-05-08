@@ -1,5 +1,5 @@
 {
-    "id": "03",    
+    "id": 3,    
 	"name": "RoomNumberThree",
     "north": "Room1", 
     "south": "Room2", 

@@ -69,20 +69,15 @@ def load_rooms ():
 			current_room.feat4interactComplete = data["feat4interactComplete"] 
 			current_room.feat4interactFail = data["feat4interactFail"] 
 			
+
+			rooms[current_room.id] = current_room
 			
-
-			
-
-	#add nth room to dictionary
-			rooms[n] = current_room
-			n = n + 1
-
 	#test that room objects are in rooms dictionary
-	print rooms[0].id
+	print rooms[6].id
 	print rooms[1].name
 	print rooms[2].name
 	print rooms[3].longDesc
-	print rooms[4].longDesc
+	print rooms[7].longDesc
 
 def load_objects ():
 	objects = {}
