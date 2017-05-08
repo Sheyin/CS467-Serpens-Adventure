@@ -12,7 +12,7 @@
 #[BEGIN CLASS IMPLEMENTATION]
 class GameStateClass(object):
 	#def __init__(self, currentRoom, room1, room2, room3, room4, room5, item1, item2, item3, rm1f1):	
-	def __init__(self, currentRoom, room1, room2, room3, room4, room5, item1, item2, item3, rm1f1, rm1f2, rm1f3, rm1f4, rm1o1, rm1o2, rm3f1, rm3f2, rm3f3, rm3f4, rm3f5, rm3f6):
+	def __init__(self, currentRoom, room1, room2, room3, room4, room5, item1, item2, item3, item4, rm1f1, rm1f2, rm1f3, rm1f4, rm1o1, rm1o2, rm2f1, rm2f2, rm2f3, rm2o1, rm3f1, rm3f2, rm3f3, rm3f4, rm3f5, rm3f6, rm4o1):
    		#[BEGIN VARIABLES]
    		self.currRoom = currentRoom #Integer of current room player is in, default = 1 
 
@@ -25,8 +25,9 @@ class GameStateClass(object):
 
    		#Location of items & item name - room ID integer or 99 (player inv) or 100 (destroyed/permanently used)
    		self.obj1Loc = item1	#Board
-   		self.obj2Loc = item2	#Keys
+   		self.obj2Loc = item2	#Key
    		self.obj3Loc = item3	#Handle
+   		self.obj4Loc = item4	#Skeleton Key
 
 		#Puzzle solved (1) or unsolved (0) 
 
@@ -46,8 +47,14 @@ class GameStateClass(object):
 
 
 		#Storage - Room 2
+		#Locker - searched (1) or unsearched (0)
+		self.rm02f1 = rm2f1
+		#Paper - read (1) or unread (0)
+		self.rm02f2 = rm2f2
+		#Door - examined (1) or unexamined (0)
+		self.rm02f3 = rm2f3
 		#Handle - discovered (1) or undiscovered (0)
-		#self.rm02o1 = rm2o1
+		self.rm02o1 = rm2o1
 
 
 		#Hallway- Room 3
@@ -57,12 +64,20 @@ class GameStateClass(object):
 		self.rm03f2 = rm3f2
 		#Metal Door - unlocked (1) or locked (0)
 		self.rm03f3 = rm3f3
-		#* - searched (1) or unsearched (0)
+		#Wooden Door - searched (1) or unsearched (0)
 		self.rm03f4 = rm3f4
-		#* - searched (1) or unsearched (0)
+		#Ladder - climbed (1) or unclimbed (0)
 		self.rm03f5 = rm3f5
-		#* - searched (1) or unsearched (0)
+		#Trap Door - unlocked (1) or locked (0)
 		self.rm03f6 = rm3f6
+
+
+		#Observation - Room 4
+		#Skeleton Key - discovered (1) or undiscovered (0)
+		self.rm04o1 = rm4o1
+
+
+		#Examination - Room 5
 
 
    		#[END VARIABLES]
