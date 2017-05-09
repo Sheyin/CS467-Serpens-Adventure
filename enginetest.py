@@ -131,7 +131,7 @@ def objectTest():
 #[END OBJECT TESTING]
 
 def bottomLevelTest():
-   currentState = gamestate.GameStateClass(1, 0, 0, 0, 0, 0, 1, 1, 2, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+   currentState = gamestate.GameStateClass(1, 0, 0, 0, 0, 0, 1, 1, 2, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
 
    board = objectC.ObjectClass("board", 
       "A handsome, though splintery, board you tore off a bench. It extends your reach and gives nasty splinters.",
@@ -286,44 +286,44 @@ def bottomLevelTest():
       "You try to lift the trap door. It looks heavy but shouldn't be something you can't open. You try pulling the handle and it doesn't budge - locked! The door has an old fashioned looking lock on it. Distressed, you climb back down the ladder.")
 
    observation = room.RoomClass(4, "Observation Room", "null", "null", "null", 3, "null", "null",
-      "You are in a well lit room with neat rows of bottles stacked on a large shelf. Papers are neatly stacked on a large desk that sits just below a barred window. There is a metal door to the East.", 
-      "You are in a room with neat rows of bottles stacked on a large shelf. Papers are neatly stacked on a large desk that sits just below a barred window. There is a metal door to the East.",
-      "F1", 
-      "F1 description",
-      "F1 interaction options",
-      "F1 interaction success",
-      "F1 interaction complete",
-      "F1 interaction fail",
-      "F2", 
-      "F2 description",
-      "F2 interaction options",
-      "F2 interaction success",
-      "F2 interaction complete",
-      "F2 interaction fail",
-      "F3", 
-      "F3 description",
-      "F3 interaction options",
-      "F3 interaction success",
-      "F3 interaction complete",
-      "F3 interaction fail",
-      "F4", 
-      "F4 description",
-      "F4 interaction options",
-      "F4 interaction success",
-      "F4 interaction complete",
-      "F4 interaction fail",
-      "F5", 
-      "F5 description",
-      "F5 interaction options",
-      "F5 interaction success",
-      "F5 interaction complete",
-      "F5 interaction fail", 
-      "F6", 
-      "F6 description",
-      "F6 interaction options",
-      "F6 interaction success",
-      "F6 interaction complete",
-      "F6 interaction fail")
+      "You are in a well lit room with neat rows of bottles stacked on a large shelf. Papers are neatly stacked on a large desk that sits just below a barred window. There is another window across from the barred window. There is a chest tucked in a corner with a shiny lock on it. There is a metal door to the East.", 
+      "You are in a room with neat rows of bottles stacked on a large shelf. Papers are neatly stacked on a large desk that sits just below a barred window. There is another window in the room opposite the barred window. There is a chest with a shiny lock on it. There is a door to the East.",
+      "door", 
+      "A metal door.",
+      "go, open",
+      "You try the handle - it's unlocked!",
+      "An unlocked metal door.",
+      "Metal door fail - this should never display",
+      "barred window", 
+      "A barred window that looks into another room.",
+      "examine",
+      "You look through the barred window and see a room with straw on the floor and a broken bench in the corner.",
+      "A barred window that looks into a room with straw on the floor and a broken bench in the corner.",
+      "Barred window fail - this should never display",
+      "window", 
+      "An odd window made of a single pane of glass. It reflects oddly in the light.",
+      "examine",
+      "You step up to the window and gaze through it. It reflects the light in the room a little strangely. You are looking into another room with a table suspended from the ceiling from chains.",
+      "A window that looks into a room with a table suspended from the ceiling by chains.",
+      "Window fail - this should never display",
+      "chest", 
+      "A plain looking wooden chest with a shiny lock on it.",
+      "unlock, use, search",
+      "You take out the keys you found and select the shiny key. It fits into the lock and you open the chest. It contains a collection of neatly folded white linens. You rummage through and near the bottom you hand hits something hard. You fish it out and place the object on the pile of linens. To your glee it's a skeleton key! Now THIS should come in handy, hehe!",
+      "An unlocked chest full of badly rumpled linens.",
+      "You try the shiny lock, however it's, well, locked.",
+      "bottles", 
+      "A shelf lined with neat rows of tinted bottles.",
+      "examine",
+      "You try to pick one up and your hand bumps into what could possibly be the clearest glass you've ever seen. The entire shelf is encased. Undeterred, you peruse the shelf and see a label on one of the bottles. It reads: burundanga.",
+      "A shelf encased in glass with neat rows of tinted bottles.  One of them contains burundanga.",
+      "Bottles fail - this should never display", 
+      "papers", 
+      "A neat stack of papers on the desk. The first page appears to be of some type of report.",
+      "read, examine",
+      "You look over the cover page of the report. It reads: Burundanga, Myth or Mind Control Drug? You can't remember how you got here in the first place. Reading that makes the hair on the back of your neck stand up.",
+      "A report on a drug called burundanga.",
+      "Papers Fail - this should never display")
 
    examination = room.RoomClass(5, "Examination Room", "null", 3, "null", "null", "null", "null",
       "You are in a room with a large metal table in the center of the room. Instead of being supported by legs, the table is suspended in the air by heavy chains. There is a mirror on the wall in the corner. There is an entryway to the South.", 
@@ -423,7 +423,7 @@ def bottomLevelTest():
       #userInput = parseCommands.getInput(userInput)
 	  
 
-      if userInput == "1": #Look at feature 1 - STRAW / ENTRYWAY MARKINGS / LOCKER / EXAM ENTRYWAY
+      if userInput == "1": #Look at feature 1 - STRAW / ENTRYWAY MARKINGS / LOCKER / EXAM ENTRYWAY / DOOR
          #Brig
          if currentState.currRoom == 1:
             if currentState.rm01f1 == 0: #Before interaction
@@ -442,6 +442,12 @@ def bottomLevelTest():
                print hallway.feat1desc 
             else: #After interaction
                print hallway.feat1interactComplete
+         #Observation
+         elif currentState.currRoom == 4:
+            if currentState.rm04f1 == 0: #Before interaction
+               print observation.feat1desc 
+            else: #After interaction
+               print observation.feat1interactComplete
          #Examination
          elif currentState.currRoom == 5:
             if currentState.rm05f1 == 0: #Before interaction
@@ -466,12 +472,16 @@ def bottomLevelTest():
          elif currentState.currRoom == 3:
             print hallway.feat1interactSuccess
             currentState.rm03f1 = 1 #Update to interaction complete
+         #Observation
+         elif currentState.currRoom == 4:
+            print observation.feat1interactSuccess
+            currentState.rm04f1 = 1 #Update to interaction complete
          #Examination
          elif currentState.currRoom == 5:
             print examination.feat1interactSuccess
             currentState.rm05f1 = 1 #Update to interaction complete
 
-      elif userInput == "3": #Look at feature 2 - BENCH / BARRED DOOR / PAPER / TABLE
+      elif userInput == "3": #Look at feature 2 - BENCH / BARRED DOOR / PAPER / TABLE / BARRED WINDOW
          #Brig
          if currentState.currRoom == 1:
             if currentState.rm01f2 == 0: #Before interaction
@@ -490,6 +500,12 @@ def bottomLevelTest():
                print hallway.feat2desc 
             else: #After interaction
                print hallway.feat2interactComplete
+         #Observation
+         elif currentState.currRoom == 4:
+            if currentState.rm04f2 == 0: #Before interaction
+               print observation.feat2desc 
+            else: #After interaction
+               print observation.feat2interactComplete
          #Examination
          elif currentState.currRoom == 5:
             if currentState.rm05f2 == 0: #Before interaction
@@ -511,6 +527,10 @@ def bottomLevelTest():
          elif currentState.currRoom == 3:
             print hallway.feat2interactSuccess
             currentState.rm03f2 = 1 #Update to interaction complete
+         #Observation
+         elif currentState.currRoom == 4:
+            print observation.feat2interactSuccess
+            currentState.rm04f2 = 1 #Update to interaction complete
          #Examination
          elif currentState.currRoom == 5:
             print examination.feat2interactSuccess
@@ -522,7 +542,7 @@ def bottomLevelTest():
          else: #Not in inventory
             print board.notInInv 
 
-      elif userInput == "6": #Look at feature 3 - WINDOW / METAL DOOR / DOOR / MIRROR
+      elif userInput == "6": #Look at feature 3 - WINDOW / METAL DOOR / DOOR / MIRROR / WINDOW
          #Brig
          if currentState.currRoom == 1:
             if currentState.rm01f3 == 0: #Before interaction
@@ -541,6 +561,12 @@ def bottomLevelTest():
                print hallway.feat3desc 
             else: #After interaction
                print hallway.feat3interactComplete
+         #Observation
+         elif currentState.currRoom == 4:
+            if currentState.rm04f3 == 0: #Before interaction
+               print observation.feat3desc 
+            else: #After interaction
+               print observation.feat3interactComplete
          #Examination
          elif currentState.currRoom == 5:
             if currentState.rm05f3 == 0: #Before interaction
@@ -570,6 +596,10 @@ def bottomLevelTest():
                currentState.obj3Loc = 100 #Update handle to permanently used
             else:
                print hallway.feat3interactFail
+         #Observation
+         elif currentState.currRoom == 4:
+            print observation.feat3interactSuccess
+            currentState.rm04f3 = 1 #Update to interaction complete
          #Examination
          elif currentState.currRoom == 5:
             print examination.feat3interactSuccess
@@ -581,7 +611,7 @@ def bottomLevelTest():
          else: #Not in inventory
             print keys.notInInv 
 
-      elif userInput == "9": #Look at feature 4 - DOOR / WOODEN DOOR
+      elif userInput == "9": #Look at feature 4 - DOOR / WOODEN DOOR / CHEST
          #Brig
          if currentState.currRoom == 1:
             if currentState.rm01f4 == 0: #Before interaction
@@ -594,6 +624,12 @@ def bottomLevelTest():
                print hallway.feat4desc 
             else: #After interaction
                print hallway.feat4interactComplete
+         #Observation
+         elif currentState.currRoom == 4:
+            if currentState.rm04f4 == 0: #Before interaction
+               print observation.feat4desc 
+            else: #After interaction
+               print observation.feat4interactComplete
 
       elif userInput == "10": #Interact with feature 4
          #Brig
@@ -607,6 +643,14 @@ def bottomLevelTest():
          elif currentState.currRoom == 3:
             print hallway.feat4interactSuccess
             currentState.rm03f4 = 1 #Update to interaction complete
+         #Observation
+         if currentState.currRoom == 4:
+            if currentState.obj2Loc == 99: #Keys
+               print observation.feat4interactSuccess
+               currentState.rm04f4 = 1 #Update to interaction complete
+               currentState.rm04o1 = 1 #Skeleton key discovered
+            else:
+               print observation.feat4interactFail
 
       elif userInput == "11": #General look around room
          if currentState.currRoom == 1:
@@ -736,7 +780,7 @@ def bottomLevelTest():
             print skeletonKey.name
          print ""
 
-      elif userInput == "18": #Look at feature 5 - Brig:null - LADDER
+      elif userInput == "18": #Look at feature 5 - Brig:null - LADDER / BOTTLES
          #Brig
          if currentState.currRoom == 1:
             print "Brig feature 5 null"
@@ -750,6 +794,12 @@ def bottomLevelTest():
                print hallway.feat5desc 
             else: #After interaction
                print hallway.feat5interactComplete
+         #Observation
+         elif currentState.currRoom == 4:
+            if currentState.rm04f5 == 0: #Before interaction
+               print observation.feat5desc 
+            else: #After interaction
+               print observation.feat5interactComplete
 
       elif userInput == "19": #Interact with feature 5  - LADDER
          #Brig
@@ -764,8 +814,12 @@ def bottomLevelTest():
          elif currentState.currRoom == 3:
             print hallway.feat5interactSuccess
             currentState.rm03f5 = 1 #Update to interaction complete
+         #Hallway
+         elif currentState.currRoom == 4:
+            print observation.feat5interactSuccess
+            currentState.rm04f5 = 1 #Update to interaction complete
 
-      elif userInput == "20": #Look at feature 6 - Brig:null  - TRAP DOOR
+      elif userInput == "20": #Look at feature 6 - Brig:null  - TRAP DOOR / PAPERS
          #Brig
          if currentState.currRoom == 1:
             print "Brig feature 6 null"
@@ -779,6 +833,12 @@ def bottomLevelTest():
                print hallway.feat6desc 
             else: #After interaction
                print hallway.feat6interactComplete
+         #Observation
+         elif currentState.currRoom == 4:
+            if currentState.rm04f6 == 0: #Before interaction
+               print observation.feat6desc 
+            else: #After interaction
+               print observation.feat6interactComplete
 
       elif userInput == "21": #Interact with feature 6
          #Brig
@@ -796,6 +856,11 @@ def bottomLevelTest():
                currentState.rm03f6 = 1 #Update to interaction complete
             else:
                print hallway.feat6interactFail
+         #Observation
+         elif currentState.currRoom == 4:
+            print observation.feat6interactSuccess
+            currentState.rm04f6 = 1 #Update to interaction complete
+
 
       elif userInput == "22": #GO NORTH
          if currentState.currRoom == 1: #Brig

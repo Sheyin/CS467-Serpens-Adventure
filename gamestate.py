@@ -12,7 +12,7 @@
 #[BEGIN CLASS IMPLEMENTATION]
 class GameStateClass(object):
 	#def __init__(self, currentRoom, room1, room2, room3, room4, room5, item1, item2, item3, rm1f1):	
-	def __init__(self, currentRoom, room1, room2, room3, room4, room5, item1, item2, item3, item4, rm1f1, rm1f2, rm1f3, rm1f4, rm1o1, rm1o2, rm2f1, rm2f2, rm2f3, rm2o1, rm3f1, rm3f2, rm3f3, rm3f4, rm3f5, rm3f6, rm4o1, rm5f1, rm5f2, rm5f3):
+	def __init__(self, currentRoom, room1, room2, room3, room4, room5, item1, item2, item3, item4, rm1f1, rm1f2, rm1f3, rm1f4, rm1o1, rm1o2, rm2f1, rm2f2, rm2f3, rm2o1, rm3f1, rm3f2, rm3f3, rm3f4, rm3f5, rm3f6, rm4f1, rm4f2, rm4f3, rm4f4, rm4f5, rm4f6, rm4o1, rm5f1, rm5f2, rm5f3):
    		#[BEGIN VARIABLES]
    		self.currRoom = currentRoom #Integer of current room player is in, default = 1 
 
@@ -73,6 +73,18 @@ class GameStateClass(object):
 
 
 		#Observation - Room 4
+		#Door - examined (1) or unexamined (0)
+		self.rm04f1 = rm4f1
+		#Barred Window - examined (1) or unexamined (0)
+		self.rm04f2 = rm4f2
+		#Window - examined (1) or unexamined (0)
+		self.rm04f3 = rm4f3
+		#Chest- unlocked (1) or locked (0)
+		self.rm04f4 = rm4f4
+		#Bottles - examined (1) or unexamined (0)
+		self.rm04f5 = rm4f5
+		#Papers- examined (1) or unexamined (0)
+		self.rm04f6 = rm4f6
 		#Skeleton Key - discovered (1) or undiscovered (0)
 		self.rm04o1 = rm4o1
 
