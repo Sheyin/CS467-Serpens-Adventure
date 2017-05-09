@@ -131,7 +131,7 @@ def objectTest():
 #[END OBJECT TESTING]
 
 def bottomLevelTest():
-   currentState = gamestate.GameStateClass(1, 0, 0, 0, 0, 0, 1, 1, 2, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+   currentState = gamestate.GameStateClass(1, 0, 0, 0, 0, 0, 1, 1, 2, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
 
    board = objectC.ObjectClass("board", 
       "A handsome, though splintery, board you tore off a bench. It extends your reach and gives nasty splinters.",
@@ -249,10 +249,10 @@ def bottomLevelTest():
       "You are in a narrow hallway.  To the north there is an entry way to another room.  To the south there is a wooden barred door. To the east there is a metal door. To the west there is a wooden door. There is a metal ladder in the middle of the room that leads up to a trap door in the ceiling.", 
       "You are in a hallway. There are doors to the south, east, and west. To the north there is an entry way to another room. There is a metal ladder in the middle of the room that leads up to a trap door.",
       "entryway", 
-      "An entryway to another room. You look through the entryway and can see a room with a winch in the center with chains attached to it. There are markings on the side of the entryway.",
+      "An entryway to another room. You look through the entryway and can see a room with a table in the center with chains attached to it. There are markings on the side of the entryway.",
       "examine, look at",
-      "You look closer at the markings.  At first they looked like tally marks.  On second look, they appear to be more like claw marks... or perhaps from fingernails? *gulp*",
-      "An entryway to another room. You look through the entryway and can see a room with a winch in the center with chains attached to it. There are markings on the side of the entryway that look like they are from fingernails. They make you uncomfortable.",
+      "You look closer at the markings on the entryway.  At first they looked like tally marks.  On second look, they appear to be more like claw marks... or perhaps from fingernails? *gulp*",
+      "An entryway to another room. You look through the entryway and can see a room with a table in the center with chains attached to it. There are markings on the side of the entryway that look like they are from fingernails. They make you uncomfortable.",
       "Entryway Fail - this should never display",
       "barred door", 
       "There is a barred door to another room with a brass handle. It has a small window in it. You peer through the window and can see that it opens into a dungeon of some kind.",
@@ -326,39 +326,39 @@ def bottomLevelTest():
       "F6 interaction fail")
 
    examination = room.RoomClass(5, "Examination Room", "null", 3, "null", "null", "null", "null",
-      "You are in a room with a large winch in the center connected to two heavy chains that run through holes in the sides of the room. There is a large wooden shelf in the corner. There is an entryway to the South.", 
-      "You are in a room with a winch in the center connected to two heavy chains that run through holes in the sides of the room. There is a shelf in the corner. There is an entryway to the South.",
-      "F1", 
-      "F1 description",
-      "F1 interaction options",
-      "F1 interaction success",
-      "F1 interaction complete",
-      "F1 interaction fail",
-      "F2", 
-      "F2 description",
-      "F2 interaction options",
-      "F2 interaction success",
-      "F2 interaction complete",
-      "F2 interaction fail",
-      "F3", 
-      "F3 description",
-      "F3 interaction options",
-      "F3 interaction success",
-      "F3 interaction complete",
-      "F3 interaction fail",
-      "F4", 
+      "You are in a room with a large metal table in the center of the room. Instead of being supported by legs, the table is suspended in the air by heavy chains. There is a mirror on the wall in the corner. There is an entryway to the South.", 
+      "You are in a room with a metal table suspended in the air by chains. There is a mirror on the wall in the corner. There is an entryway to the South.",
+      "entryway", 
+      "An entryway to another room. You look through the entryway and see it opens up into a hallway. There are markings on the side of the entryway.",
+      "examine",
+      "You look closer at the markings on the entryway. They end on this side abruptly. It appears that whatever caught on the wall was being taken into this room.",
+      "An entryway to another room. You look through the entryway and see it opens up into a hallway. There are markings on the side of the entryway that end abruptly.",
+      "Entryway Fail - this should never display",
+      "table", 
+      "A large, heavy looking table hangs from the ceiling suspended by thick chains. There is something carved into one corner.",
+      "examine",
+      "You look more closely at the carving. It resembles a stick figure drawing of a person except the head isn't the right shape. It's far more oblong and larger than would normally be drawn. Perhaps the artist was in a hurry?",
+      "A large, heavy looking table hangs from the ceiling suspended by thick chains. There is a carving of an odd stick figure with a large, oblong head in one corner.",
+      "Table Fail - this should never display",
+      "mirror", 
+      "A mirror hangs on the wall. It is quite large and appears to be permanently affixed to the wall.",
+      "examine, gaze",
+      "You examine the mirror more closely.  On closer inspection, it's not permanently affixed to the wall, it is actually built into the wall. It seems an odd place for a mirror.",
+      "A large mirror is built into the wall.",
+      "Mirror fail - this should never display",
+      "F4 - NA", 
       "F4 description",
       "F4 interaction options",
       "F4 interaction success",
       "F4 interaction complete",
       "F4 interaction fail",
-      "F5", 
+      "F5 - NA", 
       "F5 description",
       "F5 interaction options",
       "F5 interaction success",
       "F5 interaction complete",
       "F5 interaction fail", 
-      "F6", 
+      "F6 - NA", 
       "F6 description",
       "F6 interaction options",
       "F6 interaction success",
@@ -423,7 +423,7 @@ def bottomLevelTest():
       #userInput = parseCommands.getInput(userInput)
 	  
 
-      if userInput == "1": #Look at feature 1 - STRAW / ENTRYWAY MARKINGS / LOCKER
+      if userInput == "1": #Look at feature 1 - STRAW / ENTRYWAY MARKINGS / LOCKER / EXAM ENTRYWAY
          #Brig
          if currentState.currRoom == 1:
             if currentState.rm01f1 == 0: #Before interaction
@@ -442,6 +442,12 @@ def bottomLevelTest():
                print hallway.feat1desc 
             else: #After interaction
                print hallway.feat1interactComplete
+         #Examination
+         elif currentState.currRoom == 5:
+            if currentState.rm05f1 == 0: #Before interaction
+               print examination.feat1desc 
+            else: #After interaction
+               print examination.feat1interactComplete
 
       elif userInput == "2": #Interact with feature 1 
          #Brig
@@ -456,14 +462,16 @@ def bottomLevelTest():
                currentState.rm02o1 = 1 #Handle discovered
             else:
                print storage.feat1interactFail
-
          #Hallway
          elif currentState.currRoom == 3:
             print hallway.feat1interactSuccess
             currentState.rm03f1 = 1 #Update to interaction complete
+         #Examination
+         elif currentState.currRoom == 5:
+            print examination.feat1interactSuccess
+            currentState.rm05f1 = 1 #Update to interaction complete
 
-
-      elif userInput == "3": #Look at feature 2 - BENCH / BARRED DOOR / PAPER
+      elif userInput == "3": #Look at feature 2 - BENCH / BARRED DOOR / PAPER / TABLE
          #Brig
          if currentState.currRoom == 1:
             if currentState.rm01f2 == 0: #Before interaction
@@ -482,6 +490,12 @@ def bottomLevelTest():
                print hallway.feat2desc 
             else: #After interaction
                print hallway.feat2interactComplete
+         #Examination
+         elif currentState.currRoom == 5:
+            if currentState.rm05f2 == 0: #Before interaction
+               print examination.feat2desc 
+            else: #After interaction
+               print examination.feat2interactComplete
 
       elif userInput == "4": #Interact with feature 2
          #Brig
@@ -497,6 +511,10 @@ def bottomLevelTest():
          elif currentState.currRoom == 3:
             print hallway.feat2interactSuccess
             currentState.rm03f2 = 1 #Update to interaction complete
+         #Examination
+         elif currentState.currRoom == 5:
+            print examination.feat2interactSuccess
+            currentState.rm05f2 = 1 #Update to interaction complete
 
       elif userInput == "5": #Look at object "board"
          if currentState.obj1Loc ==99: #In iventory
@@ -504,7 +522,7 @@ def bottomLevelTest():
          else: #Not in inventory
             print board.notInInv 
 
-      elif userInput == "6": #Look at feature 3 - WINDOW / METAL DOOR / DOOR
+      elif userInput == "6": #Look at feature 3 - WINDOW / METAL DOOR / DOOR / MIRROR
          #Brig
          if currentState.currRoom == 1:
             if currentState.rm01f3 == 0: #Before interaction
@@ -523,6 +541,12 @@ def bottomLevelTest():
                print hallway.feat3desc 
             else: #After interaction
                print hallway.feat3interactComplete
+         #Examination
+         elif currentState.currRoom == 5:
+            if currentState.rm05f3 == 0: #Before interaction
+               print examination.feat3desc 
+            else: #After interaction
+               print examination.feat3interactComplete
 
       elif userInput == "7": #Interact with feature 3
          #Brig
@@ -546,6 +570,10 @@ def bottomLevelTest():
                currentState.obj3Loc = 100 #Update handle to permanently used
             else:
                print hallway.feat3interactFail
+         #Examination
+         elif currentState.currRoom == 5:
+            print examination.feat3interactSuccess
+            currentState.rm05f3 = 1 #Update to interaction complete
 
       elif userInput == "8": #Look at object "keys"
          if currentState.obj2Loc ==99: #In inventory
@@ -829,7 +857,10 @@ def bottomLevelTest():
             currentState.currRoom = storage.east #Updates current user location to ID 3 (Hallway)
 
          elif currentState.currRoom == 3: #Lower Hallway
-            currentState.currRoom = hallway.east #Updates current user location to ID 4 (Observation)
+            if currentState.rm03f3 == 1: #If door unlocked, proceed North into Lower Hallway
+               currentState.currRoom = hallway.east #Updates current user location to ID 4 (Observation)
+            else:
+               print hallway.feat3interactFail  #Else, failure statement
 
          elif currentState.currRoom == 4: #Observation
             print "You cannot go that way."
@@ -883,6 +914,33 @@ def bottomLevelTest():
             print handle.drop
          else:
             print handle.notInInv
+
+      elif userInput == "30": #Take skeleton key
+         #If object discovered and if player is in the same room as the object
+         if currentState.rm04o1 == 1 and currentState.obj4Loc == currentState.currRoom:
+            currentState.obj4Loc = 99 #Add skeleton key to player inventory
+            print skeletonKey.take
+         else:
+            print skeletonKey.notAvail
+
+      elif userInput == "31": #Drop skeleton key
+         if currentState.obj4Loc == 99: #In inventory to drop
+            currentState.obj4Loc = currentState.currRoom
+            print skeletonKey.drop
+         else:
+            print skeletonKey.notInInv
+
+      elif userInput == "32": #Look at object "handle"
+         if currentState.obj3Loc ==99: #In inventory
+            print handle.desc
+         else: #Not in inventory
+            print handle.notInInv 
+
+      elif userInput == "33": #Look at object "skeleton key"
+         if currentState.obj4Loc ==99: #In inventory
+            print skeletonKey.desc
+         else: #Not in inventory
+            print skeletonKey.notInInv 
 
       else:
          print "Invalid input"
