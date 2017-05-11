@@ -1,5 +1,6 @@
 {
     "name": "gun",
+    "synonyms": ["gun", "rifle", "longarm"],
     "desc": "long gun, loaded, with a rifled barrel", 
     "notInInv": "you don't have a gun", 
     "inRoom": "There is a gun here", 

@@ -1,5 +1,6 @@
 {
     "name": "smallKey",
+    "synonyms": [],
     "desc": "small key that fits gun cabinet", 
     "notInInv": "you don't have a smallKey", 
     "inRoom": "There is a smallKey here", 

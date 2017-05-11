@@ -1,9 +1,9 @@
 {
     "id": 6,
     "name": "Rum and Water",
-    "north": "7", 
+    "north": 7, 
     "south": "", 
-    "east": "4", 
+    "east": 4, 
     "west": "", 
     "up": "", 
     "down": "",
@@ -32,5 +32,17 @@
     "feat4interactOptions": "",
     "feat4interactSuccess": "",
     "feat4interactComplete": "",
-    "feat4interactFail": ""
+    "feat4interactFail": "",
+    "feat5": "",
+    "feat5desc": "",
+    "feat5interactOptions": "",
+    "feat5interactSuccess": "",
+    "feat5interactComplete": "",
+    "feat5interactFail": "",
+    "feat6": "",
+    "feat6desc": "",
+    "feat6interactOptions": "",
+    "feat6interactSuccess": "",
+    "feat6interactComplete": "",
+    "feat6interactFail": ""
 }

@@ -48,6 +48,7 @@ class MattsObjectClass(object):
     def __init__(self, name):
 		#[BEGIN VARIABLES]
 		self.name = "" 
+		self.synonyms = []
 		self.desc = "" 
 		self.notInInv = "" 
 		self.inRoom = "" 
