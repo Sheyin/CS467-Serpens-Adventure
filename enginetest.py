@@ -420,7 +420,7 @@ def bottomLevelTest():
 
       userInput = raw_input (": ")
       #Temp disable parsing 
-      userInput = parseCommands.getInput(userInput, currentState.currRoom)
+      #userInput = parseCommands.getInput(userInput)
 	  
 
       if userInput == "1": #Look at feature 1 - STRAW / ENTRYWAY MARKINGS / LOCKER / EXAM ENTRYWAY / DOOR

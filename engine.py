@@ -33,7 +33,7 @@ def launch():
  	print ""
    	print "Please make a selection: "
    	print "   New Game"
-   	print "   Load Game"
+   	print "   Load Game -- COMING SOON"
    	print "   Exit"
    	print ""
    	print ""
@@ -101,6 +101,7 @@ def playGame(userSelection):
 		print "NEW GAME FILE CREATED"
 		
 		#PENDING - Load game state with default starting variables {Data dev}
+		currentState = gamestate.GameStateClass(1, 0, 0, 0, 0, 0, 1, 1, 2, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
 
 	else:
 		print "LOAD GAME FILE"
@@ -123,14 +124,70 @@ def playGame(userSelection):
 	#userInput = raw_input (": ")
 
 	#While loop repeatedly prompts user for input until user requests to load, save, or quit game
-	while userInput not in ['loadgame', 'savegame', 'quit']:
+	while userInput not in ['loadgame', 'savegame', 'quit', 'exit']:
+
+		#[BEGIN ENGINE]
+		#Level One - Midpoint Check 
+
+		if userRoom != currentState.currRoom:  #Displays room description when player moves rooms
+
+			#Display short / long desc
+			if currentState.currRoom == 1:   #Brig
+				if currentState.rm01vis == 0:
+					print brig.longDesc
+					currentState.rm01vis = 1 #Update to visited
+				else:
+					print brig.shortDesc
+
+			elif currentState.currRoom == 2:    #Storage
+				if currentState.rm02vis == 0:
+					print storage.longDesc
+					currentState.rm02vis = 1 #Update to visited
+				else:
+					print storage.shortDesc
+
+			elif currentState.currRoom == 3:  #Lower Hallway
+				if currentState.rm03vis == 0:
+					print hallway.longDesc
+					currentState.rm03vis = 1 #Update to visited
+				else:
+					print hallway.shortDesc
+
+			elif currentState.currRoom == 4:    #Observation
+				if currentState.rm04vis == 0: 
+					print observation.longDesc
+					currentState.rm04vis = 1 #Update to visited
+				else:
+					print observation.shortDesc
+
+			elif currentState.currRoom == 5:    #Examination
+				if currentState.rm05vis == 0: 
+					print examination.longDesc
+					currentState.rm05vis = 1 #Update to visited
+				else:
+					print examination.shortDesc
+
+			userRoom = currentState.currRoom #Update room the user is currently in
 
 		#Pend input:
-		userInput = raw_input (": ")
-		#Parse user input {Parsing Dev}
-		print "input rec"
+		serInput = raw_input (": ")
 
-		#Respond to user input and update necessary variables in game state
+		#Parse user input {Parsing Dev}
+		userInput = parseCommands.getInput(userInput, currentState.currRoom)
+	  
+
+		#[END ENGINE]
+
+	if userInput == "loadgame":
+		print "Load game"
+		#PENDING - Load game function {Data Dev}
+
+	elif userInput == "savegame":
+		print "Save game"
+		#PENDING - Save game function {Data Dev}
+
+	elif userInput == "quit" or "exit":
+		exitGame()
 
 #[END PLAY GAME]
 
