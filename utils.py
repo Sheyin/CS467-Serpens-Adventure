@@ -2,23 +2,29 @@ import re
 
 # These should probably receive a filename or room name as input
 # then buffer = parameter name (file/room name)
-def getFeaturesList():
-	file = open('data/rooms/room3.json')
+def getFeaturesList(currentRoom):
+	#currentRoom = 3
+	filename = 'data/rooms/room' + str(currentRoom) + '.json'
+	file = open(filename)
 	featuresList = []
 
 	for line in file:
 		line = line.rstrip()
-		results = re.findall('"feat\d*": ("\D*")', line)
+		results = re.findall('"feat\d*": ("\D*"),', line)
+		#results = re.findall('"feat\d*": *', line)
+		
 		for i in range (0, len(results)):
+			# This will strip opening and closing parenthesis
 			if results[i].startswith('"') and results[i].endswith('"'):
 				results[i] = results[i][1:-1]
-				featuresList.append([results[i]])
+				featuresList.append(results[i])
 	file.close()
 	return featuresList
 
 
-def getDescriptionsList():
-	file = open('data/rooms/room3.json')
+def getDescriptionsList(currentRoom):
+	filename = 'data/rooms/room' + str(currentRoom) + '.json'
+	file = open(filename)
 	descriptionsList = []
 
 	for line in file:
@@ -27,7 +33,7 @@ def getDescriptionsList():
 		for i in range (0, len(results)):
 			if results[i].startswith('"') and results[i].endswith('"'):
 				results[i] = results[i][1:-1]
-				descriptionsList.append([results[i]])
+				descriptionsList.append(results[i])
 	file.close()
 	return descriptionsList
 

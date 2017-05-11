@@ -47,7 +47,9 @@ def executeCommand(wordArray, category, item1='none', item2='none', listOfItems=
 		'feat5_look': "18", 'feat5_do': "19", 'feat6_look': "20", 'feat6_do': "21",
 		# Movement
 		'go_north': "22", 'go_south': "23", 'go_west': "24", 'go_east': "25",
-		'go_up': "26", 'go_down': "27"
+		'go_up': "26", 'go_down': "27",
+		# Other
+		'inventory': "17", 'look_room': "11"
 	}
 	# Features: Pull a list from text file or hard coded.
 	# Go: Pull a list from text file or hard coded.
@@ -57,9 +59,11 @@ def executeCommand(wordArray, category, item1='none', item2='none', listOfItems=
 	elif (category == "loadgame"):
 		return stubs.loadGame()
 	elif (category == "inventory"):
-		return stubs.showInventory()
+		return engine_codes_dict['inventory']
+		#return stubs.showInventory()
 	elif (category == "look"):
-		return stubs.look(wordArray, item1)
+		return engine_codes_dict['look_room']
+		#return stubs.look(wordArray, item1)
 	elif (category == "look_at"):
 		if (item1 in listOfItems):
 			key = item1 + "_look"
@@ -109,12 +113,12 @@ def executeCommand(wordArray, category, item1='none', item2='none', listOfItems=
 			return engine_codes_dict[key]
 		#return stubs.drop(item1)
 	elif (category == "quit"):
-		# Currently this is never reached because it is also handled in getInput()
-		# Should be altered to be handled here instead, probably when properly integrated with engine
+		# Currently this is never reached because it is also handled in getInput() before it reaches here
 		return stubs.quit()
 	elif (category == "use"):
 		return stubs.use(item1, item2)
 	elif (category == "move"):
+		# Adjust this later so that moving an object (that can be picked up) works like a take action instead
 		return stubs.move(item1)
 	elif (category == "hit"):
 		return stubs.hit(item1)
@@ -139,7 +143,8 @@ def getInput(lineInput, currentRoom):
 
 	# This should be populated from a text file
 	# Uncomment this when room files are populated
-	# listOfItems = utils.getFeaturesList()
+	testList = utils.getFeaturesList(currentRoom)
+	print "Test list: " + str(testList)
 
 	# **** Hopefully all of this will change when we load from text files ****
 	# Hard coded stuff for now
@@ -163,7 +168,7 @@ def getInput(lineInput, currentRoom):
 
 	elif (category == "unknown"):
 		# This is to continue support of engine codes (numerical input)
-		if (int(lineInput) >= 0) and (int(lineInput) <= 20):
+		if lineInput.isdigit():
 			return lineInput
 		else:
 			print "You want to " + command + " but you don't know how.  Try a different command."
