@@ -17,15 +17,22 @@ def randomErrorMessage(wordArray, word):
 # Returns a negative value if the word was a guess, but positive
 # if the item was confirmed (on the list of items in a room)
 #def position(wordArray, listOfItems):
-def position(wordArray, listOfItems):
+def position(wordArray, listOfItems, listOfFeatures):
 
 	# Single word input, so there is no item:
 	if (len(wordArray) == 1):
 		return 0
 
+	# Check if the item referenced is an "item"
 	for wordPos in range (0, len(wordArray)):
 		for itemPos in range (0, len(listOfItems)):
 			if (wordArray[wordPos] == listOfItems[itemPos]):
+				return wordPos
+
+	# Check if the item referenced is a "feature"
+	for wordPos in range (0, len(wordArray)):
+		for itemPos in range (0, len(listOfFeatures)):
+			if (wordArray[wordPos] == listOfFeatures[itemPos]):
 				return wordPos
 
 	# --anything past this point is strictly optional - the item is not a known object in room
@@ -50,14 +57,14 @@ def position(wordArray, listOfItems):
 # Identifies the verb and item, as well as location, for easier handling
 # TODO: For unrecognized items right now it is calling randomErrorMessage() AND being 
 # handled in executeCommand, so it should be consolidated into one or the other.
-def findItemUsed(wordArray, listOfItems):
+def findItemUsed(wordArray, listOfItems, listofFeatures):
 
 	# The verb is _probably_ in the first word used, identify category (meaning/intent of the word)
 	#command = wordArray[0]
 	#category = parseCategory.identify(command)
 
 	# Identify the item and its position in the sentence
-	positionOfItem = position(wordArray, listOfItems)
+	positionOfItem = position(wordArray, listOfItems, listofFeatures)
 	if (positionOfItem < 0):
 		# Item was not found in room, so guessed at it for a response
 		# displaying a message stating the command tried to operate on an invalid item

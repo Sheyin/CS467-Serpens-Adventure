@@ -6,6 +6,14 @@
 import parseItem
 import enginetest
 
+# These are the rooms used by enginetest.py
+# ("hold"), ("storage room"), ("lower hallway"), ("observation room"), ("examination room")
+
+# These are the items + codes
+#("board", ("take", "12", "drop", "29", "look at", "5"))
+
+#items_dict = dict(item_codes)
+
 def saveGame():
 	print "Game would be saved here."
 	return
