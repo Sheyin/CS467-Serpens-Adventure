@@ -67,7 +67,21 @@ def load_rooms ():
 			current_room.feat4interactOptions = data["feat4interactOptions"] 
 			current_room.feat4interactSuccess = data["feat4interactSuccess"] 
 			current_room.feat4interactComplete = data["feat4interactComplete"] 
-			current_room.feat4interactFail = data["feat4interactFail"] 
+			current_room.feat4interactFail = data["feat4interactFail"]
+
+			current_room.feat5 = data["feat5"] 
+			current_room.feat5desc = data["feat5desc"] 
+			current_room.feat5interactOptions = data["feat5interactOptions"] 
+			current_room.feat5interactSuccess = data["feat5interactSuccess"] 
+			current_room.feat5interactComplete = data["feat5interactComplete"] 
+			current_room.feat5interactFail = data["feat5interactFail"]
+			
+			current_room.feat6 = data["feat6"] 
+			current_room.feat6desc = data["feat6desc"] 
+			current_room.feat6interactOptions = data["feat6interactOptions"] 
+			current_room.feat6interactSuccess = data["feat6interactSuccess"] 
+			current_room.feat6interactComplete = data["feat6interactComplete"] 
+			current_room.feat6interactFail = data["feat6interactFail"]
 			
 
 			rooms[current_room.id] = current_room
@@ -75,8 +89,8 @@ def load_rooms ():
 	#test that room objects are in rooms dictionary
 	print rooms[6].id
 	print rooms[1].name
-	print rooms[2].name
-	print rooms[3].longDesc
+	print (rooms[6].north + 100)
+	print rooms[1].longDesc
 	print rooms[7].longDesc
 
 def load_objects ():
@@ -88,8 +102,8 @@ def load_objects ():
 		
 			data = json.load(json_data)
 			current_object = MattsObjectClass(data["name"])
-			
 			current_object.name = data["name"]
+			current_object.synonyms = data["synonyms"]
 			current_object.desc = data["desc"]
 			current_object.notInInv = data["notInInv"]
 			current_object.inRoom = data["inRoom"]
@@ -107,6 +121,8 @@ def load_objects ():
 	print objects["template"].name
 	print objects["smallKey"].name
 	print objects["gun"].name
+	print objects["gun"].synonyms[1]
+	
 
 			
 			

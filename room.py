@@ -168,3 +168,17 @@ class MattsRoomClass(object):
       self.feat4interactSuccess = ""
       self.feat4interactComplete = ""
       self.feat4interactFail = ""
+	  
+      self.feat5 = ""
+      self.feat5desc = ""
+      self.feat5interactOptions = ""
+      self.feat5interactSuccess = ""
+      self.feat5interactComplete = ""
+      self.feat5interactFail = ""
+	  
+      self.feat6 = ""
+      self.feat6desc = ""
+      self.feat6interactOptions = ""
+      self.feat6interactSuccess = ""
+      self.feat6interactComplete = ""
+      self.feat6interactFail = ""

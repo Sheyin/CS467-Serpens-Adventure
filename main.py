@@ -13,13 +13,10 @@ import enginetest    #Engine testing functions
 #[BEGIN MAIN FUNCTION]
 def main():
 
-   #engine.launch() # Engine launch sequence to initiate game menu
+   engine.launch() # Engine launch sequence to initiate game menu
 
    #Engine testing 
-   #enginetest.roomTest()
-   #enginetest.gameStateTest()
-   #enginetest.objectTest()
-   enginetest.bottomLevelTest()
+   #enginetest.bottomLevelTest()
    
 
 if __name__ == "__main__":

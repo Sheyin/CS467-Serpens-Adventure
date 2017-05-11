@@ -33,7 +33,7 @@ def launch():
  	print ""
    	print "Please make a selection: "
    	print "   New Game"
-   	print "   Load Game"
+   	print "   Load Game -- COMING SOON"
    	print "   Exit"
    	print ""
    	print ""
@@ -42,9 +42,9 @@ def launch():
 		print "Please make a valid selection"
 		userInput = raw_input (": ")
 
-	if userInput in ['New Game', 'New', 'new']:	#New Game
+	if userInput in ['New Game', 'New', 'new', 'new game', 'New game']:	#New Game
 		newGame()
-	elif userInput in ['Load Game', 'load game', 'load']:	#Load Game
+	elif userInput in ['Load Game', 'load game', 'load', 'Load', 'Load game']:	#Load Game
 		loadGame()
 	else:
 		exitGame()
@@ -54,7 +54,6 @@ def launch():
 
 #[BEGIN NEW GAME]
 def newGame():
-	print "Starting a new game"
 
 	#Intro story
 	print "                                                                                "
@@ -64,15 +63,17 @@ def newGame():
 	print "smells damp. Sitting up slowly, you wonder where you are..."
 	print ""
 
-	playGame(0)
+	playGame(0)	#New game
 
 #[END NEW GAME]
 
 #[BEGIN LOAD GAME]
 def loadGame():
-	print "Loading a saved game..."
+	print ""
+	print "Loading your save file."
+	print ""
 
-	playGame(1)
+	playGame(1)	# Load game
 #[END LOAD GAME]
 
 #[BEGIN EXIT GAME]
@@ -90,35 +91,25 @@ def exitGame():
 
 #[BEGIN PLAY GAME]
 def playGame(userSelection):
-	print "Game play function"
 
-	#Variables
-	userInput = "default"
+	#Initial variables
+   	userInput = "default"	#Default message for user input
+   	userRoom = 0   #Sentinel variable for room
 
 	#Create new or load saved game
 	if userSelection == 0:	#New game
 		print "NEW GAME FILE CREATED"
-		#currentState = gamestate.GameStateClass(1, 0, 0, 0, 0, 0, 
-		#	1, 4, 2,
-		#	0)
-
+		
 		#PENDING - Load game state with default starting variables {Data dev}
+		currentState = gamestate.GameStateClass(1, 0, 0, 0, 0, 0, 1, 1, 2, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+
 	else:
 		print "LOAD GAME FILE"
 		#PENDING - Load game state with saved variables {Data dev}
 
 	#PENDING - Load room files {Data dev}
-	#brig = room.RoomClass("1", "Brig", "3", "null", "null", "null", "null", "null", 
-	#	"You are in a cold, damp room. The only source of light is coming through a barred window. There is straw on the floor and a low wooden bench in the corner. The only exit is a barred door to the North.", 
-	#	"You are in a room that has straw on the floor and a bench in the corner. Light is coming through a barred window and there is a barred door to the North.", 
-	#	"straw", 
-	#	"There is thick layer of straw on the floor. It smells musty.",
-	#	"search, move, lift"
-	#	"You shift the straw around throughout the room. It's slimy underneath but there's nothing else there."
-	#	"feature 2")
 
 	#PENDING - Load object files {Data dev}
-
 
 
 	#Parse user input and return code for engine action {Parsing Dev}
@@ -132,50 +123,73 @@ def playGame(userSelection):
 	#TEMPORARY - ENGINE PARSING
 	#userInput = raw_input (": ")
 
-	#Initial variables
-	currentRoom = currentState.currRoom
-	print "Current Room: " 
-   	print currentRoom
-
 	#While loop repeatedly prompts user for input until user requests to load, save, or quit game
-	while userInput not in ['loadgame', 'savegame', 'quit']:
-		#Check game state for current room
-		#currentRoom = gamestate
+	while userInput not in ['loadgame', 'savegame', 'quit', 'exit']:
 
-		#If visited is false, display long description
-		#Else, display short description & update game state to show visited
+		#[BEGIN ENGINE]
+		#Level One - Midpoint Check 
+
+		if userRoom != currentState.currRoom:  #Displays room description when player moves rooms
+
+			#Display short / long desc
+			if currentState.currRoom == 1:   #Brig
+				if currentState.rm01vis == 0:
+					print brig.longDesc
+					currentState.rm01vis = 1 #Update to visited
+				else:
+					print brig.shortDesc
+
+			elif currentState.currRoom == 2:    #Storage
+				if currentState.rm02vis == 0:
+					print storage.longDesc
+					currentState.rm02vis = 1 #Update to visited
+				else:
+					print storage.shortDesc
+
+			elif currentState.currRoom == 3:  #Lower Hallway
+				if currentState.rm03vis == 0:
+					print hallway.longDesc
+					currentState.rm03vis = 1 #Update to visited
+				else:
+					print hallway.shortDesc
+
+			elif currentState.currRoom == 4:    #Observation
+				if currentState.rm04vis == 0: 
+					print observation.longDesc
+					currentState.rm04vis = 1 #Update to visited
+				else:
+					print observation.shortDesc
+
+			elif currentState.currRoom == 5:    #Examination
+				if currentState.rm05vis == 0: 
+					print examination.longDesc
+					currentState.rm05vis = 1 #Update to visited
+				else:
+					print examination.shortDesc
+
+			userRoom = currentState.currRoom #Update room the user is currently in
 
 		#Pend input:
-		userInput = raw_input (": ")
+		serInput = raw_input (": ")
+
 		#Parse user input {Parsing Dev}
-		print "input rec"
+		userInput = parseCommands.getInput(userInput, currentState.currRoom)
+	  
 
-		#if parsedText == "TN": #Travel North
-		#	print "Travel north"
+		#[END ENGINE]
 
-		#Respond to user input and update necessary variables in game state
-		#Engine receives action code (listed below) and performs relevant action
+	if userInput == "loadgame":
+		print "Load game"
+		#PENDING - Load game function {Data Dev}
+
+	elif userInput == "savegame":
+		print "Save game"
+		#PENDING - Save game function {Data Dev}
+
+	elif userInput == "quit" or "exit":
+		exitGame()
 
 #[END PLAY GAME]
-
-# Engine Actions
-# 1 - savegame {Data Dev}
-# 2 - loadgame {Data Dev}
-# 3 - exit 
-# 4 - go north
-# 5 - go south
-# 6 - go east
-# 7 - go west
-# 8 - go down
-# 9 - go up
-# 10 - drop item
-# 11 - take item
-# 12 - look 
-# 13 - look at object
-# 14 - look at feature
-# 15 - help 
-# 16 - inventory
-
 
 
 #[References]
