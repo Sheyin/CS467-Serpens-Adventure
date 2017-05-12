@@ -250,7 +250,7 @@ def bottomLevelTest():
       "You are in a hallway. There are doors to the south, east, and west. To the north there is an entry way to another room. There is a metal ladder in the middle of the room that leads up to a trap door.",
       "entryway", 
       "An entryway to another room. You look through the entryway and can see a room with a table in the center with chains attached to it. There are markings on the side of the entryway.",
-      "examine, look at",
+      "examine, check",
       "You look closer at the markings on the entryway.  At first they looked like tally marks.  On second look, they appear to be more like claw marks... or perhaps from fingernails? *gulp*",
       "An entryway to another room. You look through the entryway and can see a room with a table in the center with chains attached to it. There are markings on the side of the entryway that look like they are from fingernails. They make you uncomfortable.",
       "Entryway Fail - this should never display",
@@ -321,8 +321,8 @@ def bottomLevelTest():
       "papers", 
       "A neat stack of papers on the desk. The first page appears to be of some type of report.",
       "read, examine",
-      "You look over the cover page of the report. It reads: Burundanga, Myth or Mind Control Drug? You can't remember how you got here in the first place. Reading that makes the hair on the back of your neck stand up.",
-      "A report on a drug called burundanga.",
+      "You look over the cover page of the report. It's in a language you don't recognize. Under the title, a small penciled in footnote reads: Burundanga, Myth or Mind Control Drug? Shuddering, you can't remember how you got here in the first place. Reading that makes the hair on the back of your neck stand up.",
+      "A report on a drug called burundanga. It's in a language you don't recognize.",
       "Papers Fail - this should never display")
 
    examination = room.RoomClass(5, "Examination Room", "null", 3, "null", "null", "null", "null",

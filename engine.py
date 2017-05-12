@@ -38,7 +38,7 @@ def launch():
    	print ""
    	print ""
    	userInput = raw_input (": ")
-   	while userInput not in ['New Game', 'New', 'new', 'Load Game', 'load game', 'load','Exit','exit','Quit', 'quit']:
+   	while userInput not in ['New Game', 'New', 'new', 'new game', 'Load Game', 'load game', 'load', 'Load', 'Exit','exit','Quit', 'quit']:
 		print "Please make a valid selection"
 		userInput = raw_input (": ")
 
@@ -175,6 +175,40 @@ def playGame(userSelection):
 		#Parse user input {Parsing Dev}
 		userInput = parseCommands.getInput(userInput, currentState.currRoom)
 	  
+		#ENGINE INTERACTIONS BASED ON PARSED USER INPUT
+		if userInput == "1":#Look at feature 1 - STRAW / ENTRYWAY MARKINGS / LOCKER / EXAM ENTRYWAY / DOOR
+			#Brig
+			if currentState.currRoom == 1:
+				if currentState.rm01f1 == 0: #Before interaction
+					print brig.feat1desc 
+				else: #After interaction
+					print brig.feat1interactComplete
+			#Storage
+			elif currentState.currRoom == 2:
+				if currentState.rm02f1 == 0: #Before interaction
+					print storage.feat1desc 
+				else: #After interaction
+					print storage.feat1interactComplete
+			#Hallway
+			elif currentState.currRoom == 3:
+				if currentState.rm03f1 == 0: #Before interaction
+					print hallway.feat1desc 
+				else: #After interaction
+					print hallway.feat1interactComplete
+			#Observation
+			elif currentState.currRoom == 4:
+				if currentState.rm04f1 == 0: #Before interaction
+					print observation.feat1desc 
+				else: #After interaction
+					print observation.feat1interactComplete
+			#Examination
+			elif currentState.currRoom == 5:
+				if currentState.rm05f1 == 0: #Before interaction
+					print examination.feat1desc 
+				else: #After interaction
+					print examination.feat1interactComplete
+
+	  	#PEND ADD REST OF ENGINE CODE
 
 		#[END ENGINE]
 
