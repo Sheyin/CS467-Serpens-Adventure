@@ -96,12 +96,12 @@ def getRoomConnections(currentRoom):
 		for i in range (0, len(results)):
 			if results[i].startswith('"') and results[i].endswith('"'):
 				results[i] = results[i][1:-1]
-			connectionsList.append(('up', results[0]))
+			connectionsList.append(('up', 'upstairs', results[0]))
 		results = re.findall('"down": (\d*)', line)
 		for i in range (0, len(results)):
 			if results[i].startswith('"') and results[i].endswith('"'):
 				results[i] = results[i][1:-1]
-			connectionsList.append(('down', results[0]))
+			connectionsList.append(('down', 'downstairs', results[0]))
 
 	file.close()
 	return connectionsList
@@ -147,6 +147,6 @@ if __name__ == "__main__":
 	featuresDict = getFeaturesDict(1);
 	connectionsList = getRoomConnections(1);
 	#descriptionsList = getDescriptionsList(1);
-	print "features: " + str(featuresDict)
+	print "features: " + str(featuresDict.keys())
 	print "connectionsList: " + str(connectionsList)
 	#print "descriptions: " + str(descriptionsList)

@@ -16,9 +16,8 @@ import utils
 
 # Returns the "category" of the verb if known, otherwise returns "unknown"
 # Working off the assumption that the first word used is the command / verb.
-def checkCommand(wordArray):
+def checkCommand(wordArray, featureDict):
 	# Special handling for look vs look at since only command is sent
-	# Needs more refinement to make "look at door" and "look door" the same
 	if ((len(wordArray) > 1) and ((wordArray[0] == "look") and (wordArray[1] == "at"))):
 		return "look_at"
 	else:
@@ -39,17 +38,17 @@ def executeCommand(wordArray, category, item1='none', item2='none', listOfItems=
 		# Items
 		'board_look': "5", 'board_take': "12", 'board_drop': "14", 
 		'keys_look': "8", 'keys_take': "13", 'keys_drop': "15",
-		'handle_look': "0", 'handle_take': "28", 'handle_drop': "29",
-		'skeleton key_look': "0", 'skeleton key_take': "30", 'skeleton key_drop': "31",
+		'handle_look': "32", 'handle_take': "28", 'handle_drop': "29",
+		'skeleton key_look': "33", 'skeleton key_take': "30", 'skeleton key_drop': "31",
 		# Features
 		'feat1_look': "1", 'feat1_do': "2",	'feat2_look': "3", 'feat2_do': "4",
-		'feat3_look': "6", 'feat3_do': "6",	'feat4_look': "9", 'feat4_do': "10",
+		'feat3_look': "6", 'feat3_do': "7",	'feat4_look': "9", 'feat4_do': "10",
 		'feat5_look': "18", 'feat5_do': "19", 'feat6_look': "20", 'feat6_do': "21",
 		# Movement
 		'go_north': "22", 'go_south': "23", 'go_west': "24", 'go_east': "25",
 		'go_up': "26", 'go_down': "27",
 		# Other
-		'inventory': "17", 'look_room': "11"
+		'inventory': "17", 'look_room': "11", 'help': "16"
 	}
 	# Features: Pull a list from text file or hard coded.
 	# Go: Pull a list from text file or hard coded.
@@ -102,8 +101,7 @@ def executeCommand(wordArray, category, item1='none', item2='none', listOfItems=
 	elif (category == "help"):
 		print "Possible items: " + str(listOfItems)
 		print "Possible features: " + str(listOfFeatures)
-		return 16
-		#return stubs.help(listOfItems)
+		return engine_codes_dict['help']
 	elif (category == "drop"):
 		if (item1 not in listOfItems):
 			print "Drop what?"
@@ -122,6 +120,12 @@ def executeCommand(wordArray, category, item1='none', item2='none', listOfItems=
 		return stubs.move(item1)
 	elif (category == "hit"):
 		return stubs.hit(item1)
+	elif (category == "do"):
+		# This is just a default category for when an explicitly approved word is used for this feature.
+		# This is a stopgap measure for now.
+		pos = listOfFeatures.index(item1) + 1
+		key = "feat" + str(pos) + "_do"
+		return engine_codes_dict[key]
 	else:
 		# Some custom handling here - ex. new actions? add more elifs?
 		#print "You " + wordArray[0] + " the " + item1 + "."
@@ -146,6 +150,11 @@ def getInput(lineInput, currentRoom):
 	testList = utils.getFeaturesList(currentRoom)
 	print "Test list: " + str(testList)
 
+	# Room-specific list of features as keys and recognized actions as entries
+	featureDict = utils.getFeaturesList(currentRoom)
+	listOfFeatures_dyn = featureDict.keys()
+	print "Actions: " + str(listOfFeatures_dyn)
+
 	# **** Hopefully all of this will change when we load from text files ****
 	# Hard coded stuff for now
 	listOfItems = ['board', 'keys', 'handle', 'skeleton key']
@@ -161,7 +170,7 @@ def getInput(lineInput, currentRoom):
 	# **** End hard coded stuff ****
 
 	# Is this a valid command?
-	category = checkCommand(wordArray)
+	category = checkCommand(wordArray, featureDict)
 
 	if (category == "quit"):
 		return "exit"
@@ -183,6 +192,15 @@ def getInput(lineInput, currentRoom):
 				return executeCommand(wordArray, category, wordArray[1], "none", listOfItems, listOfFeatures_dict[currentRoom], currentRoom)
 			# Might need to rethink item logic + where this is being called. 
 		item1 = parseItem.findItemUsed(wordArray, listOfItems, listOfFeatures_dict[currentRoom])
+		# Temporary bypass.  Should reorganize since this is so messy.
+		# Check if item is a feature, and if so, check if command matches a verb.  If so, category = "do"
+		if (item1 in featureDict):
+			actions = featureDict[item1]
+			actionsList = actions.split(", ")
+			for verb in actionsList:
+				if (command == verb):
+					category = "do"
+					return executeCommand(wordArray, "do", wordArray[1], "none", listOfItems, listOfFeatures_dict[currentRoom], currentRoom)
 		
 		# Two-word command
 		if (len(wordArray) > 2):
