@@ -122,7 +122,6 @@ def executeCommand(wordArray, category, item1='none', item2='none', listOfItems=
 		return stubs.hit(item1)
 	elif (category == "do"):
 		# This is just a default category for when an explicitly approved word is used for this feature.
-		# This is a stopgap measure for now.
 		pos = listOfFeatures.index(item1) + 1
 		key = "feat" + str(pos) + "_do"
 		return engine_codes_dict[key]
@@ -147,13 +146,13 @@ def getInput(lineInput, currentRoom):
 
 	# This should be populated from a text file
 	# Uncomment this when room files are populated
-	testList = utils.getFeaturesList(currentRoom)
-	print "Test list: " + str(testList)
+	#testList = utils.getFeaturesDict(currentRoom)
+	#print "Test list: " + str(testList)
 
 	# Room-specific list of features as keys and recognized actions as entries
-	featureDict = utils.getFeaturesList(currentRoom)
-	listOfFeatures_dyn = featureDict.keys()
-	print "Actions: " + str(listOfFeatures_dyn)
+	featureDict = utils.getFeaturesDict(currentRoom)
+	listOfFeatures = featureDict.keys()
+	#print "Actions: " + str(listOfFeatures_dyn)
 
 	# **** Hopefully all of this will change when we load from text files ****
 	# Hard coded stuff for now
@@ -161,12 +160,14 @@ def getInput(lineInput, currentRoom):
 
 	# The following might not work correctly
 	# 1: Brig, 2: Storage, 3: Lower Hallway, 4: Observation, 5: Examination
+	'''
 	listOfFeatures1 = ['straw', 'bench', 'window', 'door']
 	listOfFeatures2 = ['locker', 'paper', 'door']
 	listOfFeatures3 = ['entryway', 'barred door', 'metal door', 'wooden door', 'ladder', 'trap door']
 	listOfFeatures4 = ['door', 'barred window' 'window', 'chest', 'bottles', 'papers']
 	listOfFeatures5 = ['entryway', 'table', 'mirror']
 	listOfFeatures_dict = {1: listOfFeatures1, 2: listOfFeatures2, 3: listOfFeatures3, 4: listOfFeatures4, 5: listOfFeatures5}
+	'''
 	# **** End hard coded stuff ****
 
 	# Is this a valid command?
@@ -186,12 +187,12 @@ def getInput(lineInput, currentRoom):
 		if (len(wordArray) == 1):
 			# Maybe should add a check here to see if a single word input was allowed for that command
 			# Instead of within the executeCommand() function
-			return executeCommand(wordArray, category, "none", "none", listOfItems, listOfFeatures_dict[currentRoom], currentRoom)
+			return executeCommand(wordArray, category, "none", "none", listOfItems, listOfFeatures, currentRoom)
 		if (len(wordArray) == 2):
 			if (command == "go"):
-				return executeCommand(wordArray, category, wordArray[1], "none", listOfItems, listOfFeatures_dict[currentRoom], currentRoom)
+				return executeCommand(wordArray, category, wordArray[1], "none", listOfItems, listOfFeatures, currentRoom)
 			# Might need to rethink item logic + where this is being called. 
-		item1 = parseItem.findItemUsed(wordArray, listOfItems, listOfFeatures_dict[currentRoom])
+		item1 = parseItem.findItemUsed(wordArray, listOfItems, listOfFeatures)
 		# Temporary bypass.  Should reorganize since this is so messy.
 		# Check if item is a feature, and if so, check if command matches a verb.  If so, category = "do"
 		if (item1 in featureDict):
@@ -200,27 +201,28 @@ def getInput(lineInput, currentRoom):
 			for verb in actionsList:
 				if (command == verb):
 					category = "do"
-					return executeCommand(wordArray, "do", wordArray[1], "none", listOfItems, listOfFeatures_dict[currentRoom], currentRoom)
+					return executeCommand(wordArray, "do", wordArray[1], "none", listOfItems, listOfFeatures, currentRoom)
 		
 		# Two-word command
 		if (len(wordArray) > 2):
 			# Create a second string / array to skip over first known item and find the second
 			removedItem1 = newString.replace(item1, ' ')
 			wordArray2 = removedItem1.split(' ')
-			item2 = parseItem.findItemUsed(wordArray2, listOfItems, listOfFeatures_dict[currentRoom])
+			item2 = parseItem.findItemUsed(wordArray2, listOfItems, listOfFeatures)
 			#print "Item1: " + item1 + " Item 2: " + item2
 			if (item2 != "invalid"):
 				# not sure what to do with the preposition function yet, or if it even belongs here
 				preposition = parsePreposition.identify(wordArray, item1, item2)
-		return executeCommand(wordArray, category, item1, item2, listOfItems, listOfFeatures_dict[currentRoom], currentRoom)
+		return executeCommand(wordArray, category, item1, item2, listOfItems, listOfFeatures, currentRoom)
 
 
-'''
+
 # Update to run main function for parseCommands.py separately from main.py
 if __name__ == "__main__":
-   print 'Starting the script.'
-   keepLooping = True
-	while (keepLooping):
+	print 'Starting the script.'
+	keepLooping = True
+	while (keepLooping != "exit"):
 		userInput = raw_input (": ")
-		keepLooping = getInput(userInput)
-'''
+		keepLooping = getInput(userInput, 1)
+		print "Code received: " + str(keepLooping)
+
