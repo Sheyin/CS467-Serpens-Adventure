@@ -1,0 +1,10 @@
+{
+    "name": "keys",
+    "synonyms": [],
+    "desc": "A key ring with two keys on it. One is a dull brass color and the other key is a shiny silver.", 
+    "notInInv": "You don't have any keys.", 
+    "inRoom": "There are some keys here.", 
+    "take": "You take the keys.", 
+    "notAvail": "You don't see any keys to take.", 
+    "drop": "You drop the keys." 
+}

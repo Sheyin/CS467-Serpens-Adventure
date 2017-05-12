@@ -1,0 +1,10 @@
+{
+    "name": "board",
+    "synonyms": [],
+    "desc": "A handsome, though splintery, board you tore off a bench. It extends your reach and gives nasty splinters.", 
+    "notInInv": "You don't have a board.", 
+    "inRoom": "There is a board here.", 
+    "take": "You carefully take the board. This may come in handy later!", 
+    "notAvail": "You don't see a board to take.", 
+    "drop": "You drop the board." 
+}

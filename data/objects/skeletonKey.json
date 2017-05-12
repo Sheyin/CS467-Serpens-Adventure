@@ -1,0 +1,10 @@
+{
+    "name": "skeleton key",
+    "synonyms": [],
+    "desc": "A skeleton key.", 
+    "notInInv": "You don't have a skeleton key.", 
+    "inRoom": "There is a skeleton key here.", 
+    "take": "You take the skeleton key.", 
+    "notAvail": "You don't see a skeleton key to take.", 
+    "drop": "You drop the skeleton key." 
+}

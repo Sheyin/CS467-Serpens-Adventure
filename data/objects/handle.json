@@ -1,0 +1,10 @@
+{
+    "name": "handle",
+    "synonyms": [],
+    "desc": "A metal handle.", 
+    "notInInv": "You don't have a handle.", 
+    "inRoom": "There is a handle here.", 
+    "take": "You take the handle.", 
+    "notAvail": "You don't see a handle to take.", 
+    "drop": "You drop the handle." 
+}
