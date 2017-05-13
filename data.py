@@ -18,16 +18,19 @@ from objectC import *
         
 
 def load_rooms ():
+	"This function loads data from each json file that is present in the /data/rooms folder"
+	"For each json file, a RoomClass object is instantiated and populated with data.  The "
+	"objects are then stored in a dictionary 'rooms' that is keyed on the room id"
 	rooms = {}
 	room_list = os.listdir("data/rooms")
-	
-	# Open the files
 
-	n=0
+
 	for room in room_list:
+	
+	#open each file as json	
 		with open("data/rooms/" + room) as json_data:
-		
 			data = json.load(json_data)
+	#instantiate temporary RoomClass object as populate with data
 			current_room = MattsRoomClass(data["name"])
 			current_room.id = data["id"]
 			
@@ -83,23 +86,29 @@ def load_rooms ():
 			current_room.feat6interactComplete = data["feat6interactComplete"] 
 			current_room.feat6interactFail = data["feat6interactFail"]
 			
-
+	# save temporary object in rooms dictionary, keyed on room id
 			rooms[current_room.id] = current_room
 			
-	#test that room objects are in rooms dictionary
+	#test prints for rooms dictionary
 	print rooms[6].id
-	print rooms[1].name
-	print (rooms[6].north + 100)
-	print rooms[1].longDesc
+	print rooms[2].name
+	print (rooms[2].north + 100)
+	print rooms[6].longDesc
 	print rooms[7].longDesc
 
 def load_objects ():
+	"This function loads data from each json file that is present in the /data/objects folder"
+	"For each json file, an ObjectClass object is instantiated and populated with data.  The "
+	"objects are then stored in a dictionary 'objects' that is keyed on the object name"
 	objects = {}
 	object_list = os.listdir("data/objects")
 	
 	for object in object_list:
+
+	#open each file as json	
 		with open("data/objects/" + object) as json_data:
-		
+	
+	#instantiate temporary ObjectClass object as populate with data
 			data = json.load(json_data)
 			current_object = MattsObjectClass(data["name"])
 			current_object.name = data["name"]
@@ -112,16 +121,17 @@ def load_objects ():
 			current_object.drop = data["drop"]
 			
 
-#add object to dictionary (object name is dictionary key)
+	#add object to dictionary (object name is dictionary key)
 
 			objects[current_object.name] = current_object
 
 	
-
+	#test prints for objects dictionary
 	print objects["template"].name
 	print objects["smallKey"].name
 	print objects["gun"].name
 	print objects["gun"].synonyms[1]
+	print objects["board"].name
 	
 
 			
