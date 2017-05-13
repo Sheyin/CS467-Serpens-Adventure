@@ -10,6 +10,7 @@ import room
 import objectC
 import gamestate
 import parseCommands
+#import data
 #[END IMPORTS]
 
 #[BEGIN LAUNCH]
@@ -108,6 +109,11 @@ def playGame(userSelection):
 		#PENDING - Load game state with saved variables {Data dev}
 
 	#PENDING - Load room files {Data dev}
+	#data.load_rooms() - not working 
+	#testID = rooms[1].id
+	#print testID - not working, type error
+	#brig = rooms[1] - not working, type error
+
 
 	#PENDING - Load object files {Data dev}
 
@@ -207,6 +213,125 @@ def playGame(userSelection):
 					print examination.feat1desc 
 				else: #After interaction
 					print examination.feat1interactComplete
+
+			elif userInput == "2": #Interact with feature 1 
+				#Brig
+				if currentState.currRoom == 1:
+					print brig.feat1interactSuccess
+					currentState.rm01f1 = 1 #Update to interaction complete
+				#Storage
+				elif currentState.currRoom == 2:
+					if currentState.obj1Loc == 99: #If have board
+						print storage.feat1interactSuccess
+						currentState.rm02f1 = 1 #Update to interaction complete
+						currentState.rm02o1 = 1 #Handle discovered
+					else:
+						print storage.feat1interactFail
+				#Hallway
+				elif currentState.currRoom == 3:
+					print hallway.feat1interactSuccess
+					currentState.rm03f1 = 1 #Update to interaction complete
+				#Observation
+				elif currentState.currRoom == 4:
+					print observation.feat1interactSuccess
+					currentState.rm04f1 = 1 #Update to interaction complete
+				#Examination
+				elif currentState.currRoom == 5:
+					print examination.feat1interactSuccess
+					currentState.rm05f1 = 1 #Update to interaction complete
+
+			elif userInput == "3": #Look at feature 2 - BENCH / BARRED DOOR / PAPER / TABLE / BARRED WINDOW
+			   #Brig
+			   if currentState.currRoom == 1:
+			      if currentState.rm01f2 == 0: #Before interaction
+			         print brig.feat2desc 
+			      else: #After interaction
+			         print brig.feat2interactComplete
+			   #Storage
+			   elif currentState.currRoom == 2:
+			      if currentState.rm02f2 == 0: #Before interaction
+			         print storage.feat2desc 
+			      else: #After interaction
+			         print storage.feat2interactComplete
+			   #Hallway
+			   elif currentState.currRoom == 3:
+			      if currentState.rm03f2 == 0: #Before interaction
+			         print hallway.feat2desc 
+			      else: #After interaction
+			         print hallway.feat2interactComplete
+			   #Observation
+			   elif currentState.currRoom == 4:
+			      if currentState.rm04f2 == 0: #Before interaction
+			         print observation.feat2desc 
+			      else: #After interaction
+			         print observation.feat2interactComplete
+			   #Examination
+			   elif currentState.currRoom == 5:
+			      if currentState.rm05f2 == 0: #Before interaction
+			         print examination.feat2desc 
+			      else: #After interaction
+			         print examination.feat2interactComplete
+
+			elif userInput == "4": #Interact with feature 2
+			   #Brig
+			   if currentState.currRoom == 1:
+			      print brig.feat2interactSuccess
+			      currentState.rm01f2 = 1 #Update to interaction complete
+			      currentState.rm01o1 = 1 #Board discovered
+			   #Storage
+			   elif currentState.currRoom == 2:
+			      print storage.feat2interactSuccess
+			      currentState.rm02f2 = 1 #Update to interaction complete
+			   #Hallway
+			   elif currentState.currRoom == 3:
+			      print hallway.feat2interactSuccess
+			      currentState.rm03f2 = 1 #Update to interaction complete
+			   #Observation
+			   elif currentState.currRoom == 4:
+			      print observation.feat2interactSuccess
+			      currentState.rm04f2 = 1 #Update to interaction complete
+			   #Examination
+			   elif currentState.currRoom == 5:
+			      print examination.feat2interactSuccess
+			      currentState.rm05f2 = 1 #Update to interaction complete
+
+			elif userInput == "5": #Look at object "board"
+			   if currentState.obj1Loc ==99: #In iventory
+			      print board.desc
+			   else: #Not in inventory
+			      print board.notInInv
+
+			elif userInput == "6": #Look at feature 3 - WINDOW / METAL DOOR / DOOR / MIRROR / WINDOW
+		         #Brig
+		         if currentState.currRoom == 1:
+		            if currentState.rm01f3 == 0: #Before interaction
+		               print brig.feat3desc 
+		            else: #After interaction
+		               print brig.feat3interactComplete
+		         #Storage
+		         if currentState.currRoom == 2:
+		            if currentState.rm02f3 == 0: #Before interaction
+		               print storage.feat3desc 
+		            else: #After interaction
+		               print storage.feat3interactComplete
+		         #Hallway
+		         elif currentState.currRoom == 3:
+		            if currentState.rm03f3 == 0: #Before interaction
+		               print hallway.feat3desc 
+		            else: #After interaction
+		               print hallway.feat3interactComplete
+		         #Observation
+		         elif currentState.currRoom == 4:
+		            if currentState.rm04f3 == 0: #Before interaction
+		               print observation.feat3desc 
+		            else: #After interaction
+		               print observation.feat3interactComplete
+		         #Examination
+		         elif currentState.currRoom == 5:
+		            if currentState.rm05f3 == 0: #Before interaction
+		               print examination.feat3desc 
+		            else: #After interaction
+		               print examination.feat3interactComplete
 
 	  	#PEND ADD REST OF ENGINE CODE
 
