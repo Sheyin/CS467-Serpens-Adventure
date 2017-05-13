@@ -15,13 +15,13 @@ from objectC import *
 
 
 
-        
+rooms = {}        
 
 def load_rooms ():
 	"This function loads data from each json file that is present in the /data/rooms folder"
 	"For each json file, a RoomClass object is instantiated and populated with data.  The "
 	"objects are then stored in a dictionary 'rooms' that is keyed on the room id"
-	rooms = {}
+#	rooms = {}
 	room_list = os.listdir("data/rooms")
 
 
@@ -91,16 +91,18 @@ def load_rooms ():
 			
 	#test prints for rooms dictionary
 	print rooms[6].id
-	print rooms[2].name
-	print (rooms[2].north + 100)
+	print rooms[6].name
+	print (rooms[6].north + 100)
 	print rooms[6].longDesc
 	print rooms[7].longDesc
 
+objects = {}
+	
 def load_objects ():
 	"This function loads data from each json file that is present in the /data/objects folder"
 	"For each json file, an ObjectClass object is instantiated and populated with data.  The "
 	"objects are then stored in a dictionary 'objects' that is keyed on the object name"
-	objects = {}
+#	objects = {}
 	object_list = os.listdir("data/objects")
 	
 	for object in object_list:
