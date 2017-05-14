@@ -83,7 +83,12 @@ def main(input, currentRoom):
 			feature = items.findLocation(input, features)
 			if feature:
 				pos = features.index(feature) + 1
-				key = "feat" + str(pos) + "_look"
+				commandUsedSpecified = checkFeatureActions(input, pos, feature, featureDict)
+				# This is an override if examine is used as an interaction rather than look
+				if commandUsedSpecified:
+					key = "feat" + str(pos) + "_do"
+				else: 
+					key = "feat" + str(pos) + "_look"
 				return utils.engine_codes_dict[key]
 			else:
 				print "I can't do that."
