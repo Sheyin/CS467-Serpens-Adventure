@@ -46,7 +46,6 @@ def main(input, currentRoom):
 		direction = utils.translateRoom(input, currentRoom)
 		if (direction == -1):
 			print "I can't go that way."
-			return -1
 		else:
 			key = "go_" + str(direction)
 			return utils.engine_codes_dict[key]
@@ -94,34 +93,48 @@ def main(input, currentRoom):
 		item = items.identifyItem(input, listOfItems)
 
 		# Check if the command was one specific to operating upon a feature (listed in json)
-		if feature and not item:
+		if feature:
 			pos = features.index(feature) + 1
 			commandUsedSpecified = checkFeatureActions(input, pos, feature, featureDict)
-			if commandUsedSpecified:
-				return commandUsedSpecified
-			# Some recognized command like move, hit, etc. on a feature but not added to json
-			elif command: 
-				print "I'm not sure if I can " + command + " the " + feature + "."
 
-		# Item and feature both mentioned in same sentence.
-		# This might let just about anything through in its current state
-		elif item and feature:
-			# Hard coded until we get this logic figured out in a more standardized way
-			if item == 'keys' and feature == 'door':
-				return "10"
+			# Some item and feature both mentioned in same sentence with a legal action.
+			if item == 'skeleton key' and feature in ['chest', 'shiny lock', 'lock'] and (command in ['move', 'use'] or commandUsedSpecified):
+				key = "feat" + str(pos) + "_do"
+				return utils.engine_codes_dict[key]
 
-			# _hopefully_ the player used the correct item and feature and some meaningful word
-			pos = features.index(feature) + 1
-			key = "feat" + str(pos) + "_do"
-			return utils.engine_codes_dict[key]
+			elif item == 'board' and feature in ['window', 'locker'] and (command in ['move', 'use'] or commandUsedSpecified):
+				key = "feat" + str(pos) + "_do"
+				return utils.engine_codes_dict[key]
+
+			elif item == 'keys' and feature in ['door'] and (command in ['use'] or commandUsedSpecified):
+				key = "feat" + str(pos) + "_do"
+				return utils.engine_codes_dict[key]
+
+			# Unrecognized combination of item, feature, command
+			elif command and item:
+				print "I'm not sure if I can " + command + " the " + item + " on the " + feature + "."
+
+			# Feature mentioned, no item; no legal action from json
+			else:
+				# This just lets any specified action on a feature through - maybe too vague?
+				if commandUsedSpecified:
+					return commandUsedSpecified
+				if command:
+					print "I'm not sure if I can " + command + " the " + feature + "."
+				else:
+					print "I don't think I can do that."
+				
 
 		# Item but no feature
 		elif item and not feature:
 			# Hard coded until we get this logic figured out in a more standardized way
 			# listOfItems = ['board', 'keys', 'handle', 'skeleton key']
-			if command == 'use' and item == 'board':
+			if item == 'board' and command in ['pull']:
+				# This allows the "pull board" command
+				return "4"
+			elif item == 'board' and command in ['use', 'move']:
 				removedItem1 = input.replace(item, ' ')
-				item2 = items.identifyItem(input, listOfItems)
+				item2 = items.identifyItem(removedItem1, listOfItems)
 				if item == 'board' and item2 == 'keys':
 					return "7"
 
@@ -139,6 +152,6 @@ if __name__ == "__main__":
 	keepLooping = True
 	while (keepLooping != "exit"):
 		userInput = raw_input (": ")
-		keepLooping = main(userInput, 3)
+		keepLooping = main(userInput, 1)
 		print "Code received: " + str(keepLooping)
 

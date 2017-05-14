@@ -16,7 +16,8 @@ synonyms =  {
 	'take': 'take', 'pick up': 'pick up', 'get': 'get',
 	'drop': 'drop', 'remove': 'drop',
 	'use': 'use', 'open': 'use',
-	'move': 'move', 'shift': 'move', 'search': 'move',
+	'move': 'move', 'shift': 'move', 'search': 'move', 
+	'pull': 'pull',
 	'hit': 'hit', 'kick': 'hit', 'punch': 'hit'
 }
 
