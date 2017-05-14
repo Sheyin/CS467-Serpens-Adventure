@@ -98,19 +98,19 @@ def main(input, currentRoom):
 			commandUsedSpecified = checkFeatureActions(input, pos, feature, featureDict)
 
 			# Some item and feature both mentioned in same sentence with a legal action.
-			if item == 'skeleton key' and feature in ['chest', 'shiny lock', 'lock'] and (command in ['move', 'use'] or commandUsedSpecified):
+			if item == 'board' and feature in ['window', 'locker'] and (command in ['move', 'use'] or commandUsedSpecified):
 				key = "feat" + str(pos) + "_do"
 				return utils.engine_codes_dict[key]
 
-			elif item == 'board' and feature in ['window', 'locker'] and (command in ['move', 'use'] or commandUsedSpecified):
-				key = "feat" + str(pos) + "_do"
-				return utils.engine_codes_dict[key]
-
-			elif item == 'keys' and feature in ['door'] and (command in ['use'] or commandUsedSpecified):
+			elif item == 'keys' and feature in ['door', 'chest'] and (command in ['use'] or commandUsedSpecified):
 				key = "feat" + str(pos) + "_do"
 				return utils.engine_codes_dict[key]
 
 			elif item == 'handle' and feature in ['metal door'] and (command in ['use'] or commandUsedSpecified):
+				key = "feat" + str(pos) + "_do"
+				return utils.engine_codes_dict[key]
+
+			elif item == 'skeleton key' and feature in ['trap door', 'trapdoor'] and (command in ['use'] or commandUsedSpecified):
 				key = "feat" + str(pos) + "_do"
 				return utils.engine_codes_dict[key]
 
@@ -139,14 +139,18 @@ def main(input, currentRoom):
 			elif item == 'board' and command in ['use', 'move']:
 				removedItem1 = input.replace(item, ' ')
 				item2 = items.identifyItem(removedItem1, listOfItems)
-				if item == 'board' and item2 == 'keys':
+				if item2 == 'keys':
 					return "7"
+			elif item == 'keys' and (command in ['use'] or commandUsedSpecified):
+				for word in ['shiny lock', 'lock']:
+					if word in input:
+						return "10"
 
 			print "I'm not sure how use the " + item + " that way."
 
 		# No item or feature, unrecognized command
 		else: 
-			print "I don't understand that command"
+			print "I don't understand that command."
 
 
 
