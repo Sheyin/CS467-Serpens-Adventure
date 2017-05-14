@@ -7,7 +7,7 @@
 
 #[BEGIN IMPORTS]
 import engine
-import enginetest    #Engine testing functions
+#import enginetest    #Engine testing functions
 #[END IMPORTS]
 
 #[BEGIN MAIN FUNCTION]
