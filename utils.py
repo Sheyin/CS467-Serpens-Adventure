@@ -1,4 +1,26 @@
 import re
+# These are misc. functions that are parsing-related
+# Producing a feature list / dictionary, room connection list, anything hard coded
+
+# Probably better to centralize this so we aren't maintaining multiple code lists.
+engine_codes_dict = {
+	# Items
+	'board_look': "5", 'board_take': "12", 'board_drop': "14", 
+	'keys_look': "8", 'keys_take': "13", 'keys_drop': "15",
+	'handle_look': "32", 'handle_take': "28", 'handle_drop': "29",
+	'skeleton key_look': "33", 'skeleton key_take': "30", 'skeleton key_drop': "31",
+	# Features
+	'feat1_look': "1", 'feat1_do': "2",	'feat2_look': "3", 'feat2_do': "4",
+	'feat3_look': "6", 'feat3_do': "7",	'feat4_look': "9", 'feat4_do': "10",
+	'feat5_look': "18", 'feat5_do': "19", 'feat6_look': "20", 'feat6_do': "21",
+	# Movement
+	'go_north': "22", 'go_south': "23", 'go_west': "24", 'go_east': "25",
+	'go_up': "26", 'go_down': "27",
+	# Other
+	'inventory': "17", 'look_room': "11", 'help': "16",
+	'save': 'save', 'load': 'load', 'exit': 'exit', 'look_room': '11'
+}
+
 
 # Python-3-safe way of getting list of keys: k = list(b.keys())
 # Python-2 way of getting list of keys: k = b.keys()
@@ -93,7 +115,7 @@ def translateRoom(input, currentRoom):
 	# Search each tuple to see if the input word matches some direction
 	for dirPos in range (0, len(connectedList)):
 		for namePos in range (0, len(connectedList[dirPos])):
-			if (input == connectedList[dirPos][namePos]):
+			if connectedList[dirPos][namePos] in input:
 				return connectedList[dirPos][0]
 	# Unable to match destination with a room
 	return -1
@@ -106,12 +128,12 @@ def translateRoom(input, currentRoom):
 def getRoomInfo(currentRoom):
 	# Hard-coded stuff.  Hopefully I got the directions right.
 	roomConnections1 = [('north', 'hallway', 'door', 'out'), ('south',), ('west',), ('east',), ('up', 'upstairs'), ('down', 'downstairs')]
-	roomConnections2 = [('north',), ('south',), ('west',), ('east', 'hallway'), ('up', 'upstairs'), ('down', 'downstairs')]
-	roomConnections3 = [('north', 'examination'), ('south', 'brig'), ('west', 'storage'), ('east', 'hallway', 'observation'), ('up', 'ladder', 'deck', 'upstairs'), ('down', 'downstairs')]
-	roomConnections4 = [('north',), ('south',), ('west', 'hallway'), ('east',), ('up', 'upstairs'), ('down', 'downstairs')]
-	roomConnections5 = [('north',), ('south', 'hallway'), ('west',), ('east',), ('up', 'upstairs'), ('down', 'downstairs')]
+	roomConnections2 = [('north',), ('south',), ('west',), ('east', 'hallway', 'door'), ('up', 'upstairs'), ('down', 'downstairs')]
+	roomConnections3 = [('north', 'examination', 'entryway'), ('south', 'brig', 'barred door'), ('west', 'storage', 'wooden door'), ('east', 'observation', 'metal door'), ('up', 'ladder', 'trap door', 'upstairs'), ('down', 'downstairs')]
+	roomConnections4 = [('north',), ('south',), ('west', 'hallway', 'door'), ('east',), ('up', 'upstairs'), ('down', 'downstairs')]
+	roomConnections5 = [('north',), ('south', 'hallway', 'entryway'), ('west',), ('east',), ('up', 'upstairs'), ('down', 'downstairs')]
 	allRooms = [roomConnections1, roomConnections2, roomConnections3, roomConnections4, roomConnections5]
-	return allRooms[currentRoom + 1]
+	return allRooms[currentRoom - 1]
 
 
 # Reference: Python for Informatics (http://www.py4inf.com/)
