@@ -10,7 +10,7 @@ import room
 import objectC
 import gamestate
 import parse
-import data
+#import data
 #[END IMPORTS]
 
 #[BEGIN LAUNCH]
@@ -268,8 +268,8 @@ def playGame(userSelection):
 		"You try to lift the trap door. It looks heavy but shouldn't be something you can't open. You try pulling the handle and it doesn't budge - locked! The door has an old fashioned looking lock on it. Distressed, you climb back down the ladder.")
 
 	observation = room.RoomClass(4, "Observation Room", "null", "null", "null", 3, "null", "null",
-		"You are in a well lit room with neat rows of bottles stacked on a large shelf. Papers are neatly stacked on a large desk that sits just below a barred window. There is another window across from the barred window. There is a chest tucked in a corner with a shiny lock on it. There is a metal door to the East.", 
-		"You are in a room with neat rows of bottles stacked on a large shelf. Papers are neatly stacked on a large desk that sits just below a barred window. There is another window in the room opposite the barred window. There is a chest with a shiny lock on it. There is a door to the East.",
+		"You are in a well lit room with neat rows of bottles stacked on a large shelf. Papers are neatly stacked on a large desk that sits just below a barred window. There is another window across from the barred window. There is a chest tucked in a corner with a shiny lock on it. There is a metal door to the West.", 
+		"You are in a room with neat rows of bottles stacked on a large shelf. Papers are neatly stacked on a large desk that sits just below a barred window. There is another window in the room opposite the barred window. There is a chest with a shiny lock on it. There is a door to the West.",
 		"door", 
 		"A metal door.",
 		"go, open",
@@ -586,6 +586,8 @@ def playGame(userSelection):
 					print hallway.feat3interactSuccess
 					currentState.rm03f3 = 1 #Update to interaction complete
 					currentState.obj3Loc = 100 #Update handle to permanently used
+				elif currentState.obj3Loc == 100:
+					print hallway.feat3interactComplete
 				else:
 					print hallway.feat3interactFail
 			#Observation
@@ -932,7 +934,7 @@ def playGame(userSelection):
 				print "You cannot go that way."
 
 			elif currentState.currRoom == 3: #Lower Hallway
-				print "TO DO: Go UP to MIDDLE DECK"
+				print "TO DO: Go UP to MIDDLE DECK - need to add conditions to exit"
 
 			elif currentState.currRoom == 4: #Observation
 				print "You cannot go that way."
