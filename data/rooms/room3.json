@@ -6,7 +6,7 @@
     "east": 4, 
     "west": 2, 
     "up": 6, 
-    "down": "null",
+    "down": "",
 	"longDesc": "You are in a narrow hallway.  To the north there is an entry way to another room.  To the south there is a wooden barred door. To the east there is a metal door. To the west there is a wooden door. There is a metal ladder in the middle of the room that leads up to a trap door in the ceiling.",
     "shortDesc": "You are in a hallway. There are doors to the south, east, and west. To the north there is an entry way to another room. There is a metal ladder in the middle of the room that leads up to a trap door.",
     "feat1": "entryway",
