@@ -109,11 +109,11 @@ def playGame(userSelection):
 		#PENDING - Load game state with saved variables {Data dev}
 
 	#PENDING - Load room files {Data dev}
-	#rooms = data.load_rooms()  
+	#rooms = {} 
+	#data.load_rooms() 
+	#print rooms[1].name
+	#print rooms[1].name
 	#brig = rooms[1] 
-
-
-	#PENDING - Load object files {Data dev}
 
 	board = objectC.ObjectClass("board", 
 		"A handsome, though splintery, board you tore off a bench. It extends your reach and gives nasty splinters.",
@@ -262,7 +262,7 @@ def playGame(userSelection):
 		"Ladder Fail - this should never display", 
 		"trap door", 
 		"A heavy trap door in the ceiling with a handle on it. There is an old fashioned looking lock on the door.",
-		"go, open",
+		"go, open, unlock",
 		"You put the skeleton key into the lock and turn it. There is a heavy click. You try the handle and, with much effort, it grinds open. You are able to lift the door.",
 		"You lift the heavy trap door and it opens.",
 		"You try to lift the trap door. It looks heavy but shouldn't be something you can't open. You try pulling the handle and it doesn't budge - locked! The door has an old fashioned looking lock on it. Distressed, you climb back down the ladder.")
@@ -278,13 +278,13 @@ def playGame(userSelection):
 		"Metal door fail - this should never display",
 		"barred window", 
 		"A barred window that looks into another room.",
-		"examine",
+		"examine, open, search, check",
 		"You look through the barred window and see a room with straw on the floor and a broken bench in the corner.",
 		"A barred window that looks into a room with straw on the floor and a broken bench in the corner.",
 		"Barred window fail - this should never display",
 		"window", 
 		"An odd window made of a single pane of glass. It reflects oddly in the light.",
-		"examine",
+		"examine, open, search, check",
 		"You step up to the window and gaze through it. It reflects the light in the room a little strangely. You are looking into another room with a table suspended from the ceiling from chains.",
 		"A window that looks into a room with a table suspended from the ceiling by chains.",
 		"Window fail - this should never display",
@@ -296,13 +296,13 @@ def playGame(userSelection):
 		"You try the shiny lock, however it's, well, locked.",
 		"bottles", 
 		"A shelf lined with neat rows of tinted bottles.",
-		"examine",
+		"examine, read, check",
 		"You try to pick one up and your hand bumps into what could possibly be the clearest glass you've ever seen. The entire shelf is encased. Undeterred, you peruse the shelf and see a label on one of the bottles. It reads: burundanga.",
 		"A shelf encased in glass with neat rows of tinted bottles.  One of them contains burundanga.",
 		"Bottles fail - this should never display", 
 		"papers", 
 		"A neat stack of papers on the desk. The first page appears to be of some type of report.",
-		"read, examine",
+		"read, examine, check",
 		"You look over the cover page of the report. It's in a language you don't recognize. Under the title, a small penciled in footnote reads: Burundanga, Myth or Mind Control Drug? Shuddering, you can't remember how you got here in the first place. Reading that makes the hair on the back of your neck stand up.",
 		"A report on a drug called burundanga. It's in a language you don't recognize.",
 		"Papers Fail - this should never display")
@@ -312,19 +312,19 @@ def playGame(userSelection):
 		"You are in a room with a metal table suspended in the air by chains. There is a mirror on the wall in the corner. There is an entryway to the South.",
 		"entryway", 
 		"An entryway to another room. You look through the entryway and see it opens up into a hallway. There are markings on the side of the entryway.",
-		"examine",
+		"examine, check",
 		"You look closer at the markings on the entryway. They end on this side abruptly. It appears that whatever caught on the wall was being taken into this room.",
 		"An entryway to another room. You look through the entryway and see it opens up into a hallway. There are markings on the side of the entryway that end abruptly.",
 		"Entryway Fail - this should never display",
 		"table", 
 		"A large, heavy looking table hangs from the ceiling suspended by thick chains. There is something carved into one corner.",
-		"examine",
+		"examine, check",
 		"You look more closely at the carving. It resembles a stick figure drawing of a person except the head isn't the right shape. It's far more oblong and larger than would normally be drawn. Perhaps the artist was in a hurry?",
 		"A large, heavy looking table hangs from the ceiling suspended by thick chains. There is a carving of an odd stick figure with a large, oblong head in one corner.",
 		"Table Fail - this should never display",
 		"mirror", 
 		"A mirror hangs on the wall. It is quite large and appears to be permanently affixed to the wall.",
-		"examine, gaze",
+		"examine, gaze, check",
 		"You examine the mirror more closely.  On closer inspection, it's not permanently affixed to the wall, it is actually built into the wall. It seems an odd place for a mirror.",
 		"A large mirror is built into the wall.",
 		"Mirror fail - this should never display",
@@ -347,6 +347,9 @@ def playGame(userSelection):
 		"F6 interaction complete",
 		"F6 interaction fail")
 
+
+
+	#PENDING - Load object files {Data dev}
 
 	#Parse user input and return code for engine action {Parsing Dev}
 
@@ -643,7 +646,7 @@ def playGame(userSelection):
 
 		elif userInput == "11": #General look around room
 			if currentState.currRoom == 1:
-				print brig.shortDesc
+				print brig.longDesc
 				#Checks objects and if they are DISCOVERED and LOCATED IN ROOM then displays notice they are there
 				#Object 1 - board
 				if currentState.rm01o1 == 1 and currentState.obj1Loc == 1:
@@ -658,7 +661,7 @@ def playGame(userSelection):
 				if currentState.rm04o1 == 1 and currentState.obj4Loc == 1:
 					print skeletonKey.inRoom
 			elif currentState.currRoom == 2:
-				print storage.shortDesc
+				print storage.longDesc
 				#Checks objects and if they are DISCOVERED and LOCATED IN ROOM then displays notice they are there
 				#Object 1 - board
 				if currentState.rm01o1 == 1 and currentState.obj1Loc == 2:
@@ -674,7 +677,7 @@ def playGame(userSelection):
 					print skeletonKey.inRoom
 
 			elif currentState.currRoom == 3:
-				print hallway.shortDesc
+				print hallway.longDesc
 				#Checks objects and if they are DISCOVERED and LOCATED IN ROOM then displays notice they are there
 				#Object 1 - board
 				if currentState.rm01o1 == 1 and currentState.obj1Loc == 3:
@@ -690,7 +693,7 @@ def playGame(userSelection):
 					print skeletonKey.inRoom
 
 			elif currentState.currRoom == 4:
-				print observation.shortDesc
+				print observation.longDesc
 				#Checks objects and if they are DISCOVERED and LOCATED IN ROOM then displays notice they are there
 				#Object 1 - board
 				if currentState.rm01o1 == 1 and currentState.obj1Loc == 4:
@@ -706,7 +709,7 @@ def playGame(userSelection):
 					print skeletonKey.inRoom
 
 			elif currentState.currRoom == 5:
-				print examination.shortDesc
+				print examination.longDesc
 				#Checks objects and if they are DISCOVERED and LOCATED IN ROOM then displays notice they are there
 				#Object 1 - board
 				if currentState.rm01o1 == 1 and currentState.obj1Loc == 5:
