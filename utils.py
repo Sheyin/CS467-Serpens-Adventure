@@ -56,7 +56,7 @@ def getFeaturesDict(currentRoom):
 	for itemPos in range (0, len(featuresList)):
 		featuresDict[featuresList[itemPos]] =  actionsList[itemPos]
 
-	return featuresDict
+	return (featuresList, featuresDict)
 
 # When supplied a room number, it picks out the appropriate connections
 # and returns it in a list.  Ordering is significant.

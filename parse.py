@@ -24,12 +24,11 @@ def checkFeatureActions(input, pos, feature, featureDict):
 
 
 # This receives input from engine/engineTest, validates and returns an engine code
-def getInput(input, currentRoom):
+def main(input, currentRoom):
 	command = commands.identify(input)
 
 	# Room-specific list of features as keys and recognized actions as entries
-	featureDict = utils.getFeaturesDict(currentRoom)
-	features = featureDict.keys()
+	features, featureDict = utils.getFeaturesDict(currentRoom)
 
 	# Hard coded list of legal items (for now)
 	listOfItems = ['board', 'keys', 'handle', 'skeleton key']
@@ -140,6 +139,6 @@ if __name__ == "__main__":
 	keepLooping = True
 	while (keepLooping != "exit"):
 		userInput = raw_input (": ")
-		keepLooping = getInput(userInput, 3)
+		keepLooping = main(userInput, 3)
 		print "Code received: " + str(keepLooping)
 
