@@ -142,9 +142,8 @@ def main(input, currentRoom):
 				if item2 == 'keys':
 					return "7"
 			elif item == 'keys' and (command in ['use'] or commandUsedSpecified):
-				for word in ['shiny lock', 'lock']:
-					if word in input:
-						return "10"
+				if 'lock' in input:
+					return "10"
 
 			print "I'm not sure how use the " + item + " that way."
 
