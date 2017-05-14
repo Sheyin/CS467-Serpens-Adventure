@@ -110,6 +110,10 @@ def main(input, currentRoom):
 				key = "feat" + str(pos) + "_do"
 				return utils.engine_codes_dict[key]
 
+			elif item == 'handle' and feature in ['metal door'] and (command in ['use'] or commandUsedSpecified):
+				key = "feat" + str(pos) + "_do"
+				return utils.engine_codes_dict[key]
+
 			# Unrecognized combination of item, feature, command
 			elif command and item:
 				print "I'm not sure if I can " + command + " the " + item + " on the " + feature + "."
