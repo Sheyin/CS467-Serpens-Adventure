@@ -10,7 +10,8 @@ import room
 import objectC
 import gamestate
 import parse
-#import data
+import data
+from data import *
 #[END IMPORTS]
 
 #[BEGIN LAUNCH]
@@ -110,8 +111,8 @@ def playGame(userSelection):
 
 	#PENDING - Load room files {Data dev}
 	#rooms = {} 
-	#data.load_rooms() 
-	#print rooms[1].name
+	data.load_rooms() 
+	print "\n\n*****Debug: This is imported from json files: room names: " + rooms[1].name + " " + rooms[2].name + " " + rooms[3].name + " " + rooms[4].name + " " + rooms[5].name + "\n\n"
 	#print rooms[1].name
 	#brig = rooms[1] 
 
