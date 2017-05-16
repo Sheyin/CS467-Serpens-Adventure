@@ -90,11 +90,11 @@ def load_rooms ():
 			rooms[current_room.id] = current_room
 			
 	#test prints for rooms dictionary
-	print rooms[6].id
-	print rooms[6].name
-	print (rooms[6].north + 100)
-	print rooms[6].longDesc
-	print rooms[7].longDesc
+	#print rooms[6].id
+	#print rooms[6].name
+	#print (rooms[6].north + 100)
+	#print rooms[6].longDesc
+	#print rooms[7].longDesc
 
 objects = {}
 	
@@ -129,11 +129,11 @@ def load_objects ():
 
 	
 	#test prints for objects dictionary
-	print objects["template"].name
-	print objects["smallKey"].name
-	print objects["gun"].name
-	print objects["gun"].synonyms[1]
-	print objects["board"].name
+	#print objects["template"].name
+	#print objects["smallKey"].name
+	#print objects["gun"].name
+	#print objects["gun"].synonyms[1]
+	#print objects["board"].name
 	
 
 			
