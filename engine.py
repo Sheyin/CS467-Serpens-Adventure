@@ -120,40 +120,7 @@ def playGame(userSelection):
 	observation = rooms[4]
 	examination = rooms[5]
 
-
-	board = objectC.ObjectClass("board", 
-		"A handsome, though splintery, board you tore off a bench. It extends your reach and gives nasty splinters.",
-		"You don't have a board.",
-		"There is a board here.",
-		"You carefully take the board. This may come in handy later!",
-		"You don't see a board to take.",
-		"You drop the board.")
-	
-	keys = objectC.ObjectClass("keys", 
-		"A key ring with two keys on it. One is a dull brass color and the other key is a shiny silver.",
-		"You don't have any keys.",
-		"There are some keys here.",
-		"You take the keys.",
-		"You don't see any keys to take.",
-		"You drop the keys.")
-
-	handle = objectC.ObjectClass("handle", 
-		"A metal handle.",
-		"You don't have a handle.",
-		"There is a handle here.",
-		"You take the handle.",
-		"You don't see a handle to take.",
-		"You drop the handle.")
-
-	skeletonKey = objectC.ObjectClass("skeleton key", 
-		"A skeleton key.",
-		"You don't have a skeleton key.",
-		"There is a skeleton key here.",
-		"You take the skeleton key.",
-		"You don't see a skeleton key to take.",
-		"You drop the skeleton key.")
-
-	#PENDING - Load object files {Data dev}
+	#Load object files {Data dev}
 	data.load_objects()
 
 	#Rename objects for engine compatibility
@@ -161,17 +128,6 @@ def playGame(userSelection):
 	keys = objects["keys"]
 	handle = objects["handle"]
 	skeletonKey = objects["skeleton key"]
-
-	#Parse user input and return code for engine action {Parsing Dev}
-
-	#[BEGIN TEXT PARSING]
-	#keepLooping = True
-	#while (keepLooping):
-	#	keepLooping = parseCommands.getInput()
-	#[END TEXT PARSING]
-
-	#TEMPORARY - ENGINE PARSING
-	#userInput = raw_input (": ")
 
 	#While loop repeatedly prompts user for input until user requests to load, save, or quit game
 	while userInput not in ['loadgame', 'savegame', 'quit', 'exit']:
@@ -222,7 +178,7 @@ def playGame(userSelection):
 		#Pend input:
 		userInput = raw_input (": ")
 
-		#Parse user input {Parsing Dev}
+		#Parse user input and return code for engine action {Parsing Dev}
 		userInput = parse.main(userInput, currentState.currRoom)
 	  
 		#ENGINE INTERACTIONS BASED ON PARSED USER INPUT
