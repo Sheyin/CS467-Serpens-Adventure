@@ -15,48 +15,45 @@ from objectC import *
 
 objects = {}
 	
-def load_objects ():
+def load_gamestate ():
 	"This function loads data from each json file that is present in the /data/objects folder"
 	"For each json file, an ObjectClass object is instantiated and populated with data.  The "
 	"objects are then stored in a dictionary 'objects' that is keyed on the object name"
 #	objects = {}
-	object_list = os.listdir("data/gamestate")
+	gs_list = os.listdir("data/gamestate")
 	
-	for object in object_list:
+	for game in gs_list:
 
 	#open each file as json	
-		with open("data/gamestate/" + object) as json_data:
+		with open("data/gamestate/" + game) as json_data:
 	
 	#instantiate temporary ObjectClass object as populate with data
 			data = json.load(json_data)
-			current_object = MattsObjectClass(data["name"])
-			current_object.name = data["name"]
-			current_object.synonyms = data["synonyms"]
-			current_object.desc = data["desc"]
-			current_object.notInInv = data["notInInv"]
-			current_object.inRoom = data["inRoom"]
-			current_object.take = data["take"]
-			current_object.notAvail = data["notAvail"]
-			current_object.drop = data["drop"]
+			current_state = MattsObjectClass(data["name"])
 			
+			
+			current_state.name = data["name"]
+			current_state.currRoom = data["currRoom"]
+			current_state.rm01vis = data["rm01vis"]
+			current_state.rm02vis = data["rm02vis"]
+			current_state.obj1Loc = data["obj1Loc"]
+			current_state.obj2Loc = data["obj2Loc"]
+			current_state.rm01f1 = data["rm01f1"]
+			current_state.rm01f2 = data["rm01f2"]
+		
 
 	#add object to dictionary (object name is dictionary key)
 
-			objects[current_object.name] = current_object
+#			objects[current_object.name] = current_object
 
 	
 	#test prints for objects dictionary
 
-	print objects["gun"].name
-	print objects["gun"].synonyms[1]
-
+	print current_state.rm01f2
 	
-
+		
 			
-			
 
 
-load_objects()
+load_gamestate()
 
-print objects["gun"].name
-print objects["gun"].synonyms[1]

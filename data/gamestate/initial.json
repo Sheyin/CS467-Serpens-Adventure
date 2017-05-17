@@ -1,0 +1,10 @@
+{
+    "name" : 1,
+	"currRoom" : 0, 
+	"rm01vis" : 0,	
+	"rm02vis" : 0,
+	"obj1Loc" : 0,	
+	"obj2Loc" : 0,	
+	"rm01f1" : 0,
+	"rm01f2" : 0
+}
