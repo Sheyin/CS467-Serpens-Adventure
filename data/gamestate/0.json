@@ -1,5 +1,6 @@
 {
     "name" : 1,
+    "saveNum" : "0", 
 	"currRoom" : 0, 
 	"rm01vis" : 0,	
 	"rm02vis" : 0,

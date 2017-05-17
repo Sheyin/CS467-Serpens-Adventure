@@ -114,6 +114,7 @@ class MattsGameStateClass(object):
     def __init__(self, name):
 		#[BEGIN VARIABLES]
 		self.name = ""
+		self.saveNum = ""
 		self.currRoom = "" #Integer of current room player is in, default = 1 
 
    		#Visited (1) or unvisited (0) if room has been visited 

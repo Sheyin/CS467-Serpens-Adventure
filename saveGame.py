@@ -13,23 +13,22 @@ from gamestate import *
 
 currentState = MattsGameStateClass(1)
 	
-def load_gamestate ():
+def load_gamestate (saveNum):
 	"This function loads data from each json file that is present in the /data/gamestate folder"
 	"For each json file, an ObjectClass object is instantiated and populated with data.  The "
 	"objects are then stored in a dictionary 'objects' that is keyed on the object name"
-#	objects = {}
+
 	gs_list = os.listdir("data/gamestate")
 	
-	for game in gs_list:
-
-	#open each file as json	
-		with open("data/gamestate/" + game) as json_data:
+	#open  file as json	
+	with open("data/gamestate/" + saveNum + ".json") as json_data:
 	
 	#instantiate gamestate object and populate with data
 			data = json.load(json_data)
 			global currentState
 			currentState = MattsGameStateClass(data["name"])
 			currentState.name = data["name"]
+			currentState.saveNum = saveNum
 			currentState.currRoom = data["currRoom"]
 			currentState.rm01vis = data["rm01vis"]
 			currentState.rm02vis = data["rm02vis"]
@@ -42,7 +41,9 @@ def load_gamestate ():
 #inside function test print
 	print currentState.rm01f2
 
-load_gamestate()
+load_gamestate("0")
 
 #outside function test print
 print currentState.rm01f2
+print currentState.saveNum
+
