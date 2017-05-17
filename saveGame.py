@@ -10,10 +10,12 @@ import os
 import json
 from room import *
 from objectC import *
+from gamestate import *
 #[END IMPORTS]
 
 
-objects = {}
+#objects = {}
+current_state = MattsGameStateClass(1)
 	
 def load_gamestate ():
 	"This function loads data from each json file that is present in the /data/objects folder"
@@ -29,7 +31,8 @@ def load_gamestate ():
 	
 	#instantiate temporary ObjectClass object as populate with data
 			data = json.load(json_data)
-			current_state = MattsObjectClass(data["name"])
+			global current_state
+			current_state = MattsGameStateClass(data["name"])
 			
 			
 			current_state.name = data["name"]
@@ -56,4 +59,4 @@ def load_gamestate ():
 
 
 load_gamestate()
-
+print current_state.rm01f2
