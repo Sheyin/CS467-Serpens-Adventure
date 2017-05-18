@@ -125,8 +125,13 @@ def playGame(userSelection):
 	data.load_objects()
 
 	#Send room/item info to get format for parsing
-	#featureList, featureDict, itemList, roomList = utils.formatRoomData(room, objects, currentState.currRoom)
-	utils.formatRoomData(rooms, objects, currentState.currRoom)
+	featureList, featureDict, itemList, roomList = utils.formatRoomData(room, objects, currentState.currRoom)
+	#utils.formatRoomData(rooms, objects, currentState.currRoom)
+
+	print featureList
+	print featureDict
+	print itemList
+	print roomList
 
 	#Rename objects for engine compatibility
 	board = objects["board"]

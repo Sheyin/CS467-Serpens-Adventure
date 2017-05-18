@@ -148,41 +148,54 @@ def changeRoomNumbers(roomConnections):
 # rooms, objects = dictionaries; currentRoom = int
 # Produce list (features), dict (features), list (items), list of tuples (room Connections)
 def formatRoomData(rooms, objects, currentRoom):
-	#featuresList = []
+	featuresList = []
 	featuresDict = {}
 	itemList = []
 	#roomList = []
 	featuresNeeded = ['feat1', 'feat2', 'feat3', 'feat4', 'feat5', 'feat6']
 	featInteractionsNeeded = ['feat1interactOptions', 'feat2interactOptions', 'feat3interactOptions', 'feat4interactOptions', 'feat5interactOptions', 'feat6interactOptions']
-	#directions = ['north', 'south', 'east', 'west', 'up', 'down']
 
+	print rooms
 	room = rooms[currentRoom]
-	featuresList = [room.feat1, room.feat2, room.feat3, room.feat4, room.feat5, room.feat6]
+	tempfeaturesList = [room.feat1, room.feat2, room.feat3, room.feat4, room.feat5, room.feat6]
 
-	featuresDict[room.feat1] = room.feat1interactOptions
-	featuresDict[room.feat2] = room.feat2interactOptions
-	featuresDict[room.feat3] = room.feat3interactOptions
-	featuresDict[room.feat4] = room.feat4interactOptions
-	featuresDict[room.feat5] = room.feat5interactOptions
-	featuresDict[room.feat6] = room.feat6interactOptions
+	# Strip unicode markings
+	for _ in range(0, len(tempfeaturesList)):
+		tempfeaturesList[_] = str(tempfeaturesList[_])
+
+	# Save features to dictionary using the feature itself as a key
+	featuresDict[tempfeaturesList[0]] = str(room.feat1interactOptions)
+	featuresDict[tempfeaturesList[1]] = str(room.feat2interactOptions)
+	featuresDict[tempfeaturesList[2]] = str(room.feat3interactOptions)
+	featuresDict[tempfeaturesList[3]] = str(room.feat4interactOptions)
+	featuresDict[tempfeaturesList[4]] = str(room.feat5interactOptions)
+	featuresDict[tempfeaturesList[5]] = str(room.feat6interactOptions)
+
+	# Remove the 'feature - NA' lines, if present, from features and dictionary
+	for word in tempfeaturesList:
+		if ' - NA' not in word:
+			featuresList.append(word)
+
+	for key in list(featuresDict):
+		if ' - NA' in key:
+			featuresDict.pop(key)
 
 	# This should be limited based on info from the gamestate (item location)
 	itemList = objects.keys()
-	roomList = [room.north, room.south, room.east, room.west, room.up, room.down]
 
-	print 'featuresList:' + str(featuresList)
-	print 'featuresDict:' + str(featuresDict)
-	print 'itemList:' + str(itemList)
-	print 'roomList:' + str(roomList)
+	# Strip unicode markings
+	for _ in range(0, len(itemList)):
+		itemList[_] = str(itemList[_])
 
+	roomList = [str(room.north), str(room.south), str(room.east), str(room.west), str(room.up), str(room.down)]
 
+	return featuresList, featuresDict, itemList, roomList
 
 	# How to get object variables / information
 	#roomkeys = room.__dict__.keys()
 	#roomdict = room.__dict__
 
 
-	return
 
 
 
