@@ -24,14 +24,15 @@ def checkFeatureActions(input, pos, feature, featureDict):
 
 
 # This receives input from engine/engineTest, validates and returns an engine code
-def main(input, currentRoom):
+def main(input, features, featureDict, itemList, rooms):
+#def main(input, currentRoom):
 	command = commands.identify(input)
 
 	# Room-specific list of features as keys and recognized actions as entries
-	features, featureDict = utils.getFeaturesDict(currentRoom)
+	#features, featureDict = utils.getFeaturesDict(currentRoom)
 
 	# Hard coded list of legal items (for now)
-	listOfItems = ['board', 'keys', 'handle', 'skeleton key']
+	#itemList = ['board', 'keys', 'handle', 'skeleton key']
 
 	if command and command.isdigit():
 		return command
@@ -56,14 +57,10 @@ def main(input, currentRoom):
 	# This might actually be handled by the engine instead + can be 
 	# combined with save/exit/inventory/quit
 	elif command == "help":
-		print "Possible items: " + str(listOfItems)
-		print "Possible features and actions: " 
-		for feature in features:
-			print str(feature) + ": " + str(getActions(feature, featureDict))
 		return utils.engine_codes_dict['help']
 
 	elif command in ["take", "drop"]:
-		item = items.identifyItem(input, listOfItems)
+		item = items.identifyItem(input, itemList)
 		if item:
 			if command == "take":
 				key = item + "_take"
@@ -75,7 +72,7 @@ def main(input, currentRoom):
 			print "I can't do that."
 
 	elif command == "look at":
-		item = items.identifyItem(input, listOfItems)
+		item = items.identifyItem(input, itemList)
 		if item:
 			key = item + "_look"
 			return utils.engine_codes_dict[key]
@@ -95,7 +92,7 @@ def main(input, currentRoom):
 
 	else:
 		feature = items.identifyFeature(input, features)
-		item = items.identifyItem(input, listOfItems)
+		item = items.identifyItem(input, itemList)
 
 		# Check if the command was one specific to operating upon a feature (listed in json)
 		if feature:
@@ -137,13 +134,13 @@ def main(input, currentRoom):
 		# Item but no feature
 		elif item and not feature:
 			# Hard coded until we get this logic figured out in a more standardized way
-			# listOfItems = ['board', 'keys', 'handle', 'skeleton key']
+			# itemList = ['board', 'keys', 'handle', 'skeleton key']
 			if item == 'board' and command in ['pull']:
 				# This allows the "pull board" command
 				return "4"
 			elif item == 'board' and command in ['use', 'move']:
 				removedItem1 = input.replace(item, ' ')
-				item2 = items.identifyItem(removedItem1, listOfItems)
+				item2 = items.identifyItem(removedItem1, itemList)
 				if item2 == 'keys':
 					return "7"
 			elif item == 'keys' and (command in ['use'] or commandUsedSpecified):

@@ -1,4 +1,7 @@
 import re
+#import data
+#from data import *
+
 # These are misc. functions that are parsing-related
 # Producing a feature list / dictionary, room connection list, anything hard coded
 
@@ -134,6 +137,96 @@ def getRoomInfo(currentRoom):
 	roomConnections5 = [('north',), ('south', 'hallway', 'entryway'), ('west',), ('east',), ('up', 'upstairs'), ('down', 'downstairs')]
 	allRooms = [roomConnections1, roomConnections2, roomConnections3, roomConnections4, roomConnections5]
 	return allRooms[currentRoom - 1]
+
+
+# This changes room numbers to room names / other recognizable forms.
+# Might need to incorporate feature list as well to get doors, ladders, etc.
+# The int is needed to make it interact with rooms properly.
+def changeRoomNumbers(roomConnections, rooms):
+	connectionsList = []
+	if roomConnections[0] and roomConnections[0].isdigit():
+		roomNumber = int(roomConnections[0])
+		roomName = str(rooms[roomNumber].name.lower())
+		connectionsList.append(('north', roomName))
+	if roomConnections[1] and roomConnections[1].isdigit():
+		roomNumber = int(roomConnections[1])
+		roomName = str(rooms[roomNumber].name.lower())
+		connectionsList.append(('south', roomName))
+	if roomConnections[2] and roomConnections[2].isdigit():
+		roomNumber = int(roomConnections[2])
+		roomName = str(rooms[roomNumber].name.lower())
+		connectionsList.append(('west', roomName))
+	if roomConnections[3] and roomConnections[3].isdigit():
+		roomNumber = int(roomConnections[3])
+		roomName = str(rooms[roomNumber].name.lower())
+		connectionsList.append(('east', roomName))
+	if roomConnections[4] and roomConnections[4].isdigit():
+		roomNumber = int(roomConnections[4])
+		roomName = str(rooms[roomNumber].name.lower())
+		connectionsList.append(('up', 'upstairs', roomName))
+	if roomConnections[5] and roomConnections[5].isdigit():
+		roomNumber = int(roomConnections[5])
+		roomName = str(rooms[roomNumber].name.lower())
+		connectionsList.append(('down', 'downstairs', roomName))
+	return connectionsList
+
+
+# Packages variables together in expected formats for parse.main() or maybe "help"
+# Meant to be used in the engine.
+# rooms, objects = dictionaries; currentRoom = int
+# Produce list (features), dict (features), list (items), list of tuples (room Connections)
+def formatRoomData(rooms, objects, currentRoom):
+	featuresList = []
+	featuresDict = {}
+	itemList = []
+	#roomList = []
+	featuresNeeded = ['feat1', 'feat2', 'feat3', 'feat4', 'feat5', 'feat6']
+	featInteractionsNeeded = ['feat1interactOptions', 'feat2interactOptions', 'feat3interactOptions', 'feat4interactOptions', 'feat5interactOptions', 'feat6interactOptions']
+
+	room = rooms[currentRoom]
+	tempfeaturesList = [room.feat1, room.feat2, room.feat3, room.feat4, room.feat5, room.feat6]
+
+	# Strip unicode markings
+	for _ in range(0, len(tempfeaturesList)):
+		tempfeaturesList[_] = str(tempfeaturesList[_])
+
+	# Save features to dictionary using the feature itself as a key
+	featuresDict[tempfeaturesList[0]] = str(room.feat1interactOptions)
+	featuresDict[tempfeaturesList[1]] = str(room.feat2interactOptions)
+	featuresDict[tempfeaturesList[2]] = str(room.feat3interactOptions)
+	featuresDict[tempfeaturesList[3]] = str(room.feat4interactOptions)
+	featuresDict[tempfeaturesList[4]] = str(room.feat5interactOptions)
+	featuresDict[tempfeaturesList[5]] = str(room.feat6interactOptions)
+
+	# Remove the 'feature - NA' lines, if present, from features and dictionary
+	for word in tempfeaturesList:
+		if ' - NA' not in word:
+			featuresList.append(word)
+
+	for key in list(featuresDict):
+		if ' - NA' in key:
+			featuresDict.pop(key)
+
+	# This should be limited based on info from the gamestate (item location)
+	itemList = objects.keys()
+
+	# Strip unicode markings
+	for _ in range(0, len(itemList)):
+		itemList[_] = str(itemList[_])
+
+	roomList = [str(room.north), str(room.south), str(room.east), str(room.west), str(room.up), str(room.down)]
+
+	roomConnections = changeRoomNumbers(roomList, rooms)
+	print roomConnections
+
+	return featuresList, featuresDict, itemList, roomConnections
+
+	# How to get object variables / information
+	#roomkeys = room.__dict__.keys()
+	#roomdict = room.__dict__
+
+
+
 
 
 # Reference: Python for Informatics (http://www.py4inf.com/)

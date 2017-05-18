@@ -10,8 +10,10 @@ import room
 import objectC
 import gamestate
 import parse
+import utils
 import data
 from data import *
+
 #[END IMPORTS]
 
 #[BEGIN LAUNCH]
@@ -111,8 +113,7 @@ def playGame(userSelection):
 
 	#Load room files {Data dev}
 	data.load_rooms() 
-	#print "\n\n*****Debug: This is imported from json files: room names: " + rooms[1].name + " " + rooms[2].name + " " + rooms[3].name + " " + rooms[4].name + " " + rooms[5].name + "\n\n"
-
+	
 	#Rename loaded rooms to be compatible with engine
 	brig = rooms[1] 
 	storage = rooms[2]
@@ -122,6 +123,9 @@ def playGame(userSelection):
 
 	#Load object files {Data dev}
 	data.load_objects()
+
+	#Send room/item info to get format for parsing
+	featureList, featureDict, itemList, roomList = utils.formatRoomData(rooms, objects, currentState.currRoom)
 
 	#Rename objects for engine compatibility
 	board = objects["board"]
@@ -179,7 +183,8 @@ def playGame(userSelection):
 		userInput = raw_input (": ")
 
 		#Parse user input and return code for engine action {Parsing Dev}
-		userInput = parse.main(userInput, currentState.currRoom)
+		#userInput = parse.main(userInput, currentState.currRoom)
+		userInput = parse.main(userInput, featureList, featureDict, itemList, roomList)
 	  
 		#ENGINE INTERACTIONS BASED ON PARSED USER INPUT
 		if userInput == "1":#Look at feature 1 - STRAW / ENTRYWAY MARKINGS / LOCKER / EXAM ENTRYWAY / DOOR
@@ -524,8 +529,14 @@ def playGame(userSelection):
 				print keys.notInInv
 
 		elif userInput == "16": #Help
-			print "HELPFUL TIPS (NEED TO ADD)"
-			print "LIST OF RECOGNIZED VERBS (NEED TO ADD)"
+			print "HELPFUL TIPS:"
+			print "Take a closer look at the room's features.  Sometimes you may need to examine a detail on a feature even more closely."
+			print "Don't forget to take (pick up) items after you've revealed them."
+			print "\nPossible items: " + str(itemList)
+			print "Possible features and actions: " 
+			for feature in featureList:
+				print str(feature) + ": " + str(parse.getActions(feature, featureDict))
+			return utils.engine_codes_dict['help']
 
 		elif userInput == "17": #Inventory
 			print ""
