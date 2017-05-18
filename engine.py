@@ -10,8 +10,10 @@ import room
 import objectC
 import gamestate
 import parse
+import utils
 import data
 from data import *
+
 #[END IMPORTS]
 
 #[BEGIN LAUNCH]
@@ -111,8 +113,7 @@ def playGame(userSelection):
 
 	#Load room files {Data dev}
 	data.load_rooms() 
-	#print "\n\n*****Debug: This is imported from json files: room names: " + rooms[1].name + " " + rooms[2].name + " " + rooms[3].name + " " + rooms[4].name + " " + rooms[5].name + "\n\n"
-
+	
 	#Rename loaded rooms to be compatible with engine
 	brig = rooms[1] 
 	storage = rooms[2]
@@ -122,6 +123,10 @@ def playGame(userSelection):
 
 	#Load object files {Data dev}
 	data.load_objects()
+
+	#Send room/item info to get format for parsing
+	#featureList, featureDict, itemList, roomList = utils.formatRoomData(room, objects, currentState.currRoom)
+	utils.formatRoomData(rooms, objects, currentState.currRoom)
 
 	#Rename objects for engine compatibility
 	board = objects["board"]

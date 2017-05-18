@@ -136,6 +136,56 @@ def getRoomInfo(currentRoom):
 	return allRooms[currentRoom - 1]
 
 
+# This changes room numbers to room names / other recognizable forms.
+# Might need to incorporate feature list as well to get doors, ladders, etc.
+def changeRoomNumbers(roomConnections):
+
+	return
+
+
+# Packages variables together in expected formats for parse.main() or maybe "help"
+# Meant to be used in the engine.
+# rooms, objects = dictionaries; currentRoom = int
+# Produce list (features), dict (features), list (items), list of tuples (room Connections)
+def formatRoomData(rooms, objects, currentRoom):
+	#featuresList = []
+	featuresDict = {}
+	itemList = []
+	#roomList = []
+	featuresNeeded = ['feat1', 'feat2', 'feat3', 'feat4', 'feat5', 'feat6']
+	featInteractionsNeeded = ['feat1interactOptions', 'feat2interactOptions', 'feat3interactOptions', 'feat4interactOptions', 'feat5interactOptions', 'feat6interactOptions']
+	#directions = ['north', 'south', 'east', 'west', 'up', 'down']
+
+	room = rooms[currentRoom]
+	featuresList = [room.feat1, room.feat2, room.feat3, room.feat4, room.feat5, room.feat6]
+
+	featuresDict[room.feat1] = room.feat1interactOptions
+	featuresDict[room.feat2] = room.feat2interactOptions
+	featuresDict[room.feat3] = room.feat3interactOptions
+	featuresDict[room.feat4] = room.feat4interactOptions
+	featuresDict[room.feat5] = room.feat5interactOptions
+	featuresDict[room.feat6] = room.feat6interactOptions
+
+	# This should be limited based on info from the gamestate (item location)
+	itemList = objects.keys()
+	roomList = [room.north, room.south, room.east, room.west, room.up, room.down]
+
+	print 'featuresList:' + str(featuresList)
+	print 'featuresDict:' + str(featuresDict)
+	print 'itemList:' + str(itemList)
+	print 'roomList:' + str(roomList)
+
+
+
+	# How to get object variables / information
+	#roomkeys = room.__dict__.keys()
+	#roomdict = room.__dict__
+
+
+	return
+
+
+
 # Reference: Python for Informatics (http://www.py4inf.com/)
 # http://stackoverflow.com/questions/3085382/python-how-can-i-strip-first-and-last-double-quotes
 # http://stackoverflow.com/questions/8953627/python-dictionary-keys-error
