@@ -25,8 +25,8 @@ def middleLevelTest():
    userInput = "default"   #Default message for user input
    userRoom = 0   #Sentinel variable for room
 
-   #Initialize gamestate class 
-   currentState = gamestate.GameStateClass(1, 0, 0, 0, 0, 0, 1, 1, 2, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+   #Initialize gamestate class - NOTE: MODIFIED TO START IN ROOM 6
+   currentState = gamestate.GameStateClass(6, 0, 0, 0, 0, 0, 0, 99, 99, 99, 99, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
 
    #Load rooms
    data.load_rooms() 
@@ -37,6 +37,9 @@ def middleLevelTest():
    hallway = rooms[3]
    observation = rooms[4]
    examination = rooms[5]
+
+   #MIDDLE LEVEL ROOMS
+   rum = rooms[6]
 
    #Load objects
    data.load_objects()
@@ -91,6 +94,13 @@ def middleLevelTest():
             else:
                print examination.shortDesc
 
+         elif currentState.currRoom == 6:    #Examination
+            if currentState.rm06vis == 0: 
+               print rum.longDesc
+               currentState.rm06vis = 1 #Update to visited
+            else:
+               print rum.shortDesc
+
          userRoom = currentState.currRoom #Update room the user is currently in
 
       #Pend input:
@@ -131,6 +141,12 @@ def middleLevelTest():
                print examination.feat1desc 
             else: #After interaction
                print examination.feat1interactComplete
+         #Rum
+         elif currentState.currRoom == 6:
+            if currentState.rm06f1 == 0: #Before interaction
+               print rum.feat1desc 
+            else: #After interaction
+               print rum.feat1interactComplete
 
       elif userInput == "2": #Interact with feature 1 
          #Brig
