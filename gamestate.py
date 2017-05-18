@@ -120,18 +120,149 @@ class MattsGameStateClass(object):
    		#Visited (1) or unvisited (0) if room has been visited 
    		self.rm01vis = ""	#Bottom deck 
    		self.rm02vis = ""
-   		
+		self.rm03vis = ""
+		self.rm04vis = ""
+		self.rm05vis = ""
+		self.rm06vis = ""
+		self.rm07vis = ""
+		self.rm08vis = ""
+		self.rm09vis = ""
+		self.rm010vis = ""
+		self.rm011vis = ""
+		self.rm012vis = ""
+		self.rm013vis = ""
+		self.rm014vis = ""
+		self.rm015vis = ""
+   	
+		
    		#Location of items & item name - room ID integer or 99 (player inv) or 100 (destroyed/permanently used)
    		self.obj1Loc = ""	#Board
    		self.obj2Loc = ""	#Key
+		self.obj3Loc = ""
+		self.obj4Loc = ""
+		self.obj5Loc = ""
+		self.obj6Loc = ""
+		self.obj7Loc = ""
+		self.obj8Loc = ""
+		self.obj9Loc = ""
+		self.obj10Loc = ""
+		
+			
    		
-		#Puzzle solved (1) or unsolved (0) 
-
 		#Brig - Room 1
 		#Straw - searched (1) or unsearched (0)
 		self.rm01f1 = ""
 		#Bench - searched (1) or unsearched (0)
 		self.rm01f2 = ""
+		#Window - searched (1) or unsearched (0)
+		self.rm01f3 = ""
+		#Door - unlocked (1) or locked (0)
+		self.rm01f4 = ""
+		#Board - discovered (1) or undiscovered (0)
+		self.rm01o1 = ""
+		#Keys - discovered (1) or undiscovered (0)
+		self.rm01o2 = ""
+
+
+		#Storage - Room 2
+		#Locker - searched (1) or unsearched (0)
+		self.rm02f1 = ""
+		#Paper - read (1) or unread (0)
+		self.rm02f2 = ""
+		#Door - examined (1) or unexamined (0)
+		self.rm02f3 = ""
+		#Handle - discovered (1) or undiscovered (0)
+		self.rm02o1 = ""
+
+
+		#Hallway- Room 3
+		#Entryway - examined (1) or unexamined (0)
+		self.rm03f1 = ""
+		#Barred Door - searched (1) or unsearched (0)
+		self.rm03f2 = ""
+		#Metal Door - unlocked (1) or locked (0)
+		self.rm03f3 = ""
+		#Wooden Door - searched (1) or unsearched (0)
+		self.rm03f4 = ""
+		#Ladder - climbed (1) or unclimbed (0)
+		self.rm03f5 = ""
+		#Trap Door - unlocked (1) or locked (0)
+		self.rm03f6 = ""
+
+
+		#Observation - Room 4
+		#Door - examined (1) or unexamined (0)
+		self.rm04f1 = ""
+		#Barred Window - examined (1) or unexamined (0)
+		self.rm04f2 = ""
+		#Window - examined (1) or unexamined (0)
+		self.rm04f3 = ""
+		#Chest- unlocked (1) or locked (0)
+		self.rm04f4 = ""
+		#Bottles - examined (1) or unexamined (0)
+		self.rm04f5 = ""
+		#Papers- examined (1) or unexamined (0)
+		self.rm04f6 = ""
+		#Skeleton Key - discovered (1) or undiscovered (0)
+		self.rm04o1 = ""
+
+
+		#Examination - Room 5
+		#Entryway - examined (1) or unexamined (0)
+		self.rm05f1 = ""
+		#Table - examined (1) or unexamined (0)
+		self.rm05f2 = ""
+		#Mirror - examined (1) or unexamined (0)
+		self.rm05f3 = ""
+		
+		self.rm06f1 = ""
+		self.rm06f2 = ""
+		self.rm07f1 = ""
+		self.rm07f2 = ""
+		self.rm08f1 = ""
+		self.rm08f2 = ""
+		self.rm09f1 = ""
+		self.rm09f2 = ""
+		self.rm10f1 = ""
+		self.rm10f2 = ""
+		self.rm11f1 = ""
+		self.rm11f2 = ""
+		self.rm11f3 = ""
+		self.rm11f4 = ""
+		self.rm11f5 = ""
+		self.rm11f6 = ""
+		self.rm12f1 = ""
+		self.rm12f2 = ""
+		self.rm12f3 = ""
+		self.rm12f4 = ""
+		self.rm12f5 = ""
+		self.rm12f6 = ""
+		self.rm13f1 = ""
+		self.rm13f2 = ""
+		self.rm13f3 = ""
+		self.rm13f4 = ""
+		self.rm13f5 = ""
+		self.rm13f6 = ""
+		self.rm14f1 = ""
+		self.rm14f2 = ""
+		self.rm14f3 = ""
+		self.rm14f4 = ""
+		self.rm14f5 = ""
+		self.rm14f6 = ""
+		self.rm15f1 = ""
+		self.rm15f2 = ""
+		self.rm15f3 = ""
+		self.rm15f4 = ""
+		self.rm15f5 = ""
+		self.rm15f6 = ""
+		self.rm16f1 = ""
+		self.rm16f2 = ""
+		self.rm16f3 = ""
+		self.rm16f4 = ""
+		self.rm16f5 = ""
+		self.rm16f6 = ""
+		
+		
 
 		
 
