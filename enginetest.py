@@ -13,6 +13,7 @@ import gamestate
 import parse
 import data
 from data import *
+import utils
 #[END IMPORTS]
 
 #[BEGIN MID LEVEL TESTING]
@@ -26,7 +27,7 @@ def middleLevelTest():
    userRoom = 0   #Sentinel variable for room
 
    #Initialize gamestate class - NOTE: MODIFIED TO START IN ROOM 6
-   currentState = gamestate.GameStateClass(6, 0, 0, 0, 0, 0, 0, 99, 99, 99, 99, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+   currentState = gamestate.GameStateClass(6, 0, 0, 0, 0, 0, 0, 99, 99, 99, 99, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
 
    #Load rooms
    data.load_rooms() 
@@ -107,7 +108,9 @@ def middleLevelTest():
       userInput = raw_input (": ")
 
       #Parse user input and return code for engine action {Parsing Dev}
-      userInput = parse.main(userInput, currentState.currRoom)
+      featureList, featureDict, itemDict, roomList = utils.formatRoomData(rooms, objects, currentState.currRoom)
+      userInput = parse.main(userInput, featureList, featureDict, itemDict, currentState.currRoom)
+      #userInput = parse.main(userInput, currentState.currRoom)
      
       #ENGINE INTERACTIONS BASED ON PARSED USER INPUT
       if userInput == "1":#Look at feature 1 - STRAW / ENTRYWAY MARKINGS / LOCKER / EXAM ENTRYWAY / DOOR
@@ -173,6 +176,10 @@ def middleLevelTest():
          elif currentState.currRoom == 5:
             print examination.feat1interactSuccess
             currentState.rm05f1 = 1 #Update to interaction complete
+         #Rum 
+         elif currentState.currRoom == 6:
+            print rum.feat1interactSuccess
+            currentState.rm06f1 = 1 #Update to interaction complete
 
       elif userInput == "3": #Look at feature 2 - BENCH / BARRED DOOR / PAPER / TABLE / BARRED WINDOW
          #Brig
@@ -205,6 +212,13 @@ def middleLevelTest():
                 print examination.feat2desc 
             else: #After interaction
                 print examination.feat2interactComplete
+         #Rum
+         elif currentState.currRoom == 6:
+            if currentState.rm06f2 == 0: #Before interaction
+                print rum.feat2desc 
+            else: #After interaction
+                print rum.feat2interactComplete
+
 
       elif userInput == "4": #Interact with feature 2
          #Brig
@@ -228,6 +242,10 @@ def middleLevelTest():
          elif currentState.currRoom == 5:
             print examination.feat2interactSuccess
             currentState.rm05f2 = 1 #Update to interaction complete
+         #Rum
+         elif currentState.currRoom == 6:
+            print rum.feat2interactSuccess
+            currentState.rm06f2 = 1 #Update to interaction complete
 
       elif userInput == "5": #Look at object "board"
          if currentState.obj1Loc ==99: #In iventory
