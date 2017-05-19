@@ -4,6 +4,8 @@
 import items
 import commands
 import utils
+import data
+from data import *
 
 # Prints out the available actions for a specified feature
 # This will probably be integrated into the engine or something
@@ -62,7 +64,7 @@ def main(input, features, featureDict, itemDict, rooms):
 		return utils.engine_codes_dict['help']
 
 	elif command in ["take", "drop"]:
-		item = items.identifyItem(input, itemList)
+		item = items.identifyItem(input, itemDict)
 		if item:
 			if command == "take":
 				key = item + "_take"
@@ -74,7 +76,7 @@ def main(input, features, featureDict, itemDict, rooms):
 			print "I can't do that."
 
 	elif command == "look at":
-		item = items.identifyItem(input, itemList)
+		item = items.identifyItem(input, itemDict)
 		if item:
 			key = item + "_look"
 			return utils.engine_codes_dict[key]
@@ -94,7 +96,7 @@ def main(input, features, featureDict, itemDict, rooms):
 
 	else:
 		feature = items.identifyFeature(input, features)
-		item = items.identifyItem(input, itemList)
+		item = items.identifyItem(input, itemDict)
 
 		# Check if the command was one specific to operating upon a feature (listed in json)
 		if feature:
@@ -136,13 +138,12 @@ def main(input, features, featureDict, itemDict, rooms):
 		# Item but no feature
 		elif item and not feature:
 			# Hard coded until we get this logic figured out in a more standardized way
-			# itemList = ['board', 'keys', 'handle', 'skeleton key']
 			if item == 'board' and command in ['pull']:
 				# This allows the "pull board" command
 				return "4"
 			elif item == 'board' and command in ['use', 'move']:
 				removedItem1 = input.replace(item, ' ')
-				item2 = items.identifyItem(removedItem1, itemList)
+				item2 = items.identifyItem(removedItem1, itemDict)
 				if item2 == 'keys':
 					return "7"
 			elif item == 'keys' and (command in ['use'] or commandUsedSpecified):
@@ -161,8 +162,10 @@ def main(input, features, featureDict, itemDict, rooms):
 if __name__ == "__main__":
 	print 'Starting the script.'
 	keepLooping = True
+	currentRoom = 1
 	while (keepLooping != "exit"):
 		userInput = raw_input (": ")
-		keepLooping = main(userInput, 1)
+		featureList, featureDict, itemDict, roomList = utils.formatRoomData(rooms, objects, currentRoom)
+		keepLooping = main(userInput, featureList, featureDict, itemDict, currentRoom)
 		print "Code received: " + str(keepLooping)
 

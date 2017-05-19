@@ -1,6 +1,4 @@
 import re
-import data
-from data import *
 
 # These are misc. functions that are parsing-related
 # Producing a feature list / dictionary, room connection list, anything hard coded
@@ -250,56 +248,10 @@ def formatRoomData(rooms, objects, currentRoom):
 	#roomkeys = room.__dict__.keys()
 	#roomdict = room.__dict__
 
-
-
-
-
 # Reference: Python for Informatics (http://www.py4inf.com/)
 # http://stackoverflow.com/questions/3085382/python-how-can-i-strip-first-and-last-double-quotes
 # http://stackoverflow.com/questions/8953627/python-dictionary-keys-error
 # http://stackoverflow.com/questions/1767513/read-first-n-lines-of-a-file-in-python
 
 # Below is just for my testing purposes
-if __name__ == "__main__":
-	featuresList, featuresDict, itemDict, roomConnections = formatRoomData(rooms, objects, 4)
-	print featuresList
-	print featuresDict
-	print itemDict
-	print roomConnections
-	#descriptionsList = getDescriptionsList(1);
-	#print "features: " + str(featuresDict.keys())
-	#print "connectionsList: " + str(connectionsList)
-	#print "descriptions: " + str(descriptionsList)
-
-
-''' # Working template
-def getFeaturesList(currentRoom):
-	filename = 'data/rooms/room' + str(currentRoom) + '.json'
-	file = open(filename)
-	featuresList = []
-
-	for line in file:
-		line = line.rstrip()
-		results = re.findall('"feat\d*": ("\D*"),', line)
-		
-		for i in range (0, len(results)):
-			# This will strip opening and closing parenthesis
-			if results[i].startswith('"') and results[i].endswith('"'):
-				results[i] = results[i][1:-1]
-				featuresList.append(results[i])
-	file.close()
-	return featuresList
-'''
-
-
-'''
-	# Example of reading first n lines from a text document
-	# May not be necessary since we can get info from object _eventually_
-	# http://stackoverflow.com/questions/1767513/read-first-n-lines-of-a-file-in-python
-def testRead(currentRoom):
-	filename = 'data/rooms/room' + str(currentRoom) + '.json'
-	with open("datafile") as myfile:
-    	head = [next(myfile) for x in xrange(N)]
-	print head
-	newString = head.replace(' the ', ' ')
-'''
+#if __name__ == "__main__":

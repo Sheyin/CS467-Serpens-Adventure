@@ -16,6 +16,11 @@ def identifyItem(input, items):
 	for item in items:
 		if item in input:
 			return item
+		else:
+			synonymList = items[item]
+			for synonym in synonymList:
+				if synonym in input:
+					return item
 
 # Checks if a feature was specifically referenced in the input
 def identifyFeature(input, features):
