@@ -1,10 +1,10 @@
 {
-    "name": "smallKey",
+    "name": "small key",
     "synonyms": [],
-    "desc": "small key that fits gun cabinet", 
-    "notInInv": "you don't have a smallKey", 
-    "inRoom": "There is a smallKey here", 
-    "take": "you take the smallKey", 
-    "notAvail": "no smallKey for you", 
-    "drop": "you drop the smallKey" 
+    "desc": "A small gold hued key.", 
+    "notInInv": "You don't have a small key.", 
+    "inRoom": "There is a small key here.", 
+    "take": "You take the small key.", 
+    "notAvail": "You don't see a small key to take.", 
+    "drop": "You drop the small key." 
 }

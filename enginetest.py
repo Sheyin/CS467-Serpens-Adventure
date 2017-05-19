@@ -27,7 +27,11 @@ def middleLevelTest():
    userRoom = 0   #Sentinel variable for room
 
    #Initialize gamestate class - NOTE: MODIFIED TO START IN ROOM 6
-   currentState = gamestate.GameStateClass(6, 0, 0, 0, 0, 0, 0, 99, 99, 99, 99, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+   currentState = gamestate.GameStateClass(6, 0, 0, 0, 0, 0, 0, 99, 99, 99, 99, 99, 6, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+   #CHECK FLAGS
+
+   #6,          0,       0,     0,      0,    0,    0,      99,    99,   99,     99,   6,      0,
+   #currentRoom, room1, room2, room3, room4, room5, room6, item1, item2, item3, item4, item5, rm1f1,
 
    #Load rooms
    data.load_rooms() 
@@ -50,6 +54,9 @@ def middleLevelTest():
    keys = objects["keys"]
    handle = objects["handle"]
    skeletonKey = objects["skeleton key"]
+
+   #MIDDLE LEVEL OBJECTS
+   smallKey = objects["small key"]
 
    #While loop repeatedly prompts user for input until user requests to load, save, or quit game
    while userInput not in ['loadgame', 'savegame', 'quit', 'exit']:
@@ -95,7 +102,7 @@ def middleLevelTest():
             else:
                print examination.shortDesc
 
-         elif currentState.currRoom == 6:    #Examination
+         elif currentState.currRoom == 6:    #Rum
             if currentState.rm06vis == 0: 
                print rum.longDesc
                currentState.rm06vis = 1 #Update to visited
@@ -283,6 +290,12 @@ def middleLevelTest():
                print examination.feat3desc 
             else: #After interaction
                print examination.feat3interactComplete
+         #Rum
+         elif currentState.currRoom == 6:
+            if currentState.rm06f3 == 0: #Before interaction
+               print rum.feat3desc 
+            else: #After interaction
+               print rum.feat3interactComplete
 
       elif userInput == "7": #Interact with feature 3
          #Brig
@@ -316,6 +329,10 @@ def middleLevelTest():
          elif currentState.currRoom == 5:
             print examination.feat3interactSuccess
             currentState.rm05f3 = 1 #Update to interaction complete
+         #Rum
+         elif currentState.currRoom == 6:
+            print rum.feat3interactSuccess
+            currentState.rm06f3 = 1 #Update to interaction complete
 
       elif userInput == "8": #Look at object "keys"
          if currentState.obj2Loc ==99: #In inventory
@@ -342,6 +359,12 @@ def middleLevelTest():
                print observation.feat4desc 
             else: #After interaction
                print observation.feat4interactComplete
+         #Rum
+         elif currentState.currRoom == 6:
+            if currentState.rm06f4 == 0: #Before interaction
+               print rum.feat4desc 
+            else: #After interaction
+               print rum.feat4interactComplete
 
       elif userInput == "10": #Interact with feature 4
          #Brig
@@ -363,6 +386,12 @@ def middleLevelTest():
                currentState.rm04o1 = 1 #Skeleton key discovered
             else:
                print observation.feat4interactFail
+         #Rum
+         elif currentState.currRoom == 6:
+            print rum.feat4interactSuccess
+            currentState.rm06f4 = 1 #Update to interaction complete
+            currentState.rm06o1 = 1 #Small Key discovered
+
 
       elif userInput == "11": #General look around room
          if currentState.currRoom == 1:
@@ -380,6 +409,10 @@ def middleLevelTest():
             #Object 4 - skeleton key
             if currentState.rm04o1 == 1 and currentState.obj4Loc == 1:
                print skeletonKey.inRoom
+            #Object 5 - small key
+            if currentState.rm05o1 == 1 and currentState.obj5Loc == 1:
+               print smallKey.inRoom
+
          elif currentState.currRoom == 2:
             print storage.longDesc
             #Checks objects and if they are DISCOVERED and LOCATED IN ROOM then displays notice they are there
@@ -395,6 +428,9 @@ def middleLevelTest():
             #Object 4 - skeleton key
             if currentState.rm04o1 == 1 and currentState.obj4Loc == 2:
                print skeletonKey.inRoom
+            #Object 5 - small key
+            if currentState.rm05o1 == 1 and currentState.obj5Loc == 2:
+               print smallKey.inRoom
 
          elif currentState.currRoom == 3:
             print hallway.longDesc
@@ -411,6 +447,9 @@ def middleLevelTest():
             #Object 4 - skeleton key
             if currentState.rm04o1 == 1 and currentState.obj4Loc == 3:
                print skeletonKey.inRoom
+            #Object 5 - small key
+            if currentState.rm05o1 == 1 and currentState.obj5Loc == 3:
+               print smallKey.inRoom
 
          elif currentState.currRoom == 4:
             print observation.longDesc
@@ -427,6 +466,9 @@ def middleLevelTest():
             #Object 4 - skeleton key
             if currentState.rm04o1 == 1 and currentState.obj4Loc == 4:
                print skeletonKey.inRoom
+            #Object 5 - small key
+            if currentState.rm05o1 == 1 and currentState.obj5Loc == 4:
+               print smallKey.inRoom
 
          elif currentState.currRoom == 5:
             print examination.longDesc
@@ -443,6 +485,28 @@ def middleLevelTest():
             #Object 4 - skeleton key
             if currentState.rm04o1 == 1 and currentState.obj4Loc == 5:
                print skeletonKey.inRoom
+            #Object 5 - small key
+            if currentState.rm05o1 == 1 and currentState.obj5Loc == 5:
+               print smallKey.inRoom
+
+         elif currentState.currRoom == 6:    #Rum
+            print rum.longDesc
+            #Checks objects and if they are DISCOVERED and LOCATED IN ROOM then displays notice they are there
+            #Object 1 - board
+            if currentState.rm01o1 == 1 and currentState.obj1Loc == 6:
+               print board.inRoom
+            #Object 2 - keys
+            if currentState.rm01o2 == 1 and currentState.obj2Loc == 6:
+               print keys.inRoom
+            #Object 3 - handle
+            if currentState.rm02o1 == 1 and currentState.obj3Loc == 6:
+               print handle.inRoom
+            #Object 4 - skeleton key
+            if currentState.rm04o1 == 1 and currentState.obj4Loc == 6:
+               print skeletonKey.inRoom
+            #Object 5 - small key
+            if currentState.rm05o1 == 1 and currentState.obj5Loc == 6:
+               print smallKey.inRoom
 
       elif userInput == "12": #Take board
          #If object discovered and if player is in the same room as the object
