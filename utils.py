@@ -109,15 +109,12 @@ def getRoomConnections(currentRoom):
 
 # Tries to translate input into a legal movement (direction)
 # Returns a cardinal direction
-def translateRoom(input, currentRoom):
-	# pull list of connected rooms
-	connectedList = getRoomInfo(currentRoom)
-
+def translateRoom(input, rooms):
 	# Search each tuple to see if the input word matches some direction
-	for dirPos in range (0, len(connectedList)):
-		for namePos in range (0, len(connectedList[dirPos])):
-			if connectedList[dirPos][namePos] in input:
-				return connectedList[dirPos][0]
+	for dirPos in range (0, len(rooms)):
+		for namePos in range (0, len(rooms[dirPos])):
+			if rooms[dirPos][namePos] in input:
+				return rooms[dirPos][0]
 	# Unable to match destination with a room
 	return -1
 
@@ -147,28 +144,28 @@ def changeRoomNumbers(roomConnections, rooms):
 		roomName = str(rooms[roomNumber].name.lower())
 		connectionsList.append(('north', roomName))
 	elif not roomConnections[0]:
-		connectionsList.append(('north'))
+		connectionsList.append(('north',))
 
 	if roomConnections[1].isdigit():
 		roomNumber = int(roomConnections[1])
 		roomName = str(rooms[roomNumber].name.lower())
 		connectionsList.append(('south', roomName))
 	elif not roomConnections[1]:
-		connectionsList.append(('south'))
+		connectionsList.append(('south',))
 
 	if roomConnections[2].isdigit():
 		roomNumber = int(roomConnections[2])
 		roomName = str(rooms[roomNumber].name.lower())
 		connectionsList.append(('west', roomName))
 	elif not roomConnections[2]:
-		connectionsList.append(('west'))
+		connectionsList.append(('west',))
 
 	if roomConnections[3] and roomConnections[3].isdigit():
 		roomNumber = int(roomConnections[3])
 		roomName = str(rooms[roomNumber].name.lower())
 		connectionsList.append(('east', roomName))
 	elif not roomConnections[3]:
-		connectionsList.append(('east'))
+		connectionsList.append(('east',))
 
 	if roomConnections[4] and roomConnections[4].isdigit():
 		roomNumber = int(roomConnections[4])

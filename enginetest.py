@@ -108,9 +108,8 @@ def middleLevelTest():
       userInput = raw_input (": ")
 
       #Parse user input and return code for engine action {Parsing Dev}
-      featureList, featureDict, itemDict, roomList = utils.formatRoomData(rooms, objects, currentState.currRoom)
-      userInput = parse.main(userInput, featureList, featureDict, itemDict, currentState.currRoom)
-      #userInput = parse.main(userInput, currentState.currRoom)
+      featureList, featureDict, itemList, roomList = utils.formatRoomData(rooms, objects, currentState.currRoom)
+      userInput = parse.main(userInput, featureList, featureDict, itemList, roomList)
      
       #ENGINE INTERACTIONS BASED ON PARSED USER INPUT
       if userInput == "1":#Look at feature 1 - STRAW / ENTRYWAY MARKINGS / LOCKER / EXAM ENTRYWAY / DOOR

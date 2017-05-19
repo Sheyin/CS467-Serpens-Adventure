@@ -4,8 +4,8 @@
 import items
 import commands
 import utils
-import data
-from data import *
+#import data
+#from data import *
 
 # Prints out the available actions for a specified feature
 # This will probably be integrated into the engine or something
@@ -48,7 +48,7 @@ def main(input, features, featureDict, itemDict, rooms):
 		# This will identify a direction or a feature, if found
 		# Currently redundant because feature synonyms are included in directions list
 		# location = items.findLocation(input, features)
-		direction = utils.translateRoom(input, currentRoom)
+		direction = utils.translateRoom(input, rooms)
 		if (direction == -1):
 			print "I can't go that way."
 		else:
@@ -159,13 +159,13 @@ def main(input, features, featureDict, itemDict, rooms):
 
 
 # Update to run main function for parseCommands.py separately from main.py
-if __name__ == "__main__":
-	print 'Starting the script.'
-	keepLooping = True
-	currentRoom = 1
-	while (keepLooping != "exit"):
-		userInput = raw_input (": ")
-		featureList, featureDict, itemDict, roomList = utils.formatRoomData(rooms, objects, currentRoom)
-		keepLooping = main(userInput, featureList, featureDict, itemDict, currentRoom)
-		print "Code received: " + str(keepLooping)
+#if __name__ == "__main__":
+	#print 'Starting the script.'
+	#keepLooping = True
+	#currentRoom = 1
+	#while (keepLooping != "exit"):
+		#userInput = raw_input (": ")
+		#featureList, featureDict, itemDict, roomList = utils.formatRoomData(rooms, objects, currentRoom)
+		#keepLooping = main(userInput, featureList, featureDict, itemDict, currentRoom)
+		#print "Code received: " + str(keepLooping)
 
