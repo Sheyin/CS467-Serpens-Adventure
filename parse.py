@@ -24,9 +24,11 @@ def checkFeatureActions(input, pos, feature, featureDict):
 
 
 # This receives input from engine/engineTest, validates and returns an engine code
-def main(input, features, featureDict, itemList, rooms):
+def main(input, features, featureDict, itemDict, rooms):
 #def main(input, currentRoom):
 	command = commands.identify(input)
+
+	itemList = itemDict.keys()
 
 	# Room-specific list of features as keys and recognized actions as entries
 	#features, featureDict = utils.getFeaturesDict(currentRoom)

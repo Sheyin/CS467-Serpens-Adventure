@@ -1,6 +1,6 @@
 import re
-#import data
-#from data import *
+import data
+from data import *
 
 # These are misc. functions that are parsing-related
 # Producing a feature list / dictionary, room connection list, anything hard coded
@@ -144,37 +144,54 @@ def getRoomInfo(currentRoom):
 # The int is needed to make it interact with rooms properly.
 def changeRoomNumbers(roomConnections, rooms):
 	connectionsList = []
-	if roomConnections[0] and roomConnections[0].isdigit():
+	if roomConnections[0].isdigit():
 		roomNumber = int(roomConnections[0])
 		roomName = str(rooms[roomNumber].name.lower())
 		connectionsList.append(('north', roomName))
-	if roomConnections[1] and roomConnections[1].isdigit():
+	elif not roomConnections[0]:
+		connectionsList.append(('north'))
+
+	if roomConnections[1].isdigit():
 		roomNumber = int(roomConnections[1])
 		roomName = str(rooms[roomNumber].name.lower())
 		connectionsList.append(('south', roomName))
-	if roomConnections[2] and roomConnections[2].isdigit():
+	elif not roomConnections[1]:
+		connectionsList.append(('south'))
+
+	if roomConnections[2].isdigit():
 		roomNumber = int(roomConnections[2])
 		roomName = str(rooms[roomNumber].name.lower())
 		connectionsList.append(('west', roomName))
+	elif not roomConnections[2]:
+		connectionsList.append(('west'))
+
 	if roomConnections[3] and roomConnections[3].isdigit():
 		roomNumber = int(roomConnections[3])
 		roomName = str(rooms[roomNumber].name.lower())
 		connectionsList.append(('east', roomName))
+	elif not roomConnections[3]:
+		connectionsList.append(('east'))
+
 	if roomConnections[4] and roomConnections[4].isdigit():
 		roomNumber = int(roomConnections[4])
 		roomName = str(rooms[roomNumber].name.lower())
 		connectionsList.append(('up', 'upstairs', roomName))
+	elif not roomConnections[4]:
+		connectionsList.append(('up', 'upstairs'))
+
 	if roomConnections[5] and roomConnections[5].isdigit():
 		roomNumber = int(roomConnections[5])
 		roomName = str(rooms[roomNumber].name.lower())
 		connectionsList.append(('down', 'downstairs', roomName))
+	elif not roomConnections[5]:
+		connectionsList.append(('down', 'downstairs'))
+
 	return connectionsList
 
 
 # Packages variables together in expected formats for parse.main() or maybe "help"
-# Meant to be used in the engine.
-# rooms, objects = dictionaries; currentRoom = int
 # Produce list (features), dict (features), list (items), list of tuples (room Connections)
+# The str() is required to change the data from unicode and remove the u' marks
 def formatRoomData(rooms, objects, currentRoom):
 	featuresList = []
 	featuresDict = {}
@@ -208,7 +225,16 @@ def formatRoomData(rooms, objects, currentRoom):
 			featuresDict.pop(key)
 
 	# This should be limited based on info from the gamestate (item location)
+	# Currently it just takes all the possible items (but will be shown to user if they use help)
+	itemDict = {}
+	itemSynonyms = []
 	itemList = objects.keys()
+	for item in itemList:
+		itemSynonyms = objects[item].synonyms
+		synonymList = []
+		for object in itemSynonyms:
+			synonymList.append(str(object))
+		itemDict[str(item)] = synonymList
 
 	# Strip unicode markings
 	for _ in range(0, len(itemList)):
@@ -217,9 +243,8 @@ def formatRoomData(rooms, objects, currentRoom):
 	roomList = [str(room.north), str(room.south), str(room.east), str(room.west), str(room.up), str(room.down)]
 
 	roomConnections = changeRoomNumbers(roomList, rooms)
-	print roomConnections
 
-	return featuresList, featuresDict, itemList, roomConnections
+	return featuresList, featuresDict, itemDict, roomConnections
 
 	# How to get object variables / information
 	#roomkeys = room.__dict__.keys()
@@ -236,9 +261,11 @@ def formatRoomData(rooms, objects, currentRoom):
 
 # Below is just for my testing purposes
 if __name__ == "__main__":
-	featuresDict = getFeaturesDict(1)
-	connectionsList = getRoomConnections(1)
-	testRead(1)
+	featuresList, featuresDict, itemDict, roomConnections = formatRoomData(rooms, objects, 4)
+	print featuresList
+	print featuresDict
+	print itemDict
+	print roomConnections
 	#descriptionsList = getDescriptionsList(1);
 	#print "features: " + str(featuresDict.keys())
 	#print "connectionsList: " + str(connectionsList)
