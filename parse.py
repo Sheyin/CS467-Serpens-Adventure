@@ -4,8 +4,8 @@
 import items
 import commands
 import utils
-#import data
-#from data import *
+import data
+from data import *
 
 # Prints out the available actions for a specified feature
 # This will probably be integrated into the engine or something
@@ -26,10 +26,11 @@ def checkFeatureActions(input, pos, feature, featureDict):
 
 
 # This receives input from engine/engineTest, validates and returns an engine code
-def main(input, features, featureDict, itemDict, rooms):
+# This expects: input(string), features(List), feature(Dict), items(Dict), rooms(List of tuples)
+def main(rawinput, features, featureDict, itemDict, rooms):
 #def main(input, currentRoom):
+	input = rawinput.lower()
 	command = commands.identify(input)
-
 	itemList = itemDict.keys()
 
 	# Room-specific list of features as keys and recognized actions as entries
@@ -41,7 +42,7 @@ def main(input, features, featureDict, itemDict, rooms):
 	if command and command.isdigit():
 		return command
 
-	elif command in ['exit', 'inventory', 'save', 'load']:
+	elif command in ['exit', 'inventory', 'save', 'load', 'help']:
 		return utils.engine_codes_dict[command]
 
 	elif command == "go":
@@ -57,11 +58,6 @@ def main(input, features, featureDict, itemDict, rooms):
 
 	elif command == "unknown":
 		print "I don't understand that command."
-
-	# This might actually be handled by the engine instead + can be 
-	# combined with save/exit/inventory/quit
-	elif command == "help":
-		return utils.engine_codes_dict['help']
 
 	elif command in ["take", "drop"]:
 		item = items.identifyItem(input, itemDict)
@@ -159,13 +155,13 @@ def main(input, features, featureDict, itemDict, rooms):
 
 
 # Update to run main function for parseCommands.py separately from main.py
-#if __name__ == "__main__":
-	#print 'Starting the script.'
-	#keepLooping = True
-	#currentRoom = 1
-	#while (keepLooping != "exit"):
-		#userInput = raw_input (": ")
-		#featureList, featureDict, itemDict, roomList = utils.formatRoomData(rooms, objects, currentRoom)
-		#keepLooping = main(userInput, featureList, featureDict, itemDict, currentRoom)
-		#print "Code received: " + str(keepLooping)
+if __name__ == "__main__":
+	print 'Starting the script.'
+	keepLooping = True
+	currentRoom = 1
+	while (keepLooping != "exit"):
+		userInput = raw_input (": ")
+		featureList, featureDict, itemDict, roomList = utils.formatRoomData(rooms, objects, currentRoom)
+		keepLooping = main(userInput, featureList, featureDict, itemDict, roomList)
+		print "Code received: " + str(keepLooping)
 
