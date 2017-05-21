@@ -1,10 +1,10 @@
 {
     "name": "gun",
-    "synonyms": ["gun", "rifle", "longarm"],
-    "desc": "long gun, loaded, with a rifled barrel", 
-    "notInInv": "you don't have a gun", 
-    "inRoom": "There is a gun here", 
-    "take": "you take the gun", 
-    "notAvail": "no gun for you", 
-    "drop": "you drop the gun" 
+    "synonyms": ["gun", "pistol"],
+    "desc": "An ornate pistol with a pearl inlay handle.", 
+    "notInInv": "You don't have a gun. That's probably for the best.", 
+    "inRoom": "There is a gun here.", 
+    "take": "You take the gun.", 
+    "notAvail": "You don't see a gun to take.", 
+    "drop": "You drop the gun." 
 }
