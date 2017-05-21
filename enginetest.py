@@ -37,6 +37,7 @@ def middleLevelTest():
       0, #room7
       0, #room8
       0, #room9
+      0, #room10
       99, #item1 - Board
       99, #item2 - Key
       99, #item3 - Handle
@@ -90,7 +91,9 @@ def middleLevelTest():
       0, #rm9f1
       0, #rm9f2
       0, #rm9f3
-      0) #rm9f4
+      0, #rm9f4
+      0, #rm10f1
+      0) #rm10f2
    #CHECK FLAGS
 
    #Load rooms
@@ -108,6 +111,7 @@ def middleLevelTest():
    armory = rooms[7]
    garrison = rooms[8]
    galley = rooms[9]
+   ladder = rooms[10]
 
    #Load objects
    data.load_objects()
@@ -194,6 +198,13 @@ def middleLevelTest():
             else:
                print galley.shortDesc
 
+         elif currentState.currRoom == 10:    #Ladder
+            if currentState.rm10vis == 0: 
+               print ladder.longDesc
+               currentState.rm10vis = 1 #Update to visited
+            else:
+               print ladder.shortDesc
+
          userRoom = currentState.currRoom #Update room the user is currently in
 
       #Pend input:
@@ -204,7 +215,7 @@ def middleLevelTest():
       userInput = parse.main(userInput, featureList, featureDict, itemList, roomList)
      
       #ENGINE INTERACTIONS BASED ON PARSED USER INPUT
-      if userInput == "1":#Look at feature 1 - STRAW / ENTRYWAY MARKINGS / LOCKER / EXAM ENTRYWAY / DOOR / BOTTLE / GUN CABINET / BUNKS / CANVAS FLAP
+      if userInput == "1":#Look at feature 1 - STRAW / ENTRYWAY MARKINGS / LOCKER / EXAM ENTRYWAY / DOOR / BOTTLE / GUN CABINET / BUNKS / CANVAS FLAP / LADDER
          #Brig
          if currentState.currRoom == 1:
             if currentState.rm01f1 == 0: #Before interaction
@@ -259,6 +270,12 @@ def middleLevelTest():
                print galley.feat1desc 
             else: #After interaction
                print galley.feat1interactComplete
+         #Ladder
+         elif currentState.currRoom == 10:
+            if currentState.rm10f1 == 0: #Before interaction
+               print ladder.feat1desc 
+            else: #After interaction
+               print ladder.feat1interactComplete
 
       elif userInput == "2": #Interact with feature 1 
          #Brig
@@ -301,8 +318,12 @@ def middleLevelTest():
          elif currentState.currRoom == 9:
             print galley.feat1interactSuccess
             currentState.rm09f1 = 1 #Update to interaction complete
+         #Ladder
+         elif currentState.currRoom == 10:
+            print ladder.feat1interactSuccess
+            currentState.rm10f1 = 1 #Update to interaction complete
 
-      elif userInput == "3": #Look at feature 2 - BENCH / BARRED DOOR / PAPER / TABLE / BARRED WINDOW / LAMP / WOODEN DOOR / TABLE / TRASH CAN
+      elif userInput == "3": #Look at feature 2 - BENCH / BARRED DOOR / PAPER / TABLE / BARRED WINDOW / LAMP / WOODEN DOOR / TABLE / TRASH CAN / WOODEN DOOR
          #Brig
          if currentState.currRoom == 1:
             if currentState.rm01f2 == 0: #Before interaction
@@ -357,6 +378,12 @@ def middleLevelTest():
                 print galley.feat2desc 
             else: #After interaction
                 print galley.feat2interactComplete
+         #Ladder
+         elif currentState.currRoom == 10:
+            if currentState.rm10f2 == 0: #Before interaction
+                print ladder.feat2desc 
+            else: #After interaction
+                print ladder.feat2interactComplete
 
       elif userInput == "4": #Interact with feature 2
          #Brig
@@ -396,6 +423,10 @@ def middleLevelTest():
          elif currentState.currRoom == 9:
             print galley.feat2interactSuccess
             currentState.rm09f2 = 1 #Update to interaction complete
+         #Ladder
+         elif currentState.currRoom == 10:
+            print ladder.feat2interactSuccess
+            currentState.rm10f2 = 1 #Update to interaction complete
 
       elif userInput == "5": #Look at object "board"
          if currentState.obj1Loc ==99: #In iventory
@@ -778,7 +809,7 @@ def middleLevelTest():
             if currentState.rm07o1 == 1 and currentState.obj6Loc == 8:
                print gun.inRoom
 
-         elif currentState.currRoom == 8:    #Galley
+         elif currentState.currRoom == 9:    #Galley
             print galley.longDesc
             #Checks objects and if they are DISCOVERED and LOCATED IN ROOM then displays notice they are there
             #Object 1 - board
@@ -798,6 +829,28 @@ def middleLevelTest():
                print smallKey.inRoom
             #Object 6 - Gun
             if currentState.rm07o1 == 1 and currentState.obj6Loc == 9:
+               print gun.inRoom
+
+         elif currentState.currRoom == 10:    #Ladder
+            print galley.longDesc
+            #Checks objects and if they are DISCOVERED and LOCATED IN ROOM then displays notice they are there
+            #Object 1 - board
+            if currentState.rm01o1 == 1 and currentState.obj1Loc == 10:
+               print board.inRoom
+            #Object 2 - keys
+            if currentState.rm01o2 == 1 and currentState.obj2Loc == 10:
+               print keys.inRoom
+            #Object 3 - handle
+            if currentState.rm02o1 == 1 and currentState.obj3Loc == 10:
+               print handle.inRoom
+            #Object 4 - skeleton key
+            if currentState.rm04o1 == 1 and currentState.obj4Loc == 10:
+               print skeletonKey.inRoom
+            #Object 5 - small key
+            if currentState.rm06o1 == 1 and currentState.obj5Loc == 10:
+               print smallKey.inRoom
+            #Object 6 - Gun
+            if currentState.rm07o1 == 1 and currentState.obj6Loc == 10:
                print gun.inRoom
 
       elif userInput == "12": #Take board
@@ -1004,6 +1057,9 @@ def middleLevelTest():
          elif currentState.currRoom == 9: #Galley
             print "You cannot go that way."
 
+         elif currentState.currRoom == 10: #Ladder
+            print "You cannot go that way."
+
       elif userInput == "23": #GO SOUTH
          if currentState.currRoom == 1: #Brig
             print "You cannot go that way."
@@ -1033,6 +1089,9 @@ def middleLevelTest():
          elif currentState.currRoom == 9: #Galley
             currentState.currRoom = galley.south #Updates current user location to ID 8 (Garrison)
 
+         elif currentState.currRoom == 10: #Ladder
+            print "You cannot go that way."
+
       elif userInput == "24": #GO WEST
          if currentState.currRoom == 1: #Brig
             print "You cannot go that way."
@@ -1060,6 +1119,9 @@ def middleLevelTest():
 
          elif currentState.currRoom == 9: #Galley
             print "You cannot go that way."
+
+         elif currentState.currRoom == 10: #Ladder
+            currentState.currRoom = ladder.west #Updates current user location to ID 8 (Garrison)
 
       elif userInput == "25": #GO EAST
          if currentState.currRoom == 1: #Brig
@@ -1092,6 +1154,9 @@ def middleLevelTest():
          elif currentState.currRoom == 9: #Galley
             print "You cannot go that way."
 
+         elif currentState.currRoom == 10: #Ladder
+            print "You cannot go that way."
+
       elif userInput == "26": #GO UP
          if currentState.currRoom == 1: #Brig
             print "You cannot go that way."
@@ -1120,6 +1185,10 @@ def middleLevelTest():
          elif currentState.currRoom == 9: #Galley
             print "You cannot go that way."
 
+         elif currentState.currRoom == 10: #Ladder
+            print "UPPER LEVEL"
+            currentState.currRoom = ladder.up #Updates current user location to ID 11 (**PENDING**)
+
       elif userInput == "27": #GO DOWN
          if currentState.currRoom == 1: #Brig
             print "You cannot go that way."
@@ -1146,6 +1215,9 @@ def middleLevelTest():
             print "You cannot go that way."
 
          elif currentState.currRoom == 9: #Galley
+            print "You cannot go that way."
+
+         elif currentState.currRoom == 10: #Ladder
             print "You cannot go that way."
 
       elif userInput == "28": #Take handle

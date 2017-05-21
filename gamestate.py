@@ -11,7 +11,7 @@
 
 #[BEGIN CLASS IMPLEMENTATION]
 class GameStateClass(object):	
-	def __init__(self, currentRoom, room1, room2, room3, room4, room5, room6, room7, room8, room9, item1, item2, item3, item4, item5, item6, rm1f1, rm1f2, rm1f3, rm1f4, rm1o1, rm1o2, rm2f1, rm2f2, rm2f3, rm2o1, rm3f1, rm3f2, rm3f3, rm3f4, rm3f5, rm3f6, rm4f1, rm4f2, rm4f3, rm4f4, rm4f5, rm4f6, rm4o1, rm5f1, rm5f2, rm5f3, rm6f1, rm6f2, rm6f3, rm6f4, rm6f5, rm6o1, rm7f1, rm7f2, rm7f3, rm7f4, rm7f5, rm7o1, rm8f1, rm8f2, rm8f3, rm8f4, rm8f5, rm8f6, rm9f1, rm9f2, rm9f3, rm9f4):
+	def __init__(self, currentRoom, room1, room2, room3, room4, room5, room6, room7, room8, room9, room10, item1, item2, item3, item4, item5, item6, rm1f1, rm1f2, rm1f3, rm1f4, rm1o1, rm1o2, rm2f1, rm2f2, rm2f3, rm2o1, rm3f1, rm3f2, rm3f3, rm3f4, rm3f5, rm3f6, rm4f1, rm4f2, rm4f3, rm4f4, rm4f5, rm4f6, rm4o1, rm5f1, rm5f2, rm5f3, rm6f1, rm6f2, rm6f3, rm6f4, rm6f5, rm6o1, rm7f1, rm7f2, rm7f3, rm7f4, rm7f5, rm7o1, rm8f1, rm8f2, rm8f3, rm8f4, rm8f5, rm8f6, rm9f1, rm9f2, rm9f3, rm9f4, rm10f1, rm10f2):
    		#[BEGIN VARIABLES]
    		self.currRoom = currentRoom #Integer of current room player is in, default = 1 
 
@@ -26,6 +26,7 @@ class GameStateClass(object):
    		self.rm07vis = room7
    		self.rm08vis = room8
    		self.rm09vis = room9
+   		self.rm10vis = room10
 
    		#Location of items & item name - room ID integer or 99 (player inv) or 100 (destroyed/permanently used)
    		self.obj1Loc = item1	#Board
@@ -159,6 +160,12 @@ class GameStateClass(object):
 		#Sink
 		self.rm09f4 = rm9f4
 
+
+		#Ladder - Room 10
+		#Ladder
+		self.rm10f1 = rm10f1
+		#Wooden Door
+		self.rm10f2 = rm10f2
 
    		#[END VARIABLES]
 
