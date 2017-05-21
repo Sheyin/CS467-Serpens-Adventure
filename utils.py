@@ -10,6 +10,8 @@ engine_codes_dict = {
 	'keys_look': "8", 'keys_take': "13", 'keys_drop': "15",
 	'handle_look': "32", 'handle_take': "28", 'handle_drop': "29",
 	'skeleton key_look': "33", 'skeleton key_take': "30", 'skeleton key_drop': "31",
+	'smallKey_look': "34", 'smallKey_take': "35", 'smallKey_drop': "36",
+	'gun_look': "37", 'gun_take': "38", 'gun_drop': "39",
 	# Features
 	'feat1_look': "1", 'feat1_do': "2",	'feat2_look': "3", 'feat2_do': "4",
 	'feat3_look': "6", 'feat3_do': "7",	'feat4_look': "9", 'feat4_do': "10",
