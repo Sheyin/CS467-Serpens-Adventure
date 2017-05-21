@@ -1,6 +1,6 @@
 {
     "id": 6,
-    "name": "Rum and Water",
+    "name": "Rum",
     "north": 7, 
     "south": "", 
     "east": "", 
@@ -18,7 +18,7 @@
     "feat2": "lamp",
     "feat2desc": "An oil lamp made from a bottle hangs from the ceiling by a rope.",
     "feat2interactOptions": "examine, check, search",
-    "feat2interactSuccess": "You check the oil lamp more closely. It seems to contain some type of fuel with a cotton wick burning brightly out of the neck of the bottle. The bottle is a nice round shape and it seems like it might have previously contained some type of alchohol.",
+    "feat2interactSuccess": "You check the oil lamp more closely. It seems to contain some type of fuel with a cotton wick burning brightly out of the neck of the bottle. The bottle is a nice round shape and it seems like it might have previously contained some type of alcohol.",
     "feat2interactComplete": "A cheerfully burning oil lamp made out of a bottle that looks like it at one time contained some kind of alcohol.",
     "feat2interactFail": "Lamp Fail - this should never display",
     "feat3": "trap door",

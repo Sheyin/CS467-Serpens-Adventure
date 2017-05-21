@@ -27,11 +27,51 @@ def middleLevelTest():
    userRoom = 0   #Sentinel variable for room
 
    #Initialize gamestate class - NOTE: MODIFIED TO START IN ROOM 6
-   currentState = gamestate.GameStateClass(6, 0, 0, 0, 0, 0, 0, 99, 99, 99, 99, 99, 6, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+   currentState = gamestate.GameStateClass(6,   #currentRoom
+      0, #room1
+      0, #room2
+      0, #room3
+      0, #room4
+      0, #room5
+      0, #room6
+      99, #item1 - Board
+      99, #item2 - Key
+      99, #item3 - Handle
+      99, #item4 - Skeleton Key
+      6, #item5 - Small Key
+      0, #rm1f1
+      0, #rm1f2
+      0, #rm1f3
+      0, #rm1f4
+      1, #rm1o1 - Board discovery
+      1, #rm1o2 - Keys discovery
+      0, #rm2f1
+      0, #rm2f2
+      0, #rm2f3
+      1, #rm2o1 - Handle discovery 
+      0, #rm3f1
+      0, #rm3f2
+      0, #rm3f3
+      0, #rm3f4
+      0, #rm3f5
+      0, #rm3f6
+      0, #rm4f1
+      0, #rm4f2
+      0, #rm4f3
+      0, #rm4f4
+      0, #rm4f5
+      0, #rm4f6
+      1, #rm4o1 - Skeleton key discovery
+      0, #rm5f1
+      0, #rm5f2
+      0, #rm5f3
+      0, #rm6f1
+      0, #rm6f2
+      0, #rm6f3
+      0, #rm6f4
+      0, #rm6f5
+      0) #rm6o1 - Small key discovery 
    #CHECK FLAGS
-
-   #6,          0,       0,     0,      0,    0,    0,      99,    99,   99,     99,   6,      0,
-   #currentRoom, room1, room2, room3, room4, room5, room6, item1, item2, item3, item4, item5, rm1f1,
 
    #Load rooms
    data.load_rooms() 
@@ -119,7 +159,7 @@ def middleLevelTest():
       userInput = parse.main(userInput, featureList, featureDict, itemList, roomList)
      
       #ENGINE INTERACTIONS BASED ON PARSED USER INPUT
-      if userInput == "1":#Look at feature 1 - STRAW / ENTRYWAY MARKINGS / LOCKER / EXAM ENTRYWAY / DOOR
+      if userInput == "1":#Look at feature 1 - STRAW / ENTRYWAY MARKINGS / LOCKER / EXAM ENTRYWAY / DOOR / BOTTLE
          #Brig
          if currentState.currRoom == 1:
             if currentState.rm01f1 == 0: #Before interaction
@@ -187,7 +227,7 @@ def middleLevelTest():
             print rum.feat1interactSuccess
             currentState.rm06f1 = 1 #Update to interaction complete
 
-      elif userInput == "3": #Look at feature 2 - BENCH / BARRED DOOR / PAPER / TABLE / BARRED WINDOW
+      elif userInput == "3": #Look at feature 2 - BENCH / BARRED DOOR / PAPER / TABLE / BARRED WINDOW / LAMP
          #Brig
          if currentState.currRoom == 1:
             if currentState.rm01f2 == 0: #Before interaction
@@ -259,7 +299,7 @@ def middleLevelTest():
          else: #Not in inventory
             print board.notInInv 
 
-      elif userInput == "6": #Look at feature 3 - WINDOW / METAL DOOR / DOOR / MIRROR / WINDOW
+      elif userInput == "6": #Look at feature 3 - WINDOW / METAL DOOR / DOOR / MIRROR / WINDOW / TRAP DOOR
          #Brig
          if currentState.currRoom == 1:
             if currentState.rm01f3 == 0: #Before interaction
@@ -340,7 +380,7 @@ def middleLevelTest():
          else: #Not in inventory
             print keys.notInInv
 
-      elif userInput == "9": #Look at feature 4 - DOOR / WOODEN DOOR / CHEST
+      elif userInput == "9": #Look at feature 4 - DOOR / WOODEN DOOR / CHEST / BARRELS
          #Brig
          if currentState.currRoom == 1:
             if currentState.rm01f4 == 0: #Before interaction
@@ -390,7 +430,7 @@ def middleLevelTest():
          elif currentState.currRoom == 6:
             print rum.feat4interactSuccess
             currentState.rm06f4 = 1 #Update to interaction complete
-            currentState.rm06o1 = 1 #Small Key discovered
+            currentState.rm06o1 = 1 #Small Key discovered 
 
 
       elif userInput == "11": #General look around room
@@ -505,7 +545,7 @@ def middleLevelTest():
             if currentState.rm04o1 == 1 and currentState.obj4Loc == 6:
                print skeletonKey.inRoom
             #Object 5 - small key
-            if currentState.rm05o1 == 1 and currentState.obj5Loc == 6:
+            if currentState.rm06o1 == 1 and currentState.obj5Loc == 6:
                print smallKey.inRoom
 
       elif userInput == "12": #Take board
@@ -553,9 +593,11 @@ def middleLevelTest():
             print handle.name
          if currentState.obj4Loc == 99:   #Skeleton Key
             print skeletonKey.name
+         if currentState.obj5Loc == 99:   #Small Key
+            print smallKey.name
          print ""
 
-      elif userInput == "18": #Look at feature 5 - Brig:null - LADDER / BOTTLES
+      elif userInput == "18": #Look at feature 5 - Brig:null - LADDER / BOTTLES / WOODEN DOOR
          #Brig
          if currentState.currRoom == 1:
             print "Brig feature 5 null"
@@ -575,8 +617,14 @@ def middleLevelTest():
                print observation.feat5desc 
             else: #After interaction
                print observation.feat5interactComplete
+         #Rum
+         elif currentState.currRoom == 6:
+            if currentState.rm06f5 == 0: #Before interaction
+               print rum.feat5desc 
+            else: #After interaction
+               print rum.feat5interactComplete
 
-      elif userInput == "19": #Interact with feature 5  - LADDER
+      elif userInput == "19": #Interact with feature 5  - LADDER / BOTTLES / WOODEN DOOR
          #Brig
          if currentState.currRoom == 1:
             print "Brig feature 5 null"
@@ -593,6 +641,10 @@ def middleLevelTest():
          elif currentState.currRoom == 4:
             print observation.feat5interactSuccess
             currentState.rm04f5 = 1 #Update to interaction complete
+         #Rum
+         elif currentState.currRoom == 6:
+            print rum.feat5interactSuccess
+            currentState.rm06f5 = 1 #Update to interaction complete
 
 
       elif userInput == "20": #Look at feature 6 - Brig:null  - TRAP DOOR / PAPERS
@@ -656,6 +708,9 @@ def middleLevelTest():
          elif currentState.currRoom == 5: #Examination
             print "You cannot go that way."
 
+         elif currentState.currRoom == 6: #Rum
+            currentState.currRoom = rum.north #Updates current user location to ID 7 (Armory Room)
+
       elif userInput == "23": #GO SOUTH
          if currentState.currRoom == 1: #Brig
             print "You cannot go that way."
@@ -673,6 +728,9 @@ def middleLevelTest():
          elif currentState.currRoom == 5: #Examination
             currentState.currRoom = examination.south #Updates current user location to ID 3 (Hallway)
 
+         elif currentState.currRoom == 6: #Rum
+            print "You cannot go that way."
+
       elif userInput == "24": #GO WEST
          if currentState.currRoom == 1: #Brig
             print "You cannot go that way."
@@ -687,6 +745,9 @@ def middleLevelTest():
             currentState.currRoom = observation.west #Updates current user location to ID 3 (Hallway)
 
          elif currentState.currRoom == 5: #Examination
+            print "You cannot go that way."
+
+         elif currentState.currRoom == 6: #Rum
             print "You cannot go that way."
 
       elif userInput == "25": #GO EAST
@@ -708,6 +769,9 @@ def middleLevelTest():
          elif currentState.currRoom == 5: #Examination
             print "You cannot go that way."
 
+         elif currentState.currRoom == 6: #Rum
+            print "You cannot go that way."
+
       elif userInput == "26": #GO UP
          if currentState.currRoom == 1: #Brig
             print "You cannot go that way."
@@ -716,12 +780,15 @@ def middleLevelTest():
             print "You cannot go that way."
 
          elif currentState.currRoom == 3: #Lower Hallway
-            print "TO DO: Go UP to MIDDLE DECK - need to add conditions to exit"
+            currentState.currRoom = hallway.up #Updates current user location to ID 6 (Rum)
 
          elif currentState.currRoom == 4: #Observation
             print "You cannot go that way."
 
          elif currentState.currRoom == 5: #Examination
+            print "You cannot go that way."
+
+         elif currentState.currRoom == 6: #Rum
             print "You cannot go that way."
 
       elif userInput == "27": #GO DOWN
@@ -739,6 +806,9 @@ def middleLevelTest():
 
          elif currentState.currRoom == 5: #Examination
             print "You cannot go that way."
+
+         elif currentState.currRoom == 6: #Rum
+            currentState.currRoom = rum.down #Updates current user location to ID 6 (Rum)
 
       elif userInput == "28": #Take handle
          #If object discovered and if player is in the same room as the object
@@ -781,6 +851,27 @@ def middleLevelTest():
             print skeletonKey.desc
          else: #Not in inventory
             print skeletonKey.notInInv 
+
+      elif userInput == "34": #Look at object "small key"
+         if currentState.obj5Loc ==99: #In inventory
+            print smallKey.desc
+         else: #Not in inventory
+            print smallKey.notInInv 
+
+      elif userInput == "35": #Take small key
+         #If object discovered and if player is in the same room as the object
+         if currentState.rm06o1 == 1 and currentState.obj5Loc == currentState.currRoom:
+            currentState.obj5Loc = 99 #Add board to player inventory
+            print smallKey.take
+         else:
+            print smallKey.notAvail
+
+      elif userInput == "36": #Drop small key
+         if currentState.obj5Loc == 99: #In inventory to drop
+            currentState.obj5Loc = currentState.currRoom
+            print smallKey.drop
+         else:
+            print smallKey.notInInv
 
       else:
          print "Invalid input"
