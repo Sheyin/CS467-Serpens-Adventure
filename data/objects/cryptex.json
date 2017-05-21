@@ -1,0 +1,10 @@
+{
+    "name": "cryptex",
+    "synonyms": ["device", "puzzle", "wooden thing"],
+    "desc": "A strange wooden device with letter wheels on it.  You think you read a book on it once - calling it a 'cryptex'.  Perhaps if you spell the correct word, it will open.", 
+    "notInInv": "", 
+    "inRoom": "A strange wooden device sits on a corner of the desk.", 
+    "take": "You pick up the strange device.", 
+    "notAvail": "", 
+    "drop": "You drop the cryptex on the floor.  It rolls a bit, then comes to a halt." 
+}

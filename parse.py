@@ -28,7 +28,6 @@ def checkFeatureActions(input, pos, feature, featureDict):
 # This receives input from engine/engineTest, validates and returns an engine code
 # This expects: input(string), features(List), feature(Dict), items(Dict), rooms(List of tuples)
 def main(rawinput, features, featureDict, itemDict, rooms):
-#def main(input, currentRoom):
 	input = rawinput.lower()
 	command = commands.identify(input)
 	itemList = itemDict.keys()
