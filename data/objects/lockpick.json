@@ -1,0 +1,10 @@
+{
+    "name": "lockpick",
+    "synonyms": ['lock pick', 'pick'],
+    "desc": "A lockpick you made by bending a paper clip.", 
+    "notInInv": "You don't have a lockpick.", 
+    "inRoom": "A lockpick lies on the floor.", 
+    "take": "You pick up the lockpick.", 
+    "notAvail": "There is no lockpick here.", 
+    "drop": "You drop the lockpick on the floor." 
+}

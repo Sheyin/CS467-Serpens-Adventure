@@ -191,7 +191,6 @@ def formatRoomData(rooms, objects, currentRoom):
 	featuresList = []
 	featuresDict = {}
 	itemList = []
-	#roomList = []
 	featuresNeeded = ['feat1', 'feat2', 'feat3', 'feat4', 'feat5', 'feat6']
 	featInteractionsNeeded = ['feat1interactOptions', 'feat2interactOptions', 'feat3interactOptions', 'feat4interactOptions', 'feat5interactOptions', 'feat6interactOptions']
 
