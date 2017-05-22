@@ -47,12 +47,19 @@ def finalLevelTest():
       0, #room8
       0, #room9
       0, #room10
-      99, #item1 - Board
+      0, #room11
+      0, #room12
+      0, #room13
+      0, #room14
+      0, #room15
+      99, #item1 - Board  - NOTE: 99 Item in inventory, 100 item permanently destroyed/used
       99, #item2 - Key
       99, #item3 - Handle
       99, #item4 - Skeleton Key
-      6, #item5 - Small Key
-      7, #item6 - Gun
+      99, #item5 - Small Key
+      99, #item6 - Gun
+      0, #item7 - Lockpick
+      0, #item8 - Cryptex
       0, #rm1f1
       0, #rm1f2
       0, #rm1f3
@@ -84,13 +91,13 @@ def finalLevelTest():
       0, #rm6f3
       0, #rm6f4
       0, #rm6f5
-      0, #rm6o1 - Small key discovery 
+      1, #rm6o1 - Small key discovery 
       0, #rm7f1
       0, #rm7f2
       0, #rm7f3
       0, #rm7f4
       0, #rm7f5
-      0, #rm7o1 - Gun discovery
+      1, #rm7o1 - Gun discovery
       0, #rm8f1
       0, #rm8f2
       0, #rm8f3
@@ -102,7 +109,13 @@ def finalLevelTest():
       0, #rm9f3
       0, #rm9f4
       0, #rm10f1
-      0) #rm10f2
+      0, #rm10f2
+      0, #rm11f1
+      0, #rm11f2
+      0, #rm11f3
+      0, #rm11f4
+      0, #rm11f5
+      0) #rm11f6
 
    #Load rooms
    data.load_rooms() 
@@ -121,6 +134,13 @@ def finalLevelTest():
    galley = rooms[9]
    ladder = rooms[10]
 
+   #TOP LEVEL ROOMS
+   topHall = rooms[11]
+   garden = rooms[12]
+   control = rooms[13]
+   side = rooms[14]
+   processing = rooms[15]
+
    #Load objects
    data.load_objects()
 
@@ -133,6 +153,10 @@ def finalLevelTest():
    #MIDDLE LEVEL OBJECTS
    smallKey = objects["small key"]
    gun = objects["gun"]
+
+   #TOP LEVEL OBJECTS
+   lockpick = objects["lockpick"]
+   cryptex = objects["cryptex"]
 
    #While loop repeatedly prompts user for input until user requests to load, save, or quit game
    while userInput not in ['loadgame', 'savegame', 'quit', 'exit']:
@@ -793,7 +817,7 @@ def finalLevelTest():
             if currentState.rm07o1 == 1 and currentState.obj6Loc == 7:
                print gun.inRoom
 
-         elif currentState.currRoom == 7:    #Garrison
+         elif currentState.currRoom == 8:    #Garrison
             print garrison.longDesc
             #Checks objects and if they are DISCOVERED and LOCATED IN ROOM then displays notice they are there
             #Object 1 - board
@@ -1003,9 +1027,9 @@ def finalLevelTest():
          #Garrison
          elif currentState.currRoom == 8:
             if currentState.rm08f6 == 0: #Before interaction
-               print armory.feat6desc 
+               print garrison.feat6desc 
             else: #After interaction
-               print armory.feat6interactComplete
+               print garrison.feat6interactComplete
 
       elif userInput == "21": #Interact with feature 6
          #Brig
@@ -1027,9 +1051,9 @@ def finalLevelTest():
          elif currentState.currRoom == 4:
             print observation.feat6interactSuccess
             currentState.rm04f6 = 1 #Update to interaction complete
-         #Armory
+         #Garrison
          elif currentState.currRoom == 8:
-            print armory.feat6interactSuccess
+            print garrison.feat6interactSuccess
             currentState.rm08f6 = 1 #Update to interaction complete
 
       elif userInput == "22": #GO NORTH
