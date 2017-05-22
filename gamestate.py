@@ -11,7 +11,7 @@
 
 #[BEGIN CLASS IMPLEMENTATION]
 class GameStateClass(object):	
-	def __init__(self, currentRoom, room1, room2, room3, room4, room5, room6, room7, room8, room9, room10, room11, room12, room13, room14, room15, item1, item2, item3, item4, item5, item6, item7, item8, rm1f1, rm1f2, rm1f3, rm1f4, rm1o1, rm1o2, rm2f1, rm2f2, rm2f3, rm2o1, rm3f1, rm3f2, rm3f3, rm3f4, rm3f5, rm3f6, rm4f1, rm4f2, rm4f3, rm4f4, rm4f5, rm4f6, rm4o1, rm5f1, rm5f2, rm5f3, rm6f1, rm6f2, rm6f3, rm6f4, rm6f5, rm6o1, rm7f1, rm7f2, rm7f3, rm7f4, rm7f5, rm7o1, rm8f1, rm8f2, rm8f3, rm8f4, rm8f5, rm8f6, rm9f1, rm9f2, rm9f3, rm9f4, rm10f1, rm10f2, rm11f1, rm11f2, rm11f3, rm11f4, rm11f5, rm11f6, rm12f1, rm12f2, rm12f3, rm12f4, rm12f5, rm12f6, rm12o1, rm13f1, rm13f2, rm13f3, rm13f4, rm13f5, rm13f6):
+	def __init__(self, currentRoom, room1, room2, room3, room4, room5, room6, room7, room8, room9, room10, room11, room12, room13, room14, room15, item1, item2, item3, item4, item5, item6, item7, item8, rm1f1, rm1f2, rm1f3, rm1f4, rm1o1, rm1o2, rm2f1, rm2f2, rm2f3, rm2o1, rm3f1, rm3f2, rm3f3, rm3f4, rm3f5, rm3f6, rm4f1, rm4f2, rm4f3, rm4f4, rm4f5, rm4f6, rm4o1, rm5f1, rm5f2, rm5f3, rm6f1, rm6f2, rm6f3, rm6f4, rm6f5, rm6o1, rm7f1, rm7f2, rm7f3, rm7f4, rm7f5, rm7o1, rm8f1, rm8f2, rm8f3, rm8f4, rm8f5, rm8f6, rm9f1, rm9f2, rm9f3, rm9f4, rm10f1, rm10f2, rm11f1, rm11f2, rm11f3, rm11f4, rm11f5, rm11f6, rm12f1, rm12f2, rm12f3, rm12f4, rm12f5, rm12f6, rm12o1, rm13f1, rm13f2, rm13f3, rm13f4, rm13f5, rm13f6, rm14f1, rm14f2, rm14f3, rm14f4, rm14f5, rm14f6, rm14o1):
    		#[BEGIN VARIABLES]
    		self.currRoom = currentRoom #Integer of current room player is in, default = 1 
 
@@ -221,6 +221,23 @@ class GameStateClass(object):
 		self.rm13f5 = rm13f5
 		#group C
 		self.rm13f6 = rm13f6
+
+
+		#Side - Room 14
+		#door
+		self.rm14f1 = rm14f1
+		#photo
+		self.rm14f2 = rm14f2
+		#drawer
+		self.rm14f3 = rm14f3
+		#fireplace
+		self.rm14f4 = rm14f4
+		#letter
+		self.rm14f5 = rm14f5
+		#chest
+		self.rm14f6 = rm14f6
+		#Object - cryptex 
+		self.rm14o1 = rm14o1
 
 
    		#[END VARIABLES]
