@@ -16,6 +16,126 @@ from data import *
 import utils
 #[END IMPORTS]
 
+#[BEGIN SPECIFY ROOM TESTING]
+def specifyRoomTest(myRoom):
+   print ""
+   print "Specify Room Testing"
+   print "Starting Point Room " + myRoom
+   print ""
+
+#[END SPECIFY ROOM TESTING]
+
+#[BEGIN FINAL LEVEL TESTING]
+def finalLevelTest():
+   print ""
+   print "Final Level Testing"
+   print ""
+
+   #Initial variables
+   userInput = "default"   #Default message for user input
+   userRoom = 0   #Sentinel variable for room
+
+   #Initialize gamestate class - NOTE: MODIFIED TO START IN ROOM 11
+   currentState = gamestate.GameStateClass(11,   #currentRoom
+      0, #room1
+      0, #room2
+      0, #room3
+      0, #room4
+      0, #room5
+      0, #room6
+      0, #room7
+      0, #room8
+      0, #room9
+      0, #room10
+      99, #item1 - Board
+      99, #item2 - Key
+      99, #item3 - Handle
+      99, #item4 - Skeleton Key
+      6, #item5 - Small Key
+      7, #item6 - Gun
+      0, #rm1f1
+      0, #rm1f2
+      0, #rm1f3
+      0, #rm1f4
+      1, #rm1o1 - Board discovery
+      1, #rm1o2 - Keys discovery
+      0, #rm2f1
+      0, #rm2f2
+      0, #rm2f3
+      1, #rm2o1 - Handle discovery 
+      0, #rm3f1
+      0, #rm3f2
+      0, #rm3f3
+      0, #rm3f4
+      0, #rm3f5
+      0, #rm3f6
+      0, #rm4f1
+      0, #rm4f2
+      0, #rm4f3
+      0, #rm4f4
+      0, #rm4f5
+      0, #rm4f6
+      1, #rm4o1 - Skeleton key discovery
+      0, #rm5f1
+      0, #rm5f2
+      0, #rm5f3
+      0, #rm6f1
+      0, #rm6f2
+      0, #rm6f3
+      0, #rm6f4
+      0, #rm6f5
+      0, #rm6o1 - Small key discovery 
+      0, #rm7f1
+      0, #rm7f2
+      0, #rm7f3
+      0, #rm7f4
+      0, #rm7f5
+      0, #rm7o1 - Gun discovery
+      0, #rm8f1
+      0, #rm8f2
+      0, #rm8f3
+      0, #rm8f4
+      0, #rm8f5
+      0, #rm8f6
+      0, #rm9f1
+      0, #rm9f2
+      0, #rm9f3
+      0, #rm9f4
+      0, #rm10f1
+      0) #rm10f2
+
+   #Load rooms
+   data.load_rooms() 
+
+   #Rename loaded rooms to be compatible with engine
+   brig = rooms[1] 
+   storage = rooms[2]
+   hallway = rooms[3]
+   observation = rooms[4]
+   examination = rooms[5]
+
+   #MIDDLE LEVEL ROOMS
+   rum = rooms[6]
+   armory = rooms[7]
+   garrison = rooms[8]
+   galley = rooms[9]
+   ladder = rooms[10]
+
+   #Load objects
+   data.load_objects()
+
+   #Rename objects for engine compatibility
+   board = objects["board"]
+   keys = objects["keys"]
+   handle = objects["handle"]
+   skeletonKey = objects["skeleton key"]
+
+   #MIDDLE LEVEL OBJECTS
+   smallKey = objects["small key"]
+   gun = objects["gun"]
+
+#[END FINAL LEVEL TESTING]
+
 #[BEGIN MID LEVEL TESTING]
 def middleLevelTest():
    print ""
@@ -94,7 +214,6 @@ def middleLevelTest():
       0, #rm9f4
       0, #rm10f1
       0) #rm10f2
-   #CHECK FLAGS
 
    #Load rooms
    data.load_rooms() 
@@ -130,8 +249,6 @@ def middleLevelTest():
    while userInput not in ['loadgame', 'savegame', 'quit', 'exit']:
 
       #[BEGIN ENGINE]
-      #Level One - Midpoint Check 
-
       if userRoom != currentState.currRoom:  #Displays room description when player moves rooms
 
          #Display short / long desc
