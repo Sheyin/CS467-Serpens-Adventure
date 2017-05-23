@@ -54,8 +54,7 @@ def load_gamestate (saveNum):
 			currentState.obj6Loc = data["obj6Loc"]
 			currentState.obj7Loc = data["obj7Loc"]
 			currentState.obj8Loc = data["obj8Loc"]
-			currentState.obj9Loc = data["obj9Loc"]
-			currentState.obj10Loc = data["obj10Loc"]
+
 			currentState.rm01f1 = data["rm01f1"]
 			currentState.rm01f2 = data["rm01f2"]
 			currentState.rm01f3 = data["rm01f3"]
@@ -81,12 +80,28 @@ def load_gamestate (saveNum):
 			
 			currentState.rm06f1 = data["rm06f1"]
 			currentState.rm06f2 = data["rm06f2"]
+			currentState.rm06f3 = data["rm06f3"]
+			currentState.rm06f4 = data["rm06f4"]
+			currentState.rm06f5 = data["rm06f5"]
+	
 			currentState.rm07f1 = data["rm07f1"]
 			currentState.rm07f2 = data["rm07f2"]
+			currentState.rm07f3 = data["rm07f3"]
+			currentState.rm07f4 = data["rm07f4"]
+			currentState.rm07f5 = data["rm07f5"]
+			
 			currentState.rm08f1 = data["rm08f1"]
 			currentState.rm08f2 = data["rm08f2"]
+			currentState.rm08f3 = data["rm08f3"]
+			currentState.rm08f4 = data["rm08f4"]
+			currentState.rm08f5 = data["rm08f5"]
+			currentState.rm08f6 = data["rm08f6"]
+			
 			currentState.rm09f1 = data["rm09f1"]
 			currentState.rm09f2 = data["rm09f2"]
+			currentState.rm09f3 = data["rm09f3"]
+			currentState.rm09f4 = data["rm09f4"]
+			
 			currentState.rm10f1 = data["rm10f1"]
 			currentState.rm10f2 = data["rm10f2"]
 			
@@ -96,41 +111,42 @@ def load_gamestate (saveNum):
 			currentState.rm11f4 = data["rm11f4"]
 			currentState.rm11f5 = data["rm11f5"]
 			currentState.rm11f6 = data["rm11f5"]
+			
 			currentState.rm12f1 = data["rm12f1"]
 			currentState.rm12f2 = data["rm12f2"]
 			currentState.rm12f3 = data["rm12f3"]
 			currentState.rm12f4 = data["rm12f4"]
 			currentState.rm12f5 = data["rm12f5"]
 			currentState.rm12f6 = data["rm12f6"]
+			
 			currentState.rm13f1 = data["rm13f1"]
 			currentState.rm13f2 = data["rm13f2"]
 			currentState.rm13f3 = data["rm13f3"]
 			currentState.rm13f4 = data["rm13f4"]
 			currentState.rm13f5 = data["rm13f5"]
 			currentState.rm13f6 = data["rm13f6"]
+			
 			currentState.rm14f1 = data["rm14f1"]
 			currentState.rm14f2 = data["rm14f2"]
 			currentState.rm14f3 = data["rm14f3"]
 			currentState.rm14f4 = data["rm14f4"]
 			currentState.rm14f5 = data["rm14f5"]
 			currentState.rm14f6 = data["rm14f6"]
+			
 			currentState.rm15f1 = data["rm15f1"]
 			currentState.rm15f2 = data["rm15f2"]
 			currentState.rm15f3 = data["rm15f3"]
 			currentState.rm15f4 = data["rm15f4"]
 			currentState.rm15f5 = data["rm15f5"]
-			currentState.rm15f6 = data["rm15f6"]
-			currentState.rm16f1 = data["rm16f1"]
-			currentState.rm16f2 = data["rm16f2"]
-			currentState.rm16f3 = data["rm16f3"]
-			currentState.rm16f4 = data["rm16f4"]
-			currentState.rm16f5 = data["rm16f5"]
-			currentState.rm16f6 = data["rm16f6"]
-			
+							
 			currentState.rm01o1 = data["rm01o1"]
-			currentState.rm01o1 = data["rm01o2"]
+			currentState.rm01o2 = data["rm01o2"]
 			currentState.rm02o1 = data["rm02o1"]
 			currentState.rm04o1 = data["rm04o1"]
+			currentState.rm06o1 = data["rm06o1"]
+			currentState.rm07o1 = data["rm07o1"]
+			currentState.rm12o1 = data["rm12o1"]
+			currentState.rm14o1 = data["rm14o1"]
 	
 
 		
@@ -176,8 +192,6 @@ def save_gamestate(saveNum):
     jsonObject["obj6Loc"] = currentState.obj6Loc
     jsonObject["obj7Loc"] = currentState.obj7Loc
     jsonObject["obj8Loc"] = currentState.obj8Loc
-    jsonObject["obj9Loc"] = currentState.obj9Loc
-    jsonObject["obj10Loc"] = currentState.obj10Loc
     jsonObject["rm01f1"] = currentState.rm01f1
     jsonObject["rm01f2"] = currentState.rm01f2
     jsonObject["rm01f3"] = currentState.rm01f3
@@ -203,15 +217,26 @@ def save_gamestate(saveNum):
 
     jsonObject["rm06f1"] = currentState.rm06f1
     jsonObject["rm06f2"] = currentState.rm06f2
+    jsonObject["rm06f3"] = currentState.rm06f3
+    jsonObject["rm06f4"] = currentState.rm06f4
+    jsonObject["rm06f5"] = currentState.rm06f5
     jsonObject["rm07f1"] = currentState.rm07f1
     jsonObject["rm07f2"] = currentState.rm07f2
+    jsonObject["rm07f3"] = currentState.rm07f3
+    jsonObject["rm07f4"] = currentState.rm07f4
+    jsonObject["rm07f5"] = currentState.rm07f5
     jsonObject["rm08f1"] = currentState.rm08f1
     jsonObject["rm08f2"] = currentState.rm08f2
+    jsonObject["rm08f3"] = currentState.rm08f3
+    jsonObject["rm08f4"] = currentState.rm08f4
+    jsonObject["rm08f5"] = currentState.rm08f5
+    jsonObject["rm08f6"] = currentState.rm08f6
     jsonObject["rm09f1"] = currentState.rm09f1
     jsonObject["rm09f2"] = currentState.rm09f2
+    jsonObject["rm09f3"] = currentState.rm09f3
+    jsonObject["rm09f4"] = currentState.rm09f4
     jsonObject["rm10f1"] = currentState.rm10f1
     jsonObject["rm10f2"] = currentState.rm10f2
-
     jsonObject["rm11f1"] = currentState.rm11f1
     jsonObject["rm11f2"] = currentState.rm11f2
     jsonObject["rm11f3"] = currentState.rm11f3
@@ -241,18 +266,14 @@ def save_gamestate(saveNum):
     jsonObject["rm15f3"] = currentState.rm15f3
     jsonObject["rm15f4"] = currentState.rm15f4
     jsonObject["rm15f5"] = currentState.rm15f5
-    jsonObject["rm15f6"] = currentState.rm15f6
-    jsonObject["rm16f1"] = currentState.rm16f1
-    jsonObject["rm16f2"] = currentState.rm16f2
-    jsonObject["rm16f3"] = currentState.rm16f3
-    jsonObject["rm16f4"] = currentState.rm16f4
-    jsonObject["rm16f5"] = currentState.rm16f5
-    jsonObject["rm16f6"] = currentState.rm16f6
-
     jsonObject["rm01o1"] = currentState.rm01o1
-    jsonObject["rm01o1"] = currentState.rm01o2
+    jsonObject["rm01o2"] = currentState.rm01o2
     jsonObject["rm02o1"] = currentState.rm02o1
     jsonObject["rm04o1"] = currentState.rm04o1
+    jsonObject["rm06o1"] = currentState.rm06o1
+    jsonObject["rm07o1"] = currentState.rm07o1
+    jsonObject["rm12o1"] = currentState.rm12o1
+    jsonObject["rm14o1"] = currentState.rm14o1
 	
     file_content = json.dumps(jsonObject, sort_keys=True, indent=4, separators=(',', ': '))
 

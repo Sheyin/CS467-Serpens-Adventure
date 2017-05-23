@@ -299,9 +299,7 @@ class MattsGameStateClass(object):
 		self.obj6Loc = ""
 		self.obj7Loc = ""
 		self.obj8Loc = ""
-		self.obj9Loc = ""
-		self.obj10Loc = ""
-		
+				
 			
    		
 		#Brig - Room 1
@@ -370,52 +368,146 @@ class MattsGameStateClass(object):
 		#Mirror - examined (1) or unexamined (0)
 		self.rm05f3 = ""
 		
-		self.rm06f1 = ""
-		self.rm06f2 = ""
-		self.rm07f1 = ""
-		self.rm07f2 = ""
-		self.rm08f1 = ""
-		self.rm08f2 = ""
-		self.rm09f1 = ""
-		self.rm09f2 = ""
-		self.rm10f1 = ""
-		self.rm10f2 = ""
-		self.rm11f1 = ""
-		self.rm11f2 = ""
-		self.rm11f3 = ""
-		self.rm11f4 = ""
-		self.rm11f5 = ""
-		self.rm11f6 = ""
-		self.rm12f1 = ""
-		self.rm12f2 = ""
-		self.rm12f3 = ""
-		self.rm12f4 = ""
-		self.rm12f5 = ""
-		self.rm12f6 = ""
-		self.rm13f1 = ""
-		self.rm13f2 = ""
-		self.rm13f3 = ""
-		self.rm13f4 = ""
-		self.rm13f5 = ""
-		self.rm13f6 = ""
-		self.rm14f1 = ""
-		self.rm14f2 = ""
-		self.rm14f3 = ""
-		self.rm14f4 = ""
-		self.rm14f5 = ""
-		self.rm14f6 = ""
-		self.rm15f1 = ""
-		self.rm15f2 = ""
-		self.rm15f3 = ""
-		self.rm15f4 = ""
-		self.rm15f5 = ""
-		self.rm15f6 = ""
-		self.rm16f1 = ""
-		self.rm16f2 = ""
-		self.rm16f3 = ""
-		self.rm16f4 = ""
-		self.rm16f5 = ""
-		self.rm16f6 = ""
+		
+		#Rum - Room 6
+		#Bottle
+		rm06f1 = ""
+		#Lamp
+		rm06f2 = ""
+		#Trap door
+		rm06f3 = ""
+		#Barrels
+		rm06f4 = ""
+		#Wooden door
+		rm06f5 = ""
+		#Keys - discovered (1) or undiscovered (0)
+		rm06o1 = ""
+
+
+		#Armory - Room 7
+		#Gun Cabinet
+		rm07f1 = ""
+		#Wooden Door
+		rm07f2 = ""
+		#Locker
+		rm07f3 = ""
+		#Gun Case
+		rm07f4 = ""
+		#Metal Door
+		rm07f5 = ""
+		#Gun - discovered (1) or undiscovered (0)
+		rm07o1 = ""
+
+
+		#Garrison - Room 8
+		#Bunks
+		rm08f1 = ""
+		#Table
+		rm08f2 = ""
+		#Photograph
+		rm08f3 = ""
+		#Wooden Door
+		rm08f4 = ""
+		#Canvas Flap
+		rm08f5 = ""
+		#Metal Door
+		rm08f6 = ""
+
+
+		#Galley - Room 9
+		#Canvas Flap
+		rm09f1 = ""
+		#Trash Can
+		rm09f2 = ""
+		#Stove
+		rm09f3 = ""
+		#Sink
+		rm09f4 = ""
+
+
+		#Ladder - Room 10
+		#Ladder
+		rm10f1 = ""
+		#Wooden Door
+		rm10f2 = ""
+
+
+		#Hallway - Room 11
+		#ladder
+		rm11f1 = ""
+		#metal door
+		rm11f2 = ""
+		#glass door
+		rm11f3 = ""
+		#locked door
+		rm11f4 = ""
+		#painting
+		rm11f5 = ""
+		#plant
+		rm11f6 = ""
+
+
+		#Garden - Room 12
+		#plants
+		rm12f1 = ""
+		#switch
+		rm12f2 = ""
+		#note
+		rm12f3 = ""
+		#east door
+		rm12f4 = ""
+		#west door
+		rm12f5 = ""
+		#plant
+		rm12f6 = ""
+		#Object - lockpick
+		rm12o1 = ""
+
+
+		#Control - Room 13
+		#chair
+		rm13f1 = ""
+		#glass
+		rm13f2 = ""
+		#door
+		rm13f3 = ""
+		#group A
+		rm13f4 = ""
+		#group B
+		rm13f5 = ""
+		#group C
+		rm13f6 = ""
+
+
+		#Side - Room 14
+		#door
+		rm14f1 = ""
+		#photo
+		rm14f2 = ""
+		#drawer
+		rm14f3 = ""
+		#fireplace
+		rm14f4 = ""
+		#letter
+		rm14f5 = ""
+		#chest
+		rm14f6 = ""
+		#Object - cryptex 
+		rm14o1 = ""
+
+
+		#Processing - Room 15
+		#hatch
+		rm15f1 = ""
+		#device
+		rm15f2 = ""
+		#handle
+		rm15f3 = ""
+		#bracelet
+		rm15f4 = ""
+		#door
+		rm15f5 = ""
+
 		
 		
 
