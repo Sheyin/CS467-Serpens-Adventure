@@ -1,5 +1,6 @@
 import utils
 import items
+import random
 # Separates all the command related functions - for parsing
 
 # This has been narrowed down since there is another check for verbs based
@@ -18,7 +19,9 @@ synonyms =  {
 	'use': 'use', 'open': 'use',
 	'move': 'move', 'shift': 'move', 'search': 'move', 
 	'pull': 'pull',
-	'hit': 'hit', 'kick': 'hit', 'punch': 'hit'
+	'hit': 'hit', 'kick': 'hit', 'punch': 'hit', 'smack': 'hit', 'slap': 'hit', 'stomp': 'hit', 'step on': 'hit',
+	'eat': 'eat', 'bite': 'eat', 'swallow': 'eat', 'put in mouth': 'eat', 'put in your mouth': 'eat', 
+	'consume': 'eat', 'nibble': 'eat', 'drink': 'eat', 'sip': 'eat', 'chew': 'eat',
 }
 
 # Identifies a command
@@ -42,9 +45,44 @@ def compareList(input):
 			return synonyms[command]
 
 
+# Parsing-level commands for when it isn't usable by engine
+# item is an item or feature; command is a kick-type command (strings)
+# Both should be pre-determined before calling this function.
+def kick(command, item):
+	print "You " + command + " the " + item + "."
+	# random additional phrase
+	phrase = ["It doesn't accomplish much, but it makes you feel better.",
+	"Ow.", "That hurt.", "You're sure that it hurts more than you do.",
+	"Feel my wrath!", "That'll teach it a lesson.",
+	]
+	print (random.choice(phrase))
+
+
+# Parsing-level commands for when it isn't usable by engine
+# item is an item or feature; command is a kick-type command (strings)
+# Both should be pre-determined before calling this function.
+def eat(command, item):
+	print "You consider " + command + "ing the " + item + "."
+	# random additional phrase
+	phrase = ["Hmm.  This doesn't seem like a good idea.",
+	"Well, maybe it has some health benefits...",
+	"Hmm.  Crunchy.", "Wait, why would you do that?!",
+	"Maybe it's not a good idea to do this while sober.",
+	"Well, it's not the worst idea you've ever had...",
+	"Yeah, I'll just take a little nibble and... wait, what am I thinking?",
+	"You're a bit hungry, but you're not THAT hungry.",
+	"Admittedly, this probably wasn't the smartest idea you've ever had.",
+	]
+	print (random.choice(phrase))
+
+
 if __name__ == "__main__":
 	keepLooping = True
-	while (keepLooping != "exit"):
+	while keepLooping:
 		userInput = raw_input (": ")
-		keepLooping = identify(userInput)
-		print "Code received: " + str(keepLooping)
+		kick('kick', 'ball')
+		eat('eat', 'barrel')
+		if userInput in ['exit', 'stop', 'quit']:
+			keepLooping = False 
+		#keepLooping = identify(userInput)
+		#print "Code received: " + str(keepLooping)

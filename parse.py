@@ -31,6 +31,8 @@ def main(rawinput, features, featureDict, itemDict, rooms):
 	input = rawinput.lower()
 	command = commands.identify(input)
 	itemList = itemDict.keys()
+	splitString = input.split()
+	rawCommand = splitString[0]
 
 	# Room-specific list of features as keys and recognized actions as entries
 	#features, featureDict = utils.getFeaturesDict(currentRoom)
@@ -98,8 +100,12 @@ def main(rawinput, features, featureDict, itemDict, rooms):
 			pos = features.index(feature) + 1
 			commandUsedSpecified = checkFeatureActions(input, pos, feature, featureDict)
 
+			# Recognized command on a feature.  May want this to be highest priority.
+			if commandUsedSpecified:
+				return commandUsedSpecified
+
 			# Some item and feature both mentioned in same sentence with a legal action.
-			if item == 'board' and feature in ['window', 'locker'] and (command in ['move', 'use'] or commandUsedSpecified):
+			elif item == 'board' and feature in ['window', 'locker'] and (command in ['move', 'use'] or commandUsedSpecified):
 				key = "feat" + str(pos) + "_do"
 				return utils.engine_codes_dict[key]
 
@@ -115,17 +121,18 @@ def main(rawinput, features, featureDict, itemDict, rooms):
 				key = "feat" + str(pos) + "_do"
 				return utils.engine_codes_dict[key]
 
-			# Unrecognized combination of item, feature, command
-			elif command and item:
+			# Unrecognized combination of item, feature, command - not sure when this will be used
+			elif command and feature and item:
 				print "I'm not sure if I can " + command + " the " + item + " on the " + feature + "."
+
+			# Kicking a recognized feature
+			elif command == 'kick':
+				commands.kick(rawCommand, feature)
 
 			# Feature mentioned, no item; no legal action from json
 			else:
-				# This just lets any specified action on a feature through - maybe too vague?
-				if commandUsedSpecified:
-					return commandUsedSpecified
 				if command:
-					print "I'm not sure if I can " + command + " the " + feature + "."
+					print "I'm not sure if I can " + rawCommand + " the " + feature + "."
 				else:
 					print "I don't think I can do that."
 				
@@ -144,8 +151,11 @@ def main(rawinput, features, featureDict, itemDict, rooms):
 			elif item == 'keys' and (command in ['use'] or commandUsedSpecified):
 				if 'lock' in input:
 					return "10"
+			elif command in ['eat', 'bite']:
+				commands.eat(rawCommand, item)
 
-			print "I'm not sure how use the " + item + " that way."
+			# No recognized item and command
+			print "I'm not sure how to " + rawCommand + " the " + item + " that way."
 
 		# No item or feature, unrecognized command
 		else: 
