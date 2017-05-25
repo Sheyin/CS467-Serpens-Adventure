@@ -7,7 +7,7 @@
     "west": 12, 
     "up": "", 
     "down": "",
-    "longDesc": "This room smells stale with disuse.  A threadbare red rug covers the center of the floor.  A large wooden chest is sitting against the wall opposite the door.  There is a desk in the center, with what looks like a letter sitting on top of it. One of the desk’s drawers hasn’t been fully closed and hangs ajar.",
+    "longDesc": "This room smells stale with disuse.  A threadbare red rug covers the center of the floor.  A large wooden chest is sitting against the wall opposite the door.  There is a desk in the center, with what looks like a letter sitting on top of it. One of the desk drawers has not been fully closed and hangs ajar.",
     "shortDesc": "Someone's private room.  There are gardening tools and paper, as well as a computer terminal.",
     "feat1": "door",
     "feat1desc": "This door leads back into the garden.",
