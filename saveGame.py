@@ -12,11 +12,11 @@ from gamestate import *
 #[END IMPORTS]
 
 currentState = MattsGameStateClass(1)
+
 	
 def load_gamestate (saveNum):
 	"This function loads data from a file named saveNum.json in the /data/gamestate folder"
 	"An object named currentState is instantiated and populated with the file data."
-
 
 	gs_list = os.listdir("data/gamestate")
 	
@@ -148,22 +148,11 @@ def load_gamestate (saveNum):
 			currentState.rm12o1 = data["rm12o1"]
 			currentState.rm14o1 = data["rm14o1"]
 	
-
-		
-
-#inside function test print
-	print currentState.name
-
 load_gamestate("0")
 
-#outside load_gamestate function test print
-#print currentState.rm01f2
-print currentState.saveNum
-
 def save_gamestate(saveNum):
-    """
-    Creates a new json file with data from currentState object 
-    """
+    "Creates a new json file having name, saveNum.json, populated with data from currentState object and"
+    "saves the json file in the /data/gamestate folder"
     jsonObject = dict()
     jsonObject["name"] = currentState.name
     jsonObject["saveNum"] = saveNum
@@ -275,9 +264,9 @@ def save_gamestate(saveNum):
     jsonObject["rm12o1"] = currentState.rm12o1
     jsonObject["rm14o1"] = currentState.rm14o1
 	
-    file_content = json.dumps(jsonObject, sort_keys=True, indent=4, separators=(',', ': '))
+
+    file_content = json.dumps(jsonObject, separators=(',', ': '), indent=3, sort_keys=True)
 
     with open("data/gamestate/" + saveNum + ".json", "w+") as json_data:
         json_data.write(file_content)
 
-save_gamestate("1")
