@@ -1,7 +1,7 @@
 {
     "id": 11,
     "name": "Hallway",
-    "north": 13, 
+    "north": 12, 
     "south": "", 
     "east": "", 
     "west": 15, 
@@ -34,7 +34,7 @@
     "feat4interactComplete": "This door is locked from the other side.",
     "feat4interactFail": "You are unable to open the door.  Perhaps it isn't meant to be opened.",
     "feat5": "painting",
-    "feat5desc": "A painting of a dog wearing a pirate hat.  Maybe you should examine it more closely.",
+    "feat5desc": "You glance at the painting of a dog wearing a pirate hat.  Maybe you should examine it more closely.",
     "feat5interactOptions": "study, examine, look closer, take a look at",
     "feat5interactSuccess": "You take a closer look at the painting.  It is a white terrier wearing a pirate hat.  The name 'Bucky' can be faintly read on the bowl.  He seems to have bacon in his bowl.  Lucky dog.",
     "feat5interactComplete": "A dog named Bucky wearing a pirate hat, in front of a bowl of bacon.  Lucky dog.",

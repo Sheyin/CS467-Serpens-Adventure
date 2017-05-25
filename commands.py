@@ -12,7 +12,7 @@ synonyms =  {
 	'quit': 'exit', 'exit': 'exit',
 	'help': 'help',
 	'look at': 'look at', 'examine': 'look at', 'view': 'look at',
-	'look': 'look_room', 'explore': 'look_room', 'look around': 'look_room',
+	'explore': 'look_room', 'look around': 'look_room',
 	'go': 'go', 'move to': 'go',
 	'take': 'take', 'pick up': 'pick up', 'get': 'get',
 	'drop': 'drop', 'remove': 'drop',
@@ -22,6 +22,7 @@ synonyms =  {
 	'hit': 'hit', 'kick': 'hit', 'punch': 'hit', 'smack': 'hit', 'slap': 'hit', 'stomp': 'hit', 'step on': 'hit',
 	'eat': 'eat', 'bite': 'eat', 'swallow': 'eat', 'put in mouth': 'eat', 'put in your mouth': 'eat', 
 	'consume': 'eat', 'nibble': 'eat', 'drink': 'eat', 'sip': 'eat', 'chew': 'eat',
+	'escape': 'escape', 'break out': 'escape', '/unstuck': 'escape',
 }
 
 # Identifies a command
@@ -74,6 +75,21 @@ def eat(command, item):
 	"Admittedly, this probably wasn't the smartest idea you've ever had.",
 	]
 	print (random.choice(phrase))
+
+
+# A for-fun parse-level only command.
+def escape():
+	phrase = ["You escape.  Your quest is over.",
+	"You pinch yourself.  Startled, you sit up, and realize the entire ordeal was a dream.",
+	"You tap your heels together three times.  There's no place like home... there's no place like home...",
+	"You have a brilliant idea.  All you have to do is use your hearthstone and...",
+	"Clearly this is where the world magically puts you in a different location so you can go your merry way.",
+	"Well, you obtained your licence to Apperate.  Just need to recall The Three D's....",
+	"You think you remember how to weave Traveling...",
+	]
+	print (random.choice(phrase))
+	print "Just kidding.  You didn't really think it would be that easy, did you?"
+	return
 
 
 if __name__ == "__main__":

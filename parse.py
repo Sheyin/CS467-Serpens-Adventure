@@ -40,10 +40,17 @@ def main(rawinput, features, featureDict, itemDict, rooms):
 	# Hard coded list of legal items (for now)
 	#itemList = ['board', 'keys', 'handle', 'skeleton key']
 
-	if command and command.isdigit():
+	if (command and command.isdigit()):
 		return command
 
 	elif command in ['exit', 'inventory', 'save', 'load', 'help']:
+		print "Other shortcut detected"
+		# Temporary: for debugging - should be in engine
+		if command == "help":
+			print "Features: " + str(features)
+			print "Actions: " + str(featureDict)
+			print "Items: " + str(itemDict.keys())
+			print "Rooms: " + str(rooms)
 		return utils.engine_codes_dict[command]
 
 	elif command == "go":
@@ -56,9 +63,6 @@ def main(rawinput, features, featureDict, itemDict, rooms):
 		else:
 			key = "go_" + str(direction)
 			return utils.engine_codes_dict[key]
-
-	elif command == "unknown":
-		print "I don't understand that command."
 
 	elif command in ["take", "drop"]:
 		item = items.identifyItem(input, itemDict)
@@ -91,7 +95,16 @@ def main(rawinput, features, featureDict, itemDict, rooms):
 			else:
 				print "I can't do that."
 
+	# Strictly a for-fun command.  Not sure what parameters are really needed yet.
+	elif command == "escape":
+		utils.escape()
+
+	# Had to remove "look" from commands.synonyms because it was causing problems - prioritization
+	elif "look" in input:
+		return utils.engine_codes_dict["look_room"]
+
 	else:
+		print "Went to else."
 		feature = items.identifyFeature(input, features)
 		item = items.identifyItem(input, itemDict)
 
@@ -151,7 +164,7 @@ def main(rawinput, features, featureDict, itemDict, rooms):
 			elif item == 'keys' and (command in ['use'] or commandUsedSpecified):
 				if 'lock' in input:
 					return "10"
-			elif command in ['eat', 'bite']:
+			elif command == "eat":
 				commands.eat(rawCommand, item)
 
 			# No recognized item and command
