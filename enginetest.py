@@ -4073,8 +4073,13 @@ def bottomLevelTest():
             print keys.notInInv
 
       elif userInput == "16": #Help
-         print "HELPFUL TIPS (NEED TO ADD)"
-         print "LIST OF RECOGNIZED VERBS (NEED TO ADD)"
+		print "HELPFUL TIPS:"
+		print "Take a closer look at the room's features.  Sometimes you may need to examine a detail on a feature even more closely."
+		print "Don't forget to take (pick up) items after you've revealed them."
+		print "\nPossible items: " + str(itemDict.keys())
+		print "Possible features and actions: " 
+		for feature in featureList:
+			print str(feature) + ": " + str(parse.getActions(feature, featureDict))
 
       elif userInput == "17": #Inventory
          print ""

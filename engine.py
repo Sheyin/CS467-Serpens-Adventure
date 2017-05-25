@@ -975,7 +975,6 @@ def playGame(userSelection):
 			print "Possible features and actions: " 
 			for feature in featureList:
 				print str(feature) + ": " + str(parse.getActions(feature, featureDict))
-			return utils.engine_codes_dict['help']
 
 		elif userInput == "17": #Inventory
 			print ""
