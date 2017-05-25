@@ -29,7 +29,7 @@
     "feat3interactFail": "The door is locked, though it shouldn't be.",
     "feat4": "locked door",
     "feat4desc": "This door appears to be locked from the other side.",
-    "feat4interactOptions": "open, pull, check, examine",
+    "feat4interactOptions": "use, open, pull, check, examine",
     "feat4interactSuccess": "You pull on the handle, it's definitely locked.",
     "feat4interactComplete": "This door is locked from the other side.",
     "feat4interactFail": "You are unable to open the door.  Perhaps it isn't meant to be opened.",

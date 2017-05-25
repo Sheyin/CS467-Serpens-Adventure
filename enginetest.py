@@ -182,9 +182,6 @@ def finalLevelTest():
    lockpick = objects["lockpick"]
    cryptex = objects["cryptex"]
 
-   #Parsing helper function
-   featureList, featureDict, itemList, roomList = utils.formatRoomData(rooms, objects, currentState.currRoom)
-
    #While loop repeatedly prompts user for input until user requests to load, save, or quit game
    while userInput not in ['loadgame', 'savegame', 'quit', 'exit']:
 
@@ -298,6 +295,9 @@ def finalLevelTest():
                print processing.shortDesc
 
          userRoom = currentState.currRoom #Update room the user is currently in
+		 
+      #Parsing helper function
+      featureList, featureDict, itemList, roomList = utils.formatRoomData(rooms, objects, currentState.currRoom)
 
       #Pend input:
       userInput = raw_input (": ")

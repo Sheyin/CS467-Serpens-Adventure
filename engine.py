@@ -198,9 +198,6 @@ def playGame(userSelection):
 	#Load object files {Data dev}
 	data.load_objects()
 
-	#Send room/item info to get format for parsing
-	featureList, featureDict, itemDict, roomList = utils.formatRoomData(rooms, objects, currentState.currRoom)
-
 	#Rename objects for engine compatibility
 	board = objects["board"]
 	keys = objects["keys"]
@@ -293,6 +290,9 @@ def playGame(userSelection):
 
 			userRoom = currentState.currRoom #Update room the user is currently in
 
+		#Parsing helper function
+		featureList, featureDict, itemList, roomList = utils.formatRoomData(rooms, objects, currentState.currRoom)	
+			
 		#Pend input:
 		userInput = raw_input (": ")
 

@@ -44,7 +44,6 @@ def main(rawinput, features, featureDict, itemDict, rooms):
 		return command
 
 	elif command in ['exit', 'inventory', 'save', 'load', 'help']:
-		print "Other shortcut detected"
 		# Temporary: for debugging - should be in engine
 		if command == "help":
 			print "Features: " + str(features)
@@ -82,7 +81,7 @@ def main(rawinput, features, featureDict, itemDict, rooms):
 			key = item + "_look"
 			return utils.engine_codes_dict[key]
 		else:
-			feature = items.findLocation(input, features)
+			feature = items.identifyFeature(input, features)
 			if feature:
 				pos = features.index(feature) + 1
 				commandUsedSpecified = checkFeatureActions(input, pos, feature, featureDict)
@@ -104,7 +103,6 @@ def main(rawinput, features, featureDict, itemDict, rooms):
 		return utils.engine_codes_dict["look_room"]
 
 	else:
-		print "Went to else."
 		feature = items.identifyFeature(input, features)
 		item = items.identifyItem(input, itemDict)
 
