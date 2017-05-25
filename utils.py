@@ -1,4 +1,6 @@
 import re
+import data
+from data import *
 
 # These are misc. functions that are parsing-related
 # Producing a feature list / dictionary, room connection list, anything hard coded
@@ -138,11 +140,18 @@ def getRoomInfo(currentRoom):
 
 # This changes room numbers to room names / other recognizable forms.
 # Might need to incorporate feature list as well to get doors, ladders, etc.
-# The int is needed to make it interact with rooms properly.
+# The int() is needed to make it interact with rooms properly.
+# Assumption that 'synonyms' will be the member name of room aliases
 def changeRoomNumbers(roomConnections, rooms):
 	connectionsList = []
 	if roomConnections[0].isdigit():
 		roomNumber = int(roomConnections[0])
+		#synonyms = rooms[roomNumber].synonyms
+		#synonyms = stripUnicode(synonyms)
+		#templist = ['north', roomName]
+		#for object in synonyms:
+			#templist.append(str(object))
+		# connectionsList.append(('north', synonyms))
 		roomName = str(rooms[roomNumber].name.lower())
 		connectionsList.append(('north', roomName))
 	elif not roomConnections[0]:
@@ -186,6 +195,19 @@ def changeRoomNumbers(roomConnections, rooms):
 	return connectionsList
 
 
+# Strips unicode from data; returns clean version
+def stripUnicode(data):
+	# List requires a double loop
+	if type(data) is list:
+		for _ in range(0, len(data)):
+			data[_] = str(data[_])
+		return data
+
+	# Single str() required
+	else:
+		return str(data)
+
+
 # Packages variables together in expected formats for parse.main() or maybe "help"
 # Produce list (features), dict (features), list (items), list of tuples (room Connections)
 # The str() is required to change the data from unicode and remove the u' marks
@@ -197,22 +219,21 @@ def formatRoomData(rooms, objects, currentRoom):
 	featInteractionsNeeded = ['feat1interactOptions', 'feat2interactOptions', 'feat3interactOptions', 'feat4interactOptions', 'feat5interactOptions', 'feat6interactOptions']
 
 	room = rooms[currentRoom]
-	tempfeaturesList = [room.feat1, room.feat2, room.feat3, room.feat4, room.feat5, room.feat6]
+	tempFeaturesList = [room.feat1, room.feat2, room.feat3, room.feat4, room.feat5, room.feat6]
 
 	# Strip unicode markings
-	for _ in range(0, len(tempfeaturesList)):
-		tempfeaturesList[_] = str(tempfeaturesList[_])
+	tempFeaturesList = stripUnicode(tempFeaturesList)
 
 	# Save features to dictionary using the feature itself as a key
-	featuresDict[tempfeaturesList[0]] = str(room.feat1interactOptions)
-	featuresDict[tempfeaturesList[1]] = str(room.feat2interactOptions)
-	featuresDict[tempfeaturesList[2]] = str(room.feat3interactOptions)
-	featuresDict[tempfeaturesList[3]] = str(room.feat4interactOptions)
-	featuresDict[tempfeaturesList[4]] = str(room.feat5interactOptions)
-	featuresDict[tempfeaturesList[5]] = str(room.feat6interactOptions)
+	featuresDict[tempFeaturesList[0]] = str(room.feat1interactOptions)
+	featuresDict[tempFeaturesList[1]] = str(room.feat2interactOptions)
+	featuresDict[tempFeaturesList[2]] = str(room.feat3interactOptions)
+	featuresDict[tempFeaturesList[3]] = str(room.feat4interactOptions)
+	featuresDict[tempFeaturesList[4]] = str(room.feat5interactOptions)
+	featuresDict[tempFeaturesList[5]] = str(room.feat6interactOptions)
 
 	# Remove the 'feature - NA' lines, if present, from features and dictionary
-	for word in tempfeaturesList:
+	for word in tempFeaturesList:
 		if ' - NA' not in word:
 			featuresList.append(word)
 
@@ -233,8 +254,7 @@ def formatRoomData(rooms, objects, currentRoom):
 		itemDict[str(item)] = synonymList
 
 	# Strip unicode markings
-	for _ in range(0, len(itemList)):
-		itemList[_] = str(itemList[_])
+	itemList = stripUnicode(itemList)
 
 	roomList = [str(room.north), str(room.south), str(room.east), str(room.west), str(room.up), str(room.down)]
 
@@ -252,4 +272,13 @@ def formatRoomData(rooms, objects, currentRoom):
 # http://stackoverflow.com/questions/1767513/read-first-n-lines-of-a-file-in-python
 
 # Below is just for my testing purposes
-#if __name__ == "__main__":
+if __name__ == "__main__":
+	data.load_objects()
+	cryptex = objects['cryptex']
+	print "Test 1:"
+	print cryptex.name
+	print stripUnicode(cryptex.name)
+
+	print "Test 2:"
+	print cryptex.synonyms
+	print stripUnicode(cryptex.synonyms)
