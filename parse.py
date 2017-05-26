@@ -96,13 +96,14 @@ def main(rawinput, features, featureDict, itemDict, rooms):
 
 	# Strictly a for-fun command.  Not sure what parameters are really needed yet.
 	elif command == "escape":
-		utils.escape()
+		commands.escape()
 
 	# Had to remove "look" from commands.synonyms because it was causing problems - prioritization
 	elif "look" in input:
 		return utils.engine_codes_dict["look_room"]
 
 	else:
+		print "Else - command: " + str(command)
 		feature = items.identifyFeature(input, features)
 		item = items.identifyItem(input, itemDict)
 
