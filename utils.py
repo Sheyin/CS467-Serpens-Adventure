@@ -18,7 +18,7 @@ engine_codes_dict = {
 	# Deck 3 Items - guesses
 	'paperclip_look': "40", 'paperclip_take': "41", 'paperclip_drop': "42",
 	'lockpick_look':"43", 'lockpick_take': "44", 'lockpick_drop': "45",
-	'keycard_look': "46", 'keycard_take':"45", 'keyvoard_drop': "46",
+	'keycard_look': "46", 'keycard_take':"45", 'keycard_drop': "46",
 	'cryptex_look': "47", 'cryptex_take': "48", 'cryptex_drop': "49", 
 	# Features
 	'feat1_look': "1", 'feat1_do': "2",	'feat2_look': "3", 'feat2_do': "4",
