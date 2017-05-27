@@ -450,7 +450,7 @@ def finalLevelTest():
             currentState.rm11f1 = 1 #Update to interaction complete
          #Garden
          if currentState.currRoom == 12:
-            print garden.feat2interactSuccess
+            print garden.feat1interactSuccess
             currentState.rm12f2 = 1 #Update to interaction complete
             currentState.rm12o1 = 1 #Lockpick discovered
          #Control
