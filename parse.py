@@ -103,7 +103,6 @@ def main(rawinput, features, featureDict, itemDict, rooms):
 		return utils.engine_codes_dict["look_room"]
 
 	else:
-		print "Else - command: " + str(command)
 		feature = items.identifyFeature(input, features)
 		item = items.identifyItem(input, itemDict)
 

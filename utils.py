@@ -7,13 +7,19 @@ from data import *
 
 # Probably better to centralize this so we aren't maintaining multiple code lists.
 engine_codes_dict = {
-	# Items
+	# Deck 1 Items
 	'board_look': "5", 'board_take': "12", 'board_drop': "14", 
 	'keys_look': "8", 'keys_take': "13", 'keys_drop': "15",
 	'handle_look': "32", 'handle_take': "28", 'handle_drop': "29",
 	'skeleton key_look': "33", 'skeleton key_take': "30", 'skeleton key_drop': "31",
+	# Deck 2 Items
 	'small key_look': "34", 'small key_take': "35", 'small key_drop': "36",
 	'gun_look': "37", 'gun_take': "38", 'gun_drop': "39",
+	# Deck 3 Items - guesses
+	'paperclip_look': "40", 'paperclip_take': "41", 'paperclip_drop': "42",
+	'lockpick_look':"43", 'lockpick_take': "44", 'lockpick_drop': "45",
+	'keycard_look': "46", 'keycard_take':"45", 'keyvoard_drop': "46",
+	'cryptex_look': "47", 'cryptex_take': "48", 'cryptex_drop': "49", 
 	# Features
 	'feat1_look': "1", 'feat1_do': "2",	'feat2_look': "3", 'feat2_do': "4",
 	'feat3_look': "6", 'feat3_do': "7",	'feat4_look': "9", 'feat4_do': "10",
