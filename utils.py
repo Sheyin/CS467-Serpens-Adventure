@@ -71,6 +71,18 @@ def printHelp(featureDict, itemDict):
 	display(itemList)
 
 
+# Tries to translate input into a legal movement (direction)
+# Returns a cardinal direction
+def translateRoom(input, rooms):
+	# Search each tuple to see if the input word matches some direction
+	for dirPos in range (0, len(rooms)):
+		for namePos in range (0, len(rooms[dirPos])):
+			if rooms[dirPos][namePos] in input:
+				return rooms[dirPos][0]
+	# Unable to match destination with a room
+	return -1
+
+
 # This changes room numbers to room names / other recognizable forms.
 # Might need to incorporate feature list as well to get doors, ladders, etc.
 # The int() is needed to make it interact with rooms properly.
