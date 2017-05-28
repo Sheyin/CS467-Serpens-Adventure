@@ -2,6 +2,7 @@ import re
 import data
 from data import *
 import textwrap
+from items import itemKeysDict
 
 # These are misc. functions that are parsing-related
 # Producing a feature list / dictionary, room connection list, anything hard coded
@@ -37,7 +38,8 @@ engine_codes_dict = {
 def display(text):
    textToPrint = textwrap.wrap(text, 70)
    for line in textToPrint:
-      print "  " + line
+      print '  ' + line
+
 
 # Prints the help information from features + items
 def printHelp(featureDict, itemDict):
@@ -67,19 +69,6 @@ def printHelp(featureDict, itemDict):
 	print ""
 	display("Items: ")
 	display(itemList)
-	print ""
-
-
-# Tries to translate input into a legal movement (direction)
-# Returns a cardinal direction
-def translateRoom(input, rooms):
-	# Search each tuple to see if the input word matches some direction
-	for dirPos in range (0, len(rooms)):
-		for namePos in range (0, len(rooms[dirPos])):
-			if rooms[dirPos][namePos] in input:
-				return rooms[dirPos][0]
-	# Unable to match destination with a room
-	return -1
 
 
 # This changes room numbers to room names / other recognizable forms.
@@ -155,7 +144,9 @@ def stripUnicode(data):
 # Packages variables together in expected formats for parse.main() or maybe "help"
 # Produce list (features), dict (features), list (items), list of tuples (room Connections)
 # The str() is required to change the data from unicode and remove the u' marks
-def formatRoomData(rooms, objects, currentRoom):
+def formatRoomData(rooms, objects, currentState):
+	currentRoom = currentState.currRoom
+
 	featuresList = []
 	featuresDict = {}
 	itemList = []
@@ -187,9 +178,20 @@ def formatRoomData(rooms, objects, currentRoom):
 
 	# This should be limited based on info from the gamestate (item location)
 	# Currently it just takes all the possible items (but will be shown to user if they use help)
+
+	# Get only the items present in room (gamestate - flagged as 1)
+
+	itemList = []
+	# Check if these items are present
+	for thing in itemKeysDict.keys():
+		itemFlag = getattr(currentState, thing)
+		if itemFlag:
+			itemList.append(itemKeysDict[thing])
+
+
 	itemDict = {}
 	itemSynonyms = []
-	itemList = objects.keys()
+
 	for item in itemList:
 		itemSynonyms = objects[item].synonyms
 		synonymList = []

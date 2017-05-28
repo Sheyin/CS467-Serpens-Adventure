@@ -1,5 +1,8 @@
 # Actions upon items or features - part of parsing
 
+itemKeysDict = {'rm01o1': 'board', 'rm01o2': 'keys', 'rm02o1': 'handle', 'rm04o1': 'skeleton key',
+				'rm06o1': 'small key', 'rm07o1': 'gun', 'rm12o1': 'lockpick', 'rm14o1':'cryptex'
+				}
 
 # Identifies the location (to be used specifically with "go")
 def findLocation(input, features):

@@ -298,7 +298,7 @@ def finalLevelTest():
          userRoom = currentState.currRoom #Update room the user is currently in
 		 
       #Parsing helper function
-      featureList, featureDict, itemDict, roomList = utils.formatRoomData(rooms, objects, currentState.currRoom)
+      featureList, featureDict, itemDict, roomList = utils.formatRoomData(rooms, objects, currentState)
 
       #Pend input:
       print ""
@@ -2224,7 +2224,7 @@ def middleLevelTest():
       userInput = raw_input (": ")
 
       #Parse user input and return code for engine action {Parsing Dev}
-      featureList, featureDict, itemDict, roomList = utils.formatRoomData(rooms, objects, currentState.currRoom)
+      featureList, featureDict, itemDict, roomList = utils.formatRoomData(rooms, objects, currentState)
       userInput = parse.main(userInput, featureList, featureDict, itemDict, roomList)
      
       #ENGINE INTERACTIONS BASED ON PARSED USER INPUT
