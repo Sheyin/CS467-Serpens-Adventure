@@ -1,6 +1,7 @@
 import re
 import data
 from data import *
+import textwrap
 
 # These are misc. functions that are parsing-related
 # Producing a feature list / dictionary, room connection list, anything hard coded
@@ -32,89 +33,41 @@ engine_codes_dict = {
 	'save': 'save', 'load': 'load', 'exit': 'exit', 'look_room': '11'
 }
 
+# Produces formatted text and displays on console.  Input is a string, no return.
+def display(text):
+   textToPrint = textwrap.wrap(text, 70)
+   for line in textToPrint:
+      print "  " + line
 
-# Python-3-safe way of getting list of keys: k = list(b.keys())
-# Python-2 way of getting list of keys: k = b.keys()
-def getFeaturesDict(currentRoom):
-	filename = 'data/rooms/room' + str(currentRoom) + '.json'
-	file = open(filename)
-	featuresList = []
-	featuresDict = {}
-	actionsList = []
-
-	for line in file:
-		line = line.rstrip()
-		results = re.findall('"feat\d*": ("\D*"),', line)
-		actions = re.findall('"feat\d*interactOptions": ("\D*"),', line)
-		
-		if (results != ""):
-			for i in range (0, len(results)):
-				# This will strip opening and closing parenthesis
-				if results[i].startswith('"') and results[i].endswith('"'):
-					results[i] = results[i][1:-1]
-					featuresList.append(results[i])
-
-		if (actions != ""):
-			for j in range (0, len(actions)):
-				# This will strip opening and closing parenthesis
-				if actions[j].startswith('"') and actions[j].endswith('"'):
-					actions[j] = actions[j][1:-1]
-					actionsList.append((actions[j]))
-					
-	file.close()
-
-	# Concatenate into a dictionary
-	for itemPos in range (0, len(featuresList)):
-		featuresDict[featuresList[itemPos]] =  actionsList[itemPos]
-
-	return (featuresList, featuresDict)
-
-# When supplied a room number, it picks out the appropriate connections
-# and returns it in a list.  Ordering is significant.
-# 0: north, 1: south, 2: west, 3: east, 4: up, 5: down
-def getRoomConnections(currentRoom):
-	filename = 'data/rooms/room' + str(currentRoom) + '.json'
-	file = open(filename)
-	connectionsList = []
-
-	# This appends the room number to the list, but we need to translate
-	# each room number into it's common name(s).  Also case sensitivity.
-
-	for line in file:
-		line = line.rstrip()
-		results = re.findall('"north": (\d*)', line)
-		for i in range (0, len(results)):
-			if results[i].startswith('"') and results[i].endswith('"'):
-				results[i] = results[i][1:-1]
-			connectionsList.append(('north', results[0]))
-		results = re.findall('"south": (\d*)', line)
-		for i in range (0, len(results)):
-			if results[i].startswith('"') and results[i].endswith('"'):
-				results[i] = results[i][1:-1]
-			connectionsList.append(('south', results[0]))
-		results = re.findall('"west": (\d*)', line)
-		for i in range (0, len(results)):
-			if results[i].startswith('"') and results[i].endswith('"'):
-				results[i] = results[i][1:-1]
-			connectionsList.append(('west', results[0]))
-		results = re.findall('"east": (\d*)', line)	
-		for i in range (0, len(results)):
-			if results[i].startswith('"') and results[i].endswith('"'):
-				results[i] = results[i][1:-1]
-			connectionsList.append(('east', results[0]))
-		results = re.findall('"up": (\d*)', line)
-		for i in range (0, len(results)):
-			if results[i].startswith('"') and results[i].endswith('"'):
-				results[i] = results[i][1:-1]
-			connectionsList.append(('up', 'upstairs', results[0]))
-		results = re.findall('"down": (\d*)', line)
-		for i in range (0, len(results)):
-			if results[i].startswith('"') and results[i].endswith('"'):
-				results[i] = results[i][1:-1]
-			connectionsList.append(('down', 'downstairs', results[0]))
-
-	file.close()
-	return connectionsList
+# Prints the help information from features + items
+def printHelp(featureDict, itemDict):
+	display("HELPFUL TIPS:")
+	display("Take a closer look at the room's features.  Sometimes you may need to examine a detail on a feature even more closely.")
+	display("Don't forget to take (pick up) items after you've revealed them.")
+	print ""
+	display("Features and Actions:")
+	features = featureDict.keys()
+	for feature in features:
+		actionsForFeature = featureDict[feature]
+		actionList = actionsForFeature.split(", ")
+		actions = ""
+		for _ in actionList:
+			if _ == actionList[0]:
+				actions = _
+			else:
+				actions = actions + ", " + _
+		display(str(feature) + ": " + actions)
+	itemKeys = itemDict.keys()
+	itemList = ""
+	for _ in itemKeys:
+		if _ == itemKeys[0]:
+			itemList = _
+		else:
+			itemList = itemList + ", " + _
+	print ""
+	display("Items: ")
+	display(itemList)
+	print ""
 
 
 # Tries to translate input into a legal movement (direction)
@@ -127,21 +80,6 @@ def translateRoom(input, rooms):
 				return rooms[dirPos][0]
 	# Unable to match destination with a room
 	return -1
-
-
-# Given a room number, returns an ordered list of connections
-# Should be pulled from json files eventually, this is a temporary measure to make the rest work
-# 0: north, 1: south, 2: west, 3: east, 4: up, 5: down
-# 1: Brig, 2: Storage, 3: Lower Hallway, 4: Observation, 5: Examination
-def getRoomInfo(currentRoom):
-	# Hard-coded stuff.  Hopefully I got the directions right.
-	roomConnections1 = [('north', 'hallway', 'door', 'out'), ('south',), ('west',), ('east',), ('up', 'upstairs'), ('down', 'downstairs')]
-	roomConnections2 = [('north',), ('south',), ('west',), ('east', 'hallway', 'door'), ('up', 'upstairs'), ('down', 'downstairs')]
-	roomConnections3 = [('north', 'examination', 'entryway'), ('south', 'brig', 'barred door'), ('west', 'storage', 'wooden door'), ('east', 'observation', 'metal door'), ('up', 'ladder', 'trap door', 'upstairs'), ('down', 'downstairs')]
-	roomConnections4 = [('north',), ('south',), ('west', 'hallway', 'door'), ('east',), ('up', 'upstairs'), ('down', 'downstairs')]
-	roomConnections5 = [('north',), ('south', 'hallway', 'entryway'), ('west',), ('east',), ('up', 'upstairs'), ('down', 'downstairs')]
-	allRooms = [roomConnections1, roomConnections2, roomConnections3, roomConnections4, roomConnections5]
-	return allRooms[currentRoom - 1]
 
 
 # This changes room numbers to room names / other recognizable forms.

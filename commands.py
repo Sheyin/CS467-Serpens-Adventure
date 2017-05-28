@@ -1,6 +1,7 @@
 import utils
 import items
 import random
+from utils import display
 # Separates all the command related functions - for parsing
 
 # This has been narrowed down since there is another check for verbs based
@@ -50,20 +51,20 @@ def compareList(input):
 # item is an item or feature; command is a kick-type command (strings)
 # Both should be pre-determined before calling this function.
 def kick(command, item):
-	print "You " + command + " the " + item + "."
+	display("You " + command + " the " + item + ".")
 	# random additional phrase
 	phrase = ["It doesn't accomplish much, but it makes you feel better.",
 	"Ow.", "That hurt.", "You're sure that it hurts more than you do.",
 	"Feel my wrath!", "That'll teach it a lesson.",
 	]
-	print (random.choice(phrase))
+	display(random.choice(phrase))
 
 
 # Parsing-level commands for when it isn't usable by engine
 # item is an item or feature; command is a kick-type command (strings)
 # Both should be pre-determined before calling this function.
 def eat(command, item):
-	print "You consider " + command + "ing the " + item + "."
+	display("You consider " + command + "ing the " + item + ".")
 	# random additional phrase
 	phrase = ["Hmm.  This doesn't seem like a good idea.",
 	"Well, maybe it has some health benefits...",
@@ -74,7 +75,7 @@ def eat(command, item):
 	"You're a bit hungry, but you're not THAT hungry.",
 	"Admittedly, this probably wasn't the smartest idea you've ever had.",
 	]
-	print (random.choice(phrase))
+	display(random.choice(phrase))
 
 
 # A for-fun parse-level only command.
@@ -87,8 +88,8 @@ def escape():
 	"Well, you obtained your licence to Apperate.  Just need to recall The Three D's....",
 	"You think you remember how to weave Traveling...",
 	]
-	print (random.choice(phrase))
-	print "Just kidding.  You didn't really think it would be that easy, did you?"
+	display(random.choice(phrase))
+	display("Just kidding.  You didn't really think it would be that easy, did you?")
 	return
 
 
