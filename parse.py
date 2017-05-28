@@ -6,6 +6,7 @@ import commands
 import utils
 import data
 from data import *
+from utils import display
 
 # Prints out the available actions for a specified feature
 # This will probably be integrated into the engine or something
@@ -45,11 +46,6 @@ def main(rawinput, features, featureDict, itemDict, rooms):
 
 	elif command in ['exit', 'inventory', 'save', 'load', 'help']:
 		# Temporary: for debugging - should be in engine
-		if command == "help":
-			print "Features: " + str(features)
-			print "Actions: " + str(featureDict)
-			print "Items: " + str(itemDict.keys())
-			print "Rooms: " + str(rooms)
 		return utils.engine_codes_dict[command]
 
 	elif command == "go":
@@ -58,7 +54,7 @@ def main(rawinput, features, featureDict, itemDict, rooms):
 		# location = items.findLocation(input, features)
 		direction = utils.translateRoom(input, rooms)
 		if (direction == -1):
-			print "I can't go that way."
+			display("I can't go that way.")
 		else:
 			key = "go_" + str(direction)
 			return utils.engine_codes_dict[key]
@@ -73,7 +69,7 @@ def main(rawinput, features, featureDict, itemDict, rooms):
 				key = item + "_drop"
 				return utils.engine_codes_dict[key]
 		else:
-			print "I can't do that."
+			display("I can't do that.")
 
 	elif command == "look at":
 		item = items.identifyItem(input, itemDict)
@@ -92,7 +88,7 @@ def main(rawinput, features, featureDict, itemDict, rooms):
 					key = "feat" + str(pos) + "_look"
 				return utils.engine_codes_dict[key]
 			else:
-				print "I can't do that."
+				display("I can't do that.")
 
 	# Strictly a for-fun command.  Not sure what parameters are really needed yet.
 	elif command == "escape":
@@ -134,7 +130,7 @@ def main(rawinput, features, featureDict, itemDict, rooms):
 
 			# Unrecognized combination of item, feature, command - not sure when this will be used
 			elif command and feature and item:
-				print "I'm not sure if I can " + command + " the " + item + " on the " + feature + "."
+				display("I'm not sure if I can " + command + " the " + item + " on the " + feature + ".")
 
 			# Kicking a recognized feature
 			elif command == 'kick':
@@ -143,9 +139,9 @@ def main(rawinput, features, featureDict, itemDict, rooms):
 			# Feature mentioned, no item; no legal action from json
 			else:
 				if command:
-					print "I'm not sure if I can " + rawCommand + " the " + feature + "."
+					display("I'm not sure if I can " + rawCommand + " the " + feature + ".")
 				else:
-					print "I don't think I can do that."
+					display("I don't think I can do that.")
 				
 
 		# Item but no feature
@@ -166,11 +162,11 @@ def main(rawinput, features, featureDict, itemDict, rooms):
 				commands.eat(rawCommand, item)
 
 			# No recognized item and command
-			print "I'm not sure how to " + rawCommand + " the " + item + " that way."
+			display("I'm not sure how to " + rawCommand + " the " + item + " that way.")
 
 		# No item or feature, unrecognized command
 		else: 
-			print "I don't understand that command."
+			display("I don't understand that command.")
 
 
 
