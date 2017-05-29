@@ -2,8 +2,10 @@
 import os
 from utils import display
 
+# Call this to prompt to ask for the correct file to load 
 # This returns a number in string form (save game file to load, filtered)
-def checkSaving():
+# Returns nothing if load is cancelled.  (Add a check before calling save/load)
+def checkLoading():
 	path = "data/gamestate/"
 	fileList = os.listdir(path)
 	fileNumbers = []
@@ -35,8 +37,10 @@ def checkSaving():
 			display("This is not a valid selection.")
 
 
-# This returns a number in string form (save game file to be created, filtered)
-def checkLoading():
+# Call this to prompt to ask for the correct file to save
+# This returns a number in string form (save game file to be created/overwritten, filtered)
+# Returns nothing if load is cancelled.  (Add a check before calling save/load)
+def checkSaving():
 	path = "data/gamestate/"
 	fileList = os.listdir(path)
 	fileNumbers = []
@@ -59,8 +63,3 @@ def checkLoading():
 				return choice
 		elif choice in ['cancel', 'quit', 'stop', 'end', 'exit']:
 			display("Game will not be saved.")
-
-# Update to run main function for parseCommands.py separately from main.py
-if __name__ == "__main__":
-	print 'Starting the script.'
-	checkLoading()
