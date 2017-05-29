@@ -11,6 +11,7 @@ import json
 from gamestate import *
 #[END IMPORTS]
 
+global currentState
 currentState = MattsGameStateClass(1)
 
 	
@@ -147,12 +148,14 @@ def load_gamestate (saveNum):
 			currentState.rm07o1 = data["rm07o1"]
 			currentState.rm12o1 = data["rm12o1"]
 			currentState.rm14o1 = data["rm14o1"]
+			#return currentState
 	
 load_gamestate("0")
 
-def save_gamestate(saveNum):
+def save_gamestate(saveNum, currentState):
     "Creates a new json file having name, saveNum.json, populated with data from currentState object and"
     "saves the json file in the /data/gamestate folder"
+    #global currentState
     jsonObject = dict()
     jsonObject["name"] = currentState.name
     jsonObject["saveNum"] = saveNum
@@ -269,4 +272,15 @@ def save_gamestate(saveNum):
 
     with open("data/gamestate/" + saveNum + ".json", "w+") as json_data:
         json_data.write(file_content)
+
+	return currentState
+	
+
+
+def resume_gamestate (saveNum):
+	load_gamestate(saveNum)
+	return currentState
+	
+
+
 
