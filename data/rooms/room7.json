@@ -1,6 +1,7 @@
 {
     "id": 7,
     "name": "Armory",
+    "aliases": "wooden door",
     "north": 8, 
     "south": 6, 
     "east": "", 

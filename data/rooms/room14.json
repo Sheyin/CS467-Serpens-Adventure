@@ -1,6 +1,7 @@
 {
     "id": 14,
     "name": "Side Room",
+    "aliases": "office, east door",
     "north": "", 
     "south": "", 
     "east": "", 
