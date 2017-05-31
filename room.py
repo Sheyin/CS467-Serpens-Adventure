@@ -130,6 +130,7 @@ class MattsRoomClass(object):
       #[BEGIN VARIABLES]
       self.id = ""
       self.name = name
+      self.aliases = []
 
       self.north = ""
       self.south = ""

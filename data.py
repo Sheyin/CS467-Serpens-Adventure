@@ -20,7 +20,6 @@ def load_rooms ():
 	"This function loads data from each json file that is present in the /data/rooms folder"
 	"For each json file, a RoomClass object is instantiated and populated with data.  The "
 	"objects are then stored in a dictionary 'rooms' that is keyed on the room id"
-#	rooms = {}
 	room_list = os.listdir("data/rooms")
 
 
@@ -32,6 +31,7 @@ def load_rooms ():
 	#instantiate temporary RoomClass object as populate with data
 			current_room = MattsRoomClass(data["name"])
 			current_room.id = data["id"]
+			current_room.aliases = data["aliases"]
 			
 			current_room.north = data["north"]
 			current_room.south = data["south"] 
@@ -122,10 +122,11 @@ def load_objects ():
 			objects[current_object.name] = current_object
 
 	
-			
 
-load_rooms()
-load_objects()
+
+#load_rooms()
+#print rooms[1].aliases[1]		
+#load_objects()
 
 #test prints for rooms dictionary
 #print rooms[6].id
