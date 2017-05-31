@@ -1,7 +1,7 @@
 {
     "id": 4,
     "name": "Observation Room",
-    "aliases": "metal door",
+    "aliases": ["metal door"],
     "north": "", 
     "south": "", 
     "east": "", 

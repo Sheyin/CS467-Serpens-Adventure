@@ -1,7 +1,7 @@
 {
     "id": 8,
     "name": "Garrison",
-    "aliases": "metal door",
+    "aliases": ["metal door"],
     "north": 9, 
     "south": 7, 
     "east": 10, 

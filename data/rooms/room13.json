@@ -1,7 +1,7 @@
 {
     "id": 13,
     "name": "Control Room",
-    "aliases": "west door, dimly lit room",
+    "aliases": ["west door", "dimly lit room"],
     "north": "", 
     "south": "", 
     "east": 12, 
