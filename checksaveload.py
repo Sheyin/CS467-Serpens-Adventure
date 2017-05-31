@@ -58,7 +58,7 @@ def checkSaving():
 		if choice in fileNumbers:
 			display ("A save game by this number already exists.  Would you like to overwrite this save?")
 			confirm = raw_input(':')
-			if confirm.lower() in ['y', 'yes', 'ok', 'go ahead', 'overwrite', 'confirm']:
+			if confirm.lower() in ['y', 'yes', 'yeah', 'do it', 'proceed', 'ok', 'go ahead', 'overwrite', 'confirm']:
 				display ("Saving over game number " + choice + ".")
 				return choice
 		elif choice in ['cancel', 'quit', 'stop', 'end', 'exit']:

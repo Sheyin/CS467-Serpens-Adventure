@@ -1,7 +1,7 @@
 {
     "id": 11,
     "name": "Hallway",
-    "aliases": "ladder, deck 3, glass door",
+    "aliases": "ladder, deck 3, deck three, top deck, upstairs, last deck, final deck, glass door, out",
     "north": 12, 
     "south": "", 
     "east": "", 

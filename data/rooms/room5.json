@@ -1,7 +1,7 @@
 {
     "id": 5,
     "name": "Examination Room",
-    "aliases": "entryway",
+    "aliases": "entryway, examination",
     "north": "", 
     "south": 3, 
     "east": "", 

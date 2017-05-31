@@ -30,7 +30,7 @@
     "feat3interactFail": "You don't see a handle.",
     "feat4": "bracelet",
     "feat4desc": "A metal bracelet you seem to have acquired when trying to use the device.  It looks like you can rotate the numbers on it like a combination lock, but it seems to have ten digits.  Printed on the bracelet is 'Northern Medical Research Center, phone: (217) 335-1251'",
-    "feat4interactOptions": "4815162342",
+    "feat4interactOptions": "enter 4815162342, use combination 4815162342",
     "feat4interactSuccess": "You enter the code into the bracelet.  You pull at it none-too-gently and it falls off your wrist.",
     "feat4interactComplete": "The bracelet lies on the floor.  Good riddance.",
     "feat4interactFail": "It doesn't work.  You can't get the bracelet off. (or, you don't see this.)",

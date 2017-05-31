@@ -1,7 +1,7 @@
 {
     "id": 1,
     "name": "Brig",
-    "aliases": "barred door, start,",
+    "aliases": "barred door, start, jail, prison",
     "north": 1, 
     "south": "", 
     "east": "", 
