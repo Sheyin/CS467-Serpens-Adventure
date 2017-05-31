@@ -1,6 +1,7 @@
 {
     "id": 2,
     "name": "Storage Room",
+    "aliases": "wooden door",
     "north": "", 
     "south": "", 
     "east": 3, 
@@ -11,7 +12,7 @@
     "shortDesc": "You are in a room full of storage lockers.  There is a paper hanging from a peg next to the door. One of the lockers is ajar. To the east there is a wooden door.",
     "feat1": "locker",
     "feat1desc": "One of a series of large metal storage lockers is ajar. They are all roughly the size of a small room. You peer through the crack in the door and there is an object on the floor just out of reach. Your eyes adjust to the darkness and you see that it's a handle of some kind.",
-    "feat1interactOptions": "use, swing, open",
+    "feat1interactOptions": "use board on, pry open, pry with board, swing, open with board",
     "feat1interactSuccess": "You use the board to pry the locker open just far enough to get the board and your hand in. You then reach in with the board and, after a few swings, manage to land the end just on the other side of the handle. A splinter digs into your palm fiercely. You slowly nudge the handle close enough to the locker door to be able to reach it.",
     "feat1interactComplete": "You peer inside the locker. It's the size of a small room and completely empty.",
     "feat1interactFail": "You get down and reach as far as you can into the locker. The loose chain pulls taught as you cram your arm into the small opening. Your cheek smushes against the cold door as you reeeeaccchhh..! It's no good. The handle is too far away.",

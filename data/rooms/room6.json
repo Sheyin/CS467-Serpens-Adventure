@@ -1,6 +1,7 @@
 {
     "id": 6,
     "name": "Rum",
+    "aliases": "ladder, trap door, wooden door",
     "north": 7, 
     "south": "", 
     "east": "", 

@@ -1,6 +1,7 @@
 {
     "id": 3,
     "name": "Lower Hallway",
+    "aliases": "hallway, door, out, first deck, deck one, lower deck, bottom deck",
     "north": 5, 
     "south": 1, 
     "east": 4, 
