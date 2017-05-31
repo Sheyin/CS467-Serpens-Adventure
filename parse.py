@@ -158,6 +158,8 @@ def main(rawinput, features, featureDict, itemDict, rooms):
 			elif item == 'keys' and (command in ['use'] or commandUsedSpecified):
 				if 'lock' in input:
 					return "10"
+			elif item == 'pots' and (command in ['kick', 'move']):
+				return "2"
 			elif command == "eat":
 				commands.eat(rawCommand, item)
 

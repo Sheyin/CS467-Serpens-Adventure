@@ -87,6 +87,7 @@ def escape():
 	"Clearly this is where the world magically puts you in a different location so you can go your merry way.",
 	"Well, you obtained your licence to Apperate.  Just need to recall The Three D's....",
 	"You think you remember how to weave Traveling...",
+	"You tap your imaginary comm badge.  'One to beam up.'",
 	]
 	display(random.choice(phrase))
 	display("Just kidding.  You didn't really think it would be that easy, did you?")
