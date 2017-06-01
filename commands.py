@@ -18,8 +18,7 @@ synonyms =  {
 	'take': 'take', 'pick up': 'pick up', 'get': 'get',
 	'drop': 'drop', 'remove': 'drop',
 	'use': 'use', 'open': 'use',
-	'move': 'move', 'shift': 'move', 'search': 'move', 
-	'pull': 'pull',
+	'move': 'move', 'shift': 'move', 'search': 'move', 'pull': 'move',
 	'hit': 'hit', 'kick': 'hit', 'punch': 'hit', 'smack': 'hit', 'slap': 'hit', 'stomp': 'hit', 'step on': 'hit',
 	'eat': 'eat', 'bite': 'eat', 'swallow': 'eat', 'put in mouth': 'eat', 'put in your mouth': 'eat', 
 	'consume': 'eat', 'nibble': 'eat', 'drink': 'eat', 'sip': 'eat', 'chew': 'eat',
@@ -63,8 +62,8 @@ def kick(command, item):
 # Parsing-level commands for when it isn't usable by engine
 # item is an item or feature; command is a kick-type command (strings)
 # Both should be pre-determined before calling this function.
-def eat(command, item):
-	display("You consider " + command + "ing the " + item + ".")
+def eat(command, object):
+	display("You consider " + command + "ing the " + object + ".")
 	# random additional phrase
 	phrase = ["Hmm.  This doesn't seem like a good idea.",
 	"Well, maybe it has some health benefits...",
@@ -78,6 +77,16 @@ def eat(command, item):
 	display(random.choice(phrase))
 
 
+# Pull or shift items or features - but no actual effect.
+def pull(command, item, type):
+	if "door" in item:
+		display("Did you mean 'open the " + item + "'?")
+	elif type is "item":
+		display("You idly twirl the " + item + " around.")
+	else:
+		display("What's the point of " + command + "ing the " + item + "?")
+
+
 # A for-fun parse-level only command.
 def escape():
 	phrase = ["You escape.  Your quest is over.",
@@ -87,7 +96,7 @@ def escape():
 	"Clearly this is where the world magically puts you in a different location so you can go your merry way.",
 	"Well, you obtained your licence to Apperate.  Just need to recall The Three D's....",
 	"You think you remember how to weave Traveling...",
-	"You tap your imaginary comm badge.  'One to beam up.'",
+	"You tap your comm badge.  'Beam me up, Scotty.'",
 	]
 	display(random.choice(phrase))
 	display("Just kidding.  You didn't really think it would be that easy, did you?")

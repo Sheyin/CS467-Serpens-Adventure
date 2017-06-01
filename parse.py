@@ -104,6 +104,7 @@ def main(rawinput, features, featureDict, itemDict, rooms):
 
 		# Check if the command was one specific to operating upon a feature (listed in json)
 		if feature:
+			print "Command is: " + command
 			pos = features.index(feature) + 1
 			commandUsedSpecified = checkFeatureActions(input, pos, feature, featureDict)
 
@@ -132,9 +133,15 @@ def main(rawinput, features, featureDict, itemDict, rooms):
 			elif command and feature and item:
 				display("I'm not sure if I can " + command + " the " + item + " on the " + feature + ".")
 
+			elif command == 'eat':
+				commands.eat(rawCommand, feature)
+
 			# Kicking a recognized feature
-			elif command == 'kick':
+			elif command == 'hit':
 				commands.kick(rawCommand, feature)
+
+			elif command == 'move':
+				commands.pull(rawCommand, feature, "feature")
 
 			# Feature mentioned, no item; no legal action from json
 			else:
@@ -147,10 +154,7 @@ def main(rawinput, features, featureDict, itemDict, rooms):
 		# Item but no feature
 		elif item and not feature:
 			# Hard coded until we get this logic figured out in a more standardized way
-			if item == 'board' and command in ['pull']:
-				# This allows the "pull board" command
-				return "4"
-			elif item == 'board' and command in ['use', 'move']:
+			if item == 'board' and command in ['use', 'move']:
 				removedItem1 = input.replace(item, ' ')
 				item2 = items.identifyItem(removedItem1, itemDict)
 				if item2 == 'keys':
@@ -162,6 +166,13 @@ def main(rawinput, features, featureDict, itemDict, rooms):
 				return "2"
 			elif command == "eat":
 				commands.eat(rawCommand, item)
+			elif command == "move":
+				if command == "board":
+					return "4"
+				elif door in input:
+					display ("Open a door?  Which door?")
+				else:
+					commands.pull(rawCommand, item, "item")
 
 			# No recognized item and command
 			display("I'm not sure how to " + rawCommand + " the " + item + " that way.")
