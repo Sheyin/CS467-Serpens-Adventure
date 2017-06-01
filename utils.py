@@ -89,54 +89,85 @@ def translateRoom(input, rooms):
 # Assumption that 'synonyms' will be the member name of room aliases
 def changeRoomNumbers(roomConnections, rooms):
 	connectionsList = []
+	roomAliases = {}
+
 	if roomConnections[0].isdigit():
 		roomNumber = int(roomConnections[0])
-		#synonyms = rooms[roomNumber].synonyms
-		#synonyms = stripUnicode(synonyms)
-		#templist = ['north', roomName]
-		#for object in synonyms:
-			#templist.append(str(object))
-		# connectionsList.append(('north', synonyms))
 		roomName = str(rooms[roomNumber].name.lower())
-		connectionsList.append(('north', roomName))
+		aliases = rooms[roomNumber].aliases
+		aliases = stripUnicode(aliases)
+		roomAliasList = ['north', roomName]
+		for alias in aliases:
+			roomAliasList.append(alias)
+		aliasTuple = tuple(roomAliasList)
+		connectionsList.append(aliasTuple)
 	elif not roomConnections[0]:
 		connectionsList.append(('north',))
 
 	if roomConnections[1].isdigit():
 		roomNumber = int(roomConnections[1])
 		roomName = str(rooms[roomNumber].name.lower())
-		connectionsList.append(('south', roomName))
+		aliases = rooms[roomNumber].aliases
+		aliases = stripUnicode(aliases)
+		roomAliasList = ['south', roomName]
+		for alias in aliases:
+			roomAliasList.append(alias)
+		aliasTuple = tuple(roomAliasList)
+		connectionsList.append(aliasTuple)
 	elif not roomConnections[1]:
 		connectionsList.append(('south',))
 
 	if roomConnections[2].isdigit():
 		roomNumber = int(roomConnections[2])
 		roomName = str(rooms[roomNumber].name.lower())
-		connectionsList.append(('west', roomName))
+		aliases = rooms[roomNumber].aliases
+		aliases = stripUnicode(aliases)
+		roomAliasList = ['east', roomName]
+		for alias in aliases:
+			roomAliasList.append(alias)
+		aliasTuple = tuple(roomAliasList)
+		connectionsList.append(aliasTuple)
 	elif not roomConnections[2]:
-		connectionsList.append(('west',))
-
-	if roomConnections[3] and roomConnections[3].isdigit():
-		roomNumber = int(roomConnections[3])
-		roomName = str(rooms[roomNumber].name.lower())
-		connectionsList.append(('east', roomName))
-	elif not roomConnections[3]:
 		connectionsList.append(('east',))
 
-	if roomConnections[4] and roomConnections[4].isdigit():
+	if roomConnections[3].isdigit():
+		roomNumber = int(roomConnections[3])
+		roomName = str(rooms[roomNumber].name.lower())
+		aliases = rooms[roomNumber].aliases
+		aliases = stripUnicode(aliases)
+		roomAliasList = ['west', roomName]
+		for alias in aliases:
+			roomAliasList.append(alias)
+		aliasTuple = tuple(roomAliasList)
+		connectionsList.append(aliasTuple)
+	elif not roomConnections[3]:
+		connectionsList.append(('west',))
+
+	if roomConnections[4].isdigit():
 		roomNumber = int(roomConnections[4])
 		roomName = str(rooms[roomNumber].name.lower())
-		connectionsList.append(('up', 'upstairs', roomName))
+		aliases = rooms[roomNumber].aliases
+		aliases = stripUnicode(aliases)
+		roomAliasList = ['up', 'upstairs', roomName]
+		for alias in aliases:
+			roomAliasList.append(alias)
+		aliasTuple = tuple(roomAliasList)
+		connectionsList.append(aliasTuple)
 	elif not roomConnections[4]:
 		connectionsList.append(('up', 'upstairs'))
 
-	if roomConnections[5] and roomConnections[5].isdigit():
+	if roomConnections[5].isdigit():
 		roomNumber = int(roomConnections[5])
 		roomName = str(rooms[roomNumber].name.lower())
-		connectionsList.append(('down', 'downstairs', roomName))
+		aliases = rooms[roomNumber].aliases
+		aliases = stripUnicode(aliases)
+		roomAliasList = ['down', 'downstairs', roomName]
+		for alias in aliases:
+			roomAliasList.append(alias)
+		aliasTuple = tuple(roomAliasList)
+		connectionsList.append(aliasTuple)
 	elif not roomConnections[5]:
 		connectionsList.append(('down', 'downstairs'))
-
 	return connectionsList
 
 
@@ -192,14 +223,12 @@ def formatRoomData(rooms, objects, currentState):
 	# Currently it just takes all the possible items (but will be shown to user if they use help)
 
 	# Get only the items present in room (gamestate - flagged as 1)
-
 	itemList = []
 	# Check if these items are present
 	for thing in itemKeysDict.keys():
 		itemFlag = getattr(currentState, thing)
 		if itemFlag:
 			itemList.append(itemKeysDict[thing])
-
 
 	itemDict = {}
 	itemSynonyms = []
