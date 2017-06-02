@@ -1,7 +1,7 @@
 {
     "id": 12,
     "name": "Garden",
-    "aliases": ["glass door", "door", "out"],
+    "aliases": ["glass door", "garden door", "out"],
     "north": "", 
     "south": 11, 
     "east": 14, 

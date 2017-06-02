@@ -79,7 +79,21 @@ def translateRoom(input, rooms):
 		for namePos in range (0, len(rooms[dirPos])):
 			if rooms[dirPos][namePos] in input:
 				return rooms[dirPos][0]
+
 	# Unable to match destination with a room
+	# Check if the word 'door' is present and only one connection in the room
+	numSingleConnections = 0
+	for connection in rooms:
+		if len(connection) == 1:
+			numSingleConnections += 1
+	if numSingleConnections == 3:
+		for word in ['door', 'outside', 'head out', 'leave room', 'out']:
+			if word in input:
+				# This casual term matches and there is only one exit anyways
+				# find out which connection it was - probably of the first 4
+				for i in range (0, 4):
+					if len(rooms[i]) > 1:
+						return rooms[i][0]
 	return -1
 
 
@@ -168,6 +182,7 @@ def changeRoomNumbers(roomConnections, rooms):
 		connectionsList.append(aliasTuple)
 	elif not roomConnections[5]:
 		connectionsList.append(('down', 'downstairs'))
+
 	return connectionsList
 
 
@@ -188,7 +203,7 @@ def stripUnicode(data):
 # Produce list (features), dict (features), list (items), list of tuples (room Connections)
 # The str() is required to change the data from unicode and remove the u' marks
 def formatRoomData(rooms, objects, currentState):
-	currentRoom = currentState.currRoom
+	currentRoom = int(currentState.currRoom)
 
 	featuresList = []
 	featuresDict = {}
@@ -248,6 +263,13 @@ def formatRoomData(rooms, objects, currentState):
 	roomConnections = changeRoomNumbers(roomList, rooms)
 
 	return featuresList, featuresDict, itemDict, roomConnections
+
+
+# singleDoorCheck(): To facilitate "go door" when there is only one door in the room
+# Putting it as an alias for another room can cause logical errors
+def singleDoorCheck(roomConnections):
+	return True
+
 
 	# How to get object variables / information
 	#roomkeys = room.__dict__.keys()
