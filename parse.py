@@ -104,7 +104,6 @@ def main(rawinput, features, featureDict, itemDict, rooms):
 
 		# Check if the command was one specific to operating upon a feature (listed in json)
 		if feature:
-			print "Command is: " + command
 			pos = features.index(feature) + 1
 			commandUsedSpecified = checkFeatureActions(input, pos, feature, featureDict)
 
