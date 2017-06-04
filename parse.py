@@ -61,6 +61,10 @@ def main(rawinput, features, featureDict, itemDict, rooms):
 
 	elif command in ["take", "drop"]:
 		item = items.identifyItem(input, itemDict)
+		if not item:
+			for possibleItem in ['board', 'cryptex', 'gun', 'handle', 'keys', 'lockpick', 'skeleton key', 'smallKey', 'paper clip']:
+				if possibleItem in input:
+					item = possibleItem
 		if item:
 			if command == "take":
 				key = item + "_take"
@@ -69,6 +73,7 @@ def main(rawinput, features, featureDict, itemDict, rooms):
 				key = item + "_drop"
 				return utils.engine_codes_dict[key]
 		else:
+			# Not one of the items	
 			display("I can't do that.")
 
 	elif command == "look at":
@@ -153,31 +158,38 @@ def main(rawinput, features, featureDict, itemDict, rooms):
 		# Item but no feature
 		elif item and not feature:
 			# Hard coded until we get this logic figured out in a more standardized way
-			if item == 'board' and command in ['use', 'move']:
-				removedItem1 = input.replace(item, ' ')
-				item2 = items.identifyItem(removedItem1, itemDict)
-				if item2 == 'keys':
-					return "7"
+			if item == "board":
+				if command in ['move', 'pull']:
+					return "4"
+				elif command in ['use', 'move']:
+					removedItem1 = input.replace(item, ' ')
+					item2 = items.identifyItem(removedItem1, itemDict)
+					if item2 == 'keys':
+						return "7"
+				# Some default return
+				return "unknown"
 			elif item == 'keys' and (command in ['use'] or commandUsedSpecified):
+				# "Use board on keys"
+				if "board" in input:
+					return "4"
+				# "Use keys on lock"
 				if 'lock' in input:
 					return "10"
-			elif item == 'pots' and (command in ['kick', 'move']):
-				return "2"
 			elif command == "eat":
 				commands.eat(rawCommand, item)
 			elif command == "move":
-				if command == "board":
-					return "4"
-				elif door in input:
+				if "door" in input:
 					display ("Open a door?  Which door?")
 				else:
 					commands.pull(rawCommand, item, "item")
-
-			# No recognized item and command
-			display("I'm not sure how to " + rawCommand + " the " + item + " that way.")
+			else:
+				# No recognized item and command
+				display("I'm not sure how to " + rawCommand + " the " + item + " that way.")
 
 		# No item or feature, unrecognized command
-		else: 
+		else:
+			if 'pots' in input and (command in ['kick', 'move']):
+				return "2"
 			display("I don't understand that command.")
 
 

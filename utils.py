@@ -2,6 +2,7 @@ import re
 import data
 from data import *
 import textwrap
+import os
 from items import itemKeysDict
 
 # These are misc. functions that are parsing-related
@@ -42,7 +43,8 @@ def display(text):
 
 
 # Prints the help information from features + items
-def printHelp(featureDict, itemDict):
+# Requires the dict of features, items, and the current gameState object to filter items
+def printHelp(featureDict, itemDict, currentState):
 	display("HELPFUL TIPS:")
 	display("Take a closer look at the room's features.  Sometimes you may need to examine a detail on a feature even more closely.")
 	display("Don't forget to take (pick up) items after you've revealed them.")
@@ -59,7 +61,16 @@ def printHelp(featureDict, itemDict):
 			else:
 				actions = actions + ", " + _
 		display(str(feature) + ": " + actions)
-	itemKeys = itemDict.keys()
+	itemKeys = []
+
+	# List only the items present in room (gamestate - flagged as 1)
+	# Check if these items are present
+	for thing in itemKeysDict.keys():
+		itemFlag = getattr(currentState, thing)
+		if itemFlag == 1:
+			itemKeys.append(itemKeysDict[thing])
+
+	# Make formatting pretty for printing out
 	itemList = ""
 	for _ in itemKeys:
 		if _ == itemKeys[0]:
@@ -237,17 +248,18 @@ def formatRoomData(rooms, objects, currentState):
 		if ' - NA' in key:
 			featuresDict.pop(key)
 
-	# This should be limited based on info from the gamestate (item location)
-	# Currently it just takes all the possible items (but will be shown to user if they use help)
-
-	# Get only the items present in room (gamestate - flagged as 1)
+	# Requires full list of items for parsing to work correctly
 	itemList = []
-	# Check if these items are present
-	for thing in itemKeysDict.keys():
-		itemFlag = getattr(currentState, thing)
-		if itemFlag:
-			itemList.append(itemKeysDict[thing])
-
+	path = "data/objects/"
+	fileList = os.listdir(path)
+	for filename in fileList:
+		file = open(path + filename, 'r')
+		# skip first line - bracket only
+		file.readline()
+		itemNameLine = file.readline()
+		itemName = itemNameLine[13:-3]
+		itemList.append(itemName)
+		file.close()	
 	itemDict = {}
 	itemSynonyms = []
 
@@ -266,13 +278,6 @@ def formatRoomData(rooms, objects, currentState):
 	roomConnections = changeRoomNumbers(roomList, rooms)
 
 	return featuresList, featuresDict, itemDict, roomConnections
-
-
-# singleDoorCheck(): To facilitate "go door" when there is only one door in the room
-# Putting it as an alias for another room can cause logical errors
-def singleDoorCheck(roomConnections):
-	return True
-
 
 	# How to get object variables / information
 	#roomkeys = room.__dict__.keys()
