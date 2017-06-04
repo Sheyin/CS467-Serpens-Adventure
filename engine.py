@@ -451,6 +451,7 @@ def playGame(userSelection):
 		featureList, featureDict, itemList, roomList = utils.formatRoomData(rooms, objects, currentState)	
 			
 		#Pend input:
+		print ""
 		userInput = raw_input (": ")
 
 		#Parse user input and return code for engine action {Parsing Dev}
@@ -518,6 +519,36 @@ def playGame(userSelection):
 					display(ladder.feat1desc)
 				else: #After interaction
 					display(ladder.feat1interactComplete)
+			#topHall
+			elif currentState.currRoom == 11:
+				if currentState.rm11f1 == 0: #Before interaction
+					display(topHall.feat1desc)
+				else: #After interaction
+					display(topHall.feat1interactComplete)
+			#Garden
+			elif currentState.currRoom == 12:
+				if currentState.rm12f1 == 0: #Before interaction
+					display(garden.feat1desc) 
+				else: #After interaction
+					display(garden.feat1interactComplete)
+			#Control
+			elif currentState.currRoom == 13:
+				if currentState.rm13f1 == 0: #Before interaction
+					display(control.feat1desc)
+				else: #After interaction
+					display(control.feat1interactComplete)
+			#Side
+			elif currentState.currRoom == 14:
+				if currentState.rm14f1 == 0: #Before interaction
+					display(side.feat1desc)
+				else: #After interaction
+					display(side.feat1interactComplete)
+			#Processing
+			elif currentState.currRoom == 15:
+				if currentState.rm15f1 == 0: #Before interaction
+					display(processing.feat1desc) 
+				else: #After interaction
+					display(processing.feat1interactComplete)
 
 		elif userInput == "2": #Interact with feature 1 
 			#Brig
@@ -564,6 +595,28 @@ def playGame(userSelection):
 			elif currentState.currRoom == 10:
 				display(ladder.feat1interactSuccess)
 				currentState.rm10f1 = 1 #Update to interaction complete
+			#topHall
+			elif currentState.currRoom == 11:
+				display(topHall.feat1interactSuccess)
+				currentState.rm11f1 = 1 #Update to interaction complete
+			#Garden
+			if currentState.currRoom == 12:
+				display(garden.feat1interactSuccess)
+				currentState.rm12f2 = 1 #Update to interaction complete
+				currentState.rm12o1 = 1 #Lockpick discovered
+			#Control
+			elif currentState.currRoom == 13:
+				display(control.feat1interactSuccess)
+				currentState.rm13f1 = 1 #Update to interaction complete
+			#Side
+			elif currentState.currRoom == 14:
+				display(side.feat1interactSuccess)
+				currentState.rm14f1 = 1 #Update to interaction complete
+			#Processing
+			elif currentState.currRoom == 15:
+				display(processing.feat1interactSuccess)
+				currentState.rm15f1 = 1 #Update to interaction complete
+
 
 		elif userInput == "3": #Look at feature 2 - BENCH / BARRED DOOR / PAPER / TABLE / BARRED WINDOW / LAMP / WOODEN DOOR / TABLE / TRASH CAN / WOODEN DOOR
 			#Brig
@@ -626,6 +679,36 @@ def playGame(userSelection):
 					display(ladder.feat2desc)
 				else: #After interaction
 					display(ladder.feat2interactComplete)
+			#topHall
+			elif currentState.currRoom == 11:
+				if currentState.rm11f2 == 0: #Before interaction
+					display(topHall.feat2desc)
+				else: #After interaction
+					display(topHall.feat2interactComplete)
+			#Garden
+			elif currentState.currRoom == 12:
+				if currentState.rm12f2 == 0: #Before interaction
+					display(garden.feat2desc)
+				else: #After interaction
+					display(garden.feat2interactComplete)
+			#Control
+			elif currentState.currRoom == 13:
+				if currentState.rm13f2 == 0: #Before interaction
+					display(control.feat2desc)
+				else: #After interaction
+					display(control.feat2interactComplete)
+			#Side
+			elif currentState.currRoom == 14:
+				if currentState.rm14f2 == 0: #Before interaction
+					display(side.feat2desc)
+				else: #After interaction
+					display(side.feat2interactComplete)
+			#Processing
+			elif currentState.currRoom == 15:
+				if currentState.rm15f2 == 0: #Before interaction
+					display(processing.feat2desc)
+				else: #After interaction
+					display(processing.feat2interactComplete)
 
 		elif userInput == "4": #Interact with feature 2
 			#Brig
@@ -669,6 +752,26 @@ def playGame(userSelection):
 			elif currentState.currRoom == 10:
 				display(ladder.feat2interactSuccess)
 				currentState.rm10f2 = 1 #Update to interaction complete
+			#topHall - **KEYCARD?**
+			elif currentState.currRoom == 11:
+				display(topHall.feat2interactSuccess)
+				currentState.rm11f2 = 1 #Update to interaction complete
+			#Garden
+			elif currentState.currRoom == 12:
+				display(garden.feat2interactSuccess)
+				currentState.rm12f2 = 1 #Update to interaction complete
+			#Control
+			elif currentState.currRoom == 13:
+				display(control.feat2interactSuccess)
+				currentState.rm13f2 = 1 #Update to interaction complete
+			#Side
+			elif currentState.currRoom == 14:
+				display(side.feat2interactSuccess)
+				currentState.rm14f2 = 1 #Update to interaction complete
+			#Processing
+			elif currentState.currRoom == 15:
+				display(processing.feat2interactSuccess)
+				currentState.rm15f2 = 1 #Update to interaction complete
 
 		elif userInput == "5": #Look at object "board"
 			if currentState.obj1Loc ==99: #In iventory
@@ -731,6 +834,36 @@ def playGame(userSelection):
 					display(galley.feat3desc)
 				else: #After interaction
 					display(galley.feat3interactComplete)
+			#topHall
+			elif currentState.currRoom == 11:
+				if currentState.rm11f3 == 0: #Before interaction
+					display(topHall.feat3desc)
+				else: #After interaction
+					display(topHall.feat3interactComplete)
+			#Garden
+			elif currentState.currRoom == 12:
+				if currentState.rm12f3 == 0: #Before interaction
+					display(garden.feat3desc)
+				else: #After interaction
+					display(garden.feat3interactComplete)
+			#Control
+			elif currentState.currRoom == 13:
+				if currentState.rm13f3 == 0: #Before interaction
+					display(control.feat3desc)
+				else: #After interaction
+					display(control.feat3interactComplete)
+			#Side
+			elif currentState.currRoom == 14:
+				if currentState.rm14f3 == 0: #Before interaction
+					display(side.feat3desc)
+				else: #After interaction
+					display(side.feat3interactComplete)
+			#Processing
+			elif currentState.currRoom == 15:
+				if currentState.rm15f3 == 0: #Before interaction
+					display(processing.feat3desc)
+				else: #After interaction
+					display(processing.feat3interactComplete)
 
 		elif userInput == "7": #Interact with feature 3
 			#Brig
@@ -776,10 +909,31 @@ def playGame(userSelection):
 			elif currentState.currRoom == 8:
 				display(garrison.feat3interactSuccess)
 				currentState.rm08f3 = 1 #Update to interaction complete
-			#Garrison
+			#Galley
 			elif currentState.currRoom == 9:
 				display(galley.feat3interactSuccess)
 				currentState.rm09f3 = 1 #Update to interaction complete
+			#topHall
+			elif currentState.currRoom == 11:
+				display(topHall.feat3interactSuccess)
+				currentState.rm11f3 = 1 #Update to interaction complete
+			#Garden
+			elif currentState.currRoom == 12:
+				display(garden.feat3interactSuccess)
+				currentState.rm12f3 = 1 #Update to interaction complete
+			#Control
+			elif currentState.currRoom == 13:
+				display(control.feat3interactSuccess)
+				currentState.rm13f3 = 1 #Update to interaction complete
+			#Side
+			if currentState.currRoom == 14:
+				display(side.feat3interactSuccess)
+				currentState.rm14f3 = 1 #Update to interaction complete
+				currentState.rm14o1 = 1 #Cryptex discovered 
+			#Processing
+			elif currentState.currRoom == 15:
+				display(processing.feat3interactSuccess)
+				currentState.rm15f3 = 1 #Update to interaction complete
 
 		elif userInput == "8": #Look at object "keys"
 			if currentState.obj2Loc ==99: #In inventory
@@ -830,6 +984,36 @@ def playGame(userSelection):
 					display(galley.feat4desc)
 				else: #After interaction
 					display(galley.feat4interactComplete)
+			#topHall
+			elif currentState.currRoom == 11:
+				if currentState.rm11f4 == 0: #Before interaction
+					display(topHall.feat4desc)
+				else: #After interaction
+					display(topHall.feat4interactComplete)
+			#Garden
+			elif currentState.currRoom == 12:
+				if currentState.rm12f4 == 0: #Before interaction
+					display(garden.feat4desc)
+				else: #After interaction
+					display(garden.feat4interactComplete)
+			#Control
+			elif currentState.currRoom == 13:
+				if currentState.rm13f4 == 0: #Before interaction
+					display(control.feat4desc)
+				else: #After interaction
+					display(control.feat4interactComplete)
+			#Side
+			elif currentState.currRoom == 14:
+				if currentState.rm14f4 == 0: #Before interaction
+					display(side.feat4desc)
+				else: #After interaction
+					display(side.feat4interactComplete)
+			#Processing
+			elif currentState.currRoom == 15:
+				if currentState.rm15f4 == 0: #Before interaction
+					display(processing.feat4desc)
+				else: #After interaction
+					display(processing.feat4interactComplete)
 
 		elif userInput == "10": #Interact with feature 4
 			#Brig
@@ -872,6 +1056,26 @@ def playGame(userSelection):
 			elif currentState.currRoom == 9:
 				display(galley.feat4interactSuccess)
 				currentState.rm09f4 = 1 #Update to interaction complete
+			#topHall
+			elif currentState.currRoom == 11:
+				display(topHall.feat4interactSuccess)
+				currentState.rm11f4 = 1 #Update to interaction complete
+			#Garden
+			elif currentState.currRoom == 12:
+				display(garden.feat4interactSuccess)
+				currentState.rm12f4 = 1 #Update to interaction complete
+			#Control
+			elif currentState.currRoom == 13:
+				display(control.feat4interactSuccess)
+				currentState.rm13f4 = 1 #Update to interaction complete
+			#Side
+			elif currentState.currRoom == 14:
+				display(side.feat4interactSuccess)
+				currentState.rm14f4 = 1 #Update to interaction complete
+			#Processing
+			elif currentState.currRoom == 15:
+				display(processing.feat4interactSuccess)
+				currentState.rm15f4 = 1 #Update to interaction complete
 
 		elif userInput == "11": #General look around room
 			if currentState.currRoom == 1:
@@ -1094,6 +1298,146 @@ def playGame(userSelection):
 				if currentState.rm07o1 == 1 and currentState.obj6Loc == 10:
 					display(gun.inRoom)
 
+			elif currentState.currRoom == 11:    #topHall
+				display(topHall.longDesc)
+				#Checks objects and if they are DISCOVERED and LOCATED IN ROOM then displays notice they are there
+				#Object 1 - board
+				if currentState.rm01o1 == 1 and currentState.obj1Loc == 11:
+					display(board.inRoom)
+				#Object 2 - keys
+				if currentState.rm01o2 == 1 and currentState.obj2Loc == 11:
+					display(keys.inRoom)
+				#Object 3 - handle
+				if currentState.rm02o1 == 1 and currentState.obj3Loc == 11:
+					display(handle.inRoom)
+				#Object 4 - skeleton key
+				if currentState.rm04o1 == 1 and currentState.obj4Loc == 11:
+					display(skeletonKey.inRoom)
+				#Object 5 - small key
+				if currentState.rm06o1 == 1 and currentState.obj5Loc == 11:
+					display(smallKey.inRoom)
+				#Object 6 - Gun
+				if currentState.rm07o1 == 1 and currentState.obj6Loc == 11:
+					display(gun.inRoom)
+				#Object 7 - Lockpick
+				if currentState.rm12o1 == 1 and currentState.obj7Loc == 11:
+					display(lockpick.inRoom)
+				#Object 8 - Cryptex
+				if currentState.rm14o1 == 1 and currentState.obj8Loc == 11:
+					display(cryptex.inRoom)
+
+			elif currentState.currRoom == 12:    #Garden
+				display(garden.longDesc)
+				#Checks objects and if they are DISCOVERED and LOCATED IN ROOM then displays notice they are there
+				#Object 1 - board
+				if currentState.rm01o1 == 1 and currentState.obj1Loc == 12:
+					display(board.inRoom)
+				#Object 2 - keys
+				if currentState.rm01o2 == 1 and currentState.obj2Loc == 12:
+					display(keys.inRoom)
+				#Object 3 - handle
+				if currentState.rm02o1 == 1 and currentState.obj3Loc == 12:
+					display(handle.inRoom)
+				#Object 4 - skeleton key
+				if currentState.rm04o1 == 1 and currentState.obj4Loc == 12:
+					display(skeletonKey.inRoom)
+				#Object 5 - small key
+				if currentState.rm06o1 == 1 and currentState.obj5Loc == 12:
+					display(smallKey.inRoom)
+				#Object 6 - Gun
+				if currentState.rm07o1 == 1 and currentState.obj6Loc == 12:
+					display(gun.inRoom)
+				#Object 7 - Lockpick
+				if currentState.rm12o1 == 1 and currentState.obj7Loc == 12:
+					display(lockpick.inRoom)
+				#Object 8 - Cryptex
+				if currentState.rm14o1 == 1 and currentState.obj8Loc == 12:
+					display(cryptex.inRoom)
+
+			elif currentState.currRoom == 13:    #Control
+				display(control.longDesc)
+				#Checks objects and if they are DISCOVERED and LOCATED IN ROOM then displays notice they are there
+				#Object 1 - board
+				if currentState.rm01o1 == 1 and currentState.obj1Loc == 13:
+					display(board.inRoom)
+				#Object 2 - keys
+				if currentState.rm01o2 == 1 and currentState.obj2Loc == 13:
+					display(keys.inRoom)
+				#Object 3 - handle
+				if currentState.rm02o1 == 1 and currentState.obj3Loc == 13:
+					display(handle.inRoom)
+				#Object 4 - skeleton key
+				if currentState.rm04o1 == 1 and currentState.obj4Loc == 13:
+					display(skeletonKey.inRoom)
+				#Object 5 - small key
+				if currentState.rm06o1 == 1 and currentState.obj5Loc == 13:
+					display(smallKey.inRoom)
+				#Object 6 - Gun
+				if currentState.rm07o1 == 1 and currentState.obj6Loc == 13:
+					display(gun.inRoom)
+				#Object 7 - Lockpick
+				if currentState.rm12o1 == 1 and currentState.obj7Loc == 13:
+					display(lockpick.inRoom)
+				#Object 8 - Cryptex
+				if currentState.rm14o1 == 1 and currentState.obj8Loc == 13:
+					display(cryptex.inRoom)
+
+			elif currentState.currRoom == 14:    #Side
+				display(side.longDesc)
+				#Checks objects and if they are DISCOVERED and LOCATED IN ROOM then displays notice they are there
+				#Object 1 - board
+				if currentState.rm01o1 == 1 and currentState.obj1Loc == 14:
+					display(board.inRoom)
+				#Object 2 - keys
+				if currentState.rm01o2 == 1 and currentState.obj2Loc == 14:
+					display(keys.inRoom)
+				#Object 3 - handle
+				if currentState.rm02o1 == 1 and currentState.obj3Loc == 14:
+					display(handle.inRoom)
+				#Object 4 - skeleton key
+				if currentState.rm04o1 == 1 and currentState.obj4Loc == 14:
+					display(skeletonKey.inRoom)
+				#Object 5 - small key
+				if currentState.rm06o1 == 1 and currentState.obj5Loc == 14:
+					display(smallKey.inRoom)
+				#Object 6 - Gun
+				if currentState.rm07o1 == 1 and currentState.obj6Loc == 14:
+					display(gun.inRoom)
+				#Object 7 - Lockpick
+				if currentState.rm12o1 == 1 and currentState.obj7Loc == 14:
+					display(lockpick.inRoom)
+				#Object 8 - Cryptex 
+				if currentState.rm14o1 == 1 and currentState.obj8Loc == 14:
+					display(cryptex.inRoom)
+
+			elif currentState.currRoom == 15:    #Processing
+				display(processing.longDesc)
+				#Checks objects and if they are DISCOVERED and LOCATED IN ROOM then displays notice they are there
+				#Object 1 - board
+				if currentState.rm01o1 == 1 and currentState.obj1Loc == 15:
+					display(board.inRoom)
+				#Object 2 - keys
+				if currentState.rm01o2 == 1 and currentState.obj2Loc == 15:
+					display(keys.inRoom)
+				#Object 3 - handle
+				if currentState.rm02o1 == 1 and currentState.obj3Loc == 15:
+					display(handle.inRoom)
+				#Object 4 - skeleton key
+				if currentState.rm04o1 == 1 and currentState.obj4Loc == 15:
+					display(skeletonKey.inRoom)
+				#Object 5 - small key
+				if currentState.rm06o1 == 1 and currentState.obj5Loc == 15:
+					display(smallKey.inRoom)
+				#Object 6 - Gun
+				if currentState.rm07o1 == 1 and currentState.obj6Loc == 15:
+					display(gun.inRoom)
+				#Object 7 - Lockpick
+				if currentState.rm12o1 == 1 and currentState.obj7Loc == 15:
+					display(lockpick.inRoom)
+				#Object 8 - Cryptex
+				if currentState.rm14o1 == 1 and currentState.obj8Loc == 15:
+					display(cryptex.inRoom)
+
 		elif userInput == "12": #Take board
 			#If object discovered and if player is in the same room as the object
 			if currentState.rm01o1 == 1 and currentState.obj1Loc == currentState.currRoom:
@@ -1142,6 +1486,10 @@ def playGame(userSelection):
 				display(smallKey.name)
 			if currentState.obj6Loc == 99:   #Gun
 				display(gun.name)
+			if currentState.obj7Loc == 99:   #Lockpick
+				display(lockpick.name)
+			if currentState.obj8Loc == 99:   #Cryptex
+				display(cryptex.name)
 			print ""
 
 		elif userInput == "18": #Look at feature 5 - Brig:null - LADDER / BOTTLES / WOODEN DOOR / METAL DOOR / CANVAS FLAP
@@ -1182,6 +1530,36 @@ def playGame(userSelection):
 					display(garrison.feat5desc)
 				else: #After interaction
 					display(garrison.feat5interactComplete)
+			#topHall
+			elif currentState.currRoom == 11:
+				if currentState.rm11f5 == 0: #Before interaction
+					display(topHall.feat5desc)
+				else: #After interaction
+					isplay(topHall.feat5interactComplete)
+			#Garden
+			elif currentState.currRoom == 12:
+				if currentState.rm12f5 == 0: #Before interaction
+					display(garden.feat5desc)
+				else: #After interaction
+					display(garden.feat5interactComplete)
+			#Control
+			elif currentState.currRoom == 13:
+				if currentState.rm13f5 == 0: #Before interaction
+					display(control.feat5desc)
+				else: #After interaction
+					display(control.feat5interactComplete)
+			#Side
+			elif currentState.currRoom == 14:
+				if currentState.rm14f5 == 0: #Before interaction
+					display(side.feat5desc)
+				else: #After interaction
+					display(side.feat5interactComplete)
+			#Processing
+			elif currentState.currRoom == 15:
+				if currentState.rm15f5 == 0: #Before interaction
+					display(processing.feat5desc)
+				else: #After interaction
+					display(processing.feat5interactComplete)
 
 		elif userInput == "19": #Interact with feature 5  - LADDER / BOTTLES / WOODEN DOOR
 			#Brig
@@ -1212,6 +1590,26 @@ def playGame(userSelection):
 			elif currentState.currRoom == 8:
 				display(garrison.feat5interactSuccess)
 				currentState.rm08f5 = 1 #Update to interaction complete
+			#topHall
+			elif currentState.currRoom == 11:
+				display(topHall.feat5interactSuccess)
+				currentState.rm11f5 = 1 #Update to interaction complete
+			#Garden
+			elif currentState.currRoom == 12:
+				display(garden.feat5interactSuccess)
+				currentState.rm12f5 = 1 #Update to interaction complete
+			#Control
+			elif currentState.currRoom == 13:
+				display(control.feat5interactSuccess)
+				currentState.rm13f5 = 1 #Update to interaction complete
+			#Side
+			elif currentState.currRoom == 14:
+				display(side.feat5interactSuccess)
+				currentState.rm14f5 = 1 #Update to interaction complete
+			#Processing
+			elif currentState.currRoom == 15:
+				display(processing.feat5interactSuccess)
+				currentState.rm15f5 = 1 #Update to interaction complete
 
 		elif userInput == "20": #Look at feature 6 - Brig:null  - TRAP DOOR / PAPERS / METAL DOOR
 			#Brig
@@ -1236,9 +1634,33 @@ def playGame(userSelection):
 			#Garrison
 			elif currentState.currRoom == 8:
 				if currentState.rm08f6 == 0: #Before interaction
-					display(armory.feat6desc)
+					display(garrison.feat6desc)
 				else: #After interaction
-					display(armory.feat6interactComplete)
+					display(garrison.feat6interactComplete)
+			#topHall
+			elif currentState.currRoom == 11:
+				if currentState.rm11f6 == 0: #Before interaction
+					display(topHall.feat6desc)
+				else: #After interaction
+					display(topHall.feat6interactComplete)
+			#Garden
+			elif currentState.currRoom == 12:
+				if currentState.rm12f6 == 0: #Before interaction
+					display(garden.feat6desc)
+				else: #After interaction
+					display(garden.feat6interactComplete)
+			#Control
+			elif currentState.currRoom == 13:
+				if currentState.rm13f6 == 0: #Before interaction
+					display(control.feat6desc)
+				else: #After interaction
+					display(control.feat6interactComplete)
+			#Side
+			elif currentState.currRoom == 14:
+				if currentState.rm14f6 == 0: #Before interaction
+					display(side.feat6desc)
+				else: #After interaction
+					display(side.feat6interactComplete)
 
 		elif userInput == "21": #Interact with feature 6
 			#Brig
@@ -1260,10 +1682,26 @@ def playGame(userSelection):
 			elif currentState.currRoom == 4:
 				display(observation.feat6interactSuccess)
 				currentState.rm04f6 = 1 #Update to interaction complete
-			#Armory
+			#Garrison
 			elif currentState.currRoom == 8:
-				display(armory.feat6interactSuccess)
+				display(garrison.feat6interactSuccess)
 				currentState.rm08f6 = 1 #Update to interaction complete
+			#topHall
+			elif currentState.currRoom == 11:
+				display(topHall.feat6interactSuccess)
+				currentState.rm11f6 = 1 #Update to interaction complete
+			#Garden
+			elif currentState.currRoom == 12:
+				display(garden.feat6interactSuccess)
+				currentState.rm12f6 = 1 #Update to interaction complete
+			#Control
+			elif currentState.currRoom == 13:
+				display(control.feat6interactSuccess)
+				currentState.rm13f6 = 1 #Update to interaction complete
+			#Side
+			elif currentState.currRoom == 14:
+				display(side.feat6interactSuccess)
+				currentState.rm14f6 = 1 #Update to interaction complete
 
 		elif userInput == "22": #GO NORTH
 			if currentState.currRoom == 1: #Brig
@@ -1298,6 +1736,21 @@ def playGame(userSelection):
 			elif currentState.currRoom == 10: #Ladder
 				print "You cannot go that way."
 
+			elif currentState.currRoom == 11: #topHall
+				currentState.currRoom = topHall.north #Updates current user location to ID 13 (Control)
+
+			elif currentState.currRoom == 12: #Garden
+				display("You cannot go that way.")
+
+			elif currentState.currRoom == 13: #Control
+				display("You cannot go that way.")
+
+			elif currentState.currRoom == 14: #Side
+				display("You cannot go that way.")
+
+			elif currentState.currRoom == 15: #Processing
+				display("You cannot go that way.")
+
 		elif userInput == "23": #GO SOUTH
 			if currentState.currRoom == 1: #Brig
 				print "You cannot go that way."
@@ -1330,6 +1783,21 @@ def playGame(userSelection):
 			elif currentState.currRoom == 10: #Ladder
 				print "You cannot go that way."
 
+			elif currentState.currRoom == 11: #topHall
+				display("You cannot go that way.")
+
+			elif currentState.currRoom == 12: #Garden
+				currentState.currRoom = garden.south #Updates current user location to ID 11 (topHall)
+
+			elif currentState.currRoom == 13: #Control
+				display("You cannot go that way.")
+
+			elif currentState.currRoom == 14: #Side
+				display("You cannot go that way.")
+
+			elif currentState.currRoom == 15: #Processing
+				display("You cannot go that way.")
+
 		elif userInput == "24": #GO WEST
 			if currentState.currRoom == 1: #Brig
 				print "You cannot go that way."
@@ -1360,6 +1828,21 @@ def playGame(userSelection):
 
 			elif currentState.currRoom == 10: #Ladder
 				currentState.currRoom = ladder.west #Updates current user location to ID 8 (Garrison)
+
+			elif currentState.currRoom == 11: #topHall
+				currentState.currRoom = topHall.west #Updates current user location to ID 15 (Processing)
+
+			elif currentState.currRoom == 12: #Garden
+				currentState.currRoom = garden.west #Updates current user location to ID 13 (Control)
+
+			elif currentState.currRoom == 13: #Control
+				display("You cannot go that way.")
+
+			elif currentState.currRoom == 14: #Side
+				currentState.currRoom = side.west #Updates current user location to ID 12 (Garden)
+
+			elif currentState.currRoom == 15: #Processing
+				display("You cannot go that way.")
 
 		elif userInput == "25": #GO EAST
 			if currentState.currRoom == 1: #Brig
@@ -1395,6 +1878,21 @@ def playGame(userSelection):
 			elif currentState.currRoom == 10: #Ladder
 				display("You cannot go that way.")
 
+			elif currentState.currRoom == 11: #topHall
+				display("You cannot go that way.")
+
+			elif currentState.currRoom == 12: #Garden
+				currentState.currRoom = garden.east #Updates current user location to ID 14 (Side)
+
+			elif currentState.currRoom == 13: #Control
+				currentState.currRoom = control.east #Updates current user location to ID 12 (Garden)
+
+			elif currentState.currRoom == 14: #Side
+				display("You cannot go that way.")
+
+			elif currentState.currRoom == 15: #Processing
+				currentState.currRoom = processing.east #Updates current user location to ID 11 (Hallway)
+
 		elif userInput == "26": #GO UP
 			if currentState.currRoom == 1: #Brig
 				display("You cannot go that way.")
@@ -1425,7 +1923,22 @@ def playGame(userSelection):
 
 			elif currentState.currRoom == 10: #Ladder
 				display("UPPER LEVEL")
-				currentState.currRoom = ladder.up #Updates current user location to ID 11 (**PENDING**)
+				currentState.currRoom = ladder.up #Updates current user location to ID 11 (topHall)
+
+			elif currentState.currRoom == 11: #topHall
+				display("You cannot go that way.")
+
+			elif currentState.currRoom == 12: #Garden
+				display("You cannot go that way.")
+
+			elif currentState.currRoom == 13: #Control
+				display("You cannot go that way.")
+
+			elif currentState.currRoom == 14: #Side
+				display("You cannot go that way.")
+
+			elif currentState.currRoom == 15: #Processing
+				display("You cannot go that way.")
 
 		elif userInput == "27": #GO DOWN
 			if currentState.currRoom == 1: #Brig
@@ -1456,6 +1969,21 @@ def playGame(userSelection):
 				display("You cannot go that way.")
 
 			elif currentState.currRoom == 10: #Ladder
+				display("You cannot go that way.")
+
+			elif currentState.currRoom == 11: #topHall
+				currentState.currRoom = topHall.down #Updates current user location to ID 10 (Ladder)
+
+			elif currentState.currRoom == 12: #Garden
+				display("You cannot go that way.")
+
+			elif currentState.currRoom == 13: #Control
+				display("You cannot go that way.")
+
+			elif currentState.currRoom == 14: #Side
+				display("You cannot go that way.")
+
+			elif currentState.currRoom == 15: #Processing
 				display("You cannot go that way.")
 
 		elif userInput == "28": #Take handle
@@ -1541,6 +2069,48 @@ def playGame(userSelection):
 				display(gun.drop)
 			else:
 				display(gun.notInInv)
+
+		elif userInput == "40": #Look at object "lockpick"
+			if currentState.obj7Loc == 99: #In inventory
+				display(lockpick.desc)
+			else: #Not in inventory
+				display(lockpick.notInInv)
+
+		elif userInput == "41": #Take lockpick
+			#If object discovered and if player is in the same room as the object
+			if currentState.rm12o1 == 1 and currentState.obj7Loc == currentState.currRoom:
+				currentState.obj7Loc = 99 #Add board to player inventory
+				display(lockpick.take)
+			else:
+				display(lockpick.notAvail)
+
+		elif userInput == "42": #Drop lockpick
+			if currentState.obj7Loc == 99: #In inventory to drop
+				currentState.obj7Loc = currentState.currRoom
+				display(lockpick.drop)
+			else:
+				display(lockpick.notInInv)
+
+		elif userInput == "43": #Look at object "cryptex"
+			if currentState.obj8Loc == 99: #In inventory
+				display(cryptex.desc)
+			else: #Not in inventory
+				display(cryptex.notInInv)
+
+		elif userInput == "44": #Take cryptex
+			#If object discovered and if player is in the same room as the object
+			if currentState.rm14o1 == 1 and currentState.obj8Loc == currentState.currRoom:
+				currentState.obj8Loc = 99 #Add board to player inventory
+				display(cryptex.take)
+			else:
+				display(cryptex.notAvail)
+
+		elif userInput == "45": #Drop cryptex
+			if currentState.obj8Loc == 99: #In inventory to drop
+				currentState.obj8Loc = currentState.currRoom
+				display(cryptex.drop)
+			else:
+				display(cryptex.notInInv)
 
 		else:
 			display("Invalid input")
