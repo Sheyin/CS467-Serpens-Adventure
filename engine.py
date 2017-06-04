@@ -1506,7 +1506,7 @@ def playGame(userSelection):
 				display(keys.notInInv)
 
 		elif userInput == "16": #Help
-			utils.printHelp(featureDict, itemDict)
+			utils.printHelp(featureDict, itemDict, currentState)
 
 		elif userInput == "17": #Inventory
 			print ""
