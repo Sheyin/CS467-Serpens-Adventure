@@ -219,7 +219,7 @@ def playGame(userSelection):
 		# Update currentState variables manually to drop into any room with any combination
 		#     of items. Allows for testing without repeating game sequence. 
 
-		currentState = gamestate.GameStateClass(11,   #currentRoom
+		currentState = gamestate.GameStateClass(1,   #currentRoom
 	      0, #room1
 	      0, #room2
 	      0, #room3
@@ -235,24 +235,24 @@ def playGame(userSelection):
 	      0, #room13
 	      0, #room14
 	      0, #room15          NOTE: 99 Item in inventory, 100 item permanently destroyed/used
-	      99, #item1 - Board - Origin Room: 1
-	      99, #item2 - Key - Origin Room: 1
-	      100, #item3 - Handle - Origin Room: 2
-	      99, #item4 - Skeleton Key - Origin Room: 4
-	      99, #item5 - Small Key - Origin Room: 6
-	      99, #item6 - Gun - Origin Room: 7 
+	      1, #item1 - Board - Origin Room: 1
+	      1, #item2 - Key - Origin Room: 1
+	      2, #item3 - Handle - Origin Room: 2
+	      4, #item4 - Skeleton Key - Origin Room: 4
+	      6, #item5 - Small Key - Origin Room: 6
+	      7, #item6 - Gun - Origin Room: 7 
 	      12, #item7 - Lockpick - Origin Room: 12
 	      14, #item8 - Cryptex - Origin Room: 14
 	      0, #rm1f1
 	      0, #rm1f2
 	      0, #rm1f3
 	      0, #rm1f4
-	      1, #rm1o1 - Board discovery
-	      1, #rm1o2 - Keys discovery
+	      0, #rm1o1 - Board discovery
+	      0, #rm1o2 - Keys discovery
 	      0, #rm2f1
 	      0, #rm2f2
 	      0, #rm2f3
-	      1, #rm2o1 - Handle discovery 
+	      0, #rm2o1 - Handle discovery 
 	      0, #rm3f1
 	      0, #rm3f2
 	      0, #rm3f3
@@ -265,7 +265,7 @@ def playGame(userSelection):
 	      0, #rm4f4
 	      0, #rm4f5
 	      0, #rm4f6
-	      1, #rm4o1 - Skeleton key discovery
+	      0, #rm4o1 - Skeleton key discovery
 	      0, #rm5f1
 	      0, #rm5f2
 	      0, #rm5f3
@@ -274,13 +274,13 @@ def playGame(userSelection):
 	      0, #rm6f3
 	      0, #rm6f4
 	      0, #rm6f5
-	      1, #rm6o1 - Small key discovery 
+	      0, #rm6o1 - Small key discovery 
 	      0, #rm7f1
 	      0, #rm7f2
 	      0, #rm7f3
 	      0, #rm7f4
 	      0, #rm7f5
-	      1, #rm7o1 - Gun discovery
+	      0, #rm7o1 - Gun discovery
 	      0, #rm8f1
 	      0, #rm8f2
 	      0, #rm8f3
@@ -1131,7 +1131,7 @@ def playGame(userSelection):
 				if currentState.rm04o1 == 1 and currentState.obj4Loc == 1:
 					display(skeletonKey.inRoom)
 				#Object 5 - small key
-				if currentState.rm05o1 == 1 and currentState.obj5Loc == 1:
+				if currentState.rm06o1 == 1 and currentState.obj5Loc == 1:
 					display(smallKey.inRoom)
 				#Object 6 - Gun
 				if currentState.rm07o1 == 1 and currentState.obj6Loc == 1:
@@ -1153,7 +1153,7 @@ def playGame(userSelection):
 				if currentState.rm04o1 == 1 and currentState.obj4Loc == 2:
 					display(skeletonKey.inRoom)
 				#Object 5 - small key
-				if currentState.rm05o1 == 1 and currentState.obj5Loc == 2:
+				if currentState.rm06o1 == 1 and currentState.obj5Loc == 2:
 					display(smallKey.inRoom)
 				#Object 6 - Gun
 				if currentState.rm07o1 == 1 and currentState.obj6Loc == 2:
@@ -1175,7 +1175,7 @@ def playGame(userSelection):
 				if currentState.rm04o1 == 1 and currentState.obj4Loc == 3:
 					display(skeletonKey.inRoom)
 				#Object 5 - small key
-				if currentState.rm05o1 == 1 and currentState.obj5Loc == 3:
+				if currentState.rm06o1 == 1 and currentState.obj5Loc == 3:
 					display(smallKey.inRoom)
 				#Object 6 - Gun
 				if currentState.rm07o1 == 1 and currentState.obj6Loc == 3:
@@ -1197,7 +1197,7 @@ def playGame(userSelection):
 				if currentState.rm04o1 == 1 and currentState.obj4Loc == 4:
 					display(skeletonKey.inRoom)
 				#Object 5 - small key
-				if currentState.rm05o1 == 1 and currentState.obj5Loc == 4:
+				if currentState.rm06o1 == 1 and currentState.obj5Loc == 4:
 					display(smallKey.inRoom)
 				#Object 6 - Gun
 				if currentState.rm07o1 == 1 and currentState.obj6Loc == 4:
@@ -1219,7 +1219,7 @@ def playGame(userSelection):
 				if currentState.rm04o1 == 1 and currentState.obj4Loc == 5:
 					display(skeletonKey.inRoom)
 				#Object 5 - small key
-				if currentState.rm05o1 == 1 and currentState.obj5Loc == 5:
+				if currentState.rm06o1 == 1 and currentState.obj5Loc == 5:
 					display(smallKey.inRoom)
 				#Object 6 - Gun
 				if currentState.rm07o1 == 1 and currentState.obj6Loc == 5:

@@ -2,7 +2,7 @@
     "id": 1,
     "name": "Brig",
     "aliases": ["barred door", "start", "jail", "prison"],
-    "north": 1, 
+    "north": 3, 
     "south": "", 
     "east": "", 
     "west": "", 
