@@ -158,8 +158,6 @@ def main(rawinput, features, featureDict, itemDict, rooms):
 
 		# Item but no feature
 		elif item and not feature:
-			print "Item: " + item
-			print "Command: " + command
 			# Hard coded until we get this logic figured out in a more standardized way
 			if item == "board":
 				# For "use board on keys"
