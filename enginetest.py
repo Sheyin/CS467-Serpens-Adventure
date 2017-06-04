@@ -51,15 +51,15 @@ def finalLevelTest():
       0, #room12
       0, #room13
       0, #room14
-      0, #room15
-      99, #item1 - Board  - NOTE: 99 Item in inventory, 100 item permanently destroyed/used
-      99, #item2 - Key
-      100, #item3 - Handle
-      99, #item4 - Skeleton Key
-      99, #item5 - Small Key
-      99, #item6 - Gun
-      0, #item7 - Lockpick
-      0, #item8 - Cryptex
+      0, #room15          NOTE: 99 Item in inventory, 100 item permanently destroyed/used
+      99, #item1 - Board - Origin Room: 1
+      99, #item2 - Key - Origin Room: 1
+      100, #item3 - Handle - Origin Room: 2
+      99, #item4 - Skeleton Key - Origin Room: 4
+      99, #item5 - Small Key - Origin Room: 6
+      99, #item6 - Gun - Origin Room: 7 
+      12, #item7 - Lockpick - Origin Room: 12
+      14, #item8 - Cryptex - Origin Room: 14
       0, #rm1f1
       0, #rm1f2
       0, #rm1f3
@@ -780,7 +780,7 @@ def finalLevelTest():
          if currentState.currRoom == 14:
             display(side.feat3interactSuccess)
             currentState.rm14f3 = 1 #Update to interaction complete
-            currentState.rm14o1 = 1 #Cryptex discovered
+            currentState.rm14o1 = 1 #Cryptex discovered 
          #Processing
          elif currentState.currRoom == 15:
             display(processing.feat3interactSuccess)
@@ -1318,7 +1318,7 @@ def finalLevelTest():
             #Object 7 - Lockpick
             if currentState.rm12o1 == 1 and currentState.obj7Loc == 14:
                display(lockpick.inRoom)
-            #Object 8 - Cryptex
+            #Object 8 - Cryptex 
             if currentState.rm14o1 == 1 and currentState.obj8Loc == 14:
                display(cryptex.inRoom)
 

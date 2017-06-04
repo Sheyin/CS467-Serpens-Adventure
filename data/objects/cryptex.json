@@ -3,7 +3,7 @@
     "synonyms": ["device", "puzzle", "wooden thing"],
     "desc": "A strange wooden device with letter wheels on it.  You think you read a book on it once - calling it a 'cryptex'.  Perhaps if you spell the correct word, it will open.", 
     "notInInv": "You do not have a cryptex.", 
-    "inRoom": "A strange wooden device sits on a corner of the desk.", 
+    "inRoom": "There is a cryptex here.", 
     "take": "You pick up the cryptex. What a strange device!", 
     "notAvail": "There is no cryptex here.", 
     "drop": "You drop the cryptex on the floor.  It rolls a bit, then comes to a halt." 
