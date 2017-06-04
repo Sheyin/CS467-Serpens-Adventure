@@ -52,7 +52,7 @@ def launch():
 		newGame()
 	elif userInput in ['Load Game', 'load game', 'load', 'Load', 'Load game']:	#Load Game
 		loadGame()
-	elif userInput in ['test']:
+	elif userInput in ['test']: # Developer testing
 		playGame(3)
 	else:
 		exitGame()
@@ -84,18 +84,10 @@ def loadGame():
 	playGame(1)	# Load game
 #[END LOAD GAME]
 
-#[BEGIN EXIT GAME]
-def exitGame():
-	print ""
-	print "Roll the credits!"
-	print ""
-	print "Parsing Dev - Cheryl See"
-	print "Engine Dev - Karen Thrasher"
-	print "Data Dev - Matt Hillman"
-	print ""
-	print "Thank you for playing!"
-	print ""
-#[END EXIT GAME]
+#[BEGIN DEVELOPER TESTING]
+def devTest():
+	playGame(3)	#Manually manipulate variables for dev testing
+#[END DEVELOPER TESTING]
 
 #[BEGIN PLAY GAME]
 def playGame(userSelection):
@@ -109,8 +101,8 @@ def playGame(userSelection):
 		#print "NEW GAME FILE CREATED"
 		
 		#PENDING - Load game state with default starting variables {Data dev}
-		#Initialize gamestate class - NOTE: MODIFIED TO START IN ROOM 6
-		currentState = gamestate.GameStateClass(6,   #currentRoom
+		#Initialize gamestate class 
+		currentState = gamestate.GameStateClass(1,   #currentRoom
 		  0, #room1
 		  0, #room2
 		  0, #room3
@@ -121,22 +113,29 @@ def playGame(userSelection):
 		  0, #room8
 		  0, #room9
 		  0, #room10
-		  99, #item1 - Board
-		  99, #item2 - Key
-		  99, #item3 - Handle
-		  99, #item4 - Skeleton Key
-		  6, #item5 - Small Key
-		  7, #item6 - Gun
+		  0, #room11
+		  0, #room12
+		  0, #room13
+		  0, #room14
+		  0, #room15          NOTE: 99 Item in inventory, 100 item permanently destroyed/used
+		  1, #item1 - Board - Origin Room: 1
+		  1, #item2 - Key - Origin Room: 1
+		  2, #item3 - Handle - Origin Room: 2
+		  4, #item4 - Skeleton Key - Origin Room: 4
+		  6, #item5 - Small Key - Origin Room: 6
+		  7, #item6 - Gun - Origin Room: 7 
+		  12, #item7 - Lockpick - Origin Room: 12
+		  14, #item8 - Cryptex - Origin Room: 14
 		  0, #rm1f1
 		  0, #rm1f2
 		  0, #rm1f3
 		  0, #rm1f4
-		  1, #rm1o1 - Board discovery
-		  1, #rm1o2 - Keys discovery
+		  0, #rm1o1 - Board discovery
+		  0, #rm1o2 - Keys discovery
 		  0, #rm2f1
 		  0, #rm2f2
 		  0, #rm2f3
-		  1, #rm2o1 - Handle discovery 
+		  0, #rm2o1 - Handle discovery 
 		  0, #rm3f1
 		  0, #rm3f2
 		  0, #rm3f3
@@ -149,7 +148,7 @@ def playGame(userSelection):
 		  0, #rm4f4
 		  0, #rm4f5
 		  0, #rm4f6
-		  1, #rm4o1 - Skeleton key discovery
+		  0, #rm4o1 - Skeleton key discovery
 		  0, #rm5f1
 		  0, #rm5f2
 		  0, #rm5f3
@@ -176,12 +175,50 @@ def playGame(userSelection):
 		  0, #rm9f3
 		  0, #rm9f4
 		  0, #rm10f1
-		  0) #rm10f2
+		  0, #rm10f2
+		  0, #rm11f1
+		  0, #rm11f2
+		  0, #rm11f3
+		  0, #rm11f4
+		  0, #rm11f5
+		  0, #rm11f6
+		  0, #rm12f1
+		  0, #rm12f2
+		  0, #rm12f3
+		  0, #rm12f4
+		  0, #rm12f5
+		  0, #rm12f6
+		  0, #rm12o1 - Lockpick discovery
+		  0, #rm13f1
+		  0, #rm13f2
+		  0, #rm13f3
+		  0, #rm13f4
+		  0, #rm13f5
+		  0, #rm13f6
+		  0, #rm14f1
+		  0, #rm14f2
+		  0, #rm14f3
+		  0, #rm14f4
+		  0, #rm14f5
+		  0, #rm14f6
+		  0, #rm14o1 - Cryptex discovery
+		  0, #rm15f1
+		  0, #rm15f2
+		  0, #rm15f3
+		  0, #rm15f4
+		  0) #rm15f5
+
 	elif userSelection == 1: #Load game
 		print "LOAD GAME FILE"
 		#PENDING - Load game state with saved variables {Data dev}
 
 	else: # Launch developer testing
+
+		# Developer Testing Instructions:
+		# Trigger from starting screen using 'test'   Note - this option is not publically listed 
+		# Update currentState variables manually to drop into any room with any combination
+		#     of items. Allows for testing without repeating game sequence. 
+
 		currentState = gamestate.GameStateClass(11,   #currentRoom
 	      0, #room1
 	      0, #room2
@@ -2129,11 +2166,18 @@ def playGame(userSelection):
 
 #[END PLAY GAME]
 
-#[BEGIN DEVELOPER TESTING]
-def devTest():
-	playGame(3)	#Manually manipulate variables for dev testing
-
-#[END DEVELOPER TESTING]
+#[BEGIN EXIT GAME]
+def exitGame():
+	print ""
+	print "Roll the credits!"
+	print ""
+	print "Parsing Dev - Cheryl See"
+	print "Engine Dev - Karen Thrasher"
+	print "Data Dev - Matt Hillman"
+	print ""
+	print "Thank you for playing!"
+	print ""
+#[END EXIT GAME]
 
 #[References]
 #ASCII Title Art Generator - http://patorjk.com/software/taag/#p=display&f=Doom&t=Dead%0AIn%0AThe%20%0AWater
