@@ -18,7 +18,8 @@ synonyms =  {
 	'take': 'take', 'pick up': 'pick up', 'get': 'get',
 	'drop': 'drop', 'remove': 'drop',
 	'use': 'use', 'open': 'use',
-	'move': 'move', 'shift': 'move', 'search': 'move', 'pull': 'move',
+	'move': 'move', 'shift': 'move', 'search': 'move', 
+	'pull': 'pull',
 	'hit': 'hit', 'kick': 'hit', 'punch': 'hit', 'smack': 'hit', 'slap': 'hit', 'stomp': 'hit', 'step on': 'hit',
 	'eat': 'eat', 'bite': 'eat', 'swallow': 'eat', 'put in mouth': 'eat', 'put in your mouth': 'eat', 
 	'consume': 'eat', 'nibble': 'eat', 'drink': 'eat', 'sip': 'eat', 'chew': 'eat',
@@ -50,6 +51,9 @@ def compareList(input):
 # item is an item or feature; command is a kick-type command (strings)
 # Both should be pre-determined before calling this function.
 def kick(command, item):
+	# Drop the e if before -ing
+	if command[-1] is 'e':
+		command = command[:-1]
 	display("You " + command + " the " + item + ".")
 	# random additional phrase
 	phrase = ["It doesn't accomplish much, but it makes you feel better.",
@@ -63,6 +67,9 @@ def kick(command, item):
 # item is an item or feature; command is a kick-type command (strings)
 # Both should be pre-determined before calling this function.
 def eat(command, object):
+	# Drop the e if before -ing
+	if command[-1] is 'e':
+		command = command[:-1]
 	display("You consider " + command + "ing the " + object + ".")
 	# random additional phrase
 	phrase = ["Hmm.  This doesn't seem like a good idea.",
@@ -84,6 +91,9 @@ def pull(command, item, type):
 	elif type is "item":
 		display("You idly twirl the " + item + " around.")
 	else:
+		# Drop the e if before -ing
+		if command[-1] is 'e':
+			command = command[:-1]
 		display("What's the point of " + command + "ing the " + item + "?")
 
 

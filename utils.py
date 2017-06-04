@@ -79,9 +79,12 @@ def translateRoom(input, rooms):
 		for namePos in range (0, len(rooms[dirPos])):
 			if rooms[dirPos][namePos] in input:
 				return rooms[dirPos][0]
+	return -1
 
+	#temporarily disable this
 	# Unable to match destination with a room
 	# Check if the word 'door' is present and only one connection in the room
+	'''
 	numSingleConnections = 0
 	for connection in rooms:
 		if len(connection) == 1:
@@ -94,7 +97,7 @@ def translateRoom(input, rooms):
 				for i in range (0, 4):
 					if len(rooms[i]) > 1:
 						return rooms[i][0]
-	return -1
+	return -1 '''
 
 
 # This changes room numbers to room names / other recognizable forms.
