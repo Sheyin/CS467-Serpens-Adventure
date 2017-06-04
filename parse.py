@@ -57,6 +57,7 @@ def main(rawinput, features, featureDict, itemDict, rooms):
 			display("I can't go that way.")
 		else:
 			key = "go_" + str(direction)
+			print "Debug: Returning key: " + key + " which is: " + utils.engine_codes_dict[key]
 			return utils.engine_codes_dict[key]
 
 	elif command in ["take", "drop"]:
@@ -157,21 +158,26 @@ def main(rawinput, features, featureDict, itemDict, rooms):
 
 		# Item but no feature
 		elif item and not feature:
+			print "Item: " + item
+			print "Command: " + command
 			# Hard coded until we get this logic figured out in a more standardized way
 			if item == "board":
-				if command in ['move', 'pull']:
+				# For "use board on keys"
+				if "keys" in input and command in ['use', 'move']:
+					return "7"
+
+				# Default - "pull board"
+				elif command in ['move', 'pull']:
 					return "4"
-				elif command in ['use', 'move']:
-					removedItem1 = input.replace(item, ' ')
-					item2 = items.identifyItem(removedItem1, itemDict)
-					if item2 == 'keys':
-						return "7"
+				
 				# Some default return
-				return "unknown"
-			elif item == 'keys' and (command in ['use'] or commandUsedSpecified):
-				# "Use board on keys"
+				else:
+					display("What do you want to do with this " + item + "?")
+					return "unknown"
+			elif item == 'keys' and command in ['use']:
+				# "Use board on keys" - shouldn't really be needed, just in case
 				if "board" in input:
-					return "4"
+					return "7"
 				# "Use keys on lock"
 				if 'lock' in input:
 					return "10"
