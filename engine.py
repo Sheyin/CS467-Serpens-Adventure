@@ -750,9 +750,12 @@ def playGame(userSelection):
 		elif userInput == "4": #Interact with feature 2
 			#Brig
 			if currentState.currRoom == 1:
-				display(brig.feat2interactSuccess)
-				currentState.rm01f2 = 1 #Update to interaction complete
-				currentState.rm01o1 = 1 #Board discovered
+				if currentState.rm01f2 == 0: #Not complete
+					display(brig.feat2interactSuccess)
+					currentState.rm01f2 = 1 #Update to interaction complete
+					currentState.rm01o1 = 1 #Board discovered
+				else: #Task completed / board already discovered
+					display(brig.feat2interactComplete)
 			#Storage
 			elif currentState.currRoom == 2:
 				display(storage.feat2interactSuccess)
@@ -905,13 +908,16 @@ def playGame(userSelection):
 		elif userInput == "7": #Interact with feature 3
 			#Brig
 			if currentState.currRoom == 1:
-				if currentState.obj1Loc == 99:
+				if currentState.rm01f3 == 0: #Not complete
+					if currentState.obj1Loc == 99:
 
-					display(brig.feat3interactSuccess)
-					currentState.rm01f3 = 1 #Update to interaction complete
-					currentState.rm01o2 = 1 #Keys discovered
-				else:
-					display(brig.feat3interactFail)
+						display(brig.feat3interactSuccess)
+						currentState.rm01f3 = 1 #Update to interaction complete
+						currentState.rm01o2 = 1 #Keys discovered
+					else:
+						display(brig.feat3interactFail)
+				else: #Task completed
+					display(brig.feat3interactComplete)
 			#Storage
 			elif currentState.currRoom == 2:
 				display(storage.feat3interactSuccess)
@@ -1061,7 +1067,7 @@ def playGame(userSelection):
 						currentState.rm01f4 = 1 #Update to interaction complete
 					else:
 						display(brig.feat4interactFail)
-				else: #Task has been completed
+				else: #Task has been completed (prevents redisplay of action)
 					display(brig.feat4interactComplete)
 			#Hallway
 			elif currentState.currRoom == 3:
