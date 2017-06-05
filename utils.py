@@ -256,8 +256,8 @@ def formatRoomData(rooms, objects, currentState):
 		file = open(path + filename, 'r')
 		# skip first line - bracket only
 		file.readline()
-		itemNameLine = file.readline()
-		itemName = itemNameLine[13:-3]
+		itemName = file.readline().rstrip()
+		itemName = itemName[13:-2]
 		itemList.append(itemName)
 		file.close()	
 	itemDict = {}

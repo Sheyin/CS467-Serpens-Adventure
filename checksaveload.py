@@ -17,7 +17,7 @@ def checkLoading():
 		file = open(path + gamestate, 'r')
 		# skip first line - name
 		file.readline()
-		currentRoomLine = file.readline()
+		currentRoomLine = file.readline().rstrip()
 		currentRoom = currentRoomLine[15:-2]
 		display("Current Room:" + currentRoom)
 		file.close()
