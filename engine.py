@@ -219,10 +219,10 @@ def playGame(userSelection):
 		# Update currentState variables manually to drop into any room with any combination
 		#     of items. Allows for testing without repeating game sequence. 
 
-		currentState = gamestate.GameStateClass(1,   #currentRoom
-	      0, #room1
+		currentState = gamestate.GameStateClass(3,   #currentRoom
+	      1, #room1
 	      0, #room2
-	      0, #room3
+	      1, #room3
 	      0, #room4
 	      0, #room5
 	      0, #room6
@@ -235,20 +235,20 @@ def playGame(userSelection):
 	      0, #room13
 	      0, #room14
 	      0, #room15          NOTE: 99 Item in inventory, 100 item permanently destroyed/used
-	      1, #item1 - Board - Origin Room: 1
-	      1, #item2 - Key - Origin Room: 1
+	      99, #item1 - Board - Origin Room: 1
+	      99, #item2 - Key - Origin Room: 1
 	      2, #item3 - Handle - Origin Room: 2
 	      4, #item4 - Skeleton Key - Origin Room: 4
 	      6, #item5 - Small Key - Origin Room: 6
 	      7, #item6 - Gun - Origin Room: 7 
 	      12, #item7 - Lockpick - Origin Room: 12
 	      14, #item8 - Cryptex - Origin Room: 14
-	      0, #rm1f1
-	      0, #rm1f2
-	      0, #rm1f3
-	      0, #rm1f4
-	      0, #rm1o1 - Board discovery
-	      0, #rm1o2 - Keys discovery
+	      1, #rm1f1
+	      1, #rm1f2
+	      1, #rm1f3
+	      1, #rm1f4
+	      1, #rm1o1 - Board discovery
+	      1, #rm1o2 - Keys discovery
 	      0, #rm2f1
 	      0, #rm2f2
 	      0, #rm2f3
@@ -1947,7 +1947,10 @@ def playGame(userSelection):
 				display("You cannot go that way.")
 
 			elif currentState.currRoom == 3: #Lower Hallway
-				currentState.currRoom = hallway.up #Updates current user location to ID 6 (Rum)
+				if currentState.rm03f6 == 1: #If trap door unlocked, proceed UP into Rum Room
+					currentState.currRoom = hallway.up #Updates current user location to ID 6 (Rum)
+				else:
+					display(hallway.feat6interactFail)  #Else, failure statement
 
 			elif currentState.currRoom == 4: #Observation
 				display("You cannot go that way.")
