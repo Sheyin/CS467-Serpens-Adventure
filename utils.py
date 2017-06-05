@@ -92,24 +92,6 @@ def translateRoom(input, rooms):
 				return rooms[dirPos][0]
 	return -1
 
-	#temporarily disable this
-	# Unable to match destination with a room
-	# Check if the word 'door' is present and only one connection in the room
-	'''
-	numSingleConnections = 0
-	for connection in rooms:
-		if len(connection) == 1:
-			numSingleConnections += 1
-	if numSingleConnections == 3:
-		for word in ['door', 'outside', 'head out', 'leave room', 'out']:
-			if word in input:
-				# This casual term matches and there is only one exit anyways
-				# find out which connection it was - probably of the first 4
-				for i in range (0, 4):
-					if len(rooms[i]) > 1:
-						return rooms[i][0]
-	return -1 '''
-
 
 # This changes room numbers to room names / other recognizable forms.
 # Might need to incorporate feature list as well to get doors, ladders, etc.
