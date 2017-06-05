@@ -1,0 +1,10 @@
+{
+    "name": "keycard",
+    "synonyms": ["keycard", "key card", "card"],
+    "desc": "A keycard.  Wonder what it's used for.", 
+    "notInInv": "You don't have a keycard.", 
+    "inRoom": "A keycard lies on the floor.", 
+    "take": "You pick up the keycard.", 
+    "notAvail": "There is no keycard here.", 
+    "drop": "You drop the keycard, and it falls to the floor with a light smack." 
+}

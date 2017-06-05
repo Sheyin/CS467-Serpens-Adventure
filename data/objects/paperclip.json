@@ -1,0 +1,10 @@
+{
+    "name": "paper clip",
+    "synonyms": ["paperclip", "clip"],
+    "desc": "An ordinary paper clip.", 
+    "notInInv": "You don't have a paper clip.", 
+    "inRoom": "A lonely paper clip lies on the floor.", 
+    "take": "You pick up the paper clip.", 
+    "notAvail": "There is no paperclip here.", 
+    "drop": "You drop the paper clip, and it clatters onto the floor." 
+}

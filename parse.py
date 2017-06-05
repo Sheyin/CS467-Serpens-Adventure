@@ -125,7 +125,6 @@ def main(rawinput, features, featureDict, itemDict, rooms):
 
 			elif item == 'keys' and feature in ['door', 'chest'] and (command in ['use'] or commandUsedSpecified):
 				key = "feat" + str(pos) + "_do"
-				print "Debug: key: " + key
 				return utils.engine_codes_dict[key]
 
 			elif item == 'handle' and feature in ['metal door'] and (command in ['use'] or commandUsedSpecified):
