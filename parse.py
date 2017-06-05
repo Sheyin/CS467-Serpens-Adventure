@@ -62,10 +62,11 @@ def main(rawinput, features, featureDict, itemDict, rooms):
 
 	elif command in ["take", "drop"]:
 		item = items.identifyItem(input, itemDict)
+		'''
 		if not item:
 			for possibleItem in ['board', 'cryptex', 'gun', 'handle', 'keys', 'lockpick', 'skeleton key', 'smallKey', 'paper clip']:
 				if possibleItem in input:
-					item = possibleItem
+					item = possibleItem'''
 		if item:
 			if command == "take":
 				key = item + "_take"
@@ -124,6 +125,7 @@ def main(rawinput, features, featureDict, itemDict, rooms):
 
 			elif item == 'keys' and feature in ['door', 'chest'] and (command in ['use'] or commandUsedSpecified):
 				key = "feat" + str(pos) + "_do"
+				print "Debug: key: " + key
 				return utils.engine_codes_dict[key]
 
 			elif item == 'handle' and feature in ['metal door'] and (command in ['use'] or commandUsedSpecified):
@@ -150,11 +152,16 @@ def main(rawinput, features, featureDict, itemDict, rooms):
 
 			# Feature mentioned, no item; no legal action from json
 			else:
-				if command:
-					display("I'm not sure if I can " + rawCommand + " the " + feature + ".")
+				# This is for the go requirement - if you specify "metal door" only act as go
+				direction = utils.translateRoom(input, rooms, "strict")
+				# Not a valid room alias
+				if (direction == -1):
+					display("I don't think I can do that to the " + feature + ".")
+				# Identical to "go"
 				else:
-					display("I don't think I can do that.")
-				
+					key = "go_" + str(direction)
+					print "Debug: Returning key: " + key + " which is: " + utils.engine_codes_dict[key]
+					return utils.engine_codes_dict[key]
 
 		# Item but no feature
 		elif item and not feature:
@@ -194,8 +201,17 @@ def main(rawinput, features, featureDict, itemDict, rooms):
 		else:
 			if 'pots' in input and (command in ['kick', 'move']):
 				return "2"
-			display("I don't understand that command.")
-
+			else:
+				# This is for the go requirement - if you specify "metal door" only act as go
+				direction = utils.translateRoom(input, rooms, "strict")
+				# Not a valid room alias
+				if (direction == -1):
+					display("I don't understand.")
+				# Identical to "go"
+				else:
+					key = "go_" + str(direction)
+					print "Debug: Returning key: " + key + " which is: " + utils.engine_codes_dict[key]
+					return utils.engine_codes_dict[key]
 
 
 # Update to run main function for parseCommands.py separately from main.py

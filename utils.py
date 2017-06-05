@@ -83,12 +83,17 @@ def printHelp(featureDict, itemDict, currentState):
 
 
 # Tries to translate input into a legal movement (direction)
-# Returns a cardinal direction
-def translateRoom(input, rooms):
+# Returns a cardinal direction or -1 if not found
+# "default" - Loosely checks if in input only
+# "strict" - Checks to make sure it contains the alias and nothing else
+def translateRoom(input, rooms, type="default"):
 	# Search each tuple to see if the input word matches some direction
 	for dirPos in range (0, len(rooms)):
 		for namePos in range (0, len(rooms[dirPos])):
 			if rooms[dirPos][namePos] in input:
+				if type is "strict":
+					if len(input) != len(rooms[dirPos][namePos]):
+						return -1
 				return rooms[dirPos][0]
 	return -1
 
