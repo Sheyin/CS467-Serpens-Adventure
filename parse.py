@@ -33,15 +33,15 @@ def main(rawinput, features, featureDict, itemDict, rooms):
 	command = commands.identify(input)
 	itemList = itemDict.keys()
 	splitString = input.split()
-	rawCommand = splitString[0]
+	if splitString:
+		rawCommand = splitString[0]
+	else:
+		rawCommand = "null"
 
-	# Room-specific list of features as keys and recognized actions as entries
-	#features, featureDict = utils.getFeaturesDict(currentRoom)
+	if rawCommand is "null":
+		return "invalid"
 
-	# Hard coded list of legal items (for now)
-	#itemList = ['board', 'keys', 'handle', 'skeleton key']
-
-	if (command and command.isdigit()):
+	elif (command and command.isdigit()):
 		return command
 
 	elif command in ['exit', 'inventory', 'save', 'load', 'help']:
@@ -164,8 +164,17 @@ def main(rawinput, features, featureDict, itemDict, rooms):
 
 		# Item but no feature
 		elif item and not feature:
-			# Hard coded until we get this logic figured out in a more standardized way
-			if item == "board":
+			# Catch the silly commands first
+			if command == "eat":
+				commands.eat(rawCommand, item)
+			elif command == "hit":
+				commands.kick(rawCommand, item)
+			elif command == "move":
+				if "door" in input:
+					display ("Open a door?  Which door?")
+				else:
+					commands.pull(rawCommand, item, "item")
+			elif item == "board":
 				# For "use board on keys"
 				if "keys" in input and command in ['use', 'move']:
 					return "7"
@@ -185,20 +194,13 @@ def main(rawinput, features, featureDict, itemDict, rooms):
 				# "Use keys on lock"
 				if 'lock' in input:
 					return "10"
-			elif command == "eat":
-				commands.eat(rawCommand, item)
-			elif command == "move":
-				if "door" in input:
-					display ("Open a door?  Which door?")
-				else:
-					commands.pull(rawCommand, item, "item")
 			else:
 				# No recognized item and command
 				display("I'm not sure how to " + rawCommand + " the " + item + " that way.")
 
 		# No item or feature, unrecognized command
 		else:
-			if 'pots' in input and (command in ['kick', 'move']):
+			if 'pots' in input and (command in ['hit', 'move']):
 				return "2"
 			else:
 				# This is for the go requirement - if you specify "metal door" only act as go
