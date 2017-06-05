@@ -1768,10 +1768,10 @@ def playGame(userSelection):
 				currentState.currRoom = garrison.north #Updates current user location to ID 9 (Galley)
 
 			elif currentState.currRoom == 9: #Galley
-				print "You cannot go that way."
+				display("You cannot go that way.")
 
 			elif currentState.currRoom == 10: #Ladder
-				print "You cannot go that way."
+				display("You cannot go that way.")
 
 			elif currentState.currRoom == 11: #topHall
 				currentState.currRoom = topHall.north #Updates current user location to ID 13 (Control)
@@ -1790,23 +1790,23 @@ def playGame(userSelection):
 
 		elif userInput == "23": #GO SOUTH
 			if currentState.currRoom == 1: #Brig
-				print "You cannot go that way."
+				display("You cannot go that way.")
 
 			elif currentState.currRoom == 2: #Storage
-				print "You cannot go that way."
+				display("You cannot go that way.")
 
 			elif currentState.currRoom == 3: #Lower Hallway
 				currentState.currRoom = hallway.south #Updates current user location to ID 1 (Brig)
 				#currentState.currRoom = 1 #Updates current user location to ID 1 (Brig)
 
 			elif currentState.currRoom == 4: #Observation
-				print "You cannot go that way."
+				display("You cannot go that way.")
 
 			elif currentState.currRoom == 5: #Examination
 				currentState.currRoom = examination.south #Updates current user location to ID 3 (Hallway)
 
 			elif currentState.currRoom == 6: #Rum
-				print "You cannot go that way."
+				display("You cannot go that way.")
 
 			elif currentState.currRoom == 7: #Armory
 				currentState.currRoom = armory.south #Updates current user location to ID 6 (Rum)
@@ -1818,7 +1818,7 @@ def playGame(userSelection):
 				currentState.currRoom = galley.south #Updates current user location to ID 8 (Garrison)
 
 			elif currentState.currRoom == 10: #Ladder
-				print "You cannot go that way."
+				display("You cannot go that way.")
 
 			elif currentState.currRoom == 11: #topHall
 				display("You cannot go that way.")
@@ -1837,10 +1837,10 @@ def playGame(userSelection):
 
 		elif userInput == "24": #GO WEST
 			if currentState.currRoom == 1: #Brig
-				print "You cannot go that way."
+				display("You cannot go that way.")
 
 			elif currentState.currRoom == 2: #Storage
-				print "You cannot go that way."
+				display("You cannot go that way.")
 
 			elif currentState.currRoom == 3: #Lower Hallway
 				currentState.currRoom = hallway.west #Updates current user location to ID 2 (Storage Room)
@@ -1849,19 +1849,19 @@ def playGame(userSelection):
 				currentState.currRoom = observation.west #Updates current user location to ID 3 (Hallway)
 
 			elif currentState.currRoom == 5: #Examination
-				print "You cannot go that way."
+				display("You cannot go that way.")
 
 			elif currentState.currRoom == 6: #Rum
-				print "You cannot go that way."
+				display("You cannot go that way.")
 
 			elif currentState.currRoom == 7: #Armory
-				print "You cannot go that way."
+				display("You cannot go that way.")
 
 			elif currentState.currRoom == 8: #Garrison
-				print "You cannot go that way."
+				display("You cannot go that way.")
 
 			elif currentState.currRoom == 9: #Galley
-				print "You cannot go that way."
+				display("You cannot go that way.")
 
 			elif currentState.currRoom == 10: #Ladder
 				currentState.currRoom = ladder.west #Updates current user location to ID 8 (Garrison)
@@ -1883,7 +1883,7 @@ def playGame(userSelection):
 
 		elif userInput == "25": #GO EAST
 			if currentState.currRoom == 1: #Brig
-				print "You cannot go that way."
+				display("You cannot go that way.")
 
 			elif currentState.currRoom == 2: #Storage
 				currentState.currRoom = storage.east #Updates current user location to ID 3 (Hallway)
