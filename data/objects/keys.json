@@ -1,6 +1,6 @@
 {
     "name": "keys",
-    "synonyms": [],
+    "synonyms": ["the keys"],
     "desc": "A key ring with two keys on it. One is a dull brass color and the other key is a shiny silver.", 
     "notInInv": "You don't have any keys.", 
     "inRoom": "There are some keys here.", 

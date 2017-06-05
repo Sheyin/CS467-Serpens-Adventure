@@ -124,7 +124,7 @@ class GameStateClass(object):
 		self.rm06f4 = rm6f4
 		#Wooden door
 		self.rm06f5 = rm6f5
-		#Keys - discovered (1) or undiscovered (0)
+		#small key - discovered (1) or undiscovered (0)
 		self.rm06o1 = rm6o1
 
 
