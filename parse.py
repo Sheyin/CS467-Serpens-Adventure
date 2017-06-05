@@ -186,7 +186,7 @@ def main(rawinput, features, featureDict, itemDict, rooms):
 				# Some default return
 				else:
 					display("What do you want to do with this " + item + "?")
-					return "unknown"
+					return "invalid"
 			elif item == 'keys' and command in ['use']:
 				# "Use board on keys" - shouldn't really be needed, just in case
 				if "board" in input:
@@ -194,6 +194,9 @@ def main(rawinput, features, featureDict, itemDict, rooms):
 				# "Use keys on lock"
 				if 'lock' in input:
 					return "10"
+				else:
+					display("What do you want to do with this " + item + "?")
+					return "invalid"
 			else:
 				# No recognized item and command
 				display("I'm not sure how to " + rawCommand + " the " + item + " that way.")

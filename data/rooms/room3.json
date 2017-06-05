@@ -42,7 +42,7 @@
     "feat5interactFail": "Ladder Fail - this should never display",
     "feat6": "trap door",
     "feat6desc": "A heavy trap door in the ceiling with a handle on it. There is an old fashioned looking lock on the door.",
-    "feat6interactOptions": "go, open, unlock",
+    "feat6interactOptions": "go, open, unlock, use key on",
     "feat6interactSuccess": "You put the skeleton key into the lock and turn it. There is a heavy click. You try the handle and, with much effort, it grinds open. You are able to lift the door.",
     "feat6interactComplete": "You lift the heavy trap door and it opens.",
     "feat6interactFail": "You try to lift the trap door. It looks heavy but shouldn't be something you can't open. You try pulling the handle and it doesn't budge - locked! The door has an old fashioned looking lock on it. Distressed, you climb back down the ladder."
