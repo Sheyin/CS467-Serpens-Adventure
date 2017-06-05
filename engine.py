@@ -1055,11 +1055,14 @@ def playGame(userSelection):
 		elif userInput == "10": #Interact with feature 4
 			#Brig
 			if currentState.currRoom == 1:
-				if currentState.obj2Loc == 99: #Keys
-					display(brig.feat4interactSuccess)
-					currentState.rm01f4 = 1 #Update to interaction complete
-				else:
-					display(brig.feat4interactFail)
+				if currentState.rm01f4 == 0: #Not complete
+					if currentState.obj2Loc == 99: #Keys
+						display(brig.feat4interactSuccess)
+						currentState.rm01f4 = 1 #Update to interaction complete
+					else:
+						display(brig.feat4interactFail)
+				else: #Task has been completed
+					display(brig.feat4interactComplete)
 			#Hallway
 			elif currentState.currRoom == 3:
 				display(hallway.feat4interactSuccess)
@@ -2149,8 +2152,8 @@ def playGame(userSelection):
 			else:
 				display(cryptex.notInInv)
 
-		else:
-			display("Invalid input")
+		#else:
+		#	display("Invalid input")
 		#[END ENGINE]
 
 	if userInput == "loadgame":
