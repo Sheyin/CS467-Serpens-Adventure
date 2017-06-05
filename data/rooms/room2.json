@@ -24,7 +24,7 @@
     "feat2interactFail": "Whoever scratched out the paper used a pretty dark ink. You wonder if there's some other way to read it.",
     "feat3": "door",
     "feat3desc": "A pretty average looking wooden door.",
-    "feat3interactOptions": "try, check, open",
+    "feat3interactOptions": "try, check, open, examine",
     "feat3interactSuccess": "A pretty average looking unlocked wooden door.",
     "feat3interactComplete": "You try the wooden handle - it's unlocked!",
     "feat3interactFail": "Wooden Door Fail - this should never display",
