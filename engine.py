@@ -221,7 +221,7 @@ def playGame(userSelection):
 
 		currentState = gamestate.GameStateClass(3,   #currentRoom
 	      1, #room1
-	      0, #room2
+	      1, #room2
 	      1, #room3
 	      0, #room4
 	      0, #room5
@@ -237,7 +237,7 @@ def playGame(userSelection):
 	      0, #room15          NOTE: 99 Item in inventory, 100 item permanently destroyed/used
 	      99, #item1 - Board - Origin Room: 1
 	      99, #item2 - Key - Origin Room: 1
-	      2, #item3 - Handle - Origin Room: 2
+	      99, #item3 - Handle - Origin Room: 2
 	      4, #item4 - Skeleton Key - Origin Room: 4
 	      6, #item5 - Small Key - Origin Room: 6
 	      7, #item6 - Gun - Origin Room: 7 
@@ -249,15 +249,15 @@ def playGame(userSelection):
 	      1, #rm1f4
 	      1, #rm1o1 - Board discovery
 	      1, #rm1o2 - Keys discovery
-	      0, #rm2f1
-	      0, #rm2f2
-	      0, #rm2f3
-	      0, #rm2o1 - Handle discovery 
-	      0, #rm3f1
-	      0, #rm3f2
-	      0, #rm3f3
-	      0, #rm3f4
-	      0, #rm3f5
+	      1, #rm2f1
+	      1, #rm2f2
+	      1, #rm2f3
+	      1, #rm2o1 - Handle discovery 
+	      1, #rm3f1
+	      1, #rm3f2
+	      1, #rm3f3
+	      1, #rm3f4
+	      1, #rm3f5
 	      0, #rm3f6
 	      0, #rm4f1
 	      0, #rm4f2
@@ -1078,12 +1078,15 @@ def playGame(userSelection):
 				currentState.rm03f4 = 1 #Update to interaction complete
 			#Observation
 			if currentState.currRoom == 4:
-				if currentState.obj2Loc == 99: #Keys
-					display(observation.feat4interactSuccess)
-					currentState.rm04f4 = 1 #Update to interaction complete
-					currentState.rm04o1 = 1 #Skeleton key discovered
-				else:
-					display(observation.feat4interactFail)
+				if currentState.rm04f4 == 0: #Not complete
+					if currentState.obj2Loc == 99: #Keys
+						display(observation.feat4interactSuccess)
+						currentState.rm04f4 = 1 #Update to interaction complete
+						currentState.rm04o1 = 1 #Skeleton key discovered
+					else:
+						display(observation.feat4interactFail)
+				else: #Interaction complete
+					display(observation.feat4interactComplete)
 			#Rum
 			elif currentState.currRoom == 6:
 				display(rum.feat4interactSuccess)
