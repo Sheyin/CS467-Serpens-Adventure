@@ -40,7 +40,7 @@
     "feat5interactSuccess": "You try the handle and it opens smoothly. The door is not locked and seems to have been oiled recently.",
     "feat5interactComplete": "An unlocked, though rather ordinary, metal door. It is in impeccable working order.",
     "feat5interactFail": "Metal Door Fail - this should never display",
-    "feat6": "",
+    "feat6": "F6 - NA",
     "feat6desc": "",
     "feat6interactOptions": "",
     "feat6interactSuccess": "",

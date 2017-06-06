@@ -219,7 +219,7 @@ def playGame(userSelection):
 		# Update currentState variables manually to drop into any room with any combination
 		#     of items. Allows for testing without repeating game sequence. 
 
-		currentState = gamestate.GameStateClass(3,   #currentRoom
+		currentState = gamestate.GameStateClass(6,   #currentRoom
 	      1, #room1
 	      1, #room2
 	      1, #room3

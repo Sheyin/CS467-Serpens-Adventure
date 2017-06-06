@@ -40,7 +40,7 @@
     "feat5interactSuccess": "You pull lightly on the handle of the wooden door. It's unlocked!",
     "feat5interactComplete": "There is an unlocked plain wooden door to the North.",
     "feat5interactFail": "Wooden Door Fail - this should never display",
-    "feat6": "",
+    "feat6": "F6 - NA",
     "feat6desc": "",
     "feat6interactOptions": "",
     "feat6interactSuccess": "",
