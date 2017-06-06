@@ -36,7 +36,7 @@
     "feat4interactFail": "It doesn't work.  You can't get the bracelet off.",
     "feat5": "door",
     "feat5desc": "A metal door leading back to the hallway.",
-    "feat5interactOptions": "Rm 15 F5 - interact options",
+    "feat5interactOptions": "examine, check, try, open",
     "feat5interactSuccess": "Rm 15 F5 - interact success",
     "feat5interactComplete": "Rm 15 F5 - interact complete",
     "feat5interactFail": "Rm 15 F5 - interact fail",
