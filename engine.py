@@ -594,12 +594,15 @@ def playGame(userSelection):
 				currentState.rm01f1 = 1 #Update to interaction complete
 			#Storage
 			elif currentState.currRoom == 2:
-				if currentState.obj1Loc == 99: #If have board
-					display(storage.feat1interactSuccess)
-					currentState.rm02f1 = 1 #Update to interaction complete
-					currentState.rm02o1 = 1 #Handle discovered
-				else:
-					display(storage.feat1interactFail)
+				if currentState.rm02f1 == 0: #Not complete
+					if currentState.obj1Loc == 99: #If have board
+						display(storage.feat1interactSuccess)
+						currentState.rm02f1 = 1 #Update to interaction complete
+						currentState.rm02o1 = 1 #Handle discovered
+					else:
+						display(storage.feat1interactFail)
+				else: #Interaction completed
+					display(storage.feat1interactComplete)
 			#Hallway
 			elif currentState.currRoom == 3:
 				display(hallway.feat1interactSuccess)
