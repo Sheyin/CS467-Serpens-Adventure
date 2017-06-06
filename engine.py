@@ -223,8 +223,8 @@ def playGame(userSelection):
 	      1, #room1
 	      1, #room2
 	      1, #room3
-	      0, #room4
-	      0, #room5
+	      1, #room4
+	      1, #room5
 	      0, #room6
 	      0, #room7
 	      0, #room8
@@ -237,8 +237,8 @@ def playGame(userSelection):
 	      0, #room15          NOTE: 99 Item in inventory, 100 item permanently destroyed/used
 	      99, #item1 - Board - Origin Room: 1
 	      99, #item2 - Key - Origin Room: 1
-	      99, #item3 - Handle - Origin Room: 2
-	      4, #item4 - Skeleton Key - Origin Room: 4
+	      100, #item3 - Handle - Origin Room: 2
+	      99, #item4 - Skeleton Key - Origin Room: 4
 	      6, #item5 - Small Key - Origin Room: 6
 	      7, #item6 - Gun - Origin Room: 7 
 	      12, #item7 - Lockpick - Origin Room: 12
@@ -258,17 +258,17 @@ def playGame(userSelection):
 	      1, #rm3f3
 	      1, #rm3f4
 	      1, #rm3f5
-	      0, #rm3f6
-	      0, #rm4f1
-	      0, #rm4f2
-	      0, #rm4f3
-	      0, #rm4f4
-	      0, #rm4f5
-	      0, #rm4f6
-	      0, #rm4o1 - Skeleton key discovery
-	      0, #rm5f1
-	      0, #rm5f2
-	      0, #rm5f3
+	      1, #rm3f6
+	      1, #rm4f1
+	      1, #rm4f2
+	      1, #rm4f3
+	      1, #rm4f4
+	      1, #rm4f5
+	      1, #rm4f6
+	      1, #rm4o1 - Skeleton key discovery
+	      1, #rm5f1
+	      1, #rm5f2
+	      1, #rm5f3
 	      0, #rm6f1
 	      0, #rm6f2
 	      0, #rm6f3

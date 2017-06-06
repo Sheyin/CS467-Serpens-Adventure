@@ -13,7 +13,7 @@
     "feat1": "entryway",
     "feat1desc": "An entryway to another room. You look through the entryway and see it opens up into a hallway. There are markings on the side of the entryway.",
     "feat1interactOptions": "check, examine",
-    "feat1interactSuccess": "You look more closely at the carving. It resembles a stick figure drawing of a person except the head isn't the right shape. It's far more oblong and larger than would normally be drawn. Perhaps the artist was in a hurry?",
+    "feat1interactSuccess": "You look more closely at the entryway. The markings look like drag marks that end abruptly on the walls.",
     "feat1interactComplete": "An entryway to another room. You look through the entryway and see it opens up into a hallway. There are markings on the side of the entryway that end abruptly.",
     "feat1interactFail": "Entryway Fail - this should never display",
     "feat2": "table",
