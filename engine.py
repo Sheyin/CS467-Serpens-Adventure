@@ -1329,7 +1329,7 @@ def playGame(userSelection):
 					display(gun.inRoom)
 
 			elif currentState.currRoom == 10:    #Ladder
-				display(galley.longDesc)
+				display(ladder.longDesc)
 				#Checks objects and if they are DISCOVERED and LOCATED IN ROOM then displays notice they are there
 				#Object 1 - board
 				if currentState.rm01o1 == 1 and currentState.obj1Loc == 10:
@@ -1977,7 +1977,6 @@ def playGame(userSelection):
 				display("You cannot go that way.")
 
 			elif currentState.currRoom == 10: #Ladder
-				display("UPPER LEVEL")
 				currentState.currRoom = ladder.up #Updates current user location to ID 11 (topHall)
 
 			elif currentState.currRoom == 11: #topHall

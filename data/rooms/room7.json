@@ -30,7 +30,7 @@
     "feat3interactFail": "Locker Fail - this should never display",
     "feat4": "case",
     "feat4desc": "An ornate gun case hanging from the wall. It is an exquisite piece made of finely carved wood with a glass front secured by a delicate gold hued lock. Inside is an ornate pistol with a pearl inlay handle. It almost glows in the soft light and is truely a finely crafted firearm.",
-    "feat4interactOptions": "unlock, open, check",
+    "feat4interactOptions": "use small key on, unlock",
     "feat4interactSuccess": "You gently unlock the case using the small key and open it. The gun inside is resting on a bed of crushed crimson velvet.",
     "feat4interactComplete": "An ornate gun case hanging from the wall. It is an exquisite piece made of finely carved wood with a glass front. Inside is an empty crushed crimson velvet cushion.",
     "feat4interactFail": "You attempt to open the case.  It's locked up tight.",
