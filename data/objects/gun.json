@@ -1,7 +1,7 @@
 {
     "name": "gun",
     "synonyms": ["gun", "pistol"],
-    "desc": "An ornate pistol with a pearl inlay handle.", 
+    "desc": "An ornate pistol with a pearl inlay handle. You check the chamber, it contains one bullet.", 
     "notInInv": "You don't have a gun. That's probably for the best.", 
     "inRoom": "There is a gun here.", 
     "take": "You take the gun.", 

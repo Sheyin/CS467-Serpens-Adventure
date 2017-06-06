@@ -126,6 +126,8 @@ def playGame(userSelection):
 		  7, #item6 - Gun - Origin Room: 7 
 		  12, #item7 - Lockpick - Origin Room: 12
 		  14, #item8 - Cryptex - Origin Room: 14
+		  0, #item9 - Paper clip - Origin Room: 0 (player crafted)
+	      0, #item10 - Keycard - Origin Room: 0 (transformed from cryptex)
 		  0, #rm1f1
 		  0, #rm1f2
 		  0, #rm1f3
@@ -206,7 +208,8 @@ def playGame(userSelection):
 		  0, #rm15f2
 		  0, #rm15f3
 		  0, #rm15f4
-		  0) #rm15f5
+		  0, #rm15f5
+		  0) #float1 - Gun fired
 
 	elif userSelection == 1: #Load game
 		print "LOAD GAME FILE"
@@ -226,10 +229,10 @@ def playGame(userSelection):
 	      1, #room4
 	      1, #room5
 	      1, #room6
-	      0, #room7
-	      0, #room8
-	      0, #room9
-	      0, #room10
+	      1, #room7
+	      1, #room8
+	      1, #room9
+	      1, #room10
 	      0, #room11
 	      0, #room12
 	      0, #room13
@@ -240,9 +243,11 @@ def playGame(userSelection):
 	      100, #item3 - Handle - Origin Room: 2
 	      99, #item4 - Skeleton Key - Origin Room: 4
 	      99, #item5 - Small Key - Origin Room: 6
-	      7, #item6 - Gun - Origin Room: 7 
+	      99, #item6 - Gun - Origin Room: 7 
 	      12, #item7 - Lockpick - Origin Room: 12
 	      14, #item8 - Cryptex - Origin Room: 14
+	      0, #item9 - Paper clip - Origin Room: 0 (player crafted)
+	      0, #item10 - Keycard - Origin Room: 0 (transformed from cryptex)
 	      1, #rm1f1
 	      1, #rm1f2
 	      1, #rm1f3
@@ -275,24 +280,24 @@ def playGame(userSelection):
 	      1, #rm6f4
 	      1, #rm6f5
 	      1, #rm6o1 - Small key discovery 
-	      0, #rm7f1
-	      0, #rm7f2
-	      0, #rm7f3
-	      0, #rm7f4
-	      0, #rm7f5
-	      0, #rm7o1 - Gun discovery
-	      0, #rm8f1
-	      0, #rm8f2
-	      0, #rm8f3
-	      0, #rm8f4
-	      0, #rm8f5
-	      0, #rm8f6
-	      0, #rm9f1
-	      0, #rm9f2
-	      0, #rm9f3
-	      0, #rm9f4
-	      0, #rm10f1
-	      0, #rm10f2
+	      1, #rm7f1
+	      1, #rm7f2
+	      1, #rm7f3
+	      1, #rm7f4
+	      1, #rm7f5
+	      1, #rm7o1 - Gun discovery
+	      1, #rm8f1
+	      1, #rm8f2
+	      1, #rm8f3
+	      1, #rm8f4
+	      1, #rm8f5
+	      1, #rm8f6
+	      1, #rm9f1
+	      1, #rm9f2
+	      1, #rm9f3
+	      1, #rm9f4
+	      1, #rm10f1
+	      1, #rm10f2
 	      0, #rm11f1
 	      0, #rm11f2
 	      0, #rm11f3
@@ -323,7 +328,8 @@ def playGame(userSelection):
 	      0, #rm15f2
 	      0, #rm15f3
 	      0, #rm15f4
-	      0) #rm15f5
+	      0, #rm15f5
+	      0) #float1 - Gun fired
 
 
 	#Load room files {Data dev}
@@ -2166,6 +2172,26 @@ def playGame(userSelection):
 			else:
 				display(cryptex.notInInv)
 
+		#Final stage additions 
+		#USE / FIRE GUN 
+		elif userInput == "46": #Utilize gun
+			if currentState.obj6Loc == 99: #Gun in inventory to use
+				display("You hold up the gun and slowly squeeze the trigger. You feel an odd resistance as you squeeze down. Suddenly, the gun explodes with a BANG! It leaves a burn mark on your hand. Maybe violence isn't the answer.")
+				currentState.obj6Loc = 100 #Update gun to destroyed
+				currentState.floatGun = 1 #Update gun tracking variable to 1 (used)
+			else:
+				display("You don't have a gun.")
+
+		#BEND / TWIST PAPERCLIP
+		elif userInput == "47": #Change paperclip into lockpick 
+			if currentState.obj9Loc == 99: #If paperclip in inventory
+				print "Paperclip"
+
+		#OPEN CRYPTEX
+		elif userInput == "48": 
+			if currentState.obj8Loc == 99: #If cryptex in inventory
+				print "open cryptex"
+
 		#else:
 		#	display("Invalid input")
 		#[END ENGINE]
@@ -2182,6 +2208,7 @@ def playGame(userSelection):
 		exitGame()
 
 #[END PLAY GAME]
+
 
 #[BEGIN EXIT GAME]
 def exitGame():
