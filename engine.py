@@ -219,13 +219,13 @@ def playGame(userSelection):
 		# Update currentState variables manually to drop into any room with any combination
 		#     of items. Allows for testing without repeating game sequence. 
 
-		currentState = gamestate.GameStateClass(6,   #currentRoom
+		currentState = gamestate.GameStateClass(7,   #currentRoom
 	      1, #room1
 	      1, #room2
 	      1, #room3
 	      1, #room4
 	      1, #room5
-	      0, #room6
+	      1, #room6
 	      0, #room7
 	      0, #room8
 	      0, #room9
@@ -239,7 +239,7 @@ def playGame(userSelection):
 	      99, #item2 - Key - Origin Room: 1
 	      100, #item3 - Handle - Origin Room: 2
 	      99, #item4 - Skeleton Key - Origin Room: 4
-	      6, #item5 - Small Key - Origin Room: 6
+	      99, #item5 - Small Key - Origin Room: 6
 	      7, #item6 - Gun - Origin Room: 7 
 	      12, #item7 - Lockpick - Origin Room: 12
 	      14, #item8 - Cryptex - Origin Room: 14
@@ -269,12 +269,12 @@ def playGame(userSelection):
 	      1, #rm5f1
 	      1, #rm5f2
 	      1, #rm5f3
-	      0, #rm6f1
-	      0, #rm6f2
-	      0, #rm6f3
-	      0, #rm6f4
-	      0, #rm6f5
-	      0, #rm6o1 - Small key discovery 
+	      1, #rm6f1
+	      1, #rm6f2
+	      1, #rm6f3
+	      1, #rm6f4
+	      1, #rm6f5
+	      1, #rm6o1 - Small key discovery 
 	      0, #rm7f1
 	      0, #rm7f2
 	      0, #rm7f3

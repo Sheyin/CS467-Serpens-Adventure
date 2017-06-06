@@ -18,7 +18,7 @@
     "feat1interactFail": "Canvas Flap Fail - this should never display",
     "feat2": "trash can",
     "feat2desc": "A trash can stands in the corner of the room.",
-    "feat2interactOptions": "examine, check, search",
+    "feat2interactOptions": "examine, check, search, rummage in",
     "feat2interactSuccess": "You peer into the lidless trash can. There is a variety of cooking scraps heaped inside and what appears to be some coffee grounds.",
     "feat2interactComplete": "A trash can stands in the corner of the room heaped with cooking scraps and what appears to be coffee grounds.",
     "feat2interactFail": "Trash Can Fail - this should never display",

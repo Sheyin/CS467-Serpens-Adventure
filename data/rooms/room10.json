@@ -12,7 +12,7 @@
     "shortDesc": "You are in a room with a ladder going up into darkness. The air coming down the shaft smells slightly fresher than the previous room and... is that a hint of coffee? There is a wooden door to the West.",
     "feat1": "ladder",
     "feat1desc": "A ladder that leads up into darkness.",
-    "feat1interactOptions": "examine, check, climb, go",
+    "feat1interactOptions": "examine, check",
     "feat1interactSuccess": "You look more closely at the ladder. It's a metal ladder that is bolted to the wall. At least it looks pretty sturdy.",
     "feat1interactComplete": "A sturdy looking metal ladder that leads up into darkness.",
     "feat1interactFail": "Ladder Fail - this should never display",
