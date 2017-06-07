@@ -18,11 +18,14 @@ engine_codes_dict = {
 	# Deck 2 Items
 	'small key_look': "34", 'small key_take': "35", 'small key_drop': "36",
 	'gun_look': "37", 'gun_take': "38", 'gun_drop': "39",
-	# Deck 3 Items - guesses
-	'paperclip_look': "40", 'paperclip_take': "41", 'paperclip_drop': "42",
-	'lockpick_look':"43", 'lockpick_take': "44", 'lockpick_drop': "45",
-	'keycard_look': "46", 'keycard_take':"45", 'keycard_drop': "46",
-	'cryptex_look': "47", 'cryptex_take': "48", 'cryptex_drop': "49", 
+	# Deck 3 Items
+	'lockpick_look': "40", 'lockpick_take': "41", 'lockpick_drop': "42",
+	'cryptex_look': "43", 'cryptex_take': "44", 'cryptex_drop': "45",
+	# Specific interactions
+	'gun_use': "46", 'paperclip_bend': "47", 'cryptex_open': "48",
+	# Deck 3 Items continued
+	'paperclip_look': "49", 'paperclip_take': "50", 'paperclip_drop': "51",
+	'keycard_look': "52", 'keycard_take':"53", 'keycard_drop': "54",
 	# Features
 	'feat1_look': "1", 'feat1_do': "2",	'feat2_look': "3", 'feat2_do': "4",
 	'feat3_look': "6", 'feat3_do': "7",	'feat4_look': "9", 'feat4_do': "10",
