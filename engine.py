@@ -249,7 +249,7 @@ def playGame(userSelection):
 	      0, #item7 - Lockpick - Origin Room: 0 (player crafted)
 	      14, #item8 - Cryptex - Origin Room: 14
 	      0, #item9 - Paper clip - Origin Room: 12 
-	      0, #item10 - Keycard - Origin Room: 0 (transformed from cryptex)
+	      99, #item10 - Keycard - Origin Room: 0 (transformed from cryptex)
 	      1, #rm1f1
 	      1, #rm1f2
 	      1, #rm1f3
@@ -808,10 +808,16 @@ def playGame(userSelection):
 			elif currentState.currRoom == 10:
 				display(ladder.feat2interactSuccess)
 				currentState.rm10f2 = 1 #Update to interaction complete
-			#topHall - **KEYCARD?**
+			#topHall
 			elif currentState.currRoom == 11:
-				display(topHall.feat2interactSuccess)
-				currentState.rm11f2 = 1 #Update to interaction complete
+				if currentState.rm11f2 == 0: #Not complete
+					if currentState.obj10Loc == 99:	#If keycard in inventory
+						display(topHall.feat2interactSuccess)
+						currentState.rm11f2 = 1 #Update to interaction complete
+					else:
+						display(topHall.feat2interactFail)
+				else: #Task completed
+					display(topHall.feat2interactComplete)
 			#Garden
 			elif currentState.currRoom == 12:
 				display(garden.feat2interactSuccess)
@@ -2079,7 +2085,10 @@ def playGame(userSelection):
 				currentState.currRoom = ladder.west #Updates current user location to ID 8 (Garrison)
 
 			elif currentState.currRoom == 11: #topHall
-				currentState.currRoom = topHall.west #Updates current user location to ID 15 (Processing)
+				if currentState.rm11f2 == 1: #If door unlocked, proceed West into Processing
+					currentState.currRoom = topHall.west #Updates current user location to ID 15 (Processing)
+				else:
+					display(topHall.feat2interactFail)  #Else, failure statement
 
 			elif currentState.currRoom == 12: #Garden
 				currentState.currRoom = garden.west #Updates current user location to ID 13 (Control)
