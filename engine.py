@@ -306,12 +306,12 @@ def playGame(userSelection):
 	      1, #rm11f4
 	      1, #rm11f5
 	      1, #rm11f6
-	      1, #rm12f1
-	      1, #rm12f2
-	      1, #rm12f3
-	      1, #rm12f4
-	      1, #rm12f5
-	      1, #rm12f6
+	      0, #rm12f1
+	      0, #rm12f2
+	      0, #rm12f3
+	      0, #rm12f4
+	      0, #rm12f5
+	      0, #rm12f6
 	      0, #rm12o1 - Lockpick discovery
 	      0, #rm13f1
 	      0, #rm13f2
@@ -1150,8 +1150,14 @@ def playGame(userSelection):
 				currentState.rm11f4 = 1 #Update to interaction complete
 			#Garden
 			elif currentState.currRoom == 12:
-				display(garden.feat4interactSuccess)
-				currentState.rm12f4 = 1 #Update to interaction complete
+				if currentState.rm12f4 == 0: #Not complete
+					if currentState.obj4Loc == 99: 	#If skeleton key in inventory
+						display(garden.feat4interactSuccess)
+						currentState.rm12f4 = 1 #Update to interaction complete
+					else:
+						display(garden.feat4interactFail)
+				else: #Task completed
+					display(garden.feat4interactComplete)
 			#Control
 			elif currentState.currRoom == 13:
 				display(control.feat4interactSuccess)
@@ -1945,8 +1951,11 @@ def playGame(userSelection):
 				currentState.rm13f6 = 1 #Update to interaction complete
 			#Side
 			elif currentState.currRoom == 14:
-				display(side.feat6interactSuccess)
-				currentState.rm14f6 = 1 #Update to interaction complete
+				if currentState.obj7Loc == 99:   #Lockpick in inv
+					display(side.feat6interactSuccess)
+					currentState.rm14f6 = 1 #Update to interaction complete
+				else:
+					display(side.feat6interactFail)
 
 		elif userInput == "22": #GO NORTH
 			if currentState.currRoom == 1: #Brig
@@ -2130,7 +2139,10 @@ def playGame(userSelection):
 				display("You cannot go that way.")
 
 			elif currentState.currRoom == 12: #Garden
-				currentState.currRoom = garden.east #Updates current user location to ID 14 (Side)
+				if currentState.rm12f4 == 1: 	#If door unlocked
+					currentState.currRoom = garden.east #Updates current user location to ID 14 (Side)
+				else:
+					display(garden.feat4interactFail)	#Else, failure statement
 
 			elif currentState.currRoom == 13: #Control
 				currentState.currRoom = control.east #Updates current user location to ID 12 (Garden)
