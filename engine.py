@@ -2384,7 +2384,7 @@ def playGame(userSelection):
 			else:
 				display("You don't have a gun.")
 
-		#BEND / TWIST PAPERCLIP
+		#BEND / TWIST / STRAIGHTEN PAPERCLIP
 		elif userInput == "47": #Change paperclip into lockpick 
 			if currentState.obj9Loc == 99: #If paperclip in inventory
 				print "Change paperclip into lockpick"
@@ -2397,7 +2397,12 @@ def playGame(userSelection):
 		#OPEN CRYPTEX
 		elif userInput == "48": 
 			if currentState.obj8Loc == 99: #If cryptex in inventory
-				print "open cryptex"
+				print "open cryptex puzzle"
+				#ENTER CRYPTEX PUZZLE HERE (possibly returns a fail or pass value?)
+
+				#END CRYPTEX PUZZLE
+			else:
+				display(cryptex.notAvail)
 
 		elif userInput == "49": #Look at object "paper clip"
 			if currentState.obj9Loc == 99: #In inventory
