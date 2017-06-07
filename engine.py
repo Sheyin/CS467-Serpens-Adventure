@@ -1006,9 +1006,12 @@ def playGame(userSelection):
 				currentState.rm13f3 = 1 #Update to interaction complete
 			#Side
 			if currentState.currRoom == 14:
-				display(side.feat3interactSuccess)
-				currentState.rm14f3 = 1 #Update to interaction complete
-				currentState.rm14o1 = 1 #Cryptex discovered 
+				if currentState.rm14f3 == 0: #Not complete
+					display(side.feat3interactSuccess)
+					currentState.rm14f3 = 1 #Update to interaction complete
+					currentState.rm14o1 = 1 #Cryptex discovered 
+				else:
+					display(side.feat3interactComplete)
 			#Processing
 			elif currentState.currRoom == 15:
 				display(processing.feat3interactSuccess)
@@ -1155,8 +1158,11 @@ def playGame(userSelection):
 				currentState.rm13f4 = 1 #Update to interaction complete
 			#Side
 			elif currentState.currRoom == 14:
-				display(side.feat4interactSuccess)
-				currentState.rm14f4 = 1 #Update to interaction complete
+				if currentState.rm14f4 == 0: #Not complete
+					display(side.feat4interactSuccess)
+					currentState.rm14f4 = 1 #Update to interaction complete
+				else:
+					display(side.feat4interactComplete)
 			#Processing
 			elif currentState.currRoom == 15:
 				display(processing.feat4interactSuccess)
@@ -1530,12 +1536,6 @@ def playGame(userSelection):
 				#Object 8 - Cryptex
 				if currentState.rm14o1 == 1 and currentState.obj8Loc == 11:
 					display(cryptex.inRoom)
-				#Object 7 - Lockpick
-				if currentState.rm12o1 == 1 and currentState.obj7Loc == 11:
-					display(lockpick.inRoom)
-				#Object 8 - Cryptex
-				if currentState.rm14o1 == 1 and currentState.obj8Loc == 11:
-					display(cryptex.inRoom)
 				#Object 9 - Paper clip
 				if currentState.paperclipDisc == 1 and currentState.obj9Loc == 11:
 					display(paperclip.inRoom)
@@ -1564,12 +1564,6 @@ def playGame(userSelection):
 				#Object 6 - Gun
 				if currentState.rm07o1 == 1 and currentState.obj6Loc == 12:
 					display(gun.inRoom)
-				#Object 7 - Lockpick
-				if currentState.rm12o1 == 1 and currentState.obj7Loc == 12:
-					display(lockpick.inRoom)
-				#Object 8 - Cryptex
-				if currentState.rm14o1 == 1 and currentState.obj8Loc == 12:
-					display(cryptex.inRoom)
 				#Object 7 - Lockpick
 				if currentState.rm12o1 == 1 and currentState.obj7Loc == 12:
 					display(lockpick.inRoom)
@@ -1610,12 +1604,6 @@ def playGame(userSelection):
 				#Object 8 - Cryptex
 				if currentState.rm14o1 == 1 and currentState.obj8Loc == 13:
 					display(cryptex.inRoom)
-				#Object 7 - Lockpick
-				if currentState.rm12o1 == 1 and currentState.obj7Loc == 13:
-					display(lockpick.inRoom)
-				#Object 8 - Cryptex
-				if currentState.rm14o1 == 1 and currentState.obj8Loc == 13:
-					display(cryptex.inRoom)
 				#Object 9 - Paper clip
 				if currentState.paperclipDisc == 1 and currentState.obj9Loc == 13:
 					display(paperclip.inRoom)
@@ -1650,12 +1638,6 @@ def playGame(userSelection):
 				#Object 8 - Cryptex 
 				if currentState.rm14o1 == 1 and currentState.obj8Loc == 14:
 					display(cryptex.inRoom)
-				#Object 7 - Lockpick
-				if currentState.rm12o1 == 1 and currentState.obj7Loc == 14:
-					display(lockpick.inRoom)
-				#Object 8 - Cryptex
-				if currentState.rm14o1 == 1 and currentState.obj8Loc == 14:
-					display(cryptex.inRoom)
 				#Object 9 - Paper clip
 				if currentState.paperclipDisc == 1 and currentState.obj9Loc == 14:
 					display(paperclip.inRoom)
@@ -1684,12 +1666,6 @@ def playGame(userSelection):
 				#Object 6 - Gun
 				if currentState.rm07o1 == 1 and currentState.obj6Loc == 15:
 					display(gun.inRoom)
-				#Object 7 - Lockpick
-				if currentState.rm12o1 == 1 and currentState.obj7Loc == 15:
-					display(lockpick.inRoom)
-				#Object 8 - Cryptex
-				if currentState.rm14o1 == 1 and currentState.obj8Loc == 15:
-					display(cryptex.inRoom)
 				#Object 7 - Lockpick
 				if currentState.rm12o1 == 1 and currentState.obj7Loc == 15:
 					display(lockpick.inRoom)
@@ -2402,7 +2378,7 @@ def playGame(userSelection):
 				print "Change paperclip into lockpick"
 				display("You take the paper clip and straighten it out.  It'll do as a make shift lockpick! Oops, you dropped it.")
 				currentState.obj9Loc == 100 #Update paperclip to permanently used
-				currentState.obj7Loc == currentState.currentRoom #Lockpick falls onto floor of current room
+				currentState.obj7Loc == currentState.currRoom #Lockpick falls onto floor of current room
 			else:
 				display("You don't have a paper clip.")
 
