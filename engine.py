@@ -1790,7 +1790,7 @@ def playGame(userSelection):
 				if currentState.rm11f5 == 0: #Before interaction
 					display(topHall.feat5desc)
 				else: #After interaction
-					isplay(topHall.feat5interactComplete)
+					display(topHall.feat5interactComplete)
 			#Garden
 			elif currentState.currRoom == 12:
 				if currentState.rm12f5 == 0: #Before interaction
