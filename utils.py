@@ -48,9 +48,11 @@ def display(text):
 # Prints the help information from features + items
 # Requires the dict of features, items, and the current gameState object to filter items
 def printHelp(featureDict, itemDict, currentState):
-	display("HELPFUL TIPS:")
-	display("Take a closer look at the room's features.  Sometimes you may need to examine a detail on a feature even more closely.")
+	display("Helpful Tips:")
+	display("If you're not sure how to use an object, look at it first.  The description may give you a clue.")
 	display("Don't forget to take (pick up) items after you've revealed them.")
+	display("Take a closer look at the room's features.  Sometimes you may need to examine a detail on a feature even more closely.")
+	display("Some items are used more than once, in different ways.")
 	print ""
 	display("Features and Actions:")
 	features = featureDict.keys()

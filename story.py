@@ -1,7 +1,26 @@
 # Story-specific bits.  More specifically, the conclusion.
 from utils import display
 
-def ending(injured = True, bracelet = True):
+# This reads the gamestate file and populates the variables for the conclusion text
+def ending(gamestate):
+	flags_to_check = {
+	# Temporarily putting paperclipDisc for bracelet since it isn't in the gamestate yet
+		'injured': 'floatGun', 'bracelet': 'paperclipDisc',
+	}
+	variableList = []
+
+	# Check each of these variables
+	for flag in flags_to_check:
+		state = getattr(gamestate, flags_to_check[flag])
+		if flag == "1":
+			variableList.append(True)
+		else:
+			variableList.append(False)
+
+	endingText(*tuple(variableList))
+
+
+def endingText(injured = True, bracelet = True):
 	# Check gamestate for certain variables.  By default they will be true.
 
 	display("You are blinded by the sudden influx of light as the hatch creaks open.  You feel weak with relief.  It's the outdoors - no doubt about it.")
@@ -35,13 +54,13 @@ if __name__ == "__main__":
 	ending ()
 
 	print "Used gun, have bracelet (same as default):"
-	ending (True, True)
+	endingText(True, True)
 
 	print "No gun, have bracelet:"
-	ending (False, True)
+	endingText(False, True)
 
 	print "Used gun, no bracelet:"
-	ending (True, False)
+	endingText(True, False)
 
 	print "No gun, no bracelet (best ending):"
-	ending (False, False)
+	endingText(False, False)

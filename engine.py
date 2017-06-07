@@ -15,6 +15,7 @@ import data
 from data import *
 from utils import display
 from utils import printHelp
+import story
 
 #[END IMPORTS]
 
@@ -2445,6 +2446,9 @@ def playGame(userSelection):
 				display(keycard.drop)
 			else:
 				display(keycard.notInInv)
+
+		elif userInput == "99": #Test ending
+			story.ending(currentState)
 
 		#else:
 		#	display("Invalid input")
