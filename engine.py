@@ -224,7 +224,7 @@ def playGame(userSelection):
 		# Update currentState variables manually to drop into any room with any combination
 		#     of items. Allows for testing without repeating game sequence. 
 
-		currentState = gamestate.GameStateClass(11,   #currentRoom
+		currentState = gamestate.GameStateClass(12,   #currentRoom
 	      1, #room1
 	      1, #room2
 	      1, #room3
@@ -235,8 +235,8 @@ def playGame(userSelection):
 	      1, #room8
 	      1, #room9
 	      1, #room10
-	      0, #room11
-	      0, #room12
+	      1, #room11
+	      1, #room12
 	      0, #room13
 	      0, #room14
 	      0, #room15          NOTE: 99 Item in inventory, 100 item permanently destroyed/used
@@ -248,8 +248,8 @@ def playGame(userSelection):
 	      99, #item6 - Gun - Origin Room: 7 
 	      0, #item7 - Lockpick - Origin Room: 0 (player crafted)
 	      14, #item8 - Cryptex - Origin Room: 14
-	      0, #item9 - Paper clip - Origin Room: 12 
-	      99, #item10 - Keycard - Origin Room: 0 (transformed from cryptex)
+	      99, #item9 - Paper clip - Origin Room: 12 
+	      0, #item10 - Keycard - Origin Room: 0 (transformed from cryptex)
 	      1, #rm1f1
 	      1, #rm1f2
 	      1, #rm1f3
@@ -300,18 +300,18 @@ def playGame(userSelection):
 	      1, #rm9f4
 	      1, #rm10f1
 	      1, #rm10f2
-	      0, #rm11f1
-	      0, #rm11f2
-	      0, #rm11f3
-	      0, #rm11f4
-	      0, #rm11f5
-	      0, #rm11f6
-	      0, #rm12f1
-	      0, #rm12f2
-	      0, #rm12f3
-	      0, #rm12f4
-	      0, #rm12f5
-	      0, #rm12f6
+	      1, #rm11f1
+	      1, #rm11f2
+	      1, #rm11f3
+	      1, #rm11f4
+	      1, #rm11f5
+	      1, #rm11f6
+	      1, #rm12f1
+	      1, #rm12f2
+	      1, #rm12f3
+	      1, #rm12f4
+	      1, #rm12f5
+	      1, #rm12f6
 	      0, #rm12o1 - Lockpick discovery
 	      0, #rm13f1
 	      0, #rm13f2
@@ -664,6 +664,10 @@ def playGame(userSelection):
 			#Control
 			elif currentState.currRoom == 13:
 				display(control.feat1interactSuccess)
+				# ENTER MINI GAME INTERACTION HERE
+				print "Mini game launches"
+
+				# END MINI GAME INTERACTION
 				currentState.rm13f1 = 1 #Update to interaction complete
 			#Side
 			elif currentState.currRoom == 14:
@@ -831,8 +835,11 @@ def playGame(userSelection):
 					display(garden.feat2interactComplete)
 			#Control
 			elif currentState.currRoom == 13:
-				display(control.feat2interactSuccess)
-				currentState.rm13f2 = 1 #Update to interaction complete
+				if currentState.rm13f2 == 0: #Not complete
+					display(control.feat2interactSuccess)
+					currentState.rm13f2 = 1 #Update to interaction complete
+				else: #Action already completed
+					display(control.feat2interactComplete)
 			#Side
 			elif currentState.currRoom == 14:
 				display(side.feat2interactSuccess)
