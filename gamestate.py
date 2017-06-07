@@ -309,8 +309,8 @@ class MattsGameStateClass(object):
 		self.obj6Loc = ""	#Gun
 		self.obj7Loc = ""	#Lockpick
 		self.obj8Loc = ""	#Cryptex
-	
-					
+		self.obj9Loc = ""	#Paper clip     - *NEW
+   		self.obj10Loc = ""	#Keycard		- *NEW
    		
 		#Brig - Room 1
 		#Straw - searched (1) or unsearched (0)
@@ -517,6 +517,14 @@ class MattsGameStateClass(object):
 		self.rm15f4 = ""
 		#door
 		self.rm15f5 = ""
+		
+		#Floating Item Variables 	- *New
+		#Gun - used (1), not used (0)
+		self.floatGun = ""
+		#Paperclip Discovered
+		self.paperclipDisc = ""
+		#Keycard Discovered
+		self.keycardDisc = ""
 
 		
 		

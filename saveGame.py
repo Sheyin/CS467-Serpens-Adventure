@@ -55,7 +55,9 @@ def load_gamestate (saveNum):
 			currentState.obj6Loc = data["obj6Loc"]
 			currentState.obj7Loc = data["obj7Loc"]
 			currentState.obj8Loc = data["obj8Loc"]
-
+			currentState.obj9Loc = data["obj9Loc"]
+			currentState.obj10Loc = data["obj10Loc"]
+			
 			currentState.rm01f1 = data["rm01f1"]
 			currentState.rm01f2 = data["rm01f2"]
 			currentState.rm01f3 = data["rm01f3"]
@@ -148,6 +150,10 @@ def load_gamestate (saveNum):
 			currentState.rm07o1 = data["rm07o1"]
 			currentState.rm12o1 = data["rm12o1"]
 			currentState.rm14o1 = data["rm14o1"]
+			
+			currentState.floatGun = data["floatGun"]
+			currentState.paperclipDisc = data["paperclipDisc"]
+			currentState.keycardDisc = data["keycardDisc"]
 			#return currentState
 	
 load_gamestate("0")
@@ -184,6 +190,8 @@ def save_gamestate(saveNum, currentState):
     jsonObject["obj6Loc"] = currentState.obj6Loc
     jsonObject["obj7Loc"] = currentState.obj7Loc
     jsonObject["obj8Loc"] = currentState.obj8Loc
+    jsonObject["obj9Loc"] = currentState.obj9Loc
+    jsonObject["obj10Loc"] = currentState.obj10Loc	
     jsonObject["rm01f1"] = currentState.rm01f1
     jsonObject["rm01f2"] = currentState.rm01f2
     jsonObject["rm01f3"] = currentState.rm01f3
@@ -266,6 +274,10 @@ def save_gamestate(saveNum, currentState):
     jsonObject["rm07o1"] = currentState.rm07o1
     jsonObject["rm12o1"] = currentState.rm12o1
     jsonObject["rm14o1"] = currentState.rm14o1
+	
+    jsonObject["floatGun"] = currentState.floatGun
+    jsonObject["paperclipDisc"] = currentState.paperclipDisc
+    jsonObject["keycardDisc"] = currentState.keycardDisc	
 	
 
     file_content = json.dumps(jsonObject, separators=(',', ': '), indent=3, sort_keys=True)

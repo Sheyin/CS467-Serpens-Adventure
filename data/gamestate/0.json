@@ -1,7 +1,7 @@
 {
     "name" : 1,
     "saveNum" : "0", 
-	"currRoom" : 0, 
+	"currRoom" : 1, 
 	"rm01vis" : 0,	
 	"rm02vis" : 0,
 	"rm03vis" : 0,
@@ -25,6 +25,8 @@
 	"obj6Loc" : 0,
 	"obj7Loc" : 0,
 	"obj8Loc" : 0,
+    "obj9Loc" : 0,
+	"obj10Loc" : 0,
 	"rm01f1" : 0,
 	"rm01f2" : 0,
 	"rm01f3" : 0,
@@ -105,5 +107,8 @@
 	"rm06o1" : 0,
 	"rm07o1" : 0,
 	"rm12o1" : 0,
-	"rm14o1" : 0
+	"rm14o1" : 0,
+    "floatGun" : 0,
+	"paperclipDisc" : 0,
+	"keycardDisc" : 0
 }
