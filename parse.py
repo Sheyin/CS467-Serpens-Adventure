@@ -197,6 +197,13 @@ def main(rawinput, features, featureDict, itemDict, rooms):
 				else:
 					display("What do you want to do with this " + item + "?")
 					return "invalid"
+			# Test the following interactions
+			elif item == 'gun' and rawCommand in ['use', 'fire', 'shoot']:
+				return utils.engine_codes_dict['gun_use']
+			elif item == 'paper clip' and rawCommand in ['bend', 'twist', 'change', 'turn']:
+				return utils.engine_codes_dict['paper clip_bend']
+			elif item == 'cryptex' and rawCommand in ['open', 'unlock']:
+				return utils.engine_codes_dict['cryptex_open']
 			else:
 				# No recognized item and command
 				display("I'm not sure how to " + rawCommand + " the " + item + " that way.")
