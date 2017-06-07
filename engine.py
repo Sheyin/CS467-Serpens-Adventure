@@ -124,9 +124,9 @@ def playGame(userSelection):
 		  4, #item4 - Skeleton Key - Origin Room: 4
 		  6, #item5 - Small Key - Origin Room: 6
 		  7, #item6 - Gun - Origin Room: 7 
-		  12, #item7 - Lockpick - Origin Room: 12
+		  12, #item7 - Lockpick - Origin Room: 0 (player crafted)
 		  14, #item8 - Cryptex - Origin Room: 14
-		  0, #item9 - Paper clip - Origin Room: 0 (player crafted)
+		  0, #item9 - Paper clip - Origin Room: 12 
 	      0, #item10 - Keycard - Origin Room: 0 (transformed from cryptex)
 		  0, #rm1f1
 		  0, #rm1f2
@@ -224,7 +224,7 @@ def playGame(userSelection):
 		# Update currentState variables manually to drop into any room with any combination
 		#     of items. Allows for testing without repeating game sequence. 
 
-		currentState = gamestate.GameStateClass(7,   #currentRoom
+		currentState = gamestate.GameStateClass(11,   #currentRoom
 	      1, #room1
 	      1, #room2
 	      1, #room3
@@ -246,9 +246,9 @@ def playGame(userSelection):
 	      99, #item4 - Skeleton Key - Origin Room: 4
 	      99, #item5 - Small Key - Origin Room: 6
 	      99, #item6 - Gun - Origin Room: 7 
-	      12, #item7 - Lockpick - Origin Room: 12
+	      0, #item7 - Lockpick - Origin Room: 0 (player crafted)
 	      14, #item8 - Cryptex - Origin Room: 14
-	      0, #item9 - Paper clip - Origin Room: 0 (player crafted)
+	      0, #item9 - Paper clip - Origin Room: 12 
 	      0, #item10 - Keycard - Origin Room: 0 (transformed from cryptex)
 	      1, #rm1f1
 	      1, #rm1f2
@@ -491,9 +491,9 @@ def playGame(userSelection):
 			elif currentState.currRoom == 15:    #Processing
 				if currentState.rm15vis == 0: 
 					display(processing.longDesc)
-					urrentState.rm15vis = 1 #Update to visited
+					currentState.rm15vis = 1 #Update to visited
 				else:
-					isplay(processing.shortDesc)
+					display(processing.shortDesc)
 
 			userRoom = currentState.currRoom #Update room the user is currently in
 
@@ -656,7 +656,7 @@ def playGame(userSelection):
 			if currentState.currRoom == 12:
 				display(garden.feat1interactSuccess)
 				currentState.rm12f2 = 1 #Update to interaction complete
-				currentState.rm12o1 = 1 #Lockpick discovered
+				currentState.paperclipDisc = 1 #Paperclip discovered
 			#Control
 			elif currentState.currRoom == 13:
 				display(control.feat1interactSuccess)
@@ -1171,10 +1171,10 @@ def playGame(userSelection):
 				if currentState.rm14o1 == 1 and currentState.obj8Loc == 1:
 					display(cryptex.inRoom)
 				#Object 9 - Paper clip
-				if currentState.pcD == 1 and currentState.obj9Loc == 1:
+				if currentState.paperclipDisc == 1 and currentState.obj9Loc == 1:
 					display(paperclip.inRoom)
 				#Object 10 - Keycard
-				if currentState.kcD == 1 and currentState.obj10Loc == 1:
+				if currentState.keycardDisc == 1 and currentState.obj10Loc == 1:
 					display(keycard.inRoom)
 
 			elif currentState.currRoom == 2:
@@ -1205,10 +1205,10 @@ def playGame(userSelection):
 				if currentState.rm14o1 == 1 and currentState.obj8Loc == 2:
 					display(cryptex.inRoom)
 				#Object 9 - Paper clip
-				if currentState.pcD == 1 and currentState.obj9Loc == 2:
+				if currentState.paperclipDisc == 1 and currentState.obj9Loc == 2:
 					display(paperclip.inRoom)
 				#Object 10 - Keycard
-				if currentState.kcD == 1 and currentState.obj10Loc == 2:
+				if currentState.keycardDisc == 1 and currentState.obj10Loc == 2:
 					display(keycard.inRoom)
 
 			elif currentState.currRoom == 3:
@@ -1239,10 +1239,10 @@ def playGame(userSelection):
 				if currentState.rm14o1 == 1 and currentState.obj8Loc == 3:
 					display(cryptex.inRoom)
 				#Object 9 - Paper clip
-				if currentState.pcD == 1 and currentState.obj9Loc == 3:
+				if currentState.paperclipDisc == 1 and currentState.obj9Loc == 3:
 					display(paperclip.inRoom)
 				#Object 10 - Keycard
-				if currentState.kcD == 1 and currentState.obj10Loc == 3:
+				if currentState.keycardDisc == 1 and currentState.obj10Loc == 3:
 					display(keycard.inRoom)
 
 			elif currentState.currRoom == 4:
@@ -1273,10 +1273,10 @@ def playGame(userSelection):
 				if currentState.rm14o1 == 1 and currentState.obj8Loc == 4:
 					display(cryptex.inRoom)
 				#Object 9 - Paper clip
-				if currentState.pcD == 1 and currentState.obj9Loc == 4:
+				if currentState.paperclipDisc == 1 and currentState.obj9Loc == 4:
 					display(paperclip.inRoom)
 				#Object 10 - Keycard
-				if currentState.kcD == 1 and currentState.obj10Loc == 4:
+				if currentState.keycardDisc == 1 and currentState.obj10Loc == 4:
 					display(keycard.inRoom)
 
 			elif currentState.currRoom == 5:
@@ -1307,10 +1307,10 @@ def playGame(userSelection):
 				if currentState.rm14o1 == 1 and currentState.obj8Loc == 5:
 					display(cryptex.inRoom)
 				#Object 9 - Paper clip
-				if currentState.pcD == 1 and currentState.obj9Loc == 5:
+				if currentState.paperclipDisc == 1 and currentState.obj9Loc == 5:
 					display(paperclip.inRoom)
 				#Object 10 - Keycard
-				if currentState.kcD == 1 and currentState.obj10Loc == 5:
+				if currentState.keycardDisc == 1 and currentState.obj10Loc == 5:
 					display(keycard.inRoom)
 
 			elif currentState.currRoom == 6:    #Rum
@@ -1341,10 +1341,10 @@ def playGame(userSelection):
 				if currentState.rm14o1 == 1 and currentState.obj8Loc == 6:
 					display(cryptex.inRoom)
 				#Object 9 - Paper clip
-				if currentState.pcD == 1 and currentState.obj9Loc == 6:
+				if currentState.paperclipDisc == 1 and currentState.obj9Loc == 6:
 					display(paperclip.inRoom)
 				#Object 10 - Keycard
-				if currentState.kcD == 1 and currentState.obj10Loc == 6:
+				if currentState.keycardDisc == 1 and currentState.obj10Loc == 6:
 					display(keycard.inRoom)
 
 			elif currentState.currRoom == 7:    #Armory
@@ -1375,10 +1375,10 @@ def playGame(userSelection):
 				if currentState.rm14o1 == 1 and currentState.obj8Loc == 7:
 					display(cryptex.inRoom)
 				#Object 9 - Paper clip
-				if currentState.pcD == 1 and currentState.obj9Loc == 7:
+				if currentState.paperclipDisc == 1 and currentState.obj9Loc == 7:
 					display(paperclip.inRoom)
 				#Object 10 - Keycard
-				if currentState.kcD == 1 and currentState.obj10Loc == 7:
+				if currentState.keycardDisc == 1 and currentState.obj10Loc == 7:
 					display(keycard.inRoom)
 
 			elif currentState.currRoom == 8:    #Garrison
@@ -1409,10 +1409,10 @@ def playGame(userSelection):
 				if currentState.rm14o1 == 1 and currentState.obj8Loc == 8:
 					display(cryptex.inRoom)
 				#Object 9 - Paper clip
-				if currentState.pcD == 1 and currentState.obj9Loc == 8:
+				if currentState.paperclipDisc == 1 and currentState.obj9Loc == 8:
 					display(paperclip.inRoom)
 				#Object 10 - Keycard
-				if currentState.kcD == 1 and currentState.obj10Loc == 8:
+				if currentState.keycardDisc == 1 and currentState.obj10Loc == 8:
 					display(keycard.inRoom)
 
 			elif currentState.currRoom == 9:    #Galley
@@ -1443,10 +1443,10 @@ def playGame(userSelection):
 				if currentState.rm14o1 == 1 and currentState.obj8Loc == 9:
 					display(cryptex.inRoom)
 				#Object 9 - Paper clip
-				if currentState.pcD == 1 and currentState.obj9Loc == 9:
+				if currentState.paperclipDisc == 1 and currentState.obj9Loc == 9:
 					display(paperclip.inRoom)
 				#Object 10 - Keycard
-				if currentState.kcD == 1 and currentState.obj10Loc == 9:
+				if currentState.keycardDisc == 1 and currentState.obj10Loc == 9:
 					display(keycard.inRoom)
 
 			elif currentState.currRoom == 10:    #Ladder
@@ -1477,10 +1477,10 @@ def playGame(userSelection):
 				if currentState.rm14o1 == 1 and currentState.obj8Loc == 10:
 					display(cryptex.inRoom)
 				#Object 9 - Paper clip
-				if currentState.pcD == 1 and currentState.obj9Loc == 10:
+				if currentState.paperclipDisc == 1 and currentState.obj9Loc == 10:
 					display(paperclip.inRoom)
 				#Object 10 - Keycard
-				if currentState.kcD == 1 and currentState.obj10Loc == 10:
+				if currentState.keycardDisc == 1 and currentState.obj10Loc == 10:
 					display(keycard.inRoom)
 
 			elif currentState.currRoom == 11:    #topHall
@@ -1517,10 +1517,10 @@ def playGame(userSelection):
 				if currentState.rm14o1 == 1 and currentState.obj8Loc == 11:
 					display(cryptex.inRoom)
 				#Object 9 - Paper clip
-				if currentState.pcD == 1 and currentState.obj9Loc == 11:
+				if currentState.paperclipDisc == 1 and currentState.obj9Loc == 11:
 					display(paperclip.inRoom)
 				#Object 10 - Keycard
-				if currentState.kcD == 1 and currentState.obj10Loc == 11:
+				if currentState.keycardDisc == 1 and currentState.obj10Loc == 11:
 					display(keycard.inRoom)
 
 			elif currentState.currRoom == 12:    #Garden
@@ -1557,10 +1557,10 @@ def playGame(userSelection):
 				if currentState.rm14o1 == 1 and currentState.obj8Loc == 12:
 					display(cryptex.inRoom)
 				#Object 9 - Paper clip
-				if currentState.pcD == 1 and currentState.obj9Loc == 12:
+				if currentState.paperclipDisc == 1 and currentState.obj9Loc == 12:
 					display(paperclip.inRoom)
 				#Object 10 - Keycard
-				if currentState.kcD == 1 and currentState.obj10Loc == 12:
+				if currentState.keycardDisc == 1 and currentState.obj10Loc == 12:
 					display(keycard.inRoom)
 
 			elif currentState.currRoom == 13:    #Control
@@ -1597,10 +1597,10 @@ def playGame(userSelection):
 				if currentState.rm14o1 == 1 and currentState.obj8Loc == 13:
 					display(cryptex.inRoom)
 				#Object 9 - Paper clip
-				if currentState.pcD == 1 and currentState.obj9Loc == 13:
+				if currentState.paperclipDisc == 1 and currentState.obj9Loc == 13:
 					display(paperclip.inRoom)
 				#Object 10 - Keycard
-				if currentState.kcD == 1 and currentState.obj10Loc == 13:
+				if currentState.keycardDisc == 1 and currentState.obj10Loc == 13:
 					display(keycard.inRoom)
 
 			elif currentState.currRoom == 14:    #Side
@@ -1637,10 +1637,10 @@ def playGame(userSelection):
 				if currentState.rm14o1 == 1 and currentState.obj8Loc == 14:
 					display(cryptex.inRoom)
 				#Object 9 - Paper clip
-				if currentState.pcD == 1 and currentState.obj9Loc == 14:
+				if currentState.paperclipDisc == 1 and currentState.obj9Loc == 14:
 					display(paperclip.inRoom)
 				#Object 10 - Keycard
-				if currentState.kcD == 1 and currentState.obj10Loc == 14:
+				if currentState.keycardDisc == 1 and currentState.obj10Loc == 14:
 					display(keycard.inRoom)
 
 			elif currentState.currRoom == 15:    #Processing
@@ -1677,10 +1677,10 @@ def playGame(userSelection):
 				if currentState.rm14o1 == 1 and currentState.obj8Loc == 15:
 					display(cryptex.inRoom)
 				#Object 9 - Paper clip
-				if currentState.pcD == 1 and currentState.obj9Loc == 15:
+				if currentState.paperclipDisc == 1 and currentState.obj9Loc == 15:
 					display(paperclip.inRoom)
 				#Object 10 - Keycard
-				if currentState.kcD == 1 and currentState.obj10Loc == 15:
+				if currentState.keycardDisc == 1 and currentState.obj10Loc == 15:
 					display(keycard.inRoom)
 
 		elif userInput == "12": #Take board
@@ -2376,7 +2376,12 @@ def playGame(userSelection):
 		#BEND / TWIST PAPERCLIP
 		elif userInput == "47": #Change paperclip into lockpick 
 			if currentState.obj9Loc == 99: #If paperclip in inventory
-				print "Paperclip"
+				print "Change paperclip into lockpick"
+				display("You take the paper clip and straighten it out.  It'll do as a make shift lockpick! Oops, you dropped it.")
+				currentState.obj9Loc == 100 #Update paperclip to permanently used
+				currentState.obj7Loc == currentState.currentRoom #Lockpick falls onto floor of current room
+			else:
+				display("You don't have a paper clip.")
 
 		#OPEN CRYPTEX
 		elif userInput == "48": 
@@ -2391,7 +2396,7 @@ def playGame(userSelection):
 
 		elif userInput == "50": #Take paper clip
 			#If object discovered and if player is in the same room as the object
-			if currentState.pcD == 1 and currentState.obj9Loc == currentState.currRoom:
+			if currentState.paperclipDisc == 1 and currentState.obj9Loc == currentState.currRoom:
 				currentState.obj9Loc = 99 #Add paper clip to player inventory
 				display(paperclip.take)
 			else:
@@ -2412,7 +2417,7 @@ def playGame(userSelection):
 
 		elif userInput == "53": #Take keycard
 			#If object discovered and if player is in the same room as the object
-			if currentState.kcD == 1 and currentState.obj10Loc == currentState.currRoom:
+			if currentState.keycardDisc == 1 and currentState.obj10Loc == currentState.currRoom:
 				currentState.obj10Loc = 99 #Add keycard to player inventory
 				display(keycard.take)
 			else:
