@@ -654,9 +654,13 @@ def playGame(userSelection):
 				currentState.rm11f1 = 1 #Update to interaction complete
 			#Garden
 			if currentState.currRoom == 12:
-				display(garden.feat1interactSuccess)
-				currentState.rm12f2 = 1 #Update to interaction complete
-				currentState.paperclipDisc = 1 #Paperclip discovered
+				if currentState.rm12f1 == 0: #Not complete
+					display(garden.feat1interactSuccess)
+					currentState.rm12f1 = 1 #Update to interaction complete
+					currentState.paperclipDisc = 1 #Paperclip discovered
+					currentState.obj9Loc = 12 #Update Paperclip location to room 12
+				else:
+					display(garden.feat1interactComplete)
 			#Control
 			elif currentState.currRoom == 13:
 				display(control.feat1interactSuccess)
@@ -820,8 +824,11 @@ def playGame(userSelection):
 					display(topHall.feat2interactComplete)
 			#Garden
 			elif currentState.currRoom == 12:
-				display(garden.feat2interactSuccess)
-				currentState.rm12f2 = 1 #Update to interaction complete
+				if currentState.rm12f2 == 0: #Not complete
+					display(garden.feat2interactSuccess)
+					currentState.rm12f2 = 1 #Update to interaction complete
+				else: #Action already completed
+					display(garden.feat2interactComplete)
 			#Control
 			elif currentState.currRoom == 13:
 				display(control.feat2interactSuccess)
