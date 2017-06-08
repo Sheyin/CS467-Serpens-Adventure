@@ -46,7 +46,6 @@ def main(rawinput, features, featureDict, itemDict, rooms):
 		return command
 
 	elif command in ['exit', 'inventory', 'savegame', 'loadgame', 'help']:
-		# Temporary: for debugging - should be in engine
 		return command
 
 	elif command == "go":

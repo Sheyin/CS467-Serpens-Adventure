@@ -394,7 +394,7 @@ def playGame(userSelection):
 	featureList, featureDict, itemDict, roomList = utils.formatRoomData(rooms, objects, currentState)
 
 	#While loop repeatedly prompts user for input until user requests to load, save, or quit game
-	while userInput not in ['loadgame', 'savegame', 'quit', 'exit']:
+	while userInput not in ['quit', 'exit']:
 
 		#[BEGIN ENGINE]
 		if userRoom != currentState.currRoom:  #Displays room description when player moves rooms
@@ -2475,24 +2475,24 @@ def playGame(userSelection):
 		#	display("Invalid input")
 		#[END ENGINE]
 
-	if userInput == "loadgame":
-		print "Load game"
-		currentState = resume_gamestate("1")
-		#PENDING - Load game function {Data Dev}
-		# The following line works but if it is before the game has started, it errors
-		# because currentState has not been assigned yet
-		# Or, the program ends after "loading" not sure why.  Some saves are also outdated.
-		#saveGame.resume_gamestate(checksaveload.checkLoading())
-		
-	elif userInput == "savegame":
-		print "Save game"
-		save_gamestate("1", currentState)
-		#PENDING - Save game function {Data Dev}
-		# The following line works but the object is expecting a "name" attribute
-		#saveGame.save_gamestate(checksaveload.checkSaving(), currentState)
+		elif userInput == "loadgame":
+			print "Load game"
+			currentState = resume_gamestate("1")
+			#PENDING - Load game function {Data Dev}
+			# The following line works but if it is before the game has started, it errors
+			# because currentState has not been assigned yet
+			# Or, the program ends after "loading" not sure why.  Some saves are also outdated.
+			#saveGame.resume_gamestate(checksaveload.checkLoading())
+			
+		elif userInput == "savegame":
+			print "Save game"
+			save_gamestate("1", currentState)
+			#PENDING - Save game function {Data Dev}
+			# The following line works but the object is expecting a "name" attribute
+			#saveGame.save_gamestate(checksaveload.checkSaving(), currentState)
 
-	elif userInput == "quit" or "exit":
-		exitGame()
+		elif userInput == "quit" or "exit":
+			exitGame()
 
 #[END PLAY GAME]
 
