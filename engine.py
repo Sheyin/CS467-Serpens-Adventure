@@ -2491,8 +2491,10 @@ def playGame(userSelection):
 			# The following line works but the object is expecting a "name" attribute
 			#saveGame.save_gamestate(checksaveload.checkSaving(), currentState)
 
-		elif userInput == "quit" or "exit":
+		elif userInput in ["quit", "exit"]:
 			exitGame()
+
+
 
 #[END PLAY GAME]
 

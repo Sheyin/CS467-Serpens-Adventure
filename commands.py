@@ -36,7 +36,7 @@ def identify(input):
 
 	# One word command - switch to engine code
 	# Help should be part of this
-	if commandUsed in ['save', 'load', 'exit', 'look_room', 'inventory']:
+	if commandUsed in ['save', 'load', 'exit', 'look_room', 'inventory', 'help']:
 		commandUsed = utils.engine_codes_dict[commandUsed]
 	return commandUsed
 
