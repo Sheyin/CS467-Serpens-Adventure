@@ -41,12 +41,13 @@ def main(rawinput, features, featureDict, itemDict, rooms):
 	if rawCommand is "null":
 		return "invalid"
 
+	# For testing only - delete when numeric commands no longer supported
 	elif (command and command.isdigit()):
 		return command
 
-	elif command in ['exit', 'inventory', 'save', 'load', 'help']:
+	elif command in ['exit', 'inventory', 'savegame', 'loadgame', 'help']:
 		# Temporary: for debugging - should be in engine
-		return utils.engine_codes_dict[command]
+		return command
 
 	elif command == "go":
 		# This will identify a direction or a feature, if found
@@ -57,7 +58,6 @@ def main(rawinput, features, featureDict, itemDict, rooms):
 			display("I can't go that way.")
 		else:
 			key = "go_" + str(direction)
-			print "Debug: Returning key: " + key + " which is: " + utils.engine_codes_dict[key]
 			return utils.engine_codes_dict[key]
 
 	elif command in ["take", "drop"]:
@@ -159,7 +159,6 @@ def main(rawinput, features, featureDict, itemDict, rooms):
 				# Identical to "go"
 				else:
 					key = "go_" + str(direction)
-					print "Debug: Returning key: " + key + " which is: " + utils.engine_codes_dict[key]
 					return utils.engine_codes_dict[key]
 
 		# Item but no feature
@@ -221,7 +220,6 @@ def main(rawinput, features, featureDict, itemDict, rooms):
 				# Identical to "go"
 				else:
 					key = "go_" + str(direction)
-					print "Debug: Returning key: " + key + " which is: " + utils.engine_codes_dict[key]
 					return utils.engine_codes_dict[key]
 
 

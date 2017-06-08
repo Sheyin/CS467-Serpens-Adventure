@@ -8,7 +8,8 @@ from utils import display
 # on the item which will override this one.  This acts more like a failsafe
 # or catches the one-word commands.  Move, hit, use aren't really implemented.
 synonyms =  {
-	'save': 'save', 'load': 'load',
+	'save': 'save', 'savegame': 'save', 
+	'load': 'load', 'loadgame': 'load', 'resume': 'load',
 	'inventory': 'inventory',
 	'quit': 'exit', 'exit': 'exit',
 	'help': 'help',

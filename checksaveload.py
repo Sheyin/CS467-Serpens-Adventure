@@ -13,13 +13,13 @@ def checkLoading():
 	for gamestate in fileList:
 		strippedName = gamestate.strip(".json")
 		fileNumbers.append(strippedName)
-		display("Save Game #" + strippedName + ":")
+		display("Save Game #" + strippedName + ": ")
 		file = open(path + gamestate, 'r')
 		# skip first line - name
 		file.readline()
 		currentRoomLine = file.readline().rstrip()
 		currentRoom = currentRoomLine[15:-2]
-		display("Current Room:" + currentRoom)
+		display("Current Room: " + currentRoom)
 		file.close()
 
 	choice = "unknown"
@@ -27,7 +27,7 @@ def checkLoading():
 		print ""
 		display("Which save game would you like to load?")
 		display("Please select a number or enter 'cancel'.")
-		choice = raw_input(':')
+		choice = raw_input(': ')
 		choice = choice.lower()
 		if choice in fileNumbers:
 			return choice
@@ -53,13 +53,17 @@ def checkSaving():
 	while choice not in ['cancel', 'quit', 'stop', 'end', 'exit']:
 		print ""
 		display("Please enter a number to save your game in or enter 'cancel'.")
-		choice = raw_input(':')
+		choice = raw_input(': ')
 		choice = choice.lower()
 		if choice in fileNumbers:
 			display ("A save game by this number already exists.  Would you like to overwrite this save?")
 			confirm = raw_input(':')
-			if confirm.lower() in ['y', 'yes', 'yeah', 'do it', 'proceed', 'ok', 'go ahead', 'overwrite', 'confirm']:
-				display ("Saving over game number " + choice + ".")
+			if confirm.lower() in ['y', 'yes', 'yeah', 'do it', 'proceed', 'ok', 'go ahead', 'overwrite', 'confirm', 'sure']:
+				display("Saving over game number " + choice + ".")
 				return choice
+			else:
+				display("File will not be overwritten.")
 		elif choice in ['cancel', 'quit', 'stop', 'end', 'exit']:
 			display("Game will not be saved.")
+		else:
+			return choice

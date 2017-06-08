@@ -16,6 +16,8 @@ from data import *
 from utils import display
 from utils import printHelp
 import story
+import checksaveload
+import saveGame
 
 #[END IMPORTS]
 
@@ -1722,26 +1724,38 @@ def playGame(userSelection):
 		elif userInput == "17": #Inventory
 			print ""
 			display("Inventory:")
+			inventory = []
+
 			if currentState.obj1Loc == 99:   #Board
-				display(board.name)
+				inventory.append(board.name)
 			if currentState.obj2Loc == 99:   #Keys
-				display(keys.name)
+				inventory.append(keys.name)
 			if currentState.obj3Loc == 99:   #Handle
-				display(handle.name)
+				inventory.append(handle.name)
 			if currentState.obj4Loc == 99:   #Skeleton Key
-				display(skeletonKey.name)
+				inventory.append(skeletonKey.name)
 			if currentState.obj5Loc == 99:   #Small Key
-				display(smallKey.name)
+				inventory.append(smallKey.name)
 			if currentState.obj6Loc == 99:   #Gun
-				display(gun.name)
+				inventory.append(gun.name)
 			if currentState.obj7Loc == 99:   #Lockpick
-				display(lockpick.name)
+				inventory.append(lockpick.name)
 			if currentState.obj8Loc == 99:   #Cryptex
-				display(cryptex.name)
+				inventory.append(cryptex.name)
 			if currentState.obj9Loc == 99:	 #Paper clip
-				display(paperclip.name)
+				inventory.append(paperclip.name)
 			if currentState.obj10Loc == 99:  #Keycard
-				display(keycard.name)
+				inventory.append(keycard.name)
+			if inventory:
+				inventoryString = ""
+				for thing in inventory:
+					if thing == inventory[0]:
+						inventoryString = thing
+					else:
+						inventoryString = inventoryString + ", " + thing
+				display(inventoryString)
+			else:
+				display("You have no items at this time.")
 			print ""
 
 		elif userInput == "18": #Look at feature 5 - Brig:null - LADDER / BOTTLES / WOODEN DOOR / METAL DOOR / CANVAS FLAP
@@ -2457,10 +2471,16 @@ def playGame(userSelection):
 	if userInput == "loadgame":
 		print "Load game"
 		#PENDING - Load game function {Data Dev}
-
+		# The following line works but if it is before the game has started, it errors
+		# because currentState has not been assigned yet
+		# Or, the program ends after "loading" not sure why.  Some saves are also outdated.
+		#saveGame.resume_gamestate(checksaveload.checkLoading())
+		
 	elif userInput == "savegame":
 		print "Save game"
 		#PENDING - Save game function {Data Dev}
+		# The following line works but the object is expecting a "name" attribute
+		#saveGame.save_gamestate(checksaveload.checkSaving(), currentState)
 
 	elif userInput == "quit" or "exit":
 		exitGame()

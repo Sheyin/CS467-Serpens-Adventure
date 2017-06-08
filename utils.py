@@ -35,7 +35,7 @@ engine_codes_dict = {
 	'go_up': "26", 'go_down': "27",
 	# Other
 	'inventory': "17", 'look_room': "11", 'help': "16",
-	'save': 'save', 'load': 'load', 'exit': 'exit', 'look_room': '11'
+	'save': 'savegame', 'load': 'loadgame', 'exit': 'exit', 'look_room': '11'
 }
 
 # Produces formatted text and displays on console.  Input is a string, no return.
@@ -84,7 +84,10 @@ def printHelp(featureDict, itemDict, currentState):
 			itemList = itemList + ", " + _
 	print ""
 	display("Items: ")
-	display(itemList)
+	if itemList:
+		display(itemList)
+	else:
+		display("No items have been found at this time.")
 
 
 # Tries to translate input into a legal movement (direction)
