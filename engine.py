@@ -71,10 +71,7 @@ def newGame():
 
 	#Intro story
 	print "                                                                                "
-	print "The dream you were having fades away as you become aware of a gentle rocking"
-	print "motion. You open your eyes and the dimly lit room slowly comes into focus. The "
-	print "only source of light is coming through a small window. It's cold and the air  "
-	print "smells damp. Sitting up slowly, you wonder where you are..."
+	display("The dream you were having fades away as you become aware of a gentle rocking motion. You open your eyes and the dimly lit room slowly comes into focus. The only source of light is coming through a small window. It's cold and the air smells damp. Sitting up slowly, you wonder where you are...")
 	print ""
 
 	playGame(0)	#New game
@@ -84,7 +81,7 @@ def newGame():
 #[BEGIN LOAD GAME]
 def loadGame():
 	print ""
-	print "Loading your save file."
+	display("Loading your save file.")
 	print ""
 
 	playGame(1)	# Load game
