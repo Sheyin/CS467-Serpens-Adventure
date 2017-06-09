@@ -100,8 +100,8 @@ def translateRoom(input, rooms, type="default"):
 		for namePos in range (0, len(rooms[dirPos])):
 			if rooms[dirPos][namePos] in input:
 				if type is "strict":
-					if len(input) != len(rooms[dirPos][namePos]):
-						return -1
+					if len(input) == len(rooms[dirPos][namePos]):
+						return rooms[dirPos][0]
 				return rooms[dirPos][0]
 	return -1
 
