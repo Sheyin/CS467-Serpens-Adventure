@@ -20,6 +20,7 @@ import checksaveload
 import saveGame
 from saveGame import *
 from gamestate import *
+import sys
 
 
 #[END IMPORTS]
@@ -397,7 +398,7 @@ def playGame(userSelection):
 		userInput = raw_input (": ")
 
 		#Parse user input and return code for engine action {Parsing Dev}
-		userInput = parse.main(userInput, featureList, featureDict, itemDict, roomList)
+		userInput = parse.main(userInput, featureList, featureDict, itemDict, roomList, currentState.currRoom)
 	  
 		#ENGINE INTERACTIONS BASED ON PARSED USER INPUT
 		if userInput == "1":#Look at feature 1 - STRAW / ENTRYWAY MARKINGS / LOCKER / EXAM ENTRYWAY / DOOR / BOTTLE / GUN CABINET / BUNKS / CANVAS FLAP / LADDER
@@ -2343,6 +2344,7 @@ def playGame(userSelection):
 
 		elif userInput == "99": #Test ending {Parsing dev}
 			story.ending(currentState)
+			exitGame()
 
 		#else:
 		#	display("Invalid input")
@@ -2378,6 +2380,7 @@ def exitGame():
 	print ""
 	print "Thank you for playing!"
 	print ""
+	sys.exit()
 #[END EXIT GAME]
 
 #[References]

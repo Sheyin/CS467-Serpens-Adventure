@@ -32,11 +32,12 @@ def checkFeatureActions(input, pos, feature, featureDict):
 
 # This receives input from engine/engineTest, validates and returns an engine code
 # This expects: input(string), features(List), feature(Dict), items(Dict), rooms(List of tuples)
-def main(rawinput, features, featureDict, itemDict, rooms):
+def main(rawinput, features, featureDict, itemDict, rooms, currentRoom):
 	input = rawinput.lower()
 	command = commands.identify(input)
 	itemList = itemDict.keys()
 	splitString = input.split()
+
 	if splitString:
 		rawCommand = splitString[0]
 	else:
@@ -154,7 +155,10 @@ def main(rawinput, features, featureDict, itemDict, rooms):
 				direction = utils.translateRoom(input, rooms, "strict")
 				# Not a valid room alias
 				if (direction == -1):
-					display("I don't think I can do that to the " + feature + ".")
+					if feature in ['chest', 'door'] and rawCommand in ['open', 'unlock']:
+						display("I can't open that.  Maybe a key is required?")
+					else:
+						display("I don't think I can do that to the " + feature + ".")
 				# Identical to "go"
 				else:
 					key = "go_" + str(direction)
@@ -208,7 +212,7 @@ def main(rawinput, features, featureDict, itemDict, rooms):
 
 		# No item or feature, unrecognized command
 		else:
-			if 'pots' in input and (command in ['hit', 'move', 'break']):
+			if 'pots' in input and (command in ['hit', 'move', 'break']) and (currentRoom == 12):
 				return "2"
 			else:
 				# This is for the go requirement - if you specify "metal door" only act as go
