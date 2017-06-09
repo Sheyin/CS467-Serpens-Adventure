@@ -25,7 +25,7 @@
     "feat3": "crank",
     "feat3desc": "You can't see it, but you can feel the crank deep inside the tube.  It feels like it can be cranked out towards you.",
     "feat3interactOptions": "pull, use",
-    "feat3interactSuccess": "You pull the crank out towards you.  It moves slowly at first, then suddenly there is a loud click and the crank stops.  You release the crank and retract your arm.  It appears to have locked a metal bracelet around your wrist.",
+    "feat3interactSuccess": "You pull the crank out towards you.  It moves slowly at first, then suddenly there is a loud click and the crank stops.  You release the crank and retract your arm.  It appears to have locked a metal bracelet around your wrist. You hear the hiss of an airlock releasing coming from the metal hatch.",
     "feat3interactComplete": "You used the crank already.",
     "feat3interactFail": "You don't see a handle.",
     "feat4": "bracelet",
