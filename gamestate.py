@@ -248,9 +248,9 @@ class GameStateClass(object):
 		#Processing - Room 15
 		#hatch
 		self.rm15f1 = rm15f1
-		#device
+		#small hole
 		self.rm15f2 = rm15f2
-		#handle
+		#crank
 		self.rm15f3 = rm15f3
 		#bracelet
 		self.rm15f4 = rm15f4

@@ -985,10 +985,13 @@ def playGame(userSelection):
 					display(side.feat4interactComplete)
 			#Processing
 			elif currentState.currRoom == 15:
-				if currentState.rm15f4 == 0: #Before interaction
-					display(processing.feat4desc)
-				else: #After interaction
-					display(processing.feat4interactComplete)
+				if currentState.rm15f3 == 1: #Crank used and bracelet on
+					if currentState.rm15f4 == 0: #Before interaction
+						display(processing.feat4desc)
+					else: #After interaction
+						display(processing.feat4interactComplete)
+				else: #The bracelet has not been discovered
+					display("You don't have a bracelet.")
 
 		elif userInput == "10": #Interact with feature 4
 			#Brig
@@ -1064,8 +1067,14 @@ def playGame(userSelection):
 					display(side.feat4interactComplete)
 			#Processing
 			elif currentState.currRoom == 15:
-				display(processing.feat4interactSuccess)
-				currentState.rm15f4 = 1 #Update to interaction complete
+				if currentState.rm15f3 == 1: #Crank used and bracelet on
+					if currentState.rm15f4 == 0: #If interaction not previously completed
+						display(processing.feat4interactSuccess)
+						currentState.rm15f4 = 1 #Update to interaction complete
+					else:
+						display(processing.feat4interactComplete)
+				else: #The bracelet has not been discovered
+					display("You don't have a bracelet.")
 
 		elif userInput == "11": #General look around room
 			if currentState.currRoom == 1:
