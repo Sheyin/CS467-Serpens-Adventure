@@ -2359,16 +2359,25 @@ def playGame(userSelection):
 		elif userInput == "loadgame":
 			display("Loading game.")
 			#loadroom = checksaveload.checkLoading()
-			currentState = resume_gamestate("1")
-			#currentState = resume_gamestate(loadroom)
-			display(currentState.currentRoom.longDesc)
+			loadroom = "1"
+			if loadroom != "cancel":
+				print "loadroom: " + str(loadroom) 
+				currentState = resume_gamestate(loadroom)
+				print "Test - load room desc"
+				#print currentState
+				#print currentState.currentRoom
+				#print rooms[currentState.currentRoom].longDesc
+			#currentState = resume_gamestate("1")
+			#display(currentState.currRoom.longDesc)
 			
 		elif userInput == "savegame":
 			display("Saving game.")
 			#saveroom = checksaveload.checkSaving()
-			save_gamestate("1", currentState)
-			#save_gamestate(saveroom, currentState)
-
+			saveroom = "1"
+			if saveroom != "cancel":
+				save_gamestate(str(saveroom), currentState)
+			#save_gamestate("1", currentState)
+			
 		elif userInput in ["quit", "exit"]:
 			exitGame()
 

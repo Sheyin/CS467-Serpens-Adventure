@@ -35,6 +35,7 @@ def checkLoading():
 			return choice
 		elif choice in ['cancel', 'quit', 'stop', 'end', 'exit']:
 			display("Game will not be saved.")
+			return "cancel"
 		else:
 			display("This is not a valid selection.")
 
@@ -67,5 +68,6 @@ def checkSaving():
 				display("File will not be overwritten.")
 		elif choice in ['cancel', 'quit', 'stop', 'end', 'exit']:
 			display("Game will not be saved.")
+			return "cancel"
 		else:
 			return choice
