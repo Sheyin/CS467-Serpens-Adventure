@@ -22,6 +22,7 @@ synonyms =  {
 	'move': 'move', 'shift': 'move', 'search': 'move', 
 	'pull': 'pull',
 	'hit': 'hit', 'kick': 'hit', 'punch': 'hit', 'smack': 'hit', 'slap': 'hit', 'stomp': 'hit', 'step on': 'hit',
+	'break': 'break',
 	'eat': 'eat', 'bite': 'eat', 'swallow': 'eat', 'put in mouth': 'eat', 'put in your mouth': 'eat', 
 	'consume': 'eat', 'nibble': 'eat', 'drink': 'eat', 'sip': 'eat', 'chew': 'eat',
 	'escape': 'escape', 'break out': 'escape', '/unstuck': 'escape',
