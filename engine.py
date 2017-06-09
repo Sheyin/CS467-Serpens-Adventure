@@ -113,8 +113,7 @@ def playGame(userSelection):
 		if loadroom != "cancel":
 			currentState = resume_gamestate(loadroom)
 			print ""
-			display(rooms[currentState.currRoom].name)
-			display(rooms[currentState.currRoom].longDesc)
+			afterLoading(currentState.currRoom)
 		# If cancelled, load a new game instead
 		print ""
 		display("Starting a new game.")
@@ -2374,8 +2373,8 @@ def playGame(userSelection):
 			if loadroom != "cancel":
 				currentState = resume_gamestate(loadroom)
 				print ""
-				display(rooms[currentState.currRoom].name)
-				display(rooms[currentState.currRoom].longDesc)
+				display(rooms[int(currentState.currRoom)].name)
+				display(rooms[int(currentState.currRoom)].longDesc)
 			
 		elif userInput == "savegame":
 			saveroom = checksaveload.checkSaving()

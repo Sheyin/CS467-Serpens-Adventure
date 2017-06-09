@@ -47,10 +47,6 @@ def main(rawinput, features, featureDict, itemDict, rooms, currentRoom):
 	if rawCommand is "null":
 		return "invalid"
 
-	# For testing only - delete when numeric commands no longer supported
-	elif (command and command.isdigit()):
-		return command
-
 	elif command in ['exit', 'inventory', 'savegame', 'loadgame', 'help']:
 		return command
 

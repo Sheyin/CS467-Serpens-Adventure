@@ -30,9 +30,6 @@ synonyms =  {
 
 # Identifies a command
 def identify(input):
-	# Support for engine codes being directly entered
-	if input.isdigit():
-		return input
 	commandUsed = compareList(input)
 
 	# One word command - switch to engine code

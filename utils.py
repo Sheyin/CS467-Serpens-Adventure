@@ -45,6 +45,11 @@ roomDirectory = {
 	11: 'Hallway', 12: 'Garden', 13: 'Control Room', 14: 'Side Room', 15: 'Processing',
 }
 
+# This works with data loading - when selected from the main menu
+# rooms[] is not populated until after main loop
+def afterLoading(roomNumber):
+	print Room desc here
+
 # Produces formatted text and displays on console.  Input is a string, no return.
 def display(text):
    textToPrint = textwrap.wrap(text, 70)
