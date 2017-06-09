@@ -564,8 +564,14 @@ def playGame(userSelection):
 				currentState.rm14f1 = 1 #Update to interaction complete
 			#Processing
 			elif currentState.currRoom == 15:
-				display(processing.feat1interactSuccess)
-				currentState.rm15f1 = 1 #Update to interaction complete
+				if currentState.rm15f1 == 0: #Interaction not complete
+					if currentState.rm15f3 == 1: 	#If bracelet has been applied
+						display(processing.feat1interactSuccess)
+						currentState.rm15f1 = 1 #Update to interaction complete
+					else:
+						display(processing.feat1interactFail)
+				else: #Already completed
+					display(processing.feat1interactComplete)
 
 
 		elif userInput == "3": #Look at feature 2 - BENCH / BARRED DOOR / PAPER / TABLE / BARRED WINDOW / LAMP / WOODEN DOOR / TABLE / TRASH CAN / WOODEN DOOR
@@ -2295,7 +2301,7 @@ def playGame(userSelection):
 			if currentState.obj8Loc == 99: #If cryptex in inventory
 				# If True - successfully passed; False = unchanged, not opened
 				if(story.cryptex()):
-					print "Cryptex has been opened - set flag"
+					print "Cryptex has been opened - set flag" #PENDING
 				#END CRYPTEX PUZZLE
 			else:
 				display(cryptex.notAvail)
