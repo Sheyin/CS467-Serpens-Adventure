@@ -51,7 +51,7 @@ def launch():
 	print ""
 	userInput = raw_input (": ")
 	while userInput not in ['New Game', 'New', 'new', 'new game', 'Load Game', 'load game', 'load', 'Load', 'Exit','exit','Quit', 'quit', 'test']:
-		print "Please make a valid selection"
+		display("Please make a valid selection.")
 		userInput = raw_input (": ")
 
 	if userInput in ['New Game', 'New', 'new', 'new game', 'New game']:	#New Game
@@ -62,8 +62,6 @@ def launch():
 		playGame(3)
 	else:
 		exitGame()
-
-	#Exit
 #[END LAUNCH]
 
 #[BEGIN NEW GAME]
@@ -101,128 +99,16 @@ def playGame(userSelection):
 
 	#Create new or load saved game
 	if userSelection == 0:	#New game
+		#Load game state with default starting variables {Data dev}
 		global currentState
 		currentState = MattsGameStateClass(1)
 		currentState = resume_gamestate("0")
 		#print "NEW GAME FILE CREATED"
-		
-		#PENDING - Load game state with default starting variables {Data dev}
-		#Initialize gamestate class 
-		# currentState = gamestate.GameStateClass(1,   #currentRoom
-		  # 0, #room1
-		  # 0, #room2
-		  # 0, #room3
-		  # 0, #room4
-		  # 0, #room5
-		  # 0, #room6
-		  # 0, #room7
-		  # 0, #room8
-		  # 0, #room9
-		  # 0, #room10
-		  # 0, #room11
-		  # 0, #room12
-		  # 0, #room13
-		  # 0, #room14
-		  # 0, #room15          NOTE: 99 Item in inventory, 100 item permanently destroyed/used
-		  # 1, #item1 - Board - Origin Room: 1
-		  # 1, #item2 - Key - Origin Room: 1
-		  # 2, #item3 - Handle - Origin Room: 2
-		  # 4, #item4 - Skeleton Key - Origin Room: 4
-		  # 6, #item5 - Small Key - Origin Room: 6
-		  # 7, #item6 - Gun - Origin Room: 7 
-		  # 12, #item7 - Lockpick - Origin Room: 0 (player crafted)
-		  # 14, #item8 - Cryptex - Origin Room: 14
-		  # 0, #item9 - Paper clip - Origin Room: 12 
-	      # 0, #item10 - Keycard - Origin Room: 0 (transformed from cryptex)
-		  # 0, #rm1f1
-		  # 0, #rm1f2
-		  # 0, #rm1f3
-		  # 0, #rm1f4
-		  # 0, #rm1o1 - Board discovery
-		  # 0, #rm1o2 - Keys discovery
-		  # 0, #rm2f1
-		  # 0, #rm2f2
-		  # 0, #rm2f3
-		  # 0, #rm2o1 - Handle discovery 
-		  # 0, #rm3f1
-		  # 0, #rm3f2
-		  # 0, #rm3f3
-		  # 0, #rm3f4
-		  # 0, #rm3f5
-		  # 0, #rm3f6
-		  # 0, #rm4f1
-		  # 0, #rm4f2
-		  # 0, #rm4f3
-		  # 0, #rm4f4
-		  # 0, #rm4f5
-		  # 0, #rm4f6
-		  # 0, #rm4o1 - Skeleton key discovery
-		  # 0, #rm5f1
-		  # 0, #rm5f2
-		  # 0, #rm5f3
-		  # 0, #rm6f1
-		  # 0, #rm6f2
-		  # 0, #rm6f3
-		  # 0, #rm6f4
-		  # 0, #rm6f5
-		  # 0, #rm6o1 - Small key discovery 
-		  # 0, #rm7f1
-		  # 0, #rm7f2
-		  # 0, #rm7f3
-		  # 0, #rm7f4
-		  # 0, #rm7f5
-		  # 0, #rm7o1 - Gun discovery
-		  # 0, #rm8f1
-		  # 0, #rm8f2
-		  # 0, #rm8f3
-		  # 0, #rm8f4
-		  # 0, #rm8f5
-		  # 0, #rm8f6
-		  # 0, #rm9f1
-		  # 0, #rm9f2
-		  # 0, #rm9f3
-		  # 0, #rm9f4
-		  # 0, #rm10f1
-		  # 0, #rm10f2
-		  # 0, #rm11f1
-		  # 0, #rm11f2
-		  # 0, #rm11f3
-		  # 0, #rm11f4
-		  # 0, #rm11f5
-		  # 0, #rm11f6
-		  # 0, #rm12f1
-		  # 0, #rm12f2
-		  # 0, #rm12f3
-		  # 0, #rm12f4
-		  # 0, #rm12f5
-		  # 0, #rm12f6
-		  # 0, #rm12o1 - Lockpick discovery
-		  # 0, #rm13f1
-		  # 0, #rm13f2
-		  # 0, #rm13f3
-		  # 0, #rm13f4
-		  # 0, #rm13f5
-		  # 0, #rm13f6
-		  # 0, #rm14f1
-		  # 0, #rm14f2
-		  # 0, #rm14f3
-		  # 0, #rm14f4
-		  # 0, #rm14f5
-		  # 0, #rm14f6
-		  # 0, #rm14o1 - Cryptex discovery
-		  # 0, #rm15f1
-		  # 0, #rm15f2
-		  # 0, #rm15f3
-		  # 0, #rm15f4
-		  # 0, #rm15f5
-		  # 0, #float1 - Gun fired
-		  # 0, #pcD - Paperclip discovery
-		  # 0) #kcD - Keycard discovery
 
 	elif userSelection == 1: #Load game
+		#Load game state with saved variables {Data dev}
 		currentState = resume_gamestate("1")
-		print "LOAD GAME FILE"
-		#PENDING - Load game state with saved variables {Data dev}
+		#print "LOAD GAME FILE"
 
 	else: # Launch developer testing
 
@@ -342,7 +228,6 @@ def playGame(userSelection):
 		  0, #pcD - Paperclip discovery
 		  0) #kcD - Keycard discovery
 
-
 	#Load room files {Data dev}
 	data.load_rooms() 
 	
@@ -387,7 +272,7 @@ def playGame(userSelection):
 	paperclip = objects["paper clip"]
 	keycard = objects["keycard"]
 
-	#Send room/item info to get format for parsing
+	#Send room/item info to get format for parsing {Parsing dev}
 	featureList, featureDict, itemDict, roomList = utils.formatRoomData(rooms, objects, currentState)
 
 	#While loop repeatedly prompts user for input until user requests to load, save, or quit game
@@ -504,7 +389,7 @@ def playGame(userSelection):
 
 			userRoom = currentState.currRoom #Update room the user is currently in
 
-		#Parsing helper function
+		#Parsing helper function {Parsing dev}
 		featureList, featureDict, itemList, roomList = utils.formatRoomData(rooms, objects, currentState)	
 			
 		#Pend input:
@@ -671,7 +556,7 @@ def playGame(userSelection):
 			#Control
 			elif currentState.currRoom == 13:
 				display(control.feat1interactSuccess)
-				# ENTER MINI GAME INTERACTION HERE
+				#PENDING - ENTER MINI GAME INTERACTION HERE
 				print "Mini game launches"
 
 				# END MINI GAME INTERACTION
@@ -966,7 +851,7 @@ def playGame(userSelection):
 				display(storage.feat3interactSuccess)
 				currentState.rm02f3 = 1 #Update to interaction complete
 			#Hallway
-			if currentState.currRoom == 3: #NOTE TO CHECK: HANDLE PERMANENTLY USED?
+			if currentState.currRoom == 3: 
 				if currentState.obj3Loc == 99:   #Handle in inv
 					display(hallway.feat3interactSuccess)
 					currentState.rm03f3 = 1 #Update to interaction complete
@@ -1750,7 +1635,7 @@ def playGame(userSelection):
 				inventory.append(paperclip.name)
 			if currentState.obj10Loc == 99:  #Keycard
 				inventory.append(keycard.name)
-			if inventory:
+			if inventory: #{Parsing dev}
 				inventoryString = ""
 				for thing in inventory:
 					if thing == inventory[0]:
@@ -1766,10 +1651,6 @@ def playGame(userSelection):
 			#Brig
 			if currentState.currRoom == 1:
 				display("Brig feature 5 null")
-				#if currentState.rm01f4 == 0: #Before interaction
-				#   display(brig.feat4desc)
-				#else: #After interaction
-				#   display(brig.feat4interactComplete)
 			#Hallway
 			elif currentState.currRoom == 3:
 				if currentState.rm03f5 == 0: #Before interaction
@@ -1835,11 +1716,6 @@ def playGame(userSelection):
 			#Brig
 			if currentState.currRoom == 1:
 				print "Brig feature 5 null"
-				#if currentState.obj2Loc == 99: #Keys
-				#   display(brig.feat4interactSuccess)
-				#   currentState.rm01f4 = 1 #Update to interaction complete
-				#else:
-				#   display(brig.feat4interactFail)
 			#Hallway
 			elif currentState.currRoom == 3:
 				display(hallway.feat5interactSuccess)
@@ -1885,10 +1761,6 @@ def playGame(userSelection):
 			#Brig
 			if currentState.currRoom == 1:
 				print "Brig feature 6 null"
-				#if currentState.rm01f4 == 0: #Before interaction
-				#   display(brig.feat4desc)
-				#else: #After interaction
-				#   display(brig.feat4interactComplete)
 			#Hallway
 			elif currentState.currRoom == 3:
 				if currentState.rm03f6 == 0: #Before interaction
@@ -1936,11 +1808,6 @@ def playGame(userSelection):
 			#Brig
 			if currentState.currRoom == 1:
 				print "Brig feature 6 null"
-				#if currentState.obj2Loc == 99: #Keys
-				#   display(brig.feat4interactSuccess)
-				#   currentState.rm01f4 = 1 #Update to interaction complete
-				#else:
-				#   display(brig.feat4interactFail)
 			#Hallway
 			elif currentState.currRoom == 3:
 				if currentState.obj4Loc == 99:   #Skeleton Key in inv
@@ -2393,7 +2260,6 @@ def playGame(userSelection):
 			else:
 				display(cryptex.notInInv)
 
-		#Final stage additions 
 		#USE / FIRE GUN 
 		elif userInput == "46": #Utilize gun
 			if currentState.obj6Loc == 99: #Gun in inventory to use
@@ -2417,7 +2283,7 @@ def playGame(userSelection):
 		elif userInput == "48": 
 			if currentState.obj8Loc == 99: #If cryptex in inventory
 				print "open cryptex puzzle"
-				#ENTER CRYPTEX PUZZLE HERE (possibly returns a fail or pass value?)
+				#PENDING - ENTER CRYPTEX PUZZLE HERE (possibly returns a fail or pass value?)
 
 				#END CRYPTEX PUZZLE
 			else:
@@ -2465,7 +2331,7 @@ def playGame(userSelection):
 			else:
 				display(keycard.notInInv)
 
-		elif userInput == "99": #Test ending
+		elif userInput == "99": #Test ending {Parsing dev}
 			story.ending(currentState)
 
 		#else:
@@ -2473,7 +2339,7 @@ def playGame(userSelection):
 		#[END ENGINE]
 
 		elif userInput == "loadgame":
-			print "Load game"
+			display("Loading game.")
 			currentState = resume_gamestate("1")
 			#PENDING - Load game function {Data Dev}
 			# The following line works but if it is before the game has started, it errors
@@ -2482,7 +2348,7 @@ def playGame(userSelection):
 			#saveGame.resume_gamestate(checksaveload.checkLoading())
 			
 		elif userInput == "savegame":
-			print "Save game"
+			display("Saving game.")
 			save_gamestate("1", currentState)
 			#PENDING - Save game function {Data Dev}
 			# The following line works but the object is expecting a "name" attribute
@@ -2490,8 +2356,6 @@ def playGame(userSelection):
 
 		elif userInput in ["quit", "exit"]:
 			exitGame()
-
-
 
 #[END PLAY GAME]
 
