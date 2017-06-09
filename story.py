@@ -1,5 +1,6 @@
 # Story-specific bits.  More specifically, the conclusion.
 from utils import display
+import textwrap
 
 # This reads the gamestate file and populates the variables for the conclusion text
 def ending(gamestate):
@@ -48,19 +49,31 @@ def endingText(injured = True, bracelet = True):
 	display("Freedom, at last.  For a while you thought you were dead in the water.  But now... things seem to be looking up.")
 	print ""
 
+
+# For unlocking the cryptex
+def cryptex():
+	userInput = ""
+	while userInput not in ['stop', 'quit', 'put down', 'cancel', 'end', 'exit']:
+		display("You fiddle with the cryptex.  It takes a five letter input.  You can stop and put down the cryptex, or enter a word.")
+		print ""
+
+		userInput = raw_input(': ').lower()
+		if userInput in ['stop', 'quit', 'put down', 'cancel', 'end', 'exit']:
+			display("You put down the cryptex.  Maybe you can try to open it again later.")
+			return False
+		if len(userInput) > 5:
+			display("The word " + userInput.upper() + " is too long since it has " + str(len(userInput)) + " characters.  The cryptex only has 5 wheels, one for each letter.")
+		elif len(userInput) < 5:
+			display("The word " + userInput.upper() + " is too short since it has " + str(len(userInput)) + " characters.  There would be unused wheels if you used this word.")
+		elif userInput == 'tyler':
+			display("You turn the wheels to spell out " + userInput.upper() + ".  The cryptex opens with a click.  You slide out the central portion revealing a keycard.  Wonder what it's used for?")
+			print ""
+			display("You also find a note in there with some numbers on it.  It reads '4815162342' on it.  You have no idea what it means, but it seems significant.  Maybe you should commit this to memory.  If only you had a pen and paper...")
+			return True
+		else:
+			display("You turn the wheels to spell out " + userInput.upper() + ".  You tug at the sides, but it does not open.  Seems that you had the incorrect word.")
+		print ""
+
 if __name__ == "__main__":
 	# Same ending printed multiple times
-	print "Default ending snippet:"
-	ending ()
-
-	print "Used gun, have bracelet (same as default):"
-	endingText(True, True)
-
-	print "No gun, have bracelet:"
-	endingText(False, True)
-
-	print "Used gun, no bracelet:"
-	endingText(True, False)
-
-	print "No gun, no bracelet (best ending):"
-	endingText(False, False)
+	buttonGame()

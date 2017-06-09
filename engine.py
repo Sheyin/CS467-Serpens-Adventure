@@ -2292,9 +2292,9 @@ def playGame(userSelection):
 		#OPEN CRYPTEX
 		elif userInput == "48": 
 			if currentState.obj8Loc == 99: #If cryptex in inventory
-				print "open cryptex puzzle"
-				#PENDING - ENTER CRYPTEX PUZZLE HERE (possibly returns a fail or pass value?)
-
+				# If True - successfully passed; False = unchanged, not opened
+				if(story.cryptex()):
+					print "Cryptex has been opened - set flag"
 				#END CRYPTEX PUZZLE
 			else:
 				display(cryptex.notAvail)
@@ -2350,19 +2350,16 @@ def playGame(userSelection):
 
 		elif userInput == "loadgame":
 			display("Loading game.")
+			#loadroom = checksaveload.checkLoading()
 			currentState = resume_gamestate("1")
-			#PENDING - Load game function {Data Dev}
-			# The following line works but if it is before the game has started, it errors
-			# because currentState has not been assigned yet
-			# Or, the program ends after "loading" not sure why.  Some saves are also outdated.
-			#saveGame.resume_gamestate(checksaveload.checkLoading())
+			#currentState = resume_gamestate(loadroom)
+			display(currentState.currentRoom.longDesc)
 			
 		elif userInput == "savegame":
 			display("Saving game.")
+			#saveroom = checksaveload.checkSaving()
 			save_gamestate("1", currentState)
-			#PENDING - Save game function {Data Dev}
-			# The following line works but the object is expecting a "name" attribute
-			#saveGame.save_gamestate(checksaveload.checkSaving(), currentState)
+			#save_gamestate(saveroom, currentState)
 
 		elif userInput in ["quit", "exit"]:
 			exitGame()
