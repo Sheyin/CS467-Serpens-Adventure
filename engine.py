@@ -2361,7 +2361,7 @@ def playGame(userSelection):
 			#loadroom = checksaveload.checkLoading()
 			currentState = resume_gamestate("1")
 			#currentState = resume_gamestate(loadroom)
-			display(currentState.currentRoom.longDesc)
+			display(currentState.currRoom.longDesc)
 			
 		elif userInput == "savegame":
 			display("Saving game.")
