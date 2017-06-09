@@ -15,7 +15,6 @@ import data
 from data import *
 from utils import display
 from utils import printHelp
-from utils import roomDirectory
 import story
 import checksaveload
 import saveGame
