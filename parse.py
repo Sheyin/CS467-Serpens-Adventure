@@ -4,6 +4,7 @@ import utils
 import data
 from data import *
 from utils import display
+import story
 
 # This is the starting point for all the parsing-related functions. (Cheryl)
 # commands.py - command-specific parsing (identifying, synonyms, etc)
@@ -58,8 +59,16 @@ def main(rawinput, features, featureDict, itemDict, rooms, currentRoom):
 		# Currently redundant because feature synonyms are included in directions list
 		# location = items.findLocation(input, features)
 		direction = utils.translateRoom(input, rooms)
+
 		if (direction == -1):
-			display("I can't go that way.")
+			# Special exit
+			if currentRoom == 15 and ("hatch" in input):
+					if story.endingPrompt():
+						return utils.engine_codes_dict['endgame']
+					else:
+						return "invalid"
+			else:
+				display("I can't go that way.")
 		else:
 			key = "go_" + str(direction)
 			return utils.engine_codes_dict[key]
@@ -99,7 +108,16 @@ def main(rawinput, features, featureDict, itemDict, rooms, currentRoom):
 
 	# Strictly a for-fun command.  Not sure what parameters are really needed yet.
 	elif command == "escape":
-		commands.escape()
+		if currentRoom == 15 and "hatch" in input:
+			for escapeWord in ['escape through', 'escape by', 'escape in']:
+				if escapeWord in input:
+					if story.endingPrompt():
+						return utils.engine_codes_dict['endgame']
+			else:
+				display("That's an odd thing to do with the hatch.")
+				return "invalid"
+		else:
+			commands.escape()
 
 	# Had to remove "look" from commands.synonyms because it was causing problems - prioritization
 	elif "look" in input:
@@ -117,6 +135,15 @@ def main(rawinput, features, featureDict, itemDict, rooms, currentRoom):
 			# Recognized command on a feature.  May want this to be highest priority.
 			if commandUsedSpecified:
 				return commandUsedSpecified
+
+			# Special exit
+			elif currentRoom == 15 and feature == "hatch":
+				for escapeWord in ['climb in', 'climb through', 'enter', 'escape through']:
+					if escapeWord in input:
+						if story.endingPrompt():
+							return utils.engine_codes_dict['endgame']
+				else:
+					return "invalid"
 
 			# Some item and feature both mentioned in same sentence with a legal action.
 			elif item == 'board' and feature in ['window', 'locker'] and (command in ['move', 'use'] or commandUsedSpecified):

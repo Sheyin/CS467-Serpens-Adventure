@@ -30,7 +30,7 @@
     "feat3interactFail": "You don't see a handle.",
     "feat4": "bracelet",
     "feat4desc": "A metal bracelet you seem to have acquired when you put your arm in the small hole and used the crank. Printed on the bracelet is 'Northern Medical Research Center, phone: (217) 335-1251.'",
-    "feat4interactOptions": "pull on, remove, examine",
+    "feat4interactOptions": "pull on, remove, examine, take off",
     "feat4interactSuccess": "You try to remove the bracelet.  It won't come off.",
     "feat4interactComplete": "A metal bracelet that is printed with 'Northern Medical Research Center, phone: (217) 335-1251.' You are not able to remove it.",
     "feat4interactFail": "It doesn't work.  You can't get the bracelet off.",

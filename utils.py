@@ -35,7 +35,8 @@ engine_codes_dict = {
 	'go_up': "26", 'go_down': "27",
 	# Other
 	'inventory': "17", 'look_room': "11", 'help': "16",
-	'save': 'savegame', 'load': 'loadgame', 'exit': 'exit', 'look_room': '11'
+	'save': 'savegame', 'load': 'loadgame', 'exit': 'exit', 'look_room': '11',
+	'endgame': '99',
 }
 
 # Produces formatted text and displays on console.  Input is a string, no return.
