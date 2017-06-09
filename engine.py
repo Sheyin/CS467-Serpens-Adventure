@@ -117,7 +117,7 @@ def playGame(userSelection):
 		# Update currentState variables manually to drop into any room with any combination
 		#     of items. Allows for testing without repeating game sequence. 
 
-		currentState = gamestate.GameStateClass(12,   #currentRoom
+		currentState = gamestate.GameStateClass(11,   #currentRoom
 	      1, #room1
 	      1, #room2
 	      1, #room3
@@ -191,14 +191,14 @@ def playGame(userSelection):
 	      1, #rm9f2
 	      1, #rm9f3
 	      1, #rm9f4
-	      1, #rm10f1
-	      1, #rm10f2
-	      1, #rm11f1
-	      1, #rm11f2
-	      1, #rm11f3
-	      1, #rm11f4
-	      1, #rm11f5
-	      1, #rm11f6
+	      0, #rm10f1
+	      0, #rm10f2
+	      0, #rm11f1
+	      0, #rm11f2
+	      0, #rm11f3
+	      0, #rm11f4
+	      0, #rm11f5
+	      0, #rm11f6
 	      0, #rm12f1
 	      0, #rm12f2
 	      0, #rm12f3
