@@ -1,7 +1,7 @@
 {
     "id": 14,
     "name": "Side",
-    "aliases": ["office", "east door", "side"],
+    "aliases": ["office", "office door", "side"],
     "north": "", 
     "south": "", 
     "east": "", 
@@ -42,8 +42,8 @@
     "feat5interactFail": "You are unable to read the letter.",
     "feat6": "chest",
     "feat6desc": "An old fashioned wooden chest.",
-    "feat6interactOptions": "unlock with lockpick, pick with lockpick, jimmy the lock with lockpick",
-    "feat6interactSuccess": "You unlock the chest with the lockpick.  Inside are some clothes, an empty wallet, and a photo of a boy wearing a hat.",
+    "feat6interactOptions": "use lockpick on",
+    "feat6interactSuccess": "You unlock the chest with the lockpick. Inside are some clothes, an empty wallet, and a photo of a boy wearing a hat.",
     "feat6interactComplete": "The chest is open.  Inside are some clothes, an empty wallet, and a photo of a boy wearing a hat.",
     "feat6interactFail": "You are unable to open the chest. If only you could pick the lock with something. Maybe if you had a paperclip or something you could straighten it out and use that."
 }
