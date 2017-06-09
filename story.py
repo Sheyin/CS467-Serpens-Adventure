@@ -68,7 +68,7 @@ def cryptex():
 		elif userInput == 'tyler':
 			display("You turn the wheels to spell out " + userInput.upper() + ".  The cryptex opens with a click.  You slide out the central portion revealing a keycard.  Wonder what it's used for?")
 			print ""
-			display("You also find a note in there with some numbers on it.  It reads '4815162342' on it.  You have no idea what it means, but it seems significant.  Maybe you should commit this to memory.")
+			display("You also find a note in there with some numbers on it.  It reads '4815162342' on it.  You have no idea what it means, but it seems significant.  Maybe you should commit this to memory.  If only you had a pen and paper...")
 			return True
 		else:
 			display("You turn the wheels to spell out " + userInput.upper() + ".  You tug at the sides, but it does not open.  Seems that you had the incorrect word.")
@@ -77,6 +77,7 @@ def cryptex():
 # For the control room button pushing
 # This minigame is like operating a crane but the controls are a bit mixed up.
 # Succeeding lifts the glass over the keycard
+'''
 def buttonGame():
 	correct = 0
 	incorrect = 0
@@ -99,7 +100,6 @@ def buttonGame():
 	7: "What did you get from using the small key?",
 	8: "What did you find in the garrison?",
 	9: "What was behind the glass door?",
-
 	}
 
 # single word answers or correct the instructions
@@ -116,6 +116,7 @@ def buttonGame():
 	}
 
 	display(questions[1])
+	'''
 
 	'''
 	while userInput not in ['stop', 'quit', 'walk away', 'get up', 'cancel', 'end', 'exit']:
@@ -127,6 +128,7 @@ def buttonGame():
 # This is supposed to work with the button() function and display a game board
 # Textwrap requires a string as input (10 characters across including spaces)
 # make sure the height is not very high either
+'''
 def gamescreen(input):
 	textToPrint = textwrap.wrap(input, 13)
 	for line in textToPrint:
@@ -137,7 +139,8 @@ def button_input():
 	while userInput not in ['stop', 'quit', 'walk away', 'get up', 'cancel', 'end', 'exit']:
 		display("")
 		print ""
-		userInput = raw_input(': ').lower()	
+		userInput = raw_input(': ').lower()	\
+'''
 
 
 if __name__ == "__main__":
