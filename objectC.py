@@ -21,6 +21,9 @@
 
 #[BEGIN CLASS IMPLEMENTATION]
 class ObjectClass:
+	"""
+    This is a test class for use with hard coded data in engine.py to test engine functionality
+    """
 	def __init__(self, name, description, notInInvMessage, inRoomMessage, takeMessage, notAvailMessage, dropMessage): 
 		#[BEGIN VARIABLES]
 		self.name = name
@@ -43,7 +46,7 @@ class ObjectClass:
 
 class MattsObjectClass(object):
     """
-    
+    object (item) class for use with data files in data/objects
     """
     def __init__(self, name):
 		#[BEGIN VARIABLES]
