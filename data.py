@@ -123,21 +123,3 @@ def load_objects ():
 
 	
 
-
-#load_rooms()
-#print rooms[1].aliases[1]		
-#load_objects()
-
-#test prints for rooms dictionary
-#print rooms[6].id
-#print rooms[6].name
-#print (rooms[6].north + 100)
-#print rooms[6].longDesc
-#print rooms[7].longDesc
-	
-#test prints for objects dictionary
-#print objects["template"].name
-#print objects["smallKey"].name
-#print objects["gun"].name
-#print objects["gun"].synonyms[1]
-#print objects["board"].name
