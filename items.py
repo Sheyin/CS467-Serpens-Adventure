@@ -1,7 +1,11 @@
-# Actions upon items or features - part of parsing
+# This file contains functions that identify items or features (mostly) for parsing.
 
+# This translates attributes in the object to their colloquial equivalents.
+# Used for help function in utils or anything pulling data from the gamestate object.
+# Possibly missing: paper clip in room 12 (= lockpick?), keycard (keycarddisc)
 itemKeysDict = {'rm01o1': 'board', 'rm01o2': 'keys', 'rm02o1': 'handle', 'rm04o1': 'skeleton key',
-				'rm06o1': 'small key', 'rm07o1': 'gun', 'rm12o1': 'lockpick', 'rm14o1':'cryptex'
+				'rm06o1': 'small key', 'rm07o1': 'gun', 'rm12o1': 'lockpick', 'paperclipDisc': 'paper clip',
+				'rm14o1':'cryptex', 'keycardDisc': 'keycard',
 				}
 
 # Identifies the location (to be used specifically with "go")

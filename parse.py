@@ -1,12 +1,16 @@
-# This will parse a string input from the command line and call a corresponding function.
-# Also has some random bits as I try to figure out how to use Python.
-
 import items
 import commands
 import utils
 import data
 from data import *
 from utils import display
+
+# This is the starting point for all the parsing-related functions. (Cheryl)
+# commands.py - command-specific parsing (identifying, synonyms, etc)
+# items.py - item-specific parsing (identifying items and features)
+# utils.py - Misc. (movement/dir, engine code dictionary, help, print text)
+# story.py - Story-specific things (conclusion, cryptex puzzle)
+# checksaveload.py - Helper functions for selecting a save/load game
 
 # Prints out the available actions for a specified feature
 # This will probably be integrated into the engine or something
@@ -61,11 +65,7 @@ def main(rawinput, features, featureDict, itemDict, rooms):
 
 	elif command in ["take", "drop"]:
 		item = items.identifyItem(input, itemDict)
-		'''
-		if not item:
-			for possibleItem in ['board', 'cryptex', 'gun', 'handle', 'keys', 'lockpick', 'skeleton key', 'smallKey', 'paper clip']:
-				if possibleItem in input:
-					item = possibleItem'''
+
 		if item:
 			if command == "take":
 				key = item + "_take"
@@ -200,7 +200,7 @@ def main(rawinput, features, featureDict, itemDict, rooms):
 				return utils.engine_codes_dict['gun_use']
 			elif item == 'paper clip' and rawCommand in ['bend', 'twist', 'change', 'turn']:
 				return utils.engine_codes_dict['paper clip_bend']
-			elif item == 'cryptex' and rawCommand in ['open', 'unlock']:
+			elif item == 'cryptex' and rawCommand in ['open', 'unlock', 'twist', 'turn']:
 				return utils.engine_codes_dict['cryptex_open']
 			else:
 				# No recognized item and command

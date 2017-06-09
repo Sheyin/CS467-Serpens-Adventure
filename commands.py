@@ -4,9 +4,9 @@ import random
 from utils import display
 # Separates all the command related functions - for parsing
 
-# This has been narrowed down since there is another check for verbs based
-# on the item which will override this one.  This acts more like a failsafe
-# or catches the one-word commands.  Move, hit, use aren't really implemented.
+# This replaces the old category system.  Each line is a category.
+# Left is a synonym, right is the category and should be identical for that line.
+# This system should be secondary to feature/item-specific actions.
 synonyms =  {
 	'save': 'save', 'savegame': 'save', 
 	'load': 'load', 'loadgame': 'load', 'resume': 'load',
@@ -16,8 +16,8 @@ synonyms =  {
 	'look at': 'look at', 'examine': 'look at', 'view': 'look at',
 	'explore': 'look_room', 'look around': 'look_room',
 	'go': 'go', 'move to': 'go', 'leave': 'go', 'travel': 'go',
-	'take': 'take', 'pick up': 'pick up', 'get': 'get',
-	'drop': 'drop', 'remove': 'drop',
+	'take': 'take', 'pick up': 'take', 'get': 'take', 'obtain': 'take',
+	'drop': 'drop', 'remove': 'drop', 'relinquish': 'drop',
 	'use': 'use', 'open': 'use',
 	'move': 'move', 'shift': 'move', 'search': 'move', 
 	'pull': 'pull',
@@ -66,7 +66,7 @@ def kick(command, item):
 
 
 # Parsing-level commands for when it isn't usable by engine
-# item is an item or feature; command is a kick-type command (strings)
+# item is an item or feature; command is a eat-type command (strings)
 # Both should be pre-determined before calling this function.
 def eat(command, object):
 	# Drop the e if before -ing
@@ -87,6 +87,7 @@ def eat(command, object):
 
 
 # Pull or shift items or features - but no actual effect.
+# Secondary to any feature-specific actions.
 def pull(command, item, type):
 	if "door" in item:
 		display("Did you mean 'open the " + item + "'?")

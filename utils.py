@@ -102,14 +102,13 @@ def translateRoom(input, rooms, type="default"):
 				if type is "strict":
 					if len(input) == len(rooms[dirPos][namePos]):
 						return rooms[dirPos][0]
-				return rooms[dirPos][0]
+				elif type is "default":
+					return rooms[dirPos][0]
 	return -1
 
 
 # This changes room numbers to room names / other recognizable forms.
-# Might need to incorporate feature list as well to get doors, ladders, etc.
 # The int() is needed to make it interact with rooms properly.
-# Assumption that 'synonyms' will be the member name of room aliases
 def changeRoomNumbers(roomConnections, rooms):
 	connectionsList = []
 	roomAliases = {}

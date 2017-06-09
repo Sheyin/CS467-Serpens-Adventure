@@ -1,6 +1,8 @@
-# Mostly to produce a mockup of save interface
 import os
 from utils import display
+
+# These functions act as helper functions for the save and load interface.
+# Produces a string (number) which can then be sent to the actual save/load functions.
 
 # Call this to prompt to ask for the correct file to load 
 # This returns a number in string form (save game file to load, filtered)

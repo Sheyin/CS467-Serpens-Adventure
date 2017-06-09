@@ -21,6 +21,7 @@ def ending(gamestate):
 	endingText(*tuple(variableList))
 
 
+# Prints the actual conclusion text
 def endingText(injured = True, bracelet = True):
 	# Check gamestate for certain variables.  By default they will be true.
 
