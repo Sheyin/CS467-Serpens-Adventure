@@ -2369,6 +2369,7 @@ def playGame(userSelection):
 		#[END ENGINE]
 
 		elif userInput == "loadgame":
+
 			loadroom = checksaveload.checkLoading()
 			if loadroom != "cancel":
 				currentState = resume_gamestate(loadroom)
