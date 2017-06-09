@@ -80,9 +80,7 @@ def cryptex():
 		elif len(userInput) < 5:
 			display("The word " + userInput.upper() + " is too short since it has " + str(len(userInput)) + " characters.  There would be unused wheels if you used this word.")
 		elif userInput == 'tyler':
-			display("You turn the wheels to spell out " + userInput.upper() + ".  The cryptex opens with a click.  You slide out the central portion revealing a keycard.  Wonder what it's used for?")
-			print ""
-			display("You also find a note in there with some numbers on it.  It reads '4815162342' on it.  You have no idea what it means, but it seems significant.  Maybe you should commit this to memory.  If only you had a pen and paper...")
+			display("You turn the wheels to spell out " + userInput.upper() + ".  The cryptex opens with a click.  You slide out the central portion and find a note in there with some numbers on it.  It reads '4815162342' on it.  You have no idea what it means, but it seems significant.  Maybe you should commit this to memory.  If only you had a pen and paper...")
 			return True
 		else:
 			display("You turn the wheels to spell out " + userInput.upper() + ".  You tug at the sides, but it does not open.  Seems that you had the incorrect word.")
