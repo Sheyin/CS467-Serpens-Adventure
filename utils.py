@@ -22,9 +22,9 @@ engine_codes_dict = {
 	'lockpick_look': "40", 'lockpick_take': "41", 'lockpick_drop': "42",
 	'cryptex_look': "43", 'cryptex_take': "44", 'cryptex_drop': "45",
 	# Specific interactions
-	'gun_use': "46", 'paperclip_bend': "47", 'cryptex_open': "48",
+	'gun_use': "46", 'paper clip_bend': "47", 'cryptex_open': "48",
 	# Deck 3 Items continued
-	'paperclip_look': "49", 'paperclip_take': "50", 'paperclip_drop': "51",
+	'paper clip_look': "49", 'paper clip_take': "50", 'paper clip_drop': "51",
 	'keycard_look': "52", 'keycard_take':"53", 'keycard_drop': "54",
 	# Features
 	'feat1_look': "1", 'feat1_do': "2",	'feat2_look': "3", 'feat2_do': "4",

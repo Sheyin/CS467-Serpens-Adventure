@@ -208,7 +208,7 @@ def main(rawinput, features, featureDict, itemDict, rooms):
 
 		# No item or feature, unrecognized command
 		else:
-			if 'pots' in input and (command in ['hit', 'move']):
+			if 'pots' in input and (command in ['hit', 'move', 'break']):
 				return "2"
 			else:
 				# This is for the go requirement - if you specify "metal door" only act as go
