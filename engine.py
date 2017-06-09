@@ -130,8 +130,8 @@ def playGame(userSelection):
 	      1, #room10
 	      1, #room11
 	      1, #room12
-	      0, #room13
-	      0, #room14
+	      1, #room13
+	      1, #room14
 	      0, #room15          NOTE: 99 Item in inventory, 100 item permanently destroyed/used
 	      99, #item1 - Board - Origin Room: 1
 	      99, #item2 - Key - Origin Room: 1
@@ -139,10 +139,10 @@ def playGame(userSelection):
 	      99, #item4 - Skeleton Key - Origin Room: 4
 	      99, #item5 - Small Key - Origin Room: 6
 	      99, #item6 - Gun - Origin Room: 7 
-	      0, #item7 - Lockpick - Origin Room: 0 (player crafted)
-	      14, #item8 - Cryptex - Origin Room: 14
-	      99, #item9 - Paper clip - Origin Room: 12 
-	      13, #item10 - Keycard - Origin Room: 0
+	      99, #item7 - Lockpick - Origin Room: 0 (player crafted)
+	      99, #item8 - Cryptex - Origin Room: 14
+	      100, #item9 - Paper clip - Origin Room: 12 
+	      99, #item10 - Keycard - Origin Room: 13
 	      1, #rm1f1
 	      1, #rm1f2
 	      1, #rm1f3
@@ -191,42 +191,42 @@ def playGame(userSelection):
 	      1, #rm9f2
 	      1, #rm9f3
 	      1, #rm9f4
-	      0, #rm10f1
-	      0, #rm10f2
-	      0, #rm11f1
-	      0, #rm11f2
-	      0, #rm11f3
-	      0, #rm11f4
-	      0, #rm11f5
-	      0, #rm11f6
-	      0, #rm12f1
-	      0, #rm12f2
-	      0, #rm12f3
-	      0, #rm12f4
-	      0, #rm12f5
-	      0, #rm12f6
-	      0, #rm12o1 - Lockpick discovery
-	      0, #rm13f1
-	      0, #rm13f2
-	      0, #rm13f3
-	      0, #rm13f4
-	      0, #rm13f5
-	      0, #rm13f6
-	      0, #rm14f1
-	      0, #rm14f2
-	      0, #rm14f3
-	      0, #rm14f4
-	      0, #rm14f5
-	      0, #rm14f6
-	      0, #rm14o1 - Cryptex discovery
+	      1, #rm10f1
+	      1, #rm10f2
+	      1, #rm11f1
+	      1, #rm11f2
+	      1, #rm11f3
+	      1, #rm11f4
+	      1, #rm11f5
+	      1, #rm11f6
+	      1, #rm12f1
+	      1, #rm12f2
+	      1, #rm12f3
+	      1, #rm12f4
+	      1, #rm12f5
+	      1, #rm12f6
+	      1, #rm12o1 - Lockpick discovery
+	      1, #rm13f1
+	      1, #rm13f2
+	      1, #rm13f3
+	      1, #rm13f4
+	      1, #rm13f5
+	      1, #rm13f6
+	      1, #rm14f1
+	      1, #rm14f2
+	      1, #rm14f3
+	      1, #rm14f4
+	      1, #rm14f5
+	      1, #rm14f6
+	      1, #rm14o1 - Cryptex discovery
 	      0, #rm15f1
 	      0, #rm15f2
 	      0, #rm15f3
 	      0, #rm15f4
 	      0, #rm15f5
 	      0, #float1 - Gun fired
-		  0, #pcD - Paperclip discovery
-		  0) #kcD - Keycard discovery
+		  1, #pcD - Paperclip discovery
+		  1) #kcD - Keycard discovery
 
 	#Load room files {Data dev}
 	data.load_rooms() 
