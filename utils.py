@@ -83,7 +83,7 @@ def printHelp(featureDict, itemDict, currentState):
 		else:
 			itemList = itemList + ", " + _
 	print ""
-	display("Items: ")
+	display("Discovered Items: ")
 	if itemList:
 		display(itemList)
 	else:
