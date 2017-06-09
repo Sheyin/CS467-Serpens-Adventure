@@ -31,7 +31,7 @@
     "feat4": "chest",
     "feat4desc": "A plain looking wooden chest with a shiny lock on it.",
     "feat4interactOptions": "unlock, use keys on, search",
-    "feat4interactSuccess": "You take out the keys you found and select the shiny key. It fits into the lock and you open the chest. It contains a collection of neatly folded white linens. You rummage through and near the bottom you hand hits something hard. You fish it out and place the object on the pile of linens. To your glee it's a skeleton key! Now THIS should come in handy, hehe!",
+    "feat4interactSuccess": "You take out the keys you found and select the shiny key. It fits into the lock and you open the chest. It contains a collection of neatly folded white linens. You rummage through and near the bottom your hand hits something hard. You fish it out and place the object on the pile of linens. To your glee it's a skeleton key! Now THIS should come in handy, hehe!",
     "feat4interactComplete": "An unlocked chest full of badly rumpled linens.",
     "feat4interactFail": "You try the shiny lock, however it's, well, locked.",
     "feat5": "bottles",

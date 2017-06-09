@@ -54,6 +54,9 @@
 
 #[BEGIN CLASS IMPLEMENTATION]
 class RoomClass:
+   """
+   This is a test class for use with hard coded data in engine.py to test engine functionality
+   """
    #def __init__(self, inputID, inputName, inputNorth, inputSouth, inputEast, inputWest, inputUp, inputDown, longDescription, shortDescription, feature1, feature1desc, feat1IO, feat1IS, feature2):	 
    def __init__(self, inputID, inputName, inputNorth, inputSouth, inputEast, inputWest, inputUp, inputDown, longDescription, shortDescription, feature1, feature1desc, feat1IO, feat1IS, feat1IC, feat1IF, feature2, feature2desc, feat2IO, feat2IS, feat2IC, feat2IF, feature3, feature3desc, feat3IO, feat3IS, feat3IC, feat3IF, feature4, feature4desc, feat4IO, feat4IS, feat4IC, feat4IF, feature5, feature5desc, feat5IO, feat5IS, feat5IC, feat5IF, feature6, feature6desc, feat6IO, feat6IS, feat6IC, feat6IF):
 
@@ -123,7 +126,7 @@ class RoomClass:
 
 class MattsRoomClass(object):
     """
-    
+    room class for use with data files in data/data
     """
 
     def __init__(self, name):

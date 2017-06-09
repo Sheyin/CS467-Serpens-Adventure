@@ -117,7 +117,7 @@ def playGame(userSelection):
 		# Update currentState variables manually to drop into any room with any combination
 		#     of items. Allows for testing without repeating game sequence. 
 
-		currentState = gamestate.GameStateClass(12,   #currentRoom
+		currentState = gamestate.GameStateClass(11,   #currentRoom
 	      1, #room1
 	      1, #room2
 	      1, #room3
@@ -142,7 +142,7 @@ def playGame(userSelection):
 	      0, #item7 - Lockpick - Origin Room: 0 (player crafted)
 	      14, #item8 - Cryptex - Origin Room: 14
 	      99, #item9 - Paper clip - Origin Room: 12 
-	      0, #item10 - Keycard - Origin Room: 0 (transformed from cryptex)
+	      13, #item10 - Keycard - Origin Room: 0
 	      1, #rm1f1
 	      1, #rm1f2
 	      1, #rm1f3
@@ -191,14 +191,14 @@ def playGame(userSelection):
 	      1, #rm9f2
 	      1, #rm9f3
 	      1, #rm9f4
-	      1, #rm10f1
-	      1, #rm10f2
-	      1, #rm11f1
-	      1, #rm11f2
-	      1, #rm11f3
-	      1, #rm11f4
-	      1, #rm11f5
-	      1, #rm11f6
+	      0, #rm10f1
+	      0, #rm10f2
+	      0, #rm11f1
+	      0, #rm11f2
+	      0, #rm11f3
+	      0, #rm11f4
+	      0, #rm11f5
+	      0, #rm11f6
 	      0, #rm12f1
 	      0, #rm12f2
 	      0, #rm12f3
@@ -556,10 +556,6 @@ def playGame(userSelection):
 			#Control
 			elif currentState.currRoom == 13:
 				display(control.feat1interactSuccess)
-				#PENDING - ENTER MINI GAME INTERACTION HERE
-				print "Mini game launches"
-
-				# END MINI GAME INTERACTION
 				currentState.rm13f1 = 1 #Update to interaction complete
 			#Side
 			elif currentState.currRoom == 14:
@@ -728,8 +724,13 @@ def playGame(userSelection):
 			#Control
 			elif currentState.currRoom == 13:
 				if currentState.rm13f2 == 0: #Not complete
-					display(control.feat2interactSuccess)
-					currentState.rm13f2 = 1 #Update to interaction complete
+					if currentState.obj1Loc == 99: #If board in inventory
+						display(control.feat2interactSuccess)
+						currentState.rm13f2 = 1 #Update to interaction complete
+						currentState.keycardDisc = 1 #Keycard discovered
+						currentState.obj10Loc = 13 #Update keycard location to room 13
+					else:
+						display(control.feat2interactFail)
 				else: #Action already completed
 					display(control.feat2interactComplete)
 			#Side
@@ -2272,10 +2273,10 @@ def playGame(userSelection):
 		#BEND / TWIST / STRAIGHTEN PAPERCLIP
 		elif userInput == "47": #Change paperclip into lockpick 
 			if currentState.obj9Loc == 99: #If paperclip in inventory
-				print "Change paperclip into lockpick"
 				display("You take the paper clip and straighten it out.  It'll do as a make shift lockpick! Oops, you dropped it.")
-				currentState.obj9Loc == 100 #Update paperclip to permanently used
-				currentState.obj7Loc == currentState.currRoom #Lockpick falls onto floor of current room
+				currentState.obj9Loc = 100 #Update paperclip to permanently used
+				currentState.rm12o1 = 1 #Update lockpick discovered
+				currentState.obj7Loc = currentState.currRoom #Lockpick falls onto floor of current room
 			else:
 				display("You don't have a paper clip.")
 

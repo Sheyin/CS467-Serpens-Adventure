@@ -1,7 +1,7 @@
 {
     "id": 14,
     "name": "Side",
-    "aliases": ["office", "east door", "side"],
+    "aliases": ["office", "office door", "side"],
     "north": "", 
     "south": "", 
     "east": "", 
@@ -11,10 +11,10 @@
     "longDesc": "This room smells stale with disuse.  A threadbare red rug covers the center of the floor.  A large wooden chest is sitting against the wall opposite the door.  There is a desk in the center, with what looks like a letter sitting on top of it. There is a framed photo on the desk. One of the desk drawers has not been fully closed and hangs ajar. The garden door is on the western wall, where you entered the room.",
     "shortDesc": "A side room with a large wooden chest is sitting against the wall opposite the door.  There is a desk in the center, with what looks like a letter sitting on top of it and a framed photo. One of the desk drawers has not been fully closed and hangs ajar. The garden door is on the western wall, which you entered from.",
     "feat1": "garden door",
-    "feat1desc": "This door leads back into the garden.",
+    "feat1desc": "You check the door and recognize it.  It's the garden door.",
     "feat1interactOptions": "examine, check, try, open",
-    "feat1interactSuccess": "You try the handle. The door to the garden is unlocked.",
-    "feat1interactComplete": "The door to the garden is unlocked.",
+    "feat1interactSuccess": "You try the handle. The garden door is unlocked.",
+    "feat1interactComplete": "The garden door is unlocked.",
     "feat1interactFail": "You are unable to open the door (error!)",
     "feat2": "photo",
     "feat2desc": "This is a picture of a boy wearing a hat.",
@@ -42,8 +42,8 @@
     "feat5interactFail": "You are unable to read the letter.",
     "feat6": "chest",
     "feat6desc": "An old fashioned wooden chest.",
-    "feat6interactOptions": "unlock with lockpick, pick with lockpick, jimmy the lock with lockpick",
-    "feat6interactSuccess": "You unlock the chest with the lockpick.  Inside are some clothes, an empty wallet, and a photo of a boy wearing a hat.",
+    "feat6interactOptions": "use lockpick on",
+    "feat6interactSuccess": "You unlock the chest with the lockpick. Inside are some clothes, an empty wallet, and a photo of a boy wearing a hat.",
     "feat6interactComplete": "The chest is open.  Inside are some clothes, an empty wallet, and a photo of a boy wearing a hat.",
     "feat6interactFail": "You are unable to open the chest. If only you could pick the lock with something. Maybe if you had a paperclip or something you could straighten it out and use that."
 }
