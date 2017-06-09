@@ -12,16 +12,19 @@ def checkLoading():
 	fileList = os.listdir(path)
 	fileNumbers = []
 
+	if "0.json" in fileList:
+		fileList.remove("0.json")
+
 	for gamestate in fileList:
 		strippedName = gamestate.strip(".json")
 		fileNumbers.append(strippedName)
-		display("Save Game #" + strippedName + ": ")
 		file = open(path + gamestate, 'r')
-		# skip first line - name
+		# skip first line
 		file.readline()
 		currentRoomLine = file.readline().rstrip()
-		currentRoom = currentRoomLine[15:-2]
-		display("Current Room: " + currentRoom)
+		currentRoom = currentRoomLine[15:-1]
+		
+		display("Save Game #" + strippedName + ":    Current Room: " + currentRoom)
 		file.close()
 
 	choice = "unknown"
@@ -29,12 +32,16 @@ def checkLoading():
 		print ""
 		display("Which save game would you like to load?")
 		display("Please select a number or enter 'cancel'.")
+		print ""
 		choice = raw_input(': ')
 		choice = choice.lower()
+
 		if choice in fileNumbers:
+			print ""
+			display("Loading save #" + choice + ".")
 			return choice
 		elif choice in ['cancel', 'quit', 'stop', 'end', 'exit']:
-			display("Game will not be saved.")
+			display("Game will not be loaded.")
 			return "cancel"
 		else:
 			display("This is not a valid selection.")
@@ -48,6 +55,9 @@ def checkSaving():
 	fileList = os.listdir(path)
 	fileNumbers = []
 
+	if "0.json" in fileList:
+		fileList.remove("0.json")
+
 	for gamestate in fileList:
 		strippedName = gamestate.strip(".json")
 		fileNumbers.append(strippedName)
@@ -56,17 +66,23 @@ def checkSaving():
 	while choice not in ['cancel', 'quit', 'stop', 'end', 'exit']:
 		print ""
 		display("Please enter a number to save your game in or enter 'cancel'.")
+		print ""
 		choice = raw_input(': ')
 		choice = choice.lower()
-		if choice in fileNumbers:
+		if choice == "0":
+			display("Sorry, you cannot use this as a filename.  Please choose another.")
+		elif choice in fileNumbers:
+			print ""
 			display ("A save game by this number already exists.  Would you like to overwrite this save?")
 			confirm = raw_input(': ')
 			if confirm.lower() in ['y', 'yes', 'yeah', 'do it', 'proceed', 'ok', 'go ahead', 'overwrite', 'confirm', 'sure']:
 				display("Saving over game number " + choice + ".")
 				return choice
 			else:
+				print ""
 				display("File will not be overwritten.")
 		elif choice in ['cancel', 'quit', 'stop', 'end', 'exit']:
+			print ""
 			display("Game will not be saved.")
 			return "cancel"
 		else:
