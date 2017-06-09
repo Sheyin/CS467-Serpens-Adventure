@@ -15,6 +15,7 @@ import data
 from data import *
 from utils import display
 from utils import printHelp
+from utils import roomDirectory
 import story
 import checksaveload
 import saveGame
@@ -2366,6 +2367,7 @@ def playGame(userSelection):
 
 				#currentState = resume_gamestate(loadroom)
 				print "Test - load room desc"
+				#print roomDirectory[currentState.currentRoom]
 				#print currentState
 				#print currentState.currentRoom
 				#print rooms[currentState.currentRoom].longDesc

@@ -39,6 +39,12 @@ engine_codes_dict = {
 	'endgame': '99',
 }
 
+roomDirectory = {
+	1: 'Brig', 2: 'Storage Room', 3: 'Hallway', 4: 'Observation Room', 5: 'Examination Room',
+	6: 'Rum Room', 7: 'Armory', 8: 'Garrison', 9: 'Galley', 10: 'Ladder Room',
+	11: 'Hallway', 12: 'Garden', 13: 'Control Room', 14: 'Side Room', 15: 'Processing',
+}
+
 # Produces formatted text and displays on console.  Input is a string, no return.
 def display(text):
    textToPrint = textwrap.wrap(text, 70)
