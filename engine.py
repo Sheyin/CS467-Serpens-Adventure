@@ -2361,8 +2361,10 @@ def playGame(userSelection):
 			#loadroom = checksaveload.checkLoading()
 			loadroom = "1"
 			if loadroom != "cancel":
-				print "loadroom: " + str(loadroom) 
-				currentState = resume_gamestate(loadroom)
+				print "loadroom: " + str(loadroom)
+				currentState = resume_gamestate("1")
+
+				#currentState = resume_gamestate(loadroom)
 				print "Test - load room desc"
 				#print currentState
 				#print currentState.currentRoom
