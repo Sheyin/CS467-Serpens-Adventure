@@ -162,7 +162,7 @@ def main(rawinput, features, featureDict, itemDict, rooms, currentRoom):
 				key = "feat" + str(pos) + "_do"
 				return utils.engine_codes_dict[key]
 
-			elif item == 'handle' and feature in ['metal door'] and (command in ['use'] or commandUsedSpecified):
+			elif item == 'handle' and feature in ['metal door'] and (command in ['use'] or commandUsedSpecified or "attach" in input or "affix" in input or "stick" in input):
 				key = "feat" + str(pos) + "_do"
 				return utils.engine_codes_dict[key]
 
