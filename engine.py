@@ -108,7 +108,18 @@ def playGame(userSelection):
 
 	elif userSelection == 1: #Load game
 		#Load game state with saved variables {Data dev}
-		currentState = resume_gamestate("1")
+		loadroom = checksaveload.checkLoading()
+		if loadroom == "cancel":
+			# If cancelled, load a new game instead
+			print ""
+			display("Starting a new game.")
+			global currentState
+			currentState = MattsGameStateClass(1)
+			currentState = resume_gamestate("0")
+		else:
+			currentState = resume_gamestate(loadroom)
+			print ""
+			
 		#print "LOAD GAME FILE"
 
 	else: # Launch developer testing
@@ -2359,18 +2370,16 @@ def playGame(userSelection):
 		#[END ENGINE]
 
 		elif userInput == "loadgame":
-			display("Loading game.")
-			#loadroom = checksaveload.checkLoading()
-			currentState = resume_gamestate("1")
-			#currentState = resume_gamestate(loadroom)
-			display(currentState.currRoom.longDesc)
+
+			loadroom = checksaveload.checkLoading()
+			if loadroom != "cancel":
+				currentState = resume_gamestate(loadroom)
 			
 		elif userInput == "savegame":
-			display("Saving game.")
-			#saveroom = checksaveload.checkSaving()
-			save_gamestate("1", currentState)
-			#save_gamestate(saveroom, currentState)
-
+			saveroom = checksaveload.checkSaving()
+			if saveroom != "cancel":
+				save_gamestate(saveroom, currentState)
+			
 		elif userInput in ["quit", "exit"]:
 			exitGame()
 

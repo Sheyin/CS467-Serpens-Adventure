@@ -47,10 +47,6 @@ def main(rawinput, features, featureDict, itemDict, rooms, currentRoom):
 	if rawCommand is "null":
 		return "invalid"
 
-	# For testing only - delete when numeric commands no longer supported
-	elif (command and command.isdigit()):
-		return command
-
 	elif command in ['exit', 'inventory', 'savegame', 'loadgame', 'help']:
 		return command
 
@@ -162,19 +158,22 @@ def main(rawinput, features, featureDict, itemDict, rooms, currentRoom):
 				key = "feat" + str(pos) + "_do"
 				return utils.engine_codes_dict[key]
 
-			# Unrecognized combination of item, feature, command - not sure when this will be used
-			elif command and feature and item:
-				display("I'm not sure if I can " + command + " the " + item + " on the " + feature + ".")
-
 			elif command == 'eat':
 				commands.eat(rawCommand, feature)
 
 			# Kicking a recognized feature
 			elif command == 'hit':
-				commands.kick(rawCommand, feature)
+				if currentRoom == 13 and ("board" in input) and (feature == "glass case"):
+					return "4"
+				else:
+					commands.kick(rawCommand, feature)
 
 			elif command == 'move':
 				commands.pull(rawCommand, feature, "feature")
+
+			# Unrecognized combination of item, feature, command - not sure when this will be used
+			elif command and feature and item:
+				display("I'm not sure if I can " + command + " the " + item + " on the " + feature + ".")
 
 			# Feature mentioned, no item; no legal action from json
 			else:
