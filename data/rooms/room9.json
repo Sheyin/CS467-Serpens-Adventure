@@ -1,7 +1,7 @@
 {
     "id": 9,
     "name": "Galley",
-    "aliases": ["canvas flap", "wooden door"],
+    "aliases": ["canvas flap", "canvas"],
     "north": "", 
     "south": 8, 
     "east": "", 

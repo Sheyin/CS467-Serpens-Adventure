@@ -1,7 +1,7 @@
 {
     "id": 8,
     "name": "Garrison",
-    "aliases": ["metal door", "canvas", "canvas flap"],
+    "aliases": ["metal door", "canvas", "canvas flap", "wooden door"],
     "north": 9, 
     "south": 7, 
     "east": 10, 
