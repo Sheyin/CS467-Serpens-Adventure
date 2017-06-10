@@ -47,8 +47,8 @@ def main(rawinput, features, featureDict, itemDict, rooms, currentRoom):
 	if rawCommand is "null":
 		return "invalid"
 
-	elif command in ['exit', 'inventory', 'savegame', 'loadgame', 'help']:
-		return command
+	elif command in ['exit', 'inventory', 'save', 'load', 'help']:
+		return utils.engine_codes_dict[command]
 
 	elif command == "go":
 		# This will identify a direction or a feature, if found
