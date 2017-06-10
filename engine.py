@@ -2301,7 +2301,9 @@ def playGame(userSelection):
 			if currentState.obj8Loc == 99: #If cryptex in inventory
 				# If True - successfully passed; False = unchanged, not opened
 				if(story.cryptex()):
-					print "Cryptex has been opened - set flag" #PENDING
+					display("Great, you were able to solve the puzzle!")
+				else:
+					display("You'll try it again later.")
 				#END CRYPTEX PUZZLE
 			else:
 				display(cryptex.notAvail)
@@ -2378,13 +2380,17 @@ def playGame(userSelection):
 #[BEGIN EXIT GAME]
 def exitGame():
 	print ""
-	print "Roll the credits!"
+	display("Roll the credits!")
 	print ""
-	print "Parsing Dev - Cheryl See"
-	print "Engine Dev - Karen Thrasher"
-	print "Data Dev - Matt Hillman"
+	display("Hats off to the soon to be graduates:")
 	print ""
-	print "Thank you for playing!"
+	display("Parsing Dev - Cheryl See")
+	display("Engine Dev - Karen Thrasher")
+	display("Data Dev - Matt Hillman")
+	print ""
+	display("Oregon State, it's been awesome!")
+	print ""
+	display("Thank you for playing!")
 	print ""
 	sys.exit()
 #[END EXIT GAME]

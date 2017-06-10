@@ -30,7 +30,7 @@
     "feat3interactFail": "Trap Door Fail - this should never display",
     "feat4": "barrels",
     "feat4desc": "The room is stacked to the ceiling with barrels.  They are of a medium size and made of wood fastened together with bands of iron. ",
-    "feat4interactOptions": "look behind, search, check, examine",
+    "feat4interactOptions": "search, check, examine",
     "feat4interactSuccess": "You begin searching around the barrels - on the floor, between them... nothing. You decide, with a little apprehension for sticking your hands into unknown dark corners, to search behind the barrels. You systematically search thoroughly behind each barrel.  About half way around the room your finger brushes against something. You nudge it out from behind the barrel to the floor where you can see it. It's a small key!",
     "feat4interactComplete": "You have searched these barrels more thoroughly than you would have liked to. They are of a medium size and made of wood fasterned together with bands of iron.",
     "feat4interactFail": "Barrels Fail - this should never display",
