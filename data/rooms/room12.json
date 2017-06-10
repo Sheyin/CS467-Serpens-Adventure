@@ -12,7 +12,7 @@
     "shortDesc": "There are many small plants in rows that you don't recognize. There is a switch on the wall near you, and a note on the floor.  There is an office door to the East, a blue door to the West, and a glass door to the South.",
     "feat1": "plants",
     "feat1desc": "Rows of lovely potted plants have been carefully planted and arranged.  It's clear that someone has put a lot of work into maintaining this garden.  A label says 'Brugmancia plant' along with 'Angel Trumpet' written underneath it.",
-    "feat1interactOptions": "kick, hit, tip over, destroy, wreck, push, move, push",
+    "feat1interactOptions": "kick, hit, tip over, destroy, wreck, push, move",
     "feat1interactSuccess": "The pots fall over, crashing onto the floor.  The pots shatter into countless pieces.  Dirt is scattered all over the floor.  You monster.  On the upside, you find a paper clip in the debris.  I hope it was worth it.",
     "feat1interactComplete": "Dirt, pieces of pottery and plants lie scattered on the floor, forgotten and abused.  If you listen carefully, you can hear the plants crying out for help.  You had found a paper clip in the ruins.",
     "feat1interactFail": "You are unable to destroy the plants.",

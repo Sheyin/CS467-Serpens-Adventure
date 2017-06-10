@@ -86,4 +86,5 @@ def checkSaving():
 			display("Game will not be saved.")
 			return "cancel"
 		else:
+			display("Game is saved.")
 			return choice
