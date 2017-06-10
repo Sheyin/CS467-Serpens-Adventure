@@ -12,7 +12,7 @@
     "shortDesc": "You are in a room with a locker on one side of the room that has a cabinet full of rifles and a case on the opposite wall. There is a wooden door to the South and a metal door to the North.",
     "feat1": "cabinet",
     "feat1desc": "A cabinet containing at least a dozen well oiled and gleaming rifles. The cabinet is relatively plain and made of wood.  The rifles are secured inside the cabinet by a set of metal rods that are fastened over the firearms.",
-    "feat1interactOptions": "examine, try, check",
+    "feat1interactOptions": "examine, try, check, open",
     "feat1interactSuccess": "You examine the gun cabinet a little closer and see that it does not appear to have any accessible way to remove the firearms. Whatever you're about to do next, you're doing it without one of these rifles.",
     "feat1interactComplete": "A secured cabinet containing at least a dozen well oiled and gleaming rifles. The cabinet is relatively plain and made of wood.  The rifles are secured inside the cabinet by a set of metal rods that are fastened over the firearms and you cannot see a way to remove them.",
     "feat1interactFail": "Gun Cabinet Fail - this should never display",

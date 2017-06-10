@@ -158,6 +158,22 @@ def main(rawinput, features, featureDict, itemDict, rooms, currentRoom):
 				key = "feat" + str(pos) + "_do"
 				return utils.engine_codes_dict[key]
 
+			elif (currentRoom == 12) and ("key" in input) and (feature == "office door") and (command in ['use'] or commandUsedSpecified):
+				if item == 'skeleton key':
+					key = "feat" + str(pos) + "_do"
+					return utils.engine_codes_dict[key]
+				else:
+					display("The key doesn't fit.  Maybe a different one will work.")
+					return "invalid"
+
+			elif (currentRoom == 7) and ("key" in input) and (feature == "case") and (command in ['use'] or commandUsedSpecified):
+				if item == 'small key':
+					key = "feat" + str(pos) + "_do"
+					return utils.engine_codes_dict[key]
+				else:
+					display("The key doesn't fit.  Maybe a different one will work.")
+					return "invalid"
+
 			elif command == 'eat':
 				commands.eat(rawCommand, feature)
 
