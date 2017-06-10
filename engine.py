@@ -1039,17 +1039,23 @@ def playGame(userSelection):
 					display(observation.feat4interactComplete)
 			#Rum
 			elif currentState.currRoom == 6:
-				display(rum.feat4interactSuccess)
-				currentState.rm06f4 = 1 #Update to interaction complete
-				currentState.rm06o1 = 1 #Small Key discovered 
+				if currentState.rm06f4 == 0: #Not complete
+					display(rum.feat4interactSuccess)
+					currentState.rm06f4 = 1 #Update to interaction complete
+					currentState.rm06o1 = 1 #Small Key discovered 
+				else:
+					display(rum.feat4interactComplete)
 			#Armory
 			if currentState.currRoom == 7:
-				if currentState.obj5Loc == 99: #Small key
-					display(armory.feat4interactSuccess)
-					currentState.rm07f4 = 1 #Update to interaction complete
-					currentState.rm07o1 = 1 #Gun discovered
+				if currentState.rm07f4 == 0: #Not complete
+					if currentState.obj5Loc == 99: #Small key
+						display(armory.feat4interactSuccess)
+						currentState.rm07f4 = 1 #Update to interaction complete
+						currentState.rm07o1 = 1 #Gun discovered
+					else:
+						display(armory.feat4interactFail)
 				else:
-					display(armory.feat4interactFail)
+					display(armory.feat4interactComplete)
 			#Garrison
 			elif currentState.currRoom == 8:
 				display(garrison.feat4interactSuccess)
