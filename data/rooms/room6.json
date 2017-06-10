@@ -9,7 +9,7 @@
     "up": "", 
     "down": 3,
 	"longDesc": "You are in a room full of barrels. They are stacked to the ceiling against every wall and give the room a claustrophobic feel. There is a faint scent of molasses in the air mixed with rust and damp wood.  The room is lit by a single oil lamp made from a bottle hanging from a rope off the ceiling. There is another bottle hanging from the ceiling, however it's not lit like the other one and hangs much lower.  There is a trap door in the floor that goes down and a wooden door to the North.",
-    "shortDesc": "You are in a room full of barrels. The room is lit by a single oil lamp made from a bottle hanging from a rope off the ceiling. There is another bottle hanging from the ceiling, however it's not lit like the other one and hangs much lower.  There is a trap door in the floor that goes down and a door to the North.",
+    "shortDesc": "You are in a room full of barrels. The room is lit by a single oil lamp made from a bottle hanging from a rope off the ceiling. There is another bottle hanging from the ceiling, however it's not lit like the other one and hangs much lower.  There is a trap door in the floor that goes down and a wooden door to the North.",
     "feat1": "bottle",
     "feat1desc": "There is a bottle hanging low from a rope on the ceiling. It looks like it might have been a companion lamp for the oil lamp burning brightly in the room but it's not lit. You look at it closer and see that there appears to be something in the murky liquid in the bottle.",
     "feat1interactOptions": "pour out, dump out, empty",
