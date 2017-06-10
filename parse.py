@@ -65,6 +65,18 @@ def main(rawinput, features, featureDict, itemDict, rooms, currentRoom):
 						return "invalid"
 			else:
 				display("I can't go that way.")
+		# Prevent "go door" in room 6 leading downstairs
+		elif currentRoom == 6:
+			feature = items.identifyFeature(input, features)
+			if feature in ["trap door", "wooden door"]:
+				key = "go_" + str(direction)
+				return utils.engine_codes_dict[key]
+			elif "door" in input:
+				display("Which door, wooden or trap?")
+				return "invalid"
+			else:
+				key = "go_" + str(direction)
+				return utils.engine_codes_dict[key]
 		else:
 			key = "go_" + str(direction)
 			return utils.engine_codes_dict[key]
@@ -262,6 +274,19 @@ def main(rawinput, features, featureDict, itemDict, rooms, currentRoom):
 				# Not a valid room alias
 				if (direction == -1):
 					display("I don't understand.")
+				elif currentRoom == 6:
+					if "door" in input:
+						for doordescription in ['trap', 'wooden']:
+							if doordescription in input:
+								key = "go_" + str(direction)
+								return utils.engine_codes_dict[key]
+						# Just a plain 'door' not trap / wooden
+						display("Which door, wooden or trap?")
+						return "invalid"
+					else:
+						# Some other term like ladder.  Should be okay.
+						key = "go_" + str(direction)
+						return utils.engine_codes_dict[key]
 				# Identical to "go"
 				else:
 					key = "go_" + str(direction)

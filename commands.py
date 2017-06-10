@@ -15,7 +15,7 @@ synonyms =  {
 	'help': 'help',
 	'look at': 'look at', 'examine': 'look at', 'view': 'look at',
 	'explore': 'look_room', 'look around': 'look_room',
-	'go': 'go', 'move to': 'go', 'leave': 'go', 'travel': 'go',
+	'go': 'go', 'move to': 'go', 'leave': 'go', 'travel': 'go', 'climb up': 'go', 'climb down': 'go',
 	'take': 'take', 'pick up': 'take', 'get': 'take', 'obtain': 'take',
 	'drop': 'drop', 'remove': 'drop', 'relinquish': 'drop',
 	'use': 'use', 'open': 'use',
