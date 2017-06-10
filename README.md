@@ -7,4 +7,4 @@ Created by Team Serpens:
 <li>Data Dev - Matt Hillman
 
 To initiate game: <b>python main.py</b>
-Walkthrough: <b>CS467-ProjectWalkThrough.pdf</b>
+<br>Walkthrough: <b>CS467-ProjectWalkThrough.pdf</b>
