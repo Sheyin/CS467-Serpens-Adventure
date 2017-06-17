@@ -29,15 +29,15 @@ def checkLoading():
 
 	choice = "unknown"
 	while choice not in ['cancel', 'quit', 'stop', 'end', 'exit']:
-		print ""
+		print ("")
 		display("Which save game would you like to load?")
 		display("Please select a number or enter 'cancel'.")
-		print ""
-		choice = raw_input(': ')
+		print ("")
+		choice = input(': ')
 		choice = choice.lower()
 
 		if choice in fileNumbers:
-			print ""
+			print ("")
 			display("Loading save #" + choice + ".")
 			return choice
 		elif choice in ['cancel', 'quit', 'stop', 'end', 'exit']:
@@ -64,25 +64,25 @@ def checkSaving():
 
 	choice = "unknown"
 	while choice not in ['cancel', 'quit', 'stop', 'end', 'exit']:
-		print ""
+		print ("")
 		display("Please enter a number to save your game in or enter 'cancel'.")
-		print ""
-		choice = raw_input(': ')
+		print ("")
+		choice = input(': ')
 		choice = choice.lower()
 		if choice == "0":
 			display("Sorry, you cannot use this as a filename.  Please choose another.")
 		elif choice in fileNumbers:
-			print ""
+			print ("")
 			display ("A save game by this number already exists.  Would you like to overwrite this save?")
-			confirm = raw_input(': ')
+			confirm = input(': ')
 			if confirm.lower() in ['y', 'yes', 'yeah', 'do it', 'proceed', 'ok', 'go ahead', 'overwrite', 'confirm', 'sure']:
 				display("Saving over game number " + choice + ".")
 				return choice
 			else:
-				print ""
+				print ("")
 				display("File will not be overwritten.")
 		elif choice in ['cancel', 'quit', 'stop', 'end', 'exit']:
-			print ""
+			print ("")
 			display("Game will not be saved.")
 			return "cancel"
 		else:

@@ -19,17 +19,17 @@ from utils import display
 
 #[BEGIN SPECIFY ROOM TESTING]
 def specifyRoomTest(testState):
-   print ""
-   print "Specify Room Testing"
-   print ""
+   print ("")
+   print ("Specify Room Testing")
+   print ("")
 
 #[END SPECIFY ROOM TESTING]
 
 #[BEGIN FINAL LEVEL TESTING]
 def finalLevelTest():
-   print ""
-   print "Final Level Testing"
-   print ""
+   print ("")
+   print ("Final Level Testing")
+   print ("")
 
    #Initial variables
    userInput = "default"   #Default message for user input
@@ -301,8 +301,8 @@ def finalLevelTest():
       featureList, featureDict, itemDict, roomList = utils.formatRoomData(rooms, objects, currentState)
 
       #Pend input:
-      print ""
-      userInput = raw_input (": ")
+      print ("")
+      userInput = input (": ")
 
       #Parse user input and return code for engine action {Parsing Dev}
       userInput = parse.main(userInput, featureList, featureDict, itemDict, roomList)
@@ -1384,8 +1384,8 @@ def finalLevelTest():
          utils.printHelp(featureDict, itemDict)
 
       elif userInput == "17": #Inventory
-         print ""
-         print "Inventory:"
+         print ("")
+         print ("Inventory:")
          if currentState.obj1Loc == 99:   #Board
             display(board.name)
          if currentState.obj2Loc == 99:   #Keys
@@ -1402,12 +1402,12 @@ def finalLevelTest():
             display(lockpick.name)
          if currentState.obj8Loc == 99:   #Cryptex
             display(cryptex.name)
-         print ""
+         print ("")
 
       elif userInput == "18": #Look at feature 5 - Brig:null - LADDER / BOTTLES / WOODEN DOOR / METAL DOOR / CANVAS FLAP / PAINTING / WEST DOOR
          #Brig
          if currentState.currRoom == 1:
-            print "Brig feature 5 null"
+            print ("Brig feature 5 null")
             #if currentState.rm01f4 == 0: #Before interaction
             #   display(brig.feat4desc)
             #else: #After interaction
@@ -1477,7 +1477,7 @@ def finalLevelTest():
       elif userInput == "19": #Interact with feature 5  - LADDER / BOTTLES / WOODEN DOOR / PAINTING / WEST DOOR
          #Brig
          if currentState.currRoom == 1:
-            print "Brig feature 5 null"
+            print ("Brig feature 5 null")
             #if currentState.obj2Loc == 99: #Keys
             #   display(brig.feat4interactSuccess)
             #   currentState.rm01f4 = 1 #Update to interaction complete
@@ -1528,7 +1528,7 @@ def finalLevelTest():
       elif userInput == "20": #Look at feature 6 - Brig:null  - TRAP DOOR / PAPERS / METAL DOOR / PLANT / PLANT
          #Brig
          if currentState.currRoom == 1:
-            print "Brig feature 6 null"
+            print ("Brig feature 6 null")
             #if currentState.rm01f4 == 0: #Before interaction
             #   display(brig.feat4desc)
             #else: #After interaction
@@ -1579,7 +1579,7 @@ def finalLevelTest():
       elif userInput == "21": #Interact with feature 6
          #Brig
          if currentState.currRoom == 1:
-            print "Brig feature 6 null"
+            print ("Brig feature 6 null")
             #if currentState.obj2Loc == 99: #Keys
             #   display(brig.feat4interactSuccess)
             #   currentState.rm01f4 = 1 #Update to interaction complete
@@ -2027,16 +2027,16 @@ def finalLevelTest():
             display(cryptex.notInInv)
 
       else:
-         print "Invalid input"
+         print ("Invalid input")
       #[END ENGINE]
 
 #[END FINAL LEVEL TESTING]
 
 #[BEGIN MID LEVEL TESTING]
 def middleLevelTest():
-   print ""
-   print "Middle Level Testing"
-   print ""
+   print ("")
+   print ("Middle Level Testing")
+   print ("")
 
    #Initial variables
    userInput = "default"   #Default message for user input
@@ -2221,7 +2221,7 @@ def middleLevelTest():
          userRoom = currentState.currRoom #Update room the user is currently in
 
       #Pend input:
-      userInput = raw_input (": ")
+      userInput = input (": ")
 
       #Parse user input and return code for engine action {Parsing Dev}
       featureList, featureDict, itemDict, roomList = utils.formatRoomData(rooms, objects, currentState)
@@ -2900,8 +2900,8 @@ def middleLevelTest():
          utils.printHelp(featureDict, itemDict)
 
       elif userInput == "17": #Inventory
-         print ""
-         print "Inventory:"
+         print ("")
+         print ("Inventory:")
          if currentState.obj1Loc == 99:   #Board
             display(board.name)
          if currentState.obj2Loc == 99:   #Keys
@@ -2914,12 +2914,12 @@ def middleLevelTest():
             display(smallKey.name)
          if currentState.obj6Loc == 99:   #Gun
             display(gun.name)
-         print ""
+         print ("")
 
       elif userInput == "18": #Look at feature 5 - Brig:null - LADDER / BOTTLES / WOODEN DOOR / METAL DOOR / CANVAS FLAP
          #Brig
          if currentState.currRoom == 1:
-            print "Brig feature 5 null"
+            print ("Brig feature 5 null")
             #if currentState.rm01f4 == 0: #Before interaction
             #   display(brig.feat4desc)
             #else: #After interaction
@@ -2958,7 +2958,7 @@ def middleLevelTest():
       elif userInput == "19": #Interact with feature 5  - LADDER / BOTTLES / WOODEN DOOR
          #Brig
          if currentState.currRoom == 1:
-            print "Brig feature 5 null"
+            print ("Brig feature 5 null")
             #if currentState.obj2Loc == 99: #Keys
             #   display(brig.feat4interactSuccess
             #   currentState.rm01f4 = 1 #Update to interaction complete
@@ -2989,7 +2989,7 @@ def middleLevelTest():
       elif userInput == "20": #Look at feature 6 - Brig:null  - TRAP DOOR / PAPERS / METAL DOOR
          #Brig
          if currentState.currRoom == 1:
-            print "Brig feature 6 null"
+            print ("Brig feature 6 null")
             #if currentState.rm01f4 == 0: #Before interaction
             #   display(brig.feat4desc 
             #else: #After interaction
@@ -3016,7 +3016,7 @@ def middleLevelTest():
       elif userInput == "21": #Interact with feature 6
          #Brig
          if currentState.currRoom == 1:
-            print "Brig feature 6 null"
+            print ("Brig feature 6 null")
             #if currentState.obj2Loc == 99: #Keys
             #   display(brig.feat4interactSuccess)
             #   currentState.rm01f4 = 1 #Update to interaction complete
@@ -3317,7 +3317,7 @@ def middleLevelTest():
             display(gun.notInInv)
 
       else:
-         print "Invalid input"
+         print ("Invalid input")
       #[END ENGINE]
 
 #[END MID LEVEL TESTING]
@@ -3344,21 +3344,21 @@ def roomTest():
    rm1f2 = room1.feat2
 
    #Testing - print to screen 
-   print "Room ID: " + rm1id
-   print "Room name: " + rm1name
+   print ("Room ID: " + rm1id)
+   print ("Room name: " + rm1name)
 
-   print "North: " + rm1north
-   print "South: " + rm1south
-   print "East: " + rm1east
-   print "West: " + rm1west
-   print "Up: " + rm1up
-   print "Down: " + rm1down
+   print ("North: " + rm1north)
+   print ("South: " + rm1south)
+   print ("East: " + rm1east)
+   print ("West: " + rm1west)
+   print ("Up: " + rm1up)
+   print ("Down: " + rm1down)
 
-   print "Long description: " + rm1LD
-   print "Short description: " + rm1SD
+   print ("Long description: " + rm1LD)
+   print ("Short description: " + rm1SD)
 
-   print "Feature 1: " + rm1f1
-   print "Feature 2: " + rm1f2
+   print ("Feature 1: " + rm1f1)
+   print ("Feature 2: " + rm1f2)
 
    #Test implementation of room
 
@@ -3376,49 +3376,49 @@ def gameStateTest():
 
    #Current room 
    currentRoom = currentState.currRoom
-   print "Current Room: " 
-   print currentRoom
+   print ("Current Room: ")
+   print (currentRoom)
 
    #Room 1
    visRoom1 = currentState.rm01vis
-   print "Room 1 Visited: " 
-   print visRoom1
+   print ("Room 1 Visited: ")
+   print (visRoom1)
 
    #Room 2
    visRoom2 = currentState.rm02vis
-   print "Room 2 Visited: " 
-   print visRoom2
+   print ("Room 2 Visited: ")
+   print (visRoom2)
 
    #Room 3
    visRoom3 = currentState.rm03vis
-   print "Room 3 Visited: " 
-   print visRoom3
+   print ("Room 3 Visited: ")
+   print (visRoom3)
 
    #Room 4
    visRoom4 = currentState.rm04vis
-   print "Room 4 Visited: " 
-   print visRoom4
+   print ("Room 4 Visited: ")
+   print (visRoom4)
 
    #Room 5
    visRoom5 = currentState.rm05vis
-   print "Room 5 Visited: " 
-   print visRoom5
+   print ("Room 5 Visited: ")
+   print (visRoom5)
 
    #Object 1
    #object1N = currentState.obj1Desc
    object1L = currentState.obj1Loc
-   print "Object 1 Location: " 
-   print object1L
+   print ("Object 1 Location: ")
+   print (object1L)
 
    #Object 2
    object2L = currentState.obj2Loc
-   print "Object 2 Location: " 
-   print object2L
+   print ("Object 2 Location: ")
+   print (object2L)
 
    #Object 3
    object3L = currentState.obj3Loc
-   print "Object 3 Location: " 
-   print object3L
+   print ("Object 3 Location: ")
+   print (object3L)
 
 #Need to work on class methods
    #print "Current Room (Get Method): " 
@@ -3434,8 +3434,8 @@ def objectTest():
    obj1Name = obj1.name
    obj1Desc = obj1.desc
 
-   print "Object 1 Name: " + obj1Name
-   print "Object 1 Description: " + obj1Desc
+   print ("Object 1 Name: " + obj1Name)
+   print ("Object 1 Description: " + obj1Desc)
 
 #[END OBJECT TESTING]
 
@@ -3727,7 +3727,7 @@ def bottomLevelTest():
          userRoom = currentState.currRoom #Update room the user is currently in
          #elif currentState.currRoom ==2
 
-      userInput = raw_input (": ")
+      userInput = input (": ")
       #Temp disable parsing 
       #userInput = parseCommands.getInput(userInput)
 	  
@@ -4073,11 +4073,11 @@ def bottomLevelTest():
             display(keys.notInInv)
 
       elif userInput == "16": #Help
-		utils.printHelp(featureDict, itemDict)
+         utils.printHelp(featureDict, itemDict)
 
       elif userInput == "17": #Inventory
-         print ""
-         print "Inventory:"
+         print ("")
+         print ("Inventory:")
          if currentState.obj1Loc == 99:   #Board
             display(board.name)
          if currentState.obj2Loc == 99:   #Keys
@@ -4086,12 +4086,12 @@ def bottomLevelTest():
             display(handle.name)
          if currentState.obj4Loc == 99:   #Skeleton Key
             display(skeletonKey.name)
-         print ""
+         print ("")
 
       elif userInput == "18": #Look at feature 5 - Brig:null - LADDER / BOTTLES
          #Brig
          if currentState.currRoom == 1:
-            print "Brig feature 5 null"
+            print ("Brig feature 5 null")
             #if currentState.rm01f4 == 0: #Before interaction
             #   display(brig.feat4desc)
             #else: #After interaction
@@ -4112,7 +4112,7 @@ def bottomLevelTest():
       elif userInput == "19": #Interact with feature 5  - LADDER
          #Brig
          if currentState.currRoom == 1:
-            print "Brig feature 5 null"
+            print ("Brig feature 5 null")
             #if currentState.obj2Loc == 99: #Keys
             #   display(brig.feat4interactSuccess
             #   currentState.rm01f4 = 1 #Update to interaction complete
@@ -4130,7 +4130,7 @@ def bottomLevelTest():
       elif userInput == "20": #Look at feature 6 - Brig:null  - TRAP DOOR / PAPERS
          #Brig
          if currentState.currRoom == 1:
-            print "Brig feature 6 null"
+            print ("Brig feature 6 null")
             #if currentState.rm01f4 == 0: #Before interaction
             #   display(brig.feat4desc)
             #else: #After interaction
@@ -4151,7 +4151,7 @@ def bottomLevelTest():
       elif userInput == "21": #Interact with feature 6
          #Brig
          if currentState.currRoom == 1:
-            print "Brig feature 6 null"
+            print ("Brig feature 6 null")
             #if currentState.obj2Loc == 99: #Keys
             #   display(brig.feat4interactSuccess)
             #   currentState.rm01f4 = 1 #Update to interaction complete
@@ -4316,7 +4316,7 @@ def bottomLevelTest():
             display(skeletonKey.notInInv)
 
       else:
-         print "Invalid input"
+         print ("Invalid input")
 
       #Take straw 
 

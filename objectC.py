@@ -43,18 +43,15 @@ class ObjectClass:
 #[BEGIN REFERENCES]
 
 #[END REFERENCES]
-
+# /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 class MattsObjectClass(object):
-    """
-    object (item) class for use with data files in data/objects
-    """
-    def __init__(self, name):
+	def __init__(self, name):
 		#[BEGIN VARIABLES]
-		self.name = "" 
+		self.name = ""
 		self.synonyms = []
-		self.desc = "" 
-		self.notInInv = "" 
-		self.inRoom = "" 
-		self.take = "" 
-		self.notAvail = "" 
-		self.drop = "" 
+		self.desc = ""
+		self.notInInv = ""
+		self.inRoom = ""
+		self.take = ""
+		self.notAvail = ""
+		self.drop = ""

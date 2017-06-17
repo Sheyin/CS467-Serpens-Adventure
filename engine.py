@@ -50,10 +50,10 @@ def launch():
 	print ("   Exit")
 	print ("")
 	print ("")
-	userInput = raw_input (": ")
+	userInput = input (": ")
 	while userInput not in ['New Game', 'New', 'new', 'new game', 'Load Game', 'load game', 'load', 'Load', 'Exit','exit','Quit', 'quit', 'test']:
 		display("Please make a valid selection.")
-		userInput = raw_input (": ")
+		userInput = input (": ")
 
 	if userInput in ['New Game', 'New', 'new', 'new game', 'New game']:	#New Game
 		newGame()
@@ -101,7 +101,7 @@ def playGame(userSelection):
 	#Create new or load saved game
 	if userSelection == 0:	#New game
 		#Load game state with default starting variables {Data dev}
-		global currentState
+		#global currentState
 		currentState = MattsGameStateClass(1)
 		currentState = resume_gamestate("0")
 		#print "NEW GAME FILE CREATED"
@@ -113,7 +113,7 @@ def playGame(userSelection):
 			# If cancelled, load a new game instead
 			print ("")
 			display("Starting a new game.")
-			global currentState
+			#global currentState
 			currentState = MattsGameStateClass(1)
 			currentState = resume_gamestate("0")
 		else:
@@ -406,7 +406,7 @@ def playGame(userSelection):
 			
 		#Pend input:
 		print ("")
-		userInput = raw_input (": ")
+		userInput = input (": ")
 
 		#Parse user input and return code for engine action {Parsing Dev}
 		userInput = parse.main(userInput, featureList, featureDict, itemDict, roomList, currentState.currRoom)

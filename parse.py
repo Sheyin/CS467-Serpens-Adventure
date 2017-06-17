@@ -295,11 +295,11 @@ def main(rawinput, features, featureDict, itemDict, rooms, currentRoom):
 
 # Update to run main function for parseCommands.py separately from main.py
 if __name__ == "__main__":
-	print 'Starting the script.'
+	print ('Starting the script.')
 	keepLooping = True
 	currentRoom = 1
 	while (keepLooping != "exit"):
-		userInput = raw_input (": ")
+		userInput = input (": ")
 		featureList, featureDict, itemDict, roomList = utils.formatRoomData(rooms, objects, currentRoom)
 		keepLooping = main(userInput, featureList, featureDict, itemDict, roomList)
 		print ("Code received: " + str(keepLooping))

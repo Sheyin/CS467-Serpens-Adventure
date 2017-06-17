@@ -15,39 +15,39 @@ class GameStateClass(object):
     This is a test class for use with hard coded data in engine.py to test engine functionality
     """	
 	def __init__(self, currentRoom, room1, room2, room3, room4, room5, room6, room7, room8, room9, room10, room11, room12, room13, room14, room15, item1, item2, item3, item4, item5, item6, item7, item8, item9, item10, rm1f1, rm1f2, rm1f3, rm1f4, rm1o1, rm1o2, rm2f1, rm2f2, rm2f3, rm2o1, rm3f1, rm3f2, rm3f3, rm3f4, rm3f5, rm3f6, rm4f1, rm4f2, rm4f3, rm4f4, rm4f5, rm4f6, rm4o1, rm5f1, rm5f2, rm5f3, rm6f1, rm6f2, rm6f3, rm6f4, rm6f5, rm6o1, rm7f1, rm7f2, rm7f3, rm7f4, rm7f5, rm7o1, rm8f1, rm8f2, rm8f3, rm8f4, rm8f5, rm8f6, rm9f1, rm9f2, rm9f3, rm9f4, rm10f1, rm10f2, rm11f1, rm11f2, rm11f3, rm11f4, rm11f5, rm11f6, rm12f1, rm12f2, rm12f3, rm12f4, rm12f5, rm12f6, rm12o1, rm13f1, rm13f2, rm13f3, rm13f4, rm13f5, rm13f6, rm14f1, rm14f2, rm14f3, rm14f4, rm14f5, rm14f6, rm14o1, rm15f1, rm15f2, rm15f3, rm15f4, rm15f5, float1, pcD, kcD):
-   		#[BEGIN VARIABLES]
-   		self.currRoom = currentRoom #Integer of current room player is in, default = 1 
+		#[BEGIN VARIABLES]
+		self.currRoom = currentRoom #Integer of current room player is in, default = 1 
 
-   		#Visited (1) or unvisited (0) if room has been visited 
-   		self.rm01vis = room1	#Bottom deck 
-   		self.rm02vis = room2
-   		self.rm03vis = room3
-   		self.rm04vis = room4
-   		self.rm05vis = room5
+		#Visited (1) or unvisited (0) if room has been visited 
+		self.rm01vis = room1	#Bottom deck 
+		self.rm02vis = room2
+		self.rm03vis = room3
+		self.rm04vis = room4
+		self.rm05vis = room5
 
-   		self.rm06vis = room6	#Middle deck
-   		self.rm07vis = room7
-   		self.rm08vis = room8
-   		self.rm09vis = room9
-   		self.rm10vis = room10
+		self.rm06vis = room6	#Middle deck
+		self.rm07vis = room7
+		self.rm08vis = room8
+		self.rm09vis = room9
+		self.rm10vis = room10
 
-   		self.rm11vis = room11	#Final deck
-   		self.rm12vis = room12
-   		self.rm13vis = room13
-   		self.rm14vis = room14
-   		self.rm15vis = room15
+		self.rm11vis = room11	#Final deck
+		self.rm12vis = room12
+		self.rm13vis = room13
+		self.rm14vis = room14
+		self.rm15vis = room15
 
    		#Location of items & item name - room ID integer or 99 (player inv) or 100 (destroyed/permanently used)
-   		self.obj1Loc = item1	#Board
-   		self.obj2Loc = item2	#Key
-   		self.obj3Loc = item3	#Handle
-   		self.obj4Loc = item4	#Skeleton Key
-   		self.obj5Loc = item5	#Small Key
-   		self.obj6Loc = item6	#Gun
-   		self.obj7Loc = item7	#Lockpick
-   		self.obj8Loc = item8	#Cryptex
-   		self.obj9Loc = item9	#Paper clip     - *NEW
-   		self.obj10Loc = item10	#Keycard		- *NEW
+		self.obj1Loc = item1	#Board
+		self.obj2Loc = item2	#Key
+		self.obj3Loc = item3	#Handle
+		self.obj4Loc = item4	#Skeleton Key
+		self.obj5Loc = item5	#Small Key
+		self.obj6Loc = item6	#Gun
+		self.obj7Loc = item7	#Lockpick
+		self.obj8Loc = item8	#Cryptex
+		self.obj9Loc = item9	#Paper clip     - *NEW
+		self.obj10Loc = item10	#Keycard		- *NEW
 
 		#Puzzle solved (1) or unsolved (0) 
 
@@ -266,25 +266,21 @@ class GameStateClass(object):
 		self.keycardDisc = kcD
 
 
-   		#[END VARIABLES]
+		#[END VARIABLES]
 
-   	
 
 #[END CLASS IMPLEMENTATION]
-
+#Gamestate class for use with data files in data/gamestate
 class MattsGameStateClass(object):
-    """
-    Gamestate class for use with data files in data/gamestate
-    """
-    def __init__(self, name):
+	def __init__(self, name):
 		#[BEGIN VARIABLES]
 		self.name = ""
 		self.saveNum = ""
 		self.currRoom = "" #Integer of current room player is in, default = 1 
 
    		#Visited (1) or unvisited (0) if room has been visited 
-   		self.rm01vis = ""	#Bottom deck 
-   		self.rm02vis = ""
+		self.rm01vis = ""	#Bottom deck 
+		self.rm02vis = ""
 		self.rm03vis = ""
 		self.rm04vis = ""
 		self.rm05vis = ""
@@ -301,8 +297,8 @@ class MattsGameStateClass(object):
    	
 		
    		#Location of items & item name - room ID integer or 99 (player inv) or 100 (destroyed/permanently used)
-   		self.obj1Loc = ""	#Board
-   		self.obj2Loc = ""	#Key
+		self.obj1Loc = ""	#Board
+		self.obj2Loc = ""	#Key
 		self.obj3Loc = ""	#Handle
 		self.obj4Loc = ""	#Skeleton Key
 		self.obj5Loc = ""	#Small Key
@@ -310,7 +306,7 @@ class MattsGameStateClass(object):
 		self.obj7Loc = ""	#Lockpick
 		self.obj8Loc = ""	#Cryptex
 		self.obj9Loc = ""	#Paper clip     - *NEW
-   		self.obj10Loc = ""	#Keycard		- *NEW
+		self.obj10Loc = ""	#Keycard		- *NEW
    		
 		#Brig - Room 1
 		#Straw - searched (1) or unsearched (0)
