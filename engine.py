@@ -28,28 +28,28 @@ import sys
 #[BEGIN LAUNCH]
 def launch():
 	#Display title and menu
-	print "______               _   _____                "
-	print "|  _  \             | | |_   _|               "
-	print "| | | |___  __ _  __| |   | | _ __            "
-	print "| | | / _ \/ _` |/ _` |   | || '_ \           "
-	print "| |/ /  __/ (_| | (_| |  _| || | | |          "
-	print "|___/ \___|\__,_|\__,_|  \___/_| |_|          "
-	print ""
-	print ""
-	print " _____ _            _    _       _            "
-	print "|_   _| |          | |  | |     | |           "
-	print "  | | | |__   ___  | |  | | __ _| |_ ___ _ __ "
-	print "  | | | '_ \ / _ \ | |/\| |/ _` | __/ _ \ '__|"
-	print "  | | | | | |  __/ \  /\  / (_| | ||  __/ |   "
-	print "  \_/ |_| |_|\___|  \/  \/ \__,_|\__\___|_|   "
-	print ""
-	print ""
-	print "Please make a selection: "
-	print "   New Game"
-	print "   Load Game"
-	print "   Exit"
-	print ""
-	print ""
+	print ("______               _   _____                ")
+	print ("|  _  \             | | |_   _|               ")
+	print ("| | | |___  __ _  __| |   | | _ __            ")
+	print ("| | | / _ \/ _` |/ _` |   | || '_ \           ")
+	print ("| |/ /  __/ (_| | (_| |  _| || | | |          ")
+	print ("|___/ \___|\__,_|\__,_|  \___/_| |_|          ")
+	print ("")
+	print ("")
+	print (" _____ _            _    _       _            ")
+	print ("|_   _| |          | |  | |     | |           ")
+	print ("  | | | |__   ___  | |  | | __ _| |_ ___ _ __ ")
+	print ("  | | | '_ \ / _ \ | |/\| |/ _` | __/ _ \ '__|")
+	print ("  | | | | | |  __/ \  /\  / (_| | ||  __/ |   ")
+	print ("  \_/ |_| |_|\___|  \/  \/ \__,_|\__\___|_|   ")
+	print ("")
+	print ("")
+	print ("Please make a selection: ")
+	print ("   New Game")
+	print ("   Load Game")
+	print ("   Exit")
+	print ("")
+	print ("")
 	userInput = raw_input (": ")
 	while userInput not in ['New Game', 'New', 'new', 'new game', 'Load Game', 'load game', 'load', 'Load', 'Exit','exit','Quit', 'quit', 'test']:
 		display("Please make a valid selection.")
@@ -69,9 +69,9 @@ def launch():
 def newGame():
 
 	#Intro story
-	print "                                                                                "
+	print ("                                                                                ")
 	display("The dream you were having fades away as you become aware of a gentle rocking motion. You open your eyes and the dimly lit room slowly comes into focus. The only source of light is coming through a small window. It's cold and the air smells damp. Sitting up slowly, you wonder where you are...")
-	print ""
+	print ("")
 
 	playGame(0)	#New game
 
@@ -79,9 +79,9 @@ def newGame():
 
 #[BEGIN LOAD GAME]
 def loadGame():
-	print ""
+	print ("")
 	display("Loading your save file.")
-	print ""
+	print ("")
 
 	playGame(1)	# Load game
 #[END LOAD GAME]
@@ -111,14 +111,14 @@ def playGame(userSelection):
 		loadroom = checksaveload.checkLoading()
 		if loadroom == "cancel":
 			# If cancelled, load a new game instead
-			print ""
+			print ("")
 			display("Starting a new game.")
 			global currentState
 			currentState = MattsGameStateClass(1)
 			currentState = resume_gamestate("0")
 		else:
 			currentState = resume_gamestate(loadroom)
-			print ""
+			print ("")
 			
 		#print "LOAD GAME FILE"
 
@@ -405,7 +405,7 @@ def playGame(userSelection):
 		featureList, featureDict, itemList, roomList = utils.formatRoomData(rooms, objects, currentState)	
 			
 		#Pend input:
-		print ""
+		print ("")
 		userInput = raw_input (": ")
 
 		#Parse user input and return code for engine action {Parsing Dev}
@@ -1645,7 +1645,7 @@ def playGame(userSelection):
 			utils.printHelp(featureDict, itemDict, currentState)
 
 		elif userInput == "17": #Inventory
-			print ""
+			print ("")
 			display("Inventory:")
 			inventory = []
 
@@ -1679,7 +1679,7 @@ def playGame(userSelection):
 				display(inventoryString)
 			else:
 				display("You have no items at this time.")
-			print ""
+			print ("")
 
 		elif userInput == "18": #Look at feature 5 - Brig:null - LADDER / BOTTLES / WOODEN DOOR / METAL DOOR / CANVAS FLAP
 			#Brig
@@ -1749,7 +1749,7 @@ def playGame(userSelection):
 		elif userInput == "19": #Interact with feature 5  - LADDER / BOTTLES / WOODEN DOOR
 			#Brig
 			if currentState.currRoom == 1:
-				print "Brig feature 5 null"
+				print ("Brig feature 5 null")
 			#Hallway
 			elif currentState.currRoom == 3:
 				display(hallway.feat5interactSuccess)
@@ -1794,7 +1794,7 @@ def playGame(userSelection):
 		elif userInput == "20": #Look at feature 6 - Brig:null  - TRAP DOOR / PAPERS / METAL DOOR
 			#Brig
 			if currentState.currRoom == 1:
-				print "Brig feature 6 null"
+				print ("Brig feature 6 null")
 			#Hallway
 			elif currentState.currRoom == 3:
 				if currentState.rm03f6 == 0: #Before interaction
@@ -1841,7 +1841,7 @@ def playGame(userSelection):
 		elif userInput == "21": #Interact with feature 6
 			#Brig
 			if currentState.currRoom == 1:
-				print "Brig feature 6 null"
+				print ("Brig feature 6 null")
 			#Hallway
 			elif currentState.currRoom == 3:
 				if currentState.obj4Loc == 99:   #Skeleton Key in inv
@@ -2394,19 +2394,19 @@ def playGame(userSelection):
 
 #[BEGIN EXIT GAME]
 def exitGame():
-	print ""
+	print ("")
 	display("Roll the credits!")
-	print ""
+	print ("")
 	display("Hats off to the soon to be graduates:")
-	print ""
+	print ("")
 	display("Parsing Dev - Cheryl See")
 	display("Engine Dev - Karen Thrasher")
 	display("Data Dev - Matt Hillman")
-	print ""
+	print ("")
 	display("Oregon State, it's been awesome!")
-	print ""
+	print ("")
 	display("Thank you for playing!")
-	print ""
+	print ("")
 	sys.exit()
 #[END EXIT GAME]
 

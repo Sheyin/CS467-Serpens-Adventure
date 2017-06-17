@@ -7,7 +7,7 @@ import textwrap
 def endingPrompt():
 	escapeWords = ["yes", "do it", "exit", "leave", "go out", "outside", "escape", "run away", "crawl through", "freedom", "go hatch", "leave ship", "gtfo"]
 	display("The hatch is open, and there are no obstacles between you and freedom.  If you leave, you'll probably never step foot in this place again.    What do you want to do?")
-	print ""
+	print ("")
 	userInput = raw_input(': ').lower()
 	if userInput in escapeWords:
 		display("You've had enough of this place.  It's time to go.")
@@ -41,27 +41,27 @@ def endingText(injured = True):
 	# Check gamestate for certain variables.  By default they will be true.
 
 	display("You are blinded by the sudden influx of light as the hatch creaks open.  You feel weak with relief.  It's the outdoors - no doubt about it.")
-	print ""
+	print ("")
 
 	if injured:
 		display("As you climb out, you stifle a curse as your injured skin brushes against the hatch.  The gun explosion had left you slightly scorched - but alive.  Hopefully there are no guards around.")
 	else:
 		display("You climb out of the hatch carefully and quietly.")
-	print ""
+	print ("")
 
 	display("You wince as the hatch creaks closed.  Looking around, it seems you really are on a boat.  A rather large one, in fact, much bigger than what you had seen inside.")
-	print ""
+	print ("")
 	display("No one seems to be around.  You turn and give the hatch you came from a final look.  A sign reading '4815162342' is above the entryway.  There seem to be similar hatches with other numbers written above them nearby.")
-	print ""
+	print ("")
 
 	display("You idly fiddle with the bracelet around your wrist.  It was strange that it had forcibly been put on you, but you decide not to give it any further thought.  After all, you are now free!")
 	#display("You feel a slight chill go through you.  The wind?  Or perhaps it was because of seeing those same numbers again.  Luckily you had found that mysterious hint telling you how to remove it...")
-	print ""
+	print ("")
 
 	display("You carefully make your way towards a walkway extending from the dock.  You haven't seen anyone else, and it seems like a quiet sunny day, but you don't want to let down your guard.  You make your way off the boat, and onto solid land.")
-	print "" 
+	print ("") 
 	display("Freedom, at last.  For a while you thought you were dead in the water.  But now... things seem to be looking up.")
-	print ""
+	print ("")
 
 
 # For unlocking the cryptex
@@ -69,7 +69,7 @@ def cryptex():
 	userInput = ""
 	while userInput not in ['stop', 'quit', 'put down', 'cancel', 'end', 'exit']:
 		display("You fiddle with the cryptex.  It takes a five letter input.  You can stop and put down the cryptex, or enter a word.")
-		print ""
+		print ("")
 
 		userInput = raw_input(': ').lower()
 		if userInput in ['stop', 'quit', 'put down', 'cancel', 'end', 'exit']:
@@ -84,7 +84,7 @@ def cryptex():
 			return True
 		else:
 			display("You turn the wheels to spell out " + userInput.upper() + ".  You tug at the sides, but it does not open.  Seems that you had the incorrect word.")
-		print ""
+		print ("")
 
 if __name__ == "__main__":
 	# Same ending printed multiple times

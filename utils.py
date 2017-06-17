@@ -43,7 +43,7 @@ engine_codes_dict = {
 def display(text):
    textToPrint = textwrap.wrap(text, 70)
    for line in textToPrint:
-      print '  ' + line
+      print ('  ' + line)
 
 
 # Prints the help information from features + items
@@ -54,7 +54,7 @@ def printHelp(featureDict, itemDict, currentState):
 	display("Don't forget to take (pick up) items after you've revealed them.")
 	display("Take a closer look at the room's features.  Sometimes you may need to examine a detail on a feature even more closely.")
 	display("Some items are used more than once, in different ways.")
-	print ""
+	print ("")
 	display("Features and Actions:")
 	features = featureDict.keys()
 	for feature in features:
@@ -83,7 +83,7 @@ def printHelp(featureDict, itemDict, currentState):
 			itemList = _
 		else:
 			itemList = itemList + ", " + _
-	print ""
+	print ("")
 	display("Discovered Items: ")
 	if itemList:
 		display(itemList)
@@ -287,10 +287,10 @@ def formatRoomData(rooms, objects, currentState):
 if __name__ == "__main__":
 	data.load_objects()
 	cryptex = objects['cryptex']
-	print "Test 1:"
-	print cryptex.name
-	print stripUnicode(cryptex.name)
+	print ("Test 1:")
+	print (cryptex.name)
+	print (stripUnicode(cryptex.name))
 
-	print "Test 2:"
-	print cryptex.synonyms
-	print stripUnicode(cryptex.synonyms)
+	print ("Test 2:")
+	print (cryptex.synonyms)
+	print (stripUnicode(cryptex.synonyms))

@@ -302,5 +302,5 @@ if __name__ == "__main__":
 		userInput = raw_input (": ")
 		featureList, featureDict, itemDict, roomList = utils.formatRoomData(rooms, objects, currentRoom)
 		keepLooping = main(userInput, featureList, featureDict, itemDict, roomList)
-		print "Code received: " + str(keepLooping)
+		print ("Code received: " + str(keepLooping))
 
