@@ -8,7 +8,7 @@ def endingPrompt():
 	escapeWords = ["yes", "do it", "exit", "leave", "go out", "outside", "escape", "run away", "crawl through", "freedom", "go hatch", "leave ship", "gtfo"]
 	display("The hatch is open, and there are no obstacles between you and freedom.  If you leave, you'll probably never step foot in this place again.    What do you want to do?")
 	print ("")
-	userInput = raw_input(': ').lower()
+	userInput = input(': ').lower()
 	if userInput in escapeWords:
 		display("You've had enough of this place.  It's time to go.")
 		return True
@@ -71,7 +71,7 @@ def cryptex():
 		display("You fiddle with the cryptex.  It takes a five letter input.  You can stop and put down the cryptex, or enter a word.")
 		print ("")
 
-		userInput = raw_input(': ').lower()
+		userInput = input(': ').lower()
 		if userInput in ['stop', 'quit', 'put down', 'cancel', 'end', 'exit']:
 			display("You put down the cryptex.  Maybe you can try to open it again later.")
 			return False
